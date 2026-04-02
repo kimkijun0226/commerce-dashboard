@@ -8,12 +8,12 @@
 
 ### 1.1 실행 환경의 차이
 
-| 구분 | 브라우저 (클라이언트) | 서버 (Node.js) |
-|------|----------------------|----------------|
-| **실행 시점** | 사용자 브라우저에서 JS 실행 | Next.js 서버(빌드·렌더링) |
-| **세션 저장** | localStorage, cookies | cookies만 (서버는 localStorage 없음) |
-| **환경변수** | `NEXT_PUBLIC_*` 만 노출 | 모든 env 접근 가능 |
-| **보안** | 공개 URL·키만 사용 | secretKey 등 민감 정보 사용 가능 |
+| 구분          | 브라우저 (클라이언트)       | 서버 (Node.js)                       |
+| ------------- | --------------------------- | ------------------------------------ |
+| **실행 시점** | 사용자 브라우저에서 JS 실행 | Next.js 서버(빌드·렌더링)            |
+| **세션 저장** | localStorage, cookies       | cookies만 (서버는 localStorage 없음) |
+| **환경변수**  | `NEXT_PUBLIC_*` 만 노출     | 모든 env 접근 가능                   |
+| **보안**      | 공개 URL·키만 사용          | secretKey 등 민감 정보 사용 가능     |
 
 ### 1.2 분리하는 이유
 
@@ -43,10 +43,10 @@ commons/config/env.ts
 
 ### 2.2 Public vs Server
 
-| 함수 | 용도 | 포함 항목 |
-|------|------|-----------|
+| 함수             | 용도            | 포함 항목                                            |
+| ---------------- | --------------- | ---------------------------------------------------- |
 | `getPublicEnv()` | 브라우저 + 서버 | `supabase.url`, `supabase.publishableKey`, `siteUrl` |
-| `getServerEnv()` | 서버만 | 위 + `supabase.secretKey` |
+| `getServerEnv()` | 서버만          | 위 + `supabase.secretKey`                            |
 
 ### 2.3 환경변수 예시 (.env.local)
 
@@ -70,12 +70,12 @@ SUPABASE_SECRET_KEY=eyJhbG... (service_role key)
 getSupabaseBrowserClient() → SupabaseClient<Database>
 ```
 
-| 항목 | 내용 |
-|------|------|
-| **패키지** | `@supabase/supabase-js` |
+| 항목          | 내용                           |
+| ------------- | ------------------------------ |
+| **패키지**    | `@supabase/supabase-js`        |
 | **실행 위치** | 브라우저 (클라이언트 컴포넌트) |
-| **세션** | localStorage 기반, PKCE flow |
-| **캐싱** | 싱글톤으로 한 번만 생성 |
+| **세션**      | localStorage 기반, PKCE flow   |
+| **캐싱**      | 싱글톤으로 한 번만 생성        |
 
 **사용 시점**
 
@@ -89,12 +89,12 @@ getSupabaseBrowserClient() → SupabaseClient<Database>
 createClient() → Promise<SupabaseClient<Database>>
 ```
 
-| 항목 | 내용 |
-|------|------|
-| **패키지** | `@supabase/auth-helpers-nextjs` |
+| 항목          | 내용                                              |
+| ------------- | ------------------------------------------------- |
+| **패키지**    | `@supabase/auth-helpers-nextjs`                   |
 | **실행 위치** | 서버 (Server Component, API Route, Server Action) |
-| **세션** | `cookies()`로 읽기·갱신 |
-| **캐싱** | 호출 시마다 새 인스턴스 (요청별 isolation) |
+| **세션**      | `cookies()`로 읽기·갱신                           |
+| **캐싱**      | 호출 시마다 새 인스턴스 (요청별 isolation)        |
 
 **사용 시점**
 
@@ -124,7 +124,12 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleLogin();
+      }}
+    >
       <input value={email} onChange={(e) => setEmail(e.target.value)} />
       <button type="submit">로그인</button>
     </form>
@@ -187,7 +192,8 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const supabase = await createClient();
   const { data, error } = await supabase.from("products").select("*");
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error)
+    return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json(data);
 }
 ```
@@ -203,7 +209,9 @@ import type { CreateOrderInput } from "./api/types";
 
 export async function createOrder(input: CreateOrderInput) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) throw new Error("로그인이 필요합니다");
 
   const { data, error } = await supabase
@@ -221,13 +229,13 @@ export async function createOrder(input: CreateOrderInput) {
 
 ## 5. 선택 가이드
 
-| 상황 | 사용할 클라이언트 |
-|------|-------------------|
-| `'use client'` 컴포넌트 | `getSupabaseBrowserClient()` |
-| Server Component | `await createClient()` |
-| API Route (route.ts) | `await createClient()` |
-| Server Action ('use server') | `await createClient()` |
-| 미들웨어 | `createServerClient` + `cookies` (별도 설정) |
+| 상황                         | 사용할 클라이언트                            |
+| ---------------------------- | -------------------------------------------- |
+| `'use client'` 컴포넌트      | `getSupabaseBrowserClient()`                 |
+| Server Component             | `await createClient()`                       |
+| API Route (route.ts)         | `await createClient()`                       |
+| Server Action ('use server') | `await createClient()`                       |
+| 미들웨어                     | `createServerClient` + `cookies` (별도 설정) |
 
 ---
 

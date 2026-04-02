@@ -20,6 +20,16 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Database Migration
+
+Supabase 스키마 마이그레이션:
+
+```bash
+yarn db:run-migration
+```
+
+`.env.local`에 `DATABASE_URL`(Supabase Dashboard > Database > Connection string)을 설정해야 합니다.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
