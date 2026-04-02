@@ -7,7 +7,7 @@ import { getPublicEnv } from "@/commons/config/env";
 import type { Database } from "@/types/supabase";
 
 // 싱글톤: 브라우저당 한 번만 생성, 재사용
-let browserClient: SupabaseClient<Database> | null = null;
+let browserClient: SupabaseClient<Database, "public"> | null = null;
 
 /**
  * 브라우저에서 Supabase 클라이언트를 반환
@@ -17,7 +17,7 @@ let browserClient: SupabaseClient<Database> | null = null;
 export function getSupabaseBrowserClient() {
   if (!browserClient) {
     const { supabase } = getPublicEnv();
-    browserClient = createClient<Database>(
+    browserClient = createClient<Database, "public">(
       supabase.url,
       supabase.publishableKey,
       {
