@@ -1,7 +1,7 @@
 "use client";
 
 import { adminColors } from "@/commons/constants/color";
-import { cn } from "@/components/ui/cn";
+import { cn } from "../cn/cn";
 import type { ButtonHTMLAttributes } from "react";
 
 export type SwitchProps = Omit<

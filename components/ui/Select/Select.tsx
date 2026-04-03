@@ -1,7 +1,7 @@
 import { adminColors, commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn } from "../cn/cn";
+import { typographyToStyle } from "../typography-styles/typography-styles";
 import type { SelectHTMLAttributes } from "react";
 import { forwardRef, useId } from "react";
 
@@ -41,9 +41,10 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const errId = `${id}-error`;
     const descId = `${id}-description`;
     const invalid = Boolean(error);
-    const describedBy = [description ? descId : null, error ? errId : null]
-      .filter(Boolean)
-      .join(" ") || undefined;
+    const describedBy =
+      [description ? descId : null, error ? errId : null]
+        .filter(Boolean)
+        .join(" ") || undefined;
 
     const labelTypo = typographyToStyle(commerceTypography.caption2Semi);
     const descTypo = typographyToStyle(commerceTypography.caption2);

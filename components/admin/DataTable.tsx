@@ -1,7 +1,6 @@
 import { adminColors } from "@/commons/constants/color";
 import { adminTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn, typographyToStyle } from "@/components/ui";
 import type { ReactNode } from "react";
 
 export type DataTableColumn<Row> = {

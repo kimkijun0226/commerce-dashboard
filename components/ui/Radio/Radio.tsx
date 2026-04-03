@@ -1,7 +1,7 @@
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn } from "../cn/cn";
+import { typographyToStyle } from "../typography-styles/typography-styles";
 import type { InputHTMLAttributes, ReactNode } from "react";
 import { forwardRef, useId } from "react";
 

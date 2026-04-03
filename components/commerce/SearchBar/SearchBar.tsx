@@ -2,9 +2,7 @@
 
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { Button } from "@/components/ui/Button";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { Button, cn, typographyToStyle } from "@/components/ui";
 import type { FormEventHandler, InputHTMLAttributes } from "react";
 import { useId } from "react";
 

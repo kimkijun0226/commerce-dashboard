@@ -1,7 +1,7 @@
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn } from "../cn/cn";
+import { typographyToStyle } from "../typography-styles/typography-styles";
 import type { InputHTMLAttributes } from "react";
 import { forwardRef, useId } from "react";
 
@@ -33,9 +33,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const errId = `${id}-error`;
   const descId = `${id}-description`;
   const invalid = Boolean(error) || ariaInvalid === true;
-  const describedBy = [description ? descId : null, error ? errId : null]
-    .filter(Boolean)
-    .join(" ") || undefined;
+  const describedBy =
+    [description ? descId : null, error ? errId : null]
+      .filter(Boolean)
+      .join(" ") || undefined;
 
   const labelStyle = typographyToStyle(commerceTypography.caption2Semi);
   const descStyle = typographyToStyle(commerceTypography.caption2);
@@ -60,9 +61,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
               *
             </span>
           ) : null}
-          {required ? (
-            <span className="sr-only">필수 입력</span>
-          ) : null}
+          {required ? <span className="sr-only">필수 입력</span> : null}
         </label>
       ) : null}
       {description && !error ? (

@@ -1,5 +1,5 @@
 import { adminColors, commerceColors } from "@/commons/constants/color";
-import { cn } from "@/components/ui/cn";
+import { cn } from "../cn/cn";
 import type { HTMLAttributes } from "react";
 
 export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {

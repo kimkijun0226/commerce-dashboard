@@ -1,7 +1,7 @@
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn } from "../cn/cn";
+import { typographyToStyle } from "../typography-styles/typography-styles";
 import type { InputHTMLAttributes, ReactNode } from "react";
 import { forwardRef, useId } from "react";
 
@@ -32,15 +32,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     const errId = `${id}-error`;
     const invalid = Boolean(error);
 
-  return (
-    <div className={cn("flex flex-col gap-1", className)}>
-      <div className="flex items-start gap-3">
-        <input
-          ref={ref}
-          id={id}
-          type="checkbox"
-          disabled={disabled}
-          aria-describedby={error ? errId : undefined}
+    return (
+      <div className={cn("flex flex-col gap-1", className)}>
+        <div className="flex items-start gap-3">
+          <input
+            ref={ref}
+            id={id}
+            type="checkbox"
+            disabled={disabled}
+            aria-describedby={error ? errId : undefined}
             className="mt-0.5 size-4 shrink-0 rounded border cursor-pointer disabled:cursor-not-allowed"
             style={{
               accentColor: commerceColors.primary.main,

@@ -1,7 +1,7 @@
 import { adminColors, commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn } from "../cn/cn";
+import { typographyToStyle } from "../typography-styles/typography-styles";
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 const heights = { sm: 36, md: 40, lg: 48 } as const;

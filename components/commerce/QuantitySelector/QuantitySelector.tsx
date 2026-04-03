@@ -2,11 +2,11 @@
 
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn, typographyToStyle } from "@/components/ui";
 import type { HTMLAttributes } from "react";
 
-export type QuantityStepperProps = Omit<
+/** Figma: 카트 소형(32·보더) vs PDP/루프(52·#f5f5f5) */
+export type QuantitySelectorProps = Omit<
   HTMLAttributes<HTMLDivElement>,
   "onChange"
 > & {
@@ -15,29 +15,32 @@ export type QuantityStepperProps = Omit<
   max?: number;
   onChange: (next: number) => void;
   disabled?: boolean;
-  size?: "sm" | "md";
+  variant?: "cart" | "product";
+  className?: string;
 };
 
-export function QuantityStepper({
+const PRODUCT_LOOP_BG = "#f5f5f5";
+
+export function QuantitySelector({
   value,
   min = 1,
   max = 99,
   onChange,
   disabled,
-  size = "md",
+  variant = "cart",
   className,
   ...rest
-}: QuantityStepperProps) {
-  const isSm = size === "sm";
-  const height = isSm ? 32 : 52;
-  const iconBox = isSm ? 16 : 20;
+}: QuantitySelectorProps) {
+  const isCart = variant === "cart";
+  const height = isCart ? 32 : 52;
+  const iconBox = isCart ? 16 : 20;
+  const radius = isCart ? 4 : 8;
   const textTypo = typographyToStyle(
-    isSm ? commerceTypography.caption2Semi : commerceTypography.body2Semi,
+    isCart ? commerceTypography.caption2Semi : commerceTypography.body2Semi,
   );
 
   const dec = () => onChange(Math.max(min, value - 1));
   const inc = () => onChange(Math.min(max, value + 1));
-
   const atMin = value <= min;
   const atMax = value >= max;
 
@@ -45,13 +48,14 @@ export function QuantityStepper({
     <div
       role="group"
       aria-label="수량"
-      className={cn("inline-flex items-stretch rounded-lg", className)}
+      className={cn("inline-flex items-stretch", className)}
       style={{
         height,
-        backgroundColor: isSm ? "transparent" : commerceColors.background.light,
-        borderWidth: 1,
+        borderRadius: radius,
+        backgroundColor: isCart ? "transparent" : PRODUCT_LOOP_BG,
+        borderWidth: isCart ? 1 : 0,
         borderStyle: "solid",
-        borderColor: commerceColors.border.strong,
+        borderColor: isCart ? commerceColors.border.strong : "transparent",
       }}
       {...rest}
     >
@@ -88,13 +92,7 @@ export function QuantityStepper({
 
 function MinusIcon({ size }: { size: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-    >
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
         d="M6 12h12"
         stroke={commerceColors.primary.dark}
@@ -107,13 +105,7 @@ function MinusIcon({ size }: { size: number }) {
 
 function PlusIcon({ size }: { size: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-    >
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
         d="M12 6v12M6 12h12"
         stroke={commerceColors.primary.dark}

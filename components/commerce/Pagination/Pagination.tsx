@@ -2,8 +2,7 @@
 
 import { adminColors, commerceColors } from "@/commons/constants/color";
 import { adminTypography } from "@/commons/constants/typography";
-import { cn } from "@/components/ui/cn";
-import { typographyToStyle } from "@/components/ui/typography-styles";
+import { cn, typographyToStyle } from "@/components/ui";
 import type { ButtonHTMLAttributes } from "react";
 
 const cell = 28;
