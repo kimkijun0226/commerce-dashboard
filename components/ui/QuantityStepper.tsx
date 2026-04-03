@@ -6,7 +6,10 @@ import { cn } from "@/components/ui/cn";
 import { typographyToStyle } from "@/components/ui/typography-styles";
 import type { HTMLAttributes } from "react";
 
-export type QuantityStepperProps = HTMLAttributes<HTMLDivElement> & {
+export type QuantityStepperProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> & {
   value: number;
   min?: number;
   max?: number;
