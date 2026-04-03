@@ -1,20 +1,19 @@
-import { commerceColors } from "@/commons/constants/color";
+import { adminColors, commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import { cn } from "@/components/ui/cn";
 import { typographyToStyle } from "@/components/ui/typography-styles";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
-const sizeHeights = { sm: 40, md: 48, lg: 52 } as const;
+const heights = { sm: 36, md: 40, lg: 48 } as const;
 const sizeTypography = {
-  sm: commerceTypography.buttonS,
+  sm: commerceTypography.buttonXS,
   md: commerceTypography.buttonS,
   lg: commerceTypography.buttonM,
 } as const;
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "outline";
-  size?: keyof typeof sizeHeights;
-  shape?: "rounded" | "pill";
+  variant?: "primary" | "secondary" | "ghost" | "danger";
+  size?: keyof typeof heights;
   loading?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
@@ -23,7 +22,6 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export function Button({
   variant = "primary",
   size = "md",
-  shape = "rounded",
   loading = false,
   leftIcon,
   rightIcon,
@@ -31,44 +29,58 @@ export function Button({
   disabled,
   children,
   type = "button",
+  style,
   ...rest
 }: ButtonProps) {
-  const height = sizeHeights[size];
+  const h = heights[size];
   const typo = typographyToStyle(sizeTypography[size]);
   const isDisabled = disabled || loading;
 
   const base =
-    "box-border inline-flex items-center justify-center gap-2 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50";
-  const focusRing =
-    variant === "primary"
-      ? "focus-visible:outline-[var(--commerce-semantic-info)]"
-      : "focus-visible:outline-[var(--commerce-primary-main)]";
+    "box-border inline-flex items-center justify-center gap-2 rounded-lg px-4 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--commerce-semantic-info)] disabled:pointer-events-none disabled:opacity-50";
 
-  const shapeClass = shape === "pill" ? "rounded-full px-6" : "rounded-lg px-5";
-
-  const variantStyle =
-    variant === "primary"
-      ? {
-          backgroundColor: commerceColors.primary.main,
-          color: commerceColors.text.inverse,
-        }
-      : {
-          backgroundColor: "transparent",
-          color: commerceColors.text.primary,
-          borderWidth: 1,
-          borderStyle: "solid" as const,
-          borderColor: commerceColors.primary.main,
-        };
+  const variantStyles: Record<
+    NonNullable<ButtonProps["variant"]>,
+    CSSProperties
+  > = {
+    primary: {
+      backgroundColor: commerceColors.primary.main,
+      color: commerceColors.text.inverse,
+      borderWidth: 0,
+    },
+    secondary: {
+      backgroundColor: adminColors.neutral.n100,
+      color: adminColors.text.primary,
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: adminColors.border.default,
+    },
+    ghost: {
+      backgroundColor: "transparent",
+      color: commerceColors.text.primary,
+      borderWidth: 0,
+    },
+    danger: {
+      backgroundColor: commerceColors.semantic.danger,
+      color: commerceColors.text.inverse,
+      borderWidth: 0,
+    },
+  };
 
   return (
     <button
       type={type}
       disabled={isDisabled}
-      className={cn(base, focusRing, shapeClass, className)}
+      className={cn(
+        base,
+        variant === "ghost" && "hover:bg-[var(--admin-neutral-n100)]",
+        className,
+      )}
       style={{
-        minHeight: height,
+        minHeight: h,
         ...typo,
-        ...variantStyle,
+        ...variantStyles[variant],
+        ...style,
       }}
       aria-busy={loading || undefined}
       {...rest}

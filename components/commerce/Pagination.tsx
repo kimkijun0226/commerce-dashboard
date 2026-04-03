@@ -9,13 +9,11 @@ import type { ButtonHTMLAttributes } from "react";
 const cell = 28;
 const typo = typographyToStyle(adminTypography.pagination);
 
-export type PaginationProps = {
+export type CommercePaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange?: (page: number) => void;
   className?: string;
-  /** 커머스·어드민 공통 패턴: 활성 셀 색만 톤 전환 */
-  tone?: "commerce" | "admin";
   labels?: {
     previous: string;
     next: string;
@@ -25,20 +23,8 @@ export type PaginationProps = {
 function PageButton({
   active,
   children,
-  tone,
   ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement> & {
-  active?: boolean;
-  tone: "commerce" | "admin";
-}) {
-  const activeBg =
-    tone === "commerce"
-      ? commerceColors.primary.main
-      : commerceColors.primary.main;
-  const inactiveBg = adminColors.neutral.n100;
-  const activeFg = commerceColors.text.inverse;
-  const inactiveFg = adminColors.text.secondary;
-
+}: ButtonHTMLAttributes<HTMLButtonElement> & { active?: boolean }) {
   return (
     <button
       type="button"
@@ -49,8 +35,12 @@ function PageButton({
         width: cell,
         height: cell,
         ...typo,
-        backgroundColor: active ? activeBg : inactiveBg,
-        color: active ? activeFg : inactiveFg,
+        backgroundColor: active
+          ? commerceColors.primary.main
+          : adminColors.neutral.n100,
+        color: active
+          ? commerceColors.text.inverse
+          : adminColors.text.secondary,
       }}
       {...rest}
     >
@@ -79,9 +69,8 @@ export function Pagination({
   totalPages,
   onPageChange,
   className,
-  tone = "admin",
   labels = { previous: "이전 페이지", next: "다음 페이지" },
-}: PaginationProps) {
+}: CommercePaginationProps) {
   if (totalPages < 1) {
     return null;
   }
@@ -94,7 +83,6 @@ export function Pagination({
       aria-label="페이지 탐색"
     >
       <PageButton
-        tone={tone}
         aria-label={labels.previous}
         disabled={currentPage <= 1}
         onClick={() => onPageChange?.(currentPage - 1)}
@@ -104,7 +92,6 @@ export function Pagination({
       {pages.map((p) => (
         <PageButton
           key={p}
-          tone={tone}
           active={p === currentPage}
           aria-label={`${p}페이지`}
           aria-current={p === currentPage ? "page" : undefined}
@@ -114,7 +101,6 @@ export function Pagination({
         </PageButton>
       ))}
       <PageButton
-        tone={tone}
         aria-label={labels.next}
         disabled={currentPage >= totalPages}
         onClick={() => onPageChange?.(currentPage + 1)}

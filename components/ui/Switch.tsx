@@ -4,18 +4,17 @@ import { adminColors } from "@/commons/constants/color";
 import { cn } from "@/components/ui/cn";
 import type { ButtonHTMLAttributes } from "react";
 
-export type ToggleProps = Omit<
+export type SwitchProps = Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "role" | "type"
 > & {
   checked: boolean;
   onCheckedChange?: (next: boolean) => void;
-  /** 스위치 왼쪽에 표시할 라벨 */
   label?: string;
   labelId?: string;
 };
 
-export function Toggle({
+export function Switch({
   checked,
   onCheckedChange,
   label,
@@ -23,7 +22,7 @@ export function Toggle({
   className,
   disabled,
   ...rest
-}: ToggleProps) {
+}: SwitchProps) {
   return (
     <div className={cn("inline-flex items-center gap-3", className)}>
       {label ? (

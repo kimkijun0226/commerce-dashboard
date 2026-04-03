@@ -85,7 +85,7 @@ export function SearchBar({
       <Button
         type="submit"
         size="sm"
-        shape="pill"
+        className="shrink-0 rounded-full px-5"
         aria-label={submitAriaLabel ?? submitLabel}
       >
         {submitLabel}

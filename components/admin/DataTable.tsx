@@ -8,7 +8,6 @@ export type DataTableColumn<Row> = {
   key: keyof Row & string;
   header: string;
   align?: "left" | "right" | "center";
-  /** 헤더 셀만 다른 스코프(행 헤더 등) */
   scope?: "col" | "row";
 };
 
@@ -16,7 +15,6 @@ export type DataTableProps<Row extends Record<string, ReactNode>> = {
   columns: readonly DataTableColumn<Row>[];
   rows: readonly Row[];
   className?: string;
-  /** 행 키; 없으면 인덱스 */
   getRowKey?: (row: Row, index: number) => string | number;
 };
 

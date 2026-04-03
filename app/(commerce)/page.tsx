@@ -1,18 +1,21 @@
 "use client";
 
 import { adminColors } from "@/commons/constants/color";
+import { DataTable, SidebarNavItem } from "@/components/admin";
 import {
-  Badge,
-  Button,
-  DataTable,
-  Dropdown,
   Pagination,
   QuantityStepper,
   RadioRow,
   SearchBar,
-  SidebarNavItem,
-  TextInput,
-  Toggle,
+} from "@/components/commerce";
+import {
+  Badge,
+  Button,
+  Checkbox,
+  Input,
+  Radio,
+  Select,
+  Switch,
 } from "@/components/ui";
 import { useState } from "react";
 
@@ -28,6 +31,8 @@ export default function CommercePage() {
   const [shipping, setShipping] = useState("free");
   const [qtySm, setQtySm] = useState(2);
   const [qtyMd, setQtyMd] = useState(1);
+  const [plan, setPlan] = useState("standard");
+  const [terms, setTerms] = useState(false);
 
   return (
     <div
@@ -43,31 +48,33 @@ export default function CommercePage() {
               color: "var(--commerce-text-primary)",
             }}
           >
-            UI 컴포넌트 미리보기
+            컴포넌트 미리보기
           </h1>
           <p
             className="text-sm"
             style={{ color: "var(--commerce-text-secondary)" }}
           >
-            Figma「E Commerce 컴포넌트」·「Admin 컴포넌트」와 순서대로 대조해
-            보세요. (위에서부터 11종)
+            공통 UI → 커머스 전용 → 어드민 전용 순으로 배치했습니다.
           </p>
         </header>
 
-        {/* 1. Button */}
+        {/* —— 공통 components/ui —— */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>1. Button</h2>
+          <h2 className={sectionTitleClass}>공통 · Button</h2>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <Button variant="primary" size="lg">
-              Save changes
+              Primary
             </Button>
-            <Button variant="primary" size="md" shape="pill">
-              Sign Up
+            <Button variant="secondary" size="md">
+              Secondary
             </Button>
-            <Button variant="outline" size="md" leftIcon={<HeartIcon />}>
-              Wishlist
+            <Button variant="ghost" size="md">
+              Ghost
             </Button>
-            <Button variant="primary" size="sm" shape="pill" loading>
+            <Button variant="danger" size="md">
+              Danger
+            </Button>
+            <Button variant="primary" size="sm" loading>
               Loading
             </Button>
             <Button variant="primary" size="sm" disabled>
@@ -76,28 +83,126 @@ export default function CommercePage() {
           </div>
         </section>
 
-        {/* 2. TextInput */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>2. TextInput</h2>
-          <div className="mt-4 grid max-w-xl gap-4">
-            <TextInput
-              label="Phone Number"
-              placeholder="Phone number"
-              tone="commerce"
-              autoComplete="tel"
+          <h2 className={sectionTitleClass}>공통 · Input</h2>
+          <div className="mt-4 grid max-w-xl gap-6">
+            <Input
+              label="이메일"
+              description="로그인에 사용됩니다."
+              placeholder="you@example.com"
+              type="email"
+              autoComplete="email"
             />
-            <TextInput
-              label="에러 예시"
+            <Input
+              label="필수 필드"
+              required
               placeholder="입력하세요"
+            />
+            <Input
+              variant="underline"
+              label="Underline"
+              placeholder="하단 보더만"
+            />
+            <Input
+              label="에러"
+              placeholder="값"
               error="형식이 올바르지 않습니다."
               defaultValue="invalid"
             />
           </div>
         </section>
 
-        {/* 3. SearchBar */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>3. SearchBar</h2>
+          <h2 className={sectionTitleClass}>공통 · Badge</h2>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <Badge variant="default">Default</Badge>
+            <Badge variant="success" size="sm">
+              Success
+            </Badge>
+            <Badge variant="warning">Warning</Badge>
+            <Badge variant="danger">Danger</Badge>
+            <Badge variant="outline">Outline</Badge>
+            <Badge variant="default" size="md">
+              MD
+            </Badge>
+          </div>
+        </section>
+
+        <section className={panelClass}>
+          <h2 className={sectionTitleClass}>공통 · Checkbox</h2>
+          <div className="mt-4 max-w-md space-y-4">
+            <Checkbox
+              checked={terms}
+              onChange={(e) => setTerms(e.target.checked)}
+              label="이용약관에 동의합니다."
+              description="필수 항목입니다."
+            />
+            <Checkbox label="에러 예시" error="반드시 선택해야 합니다." />
+          </div>
+        </section>
+
+        <section className={panelClass}>
+          <h2 className={sectionTitleClass}>공통 · Radio</h2>
+          <fieldset className="mt-4 space-y-3 border-0 p-0">
+            <legend className="mb-2 text-sm font-medium text-[var(--commerce-text-primary)]">
+              요금제
+            </legend>
+            <Radio
+              name="plan-demo"
+              value="standard"
+              checked={plan === "standard"}
+              onChange={() => setPlan("standard")}
+              label="Standard"
+              description="기본 기능"
+            />
+            <Radio
+              name="plan-demo"
+              value="pro"
+              checked={plan === "pro"}
+              onChange={() => setPlan("pro")}
+              label="Pro"
+              description="전체 기능"
+            />
+          </fieldset>
+        </section>
+
+        <section className={panelClass}>
+          <h2 className={sectionTitleClass}>공통 · Select</h2>
+          <div className="mt-4 max-w-xs">
+            <Select
+              label="정렬"
+              description="목록 정렬 기준"
+              options={[
+                { value: "new", label: "최신순" },
+                { value: "price", label: "가격순" },
+                { value: "name", label: "이름순" },
+              ]}
+              defaultValue="new"
+            />
+          </div>
+        </section>
+
+        <section className={panelClass}>
+          <h2 className={sectionTitleClass}>공통 · Switch</h2>
+          <div className="mt-4 flex flex-col gap-4">
+            <Switch
+              checked={toggleOn}
+              onCheckedChange={setToggleOn}
+              label="알림 받기"
+              labelId="switch-notify"
+            />
+            <Switch
+              checked={!toggleOn}
+              onCheckedChange={(v) => setToggleOn(!v)}
+              label="마케팅 수신"
+              labelId="switch-marketing"
+            />
+          </div>
+        </section>
+
+        {/* —— 커머스 components/commerce —— */}
+        <section className={panelClass}>
+          <h2 className={sectionTitleClass}>커머스 · SearchBar</h2>
           <div className="mt-4 max-w-3xl">
             <SearchBar
               placeholder="Search for products..."
@@ -107,15 +212,13 @@ export default function CommercePage() {
           </div>
         </section>
 
-        {/* 4. Pagination */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>4. Pagination</h2>
+          <h2 className={sectionTitleClass}>커머스 · Pagination</h2>
           <div className="mt-4">
             <Pagination
               currentPage={page}
               totalPages={12}
               onPageChange={setPage}
-              tone="commerce"
             />
             <p
               className="mt-2 text-xs"
@@ -126,66 +229,8 @@ export default function CommercePage() {
           </div>
         </section>
 
-        {/* 5. Dropdown */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>5. Dropdown</h2>
-          <div className="mt-4 grid max-w-xs gap-4">
-            <Dropdown
-              aria-label="페이지당 행 수"
-              defaultValue="10"
-              options={[
-                { value: "10", label: "10" },
-                { value: "20", label: "20" },
-                { value: "50", label: "50" },
-              ]}
-            />
-            <Dropdown
-              bordered={false}
-              aria-label="날짜 필터"
-              defaultValue="all"
-              options={[
-                { value: "all", label: "Filter by date range" },
-                { value: "7d", label: "최근 7일" },
-                { value: "30d", label: "최근 30일" },
-              ]}
-            />
-          </div>
-        </section>
-
-        {/* 6. Badge */}
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>6. Badge</h2>
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <Badge variant="brand" aria-label="알림 3건">
-              3
-            </Badge>
-            <Badge variant="success">New</Badge>
-            <Badge variant="neutral">0</Badge>
-          </div>
-        </section>
-
-        {/* 7. Toggle */}
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>7. Toggle</h2>
-          <div className="mt-4 flex flex-col gap-4">
-            <Toggle
-              checked={toggleOn}
-              onCheckedChange={setToggleOn}
-              label="Slack 연동"
-              labelId="toggle-slack-label"
-            />
-            <Toggle
-              checked={!toggleOn}
-              onCheckedChange={(v) => setToggleOn(!v)}
-              label="Notion 연동"
-              labelId="toggle-notion-label"
-            />
-          </div>
-        </section>
-
-        {/* 8. RadioRow */}
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>8. RadioRow</h2>
+          <h2 className={sectionTitleClass}>커머스 · RadioRow</h2>
           <fieldset className="mt-4 space-y-2 border-0 p-0">
             <legend className="sr-only">배송 옵션</legend>
             <RadioRow
@@ -207,9 +252,39 @@ export default function CommercePage() {
           </fieldset>
         </section>
 
-        {/* 9. DataTable */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>9. DataTable</h2>
+          <h2 className={sectionTitleClass}>커머스 · QuantityStepper</h2>
+          <div className="mt-4 flex flex-wrap items-center gap-6">
+            <div>
+              <p className="mb-2 text-xs text-[var(--commerce-text-muted)]">
+                Small
+              </p>
+              <QuantityStepper
+                size="sm"
+                value={qtySm}
+                min={1}
+                max={10}
+                onChange={setQtySm}
+              />
+            </div>
+            <div>
+              <p className="mb-2 text-xs text-[var(--commerce-text-muted)]">
+                Medium
+              </p>
+              <QuantityStepper
+                size="md"
+                value={qtyMd}
+                min={1}
+                max={99}
+                onChange={setQtyMd}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* —— 어드민 components/admin —— */}
+        <section className={panelClass}>
+          <h2 className={sectionTitleClass}>어드민 · DataTable</h2>
           <div className="mt-4 overflow-hidden rounded-lg border border-[var(--admin-border-brand-subtle)] bg-[var(--admin-background-default)]">
             <DataTable
               columns={[
@@ -236,9 +311,8 @@ export default function CommercePage() {
           </div>
         </section>
 
-        {/* 10. SidebarNavItem */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>10. SidebarNavItem</h2>
+          <h2 className={sectionTitleClass}>어드민 · SidebarNavItem</h2>
           <div
             className="mt-4 w-[260px] rounded-lg border border-[var(--commerce-border-subtle)] bg-white py-2"
             style={{ fontFamily: "var(--admin-font-ui)" }}
@@ -256,61 +330,18 @@ export default function CommercePage() {
               <SidebarNavItem
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                trailing={<Badge variant="brand">2</Badge>}
+                trailing={
+                  <Badge variant="outline" size="sm" aria-label="알림 2건">
+                    2
+                  </Badge>
+                }
               >
                 Manage Admins
               </SidebarNavItem>
             </div>
           </div>
         </section>
-
-        {/* 11. QuantityStepper */}
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>11. QuantityStepper</h2>
-          <div className="mt-4 flex flex-wrap items-center gap-6">
-            <div>
-              <p className="mb-2 text-xs text-[var(--commerce-text-muted)]">
-                Small (카트 라인)
-              </p>
-              <QuantityStepper
-                size="sm"
-                value={qtySm}
-                min={1}
-                max={10}
-                onChange={setQtySm}
-              />
-            </div>
-            <div>
-              <p className="mb-2 text-xs text-[var(--commerce-text-muted)]">
-                Product (PDP)
-              </p>
-              <QuantityStepper
-                size="md"
-                value={qtyMd}
-                min={1}
-                max={99}
-                onChange={setQtyMd}
-              />
-            </div>
-          </div>
-        </section>
       </div>
     </div>
-  );
-}
-
-function HeartIcon() {
-  return (
-    <svg
-      width={20}
-      height={20}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      aria-hidden
-    >
-      <path d="M12 21s-7-4.35-7-10a5 5 0 0110 0 5 5 0 0110 0c0 5.65-7 10-7 10z" />
-    </svg>
   );
 }
