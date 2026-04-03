@@ -1,0 +1,115 @@
+---
+alwaysApply: false
+---
+
+# 커머스·어드민 Figma 공통 컴포넌트 분석
+
+## 분석 출처
+
+- **파일:** Commerce---Admin-템플릿 (Figma)
+- **Talk to Figma:** 채널 연결 후 `get_document_info`, `get_node_info`, `get_local_components` 사용
+- **템플릿 프레임:** `245:3108` (E Commerce 템플릿), `245:10962` (Admin 템플릿)
+- **컴포넌트 캔버스(주 분석 대상):** `310:2620` (E Commerce 컴포넌트), `310:2924` (Admin 컴포넌트)
+- **참고:** 문서 내 **로컬 컴포넌트**는 `get_local_components` 기준 5개(Product Carousel, Values, Banner, Footer, 아이콘 등)로, UI 원자 단위의 “공통 11종”과는 별개임. 아래 11종은 **두 캔버스에 동시에 등장하거나 동일 패턴으로 재사용 가능한 UI 패밀리**로 정리함.
+
+---
+
+## 1. 공통 UI 패밀리 11종 (요약)
+
+| # | 패밀리명 | 커머스에서 관찰 | 어드민에서 관찰 |
+|---|-----------|-----------------|-----------------|
+| 1 | Button | Primary/Outline, 아이콘+텍스트, Pill·라운드 혼재 | 동일 토큰 계열 버튼(테이블·폼 주변 패턴과 호환) |
+| 2 | TextInput | 라벨+필드, 플레이스홀더, 검색 아이콘 | 검색 Form, 필터·설정용 인풋 |
+| 3 | SearchBar | 검색 필드 + 우측 Search 버튼 조합 | 주문 ID 검색 등 단일 행 검색 |
+| 4 | Pagination | 번호·화살표·28px 셀 | 동일 구조·동일 타이포( Public Sans 13 ) |
+| 5 | Dropdown | — | 페이지 크기, 날짜 필터 등 셀렉트형 |
+| 6 | Badge | 카드 영역 배지 슬롯 | 사이드바 알림형 보라 배지 |
+| 7 | Toggle(Switch) | — | Slack/Notion/실시간 알림 on·off |
+| 8 | RadioRow | 배송 옵션 등 라디오+라벨+가격 행 | — (패턴은 폼에서 재사용 가능) |
+| 9 | DataTable | — | Header Row / Row / Cell 그리드 |
+|10 | SidebarNavItem | — | 아이콘+라벨+chevron(+배지), 활성 시 배경 |
+|11 | QuantityStepper | 장바구니/PDP 수량 ± | — (숫자 스텝퍼 패턴은 폼·테이블과 공용 가능) |
+
+**별도 자주 쓰이나 “한쪽 전용 비중이 큰” 요소:** Rating/Star 그룹(커머스 리뷰·카드), Product Card, Navigation Bar, Footer, Cart line cell — 필요 시 `commerce` 패키지로 두고 **Button·Typography·Surface 토큰만 공유**하는 것을 권장.
+
+---
+
+## 2. 요청 형식: 컴포넌트명 — 설명 (variant, size, 상태)
+
+- **Button:** CTA·서브 액션. (**variant:** Primary fill `#141718` + 흰 텍스트, Outline stroke `#141718` + 진한 텍스트, 아이콘 병행; **size:** 높이 약 40 / 48 / 52px, 텍스트 16~18 Inter Medium, letterSpacing 약 -0.4; **radius:** 8 vs Pill 80). (**상태:** default, hover — 카드 위 “Add to cart” 등 hover 프레임, disabled/loading은 Figma에 명시 노드 없음 → 구현 시 추가 권장.)
+- **TextInput:** 단일 행 입력. (**variant:** 기본 필드 흰 배경·`#cbcbcb` 보더·radius 6; 라벨 Inter Bold 12 `#6c7275`; 플레이스홀더 `#6c7275` / `#8b909a`). (**size:** 필드 높이 40px 등). (**상태:** default, focus — 스타일 미분리 시 구현에서 `:focus-visible` 링 추가.)
+- **SearchBar:** 검색 전용 복합 위젯. (**variant:** 좌측 아이콘 + 플레이스홀더 `#99a1af` + 우측 Primary 버튼; 배경 `#fefefe`, 보더 `#e8ecef`, 모서리 16). (**size:** 행 높이 72 내 아이콘 24 등.)
+- **Pagination:** 목록 페이지네이션. (**variant:** 이전/다음 chevron + 숫자 셀; 활성 배경 `#141718`·글자 흰, 비활성 배경 `#f1f2f6`·글자 `#8b909a`). (**size:** 셀 28×28, 숫자 Public Sans 13/20lh.) (**상태:** current, default, prev/next.)
+- **Dropdown:** 셀렉트 트리거. (**variant:** 테이블 하단 “10 of 50”, 필터 “Filter by date range”; stroke `#e9e7fd` 또는 투명, radius 6, 텍스트 Public Sans 15 Medium). (**size:** 높이 38~40px.) (**상태:** closed(디자인 기준), open은 오버레이 별도 정의 필요.)
+- **Badge:** 강조·카운트. (**variant:** 원형 22px, 보라 `#7367f0` 약 16% 불투명 fill, radius 20). (**size:** 고정 소형.) (**상태:** default; 숫자 텍스트는 디자인에 따라 확장.)
+- **Toggle:** 설정 on/off. (**variant:** 트랙 on `#1f2937` / off `#e5e7eb`, 썸 흰 20×20, 트랙 pill 44×24). (**상태:** on, off — 라벨은 “Enable … integration” 형태.)
+- **RadioRow:** 라디오+라벨+우측 메타(가격). (**variant:** 선택 시 내부 점 `#121212`, 외곽 stroke `#121212`, 행 배경 `#f3f5f7`, 외곽 사각 radius 4). (**size:** 행 높이 52 등.) (**상태:** selected / unselected.)
+- **DataTable:** 데이터 그리드. (**variant:** Header `#8b909a` 13 Medium, 셀 경계 `#dbdade`, 행 구분 `#e9e7fd`; 본문 15 Regular `#23272e`; 상태 텍스트 성공색 예: `#28c76f`.) (**size:** 헤더 행 높이 ~47, 바디 ~50.) (**상태:** default row; 정렬·호버는 구현 확장.)
+- **SidebarNavItem:** LNB 행. (**variant:** 활성 `bg #f3f4f8` radius 6, 비활성 투명; 아이콘 22; 라벨 Public Sans 15 Regular/SemiBold; 우측 chevron 18.) (**size:** 행 높이 40.) (**상태:** active, inactive, (옵션) badge 자리.)
+- **QuantityStepper:** 수량 조절. (**variant:** Small: stroke `#6c7275`·h32·아이콘 16; Product: fill `#f5f5f5`·h52·아이콘 20.) (**상태:** default, min/max 시 disabled 권장.)
+
+- **RatingStars (참고·12번째로 확장 시):** 5성, 별 16px, 채움 `#343839` — 커머스 카드·리뷰 블록.
+
+---
+
+## 3. 디자인 토큰 (색·타이포·간격·라운드)
+
+### 색상 (양쪽 교차 출현)
+
+- **잉크/서페이스:** `#141718`, `#121212`, `#23272e`, `#ffffff`, `#fefefe`, `#f3f5f7`, `#f3f4f8`, `#e8ecef`, `#e9e7fd`, `#dbdade`, `#cbcbcb`
+- **텍스트 보조:** `#6c7275`, `#8b909a`, `#99a1af`
+- **악센트/시맨틱:** 배지·브랜드 보라 `#7367f0`, 성공 텍스트 `#28c76f`, 알림 카드 아이콘 영역 `#2563eb` / `#eff6ff`
+- **코드 매핑:** `commons/constants/color.ts`의 `commerceColors` / `adminColors`와 정렬할 것
+
+### 타이포그래피
+
+- **커머스:** Inter(본문·버튼·라벨), Poppins(로고·일부 카드 타이틀), Navigation 로고 24 Medium
+- **어드민:** Public Sans(메뉴·테이블·폼 11~15), Poppins(일부 제목 16 SemiBold), Inter(설정 카드 라벨 14)
+- **코드 매핑:** `commons/constants/typography.ts`의 `commerceTypography` / `adminTypography`
+
+### 간격·라운드 (관찰값)
+
+- **라운드:** 4, 6, 8, 12, 16, 32(pill 소형), 80(캡슐 버튼), 9999(스위치)
+- **터치/클릭 타깃:** 28(페이지네이션), 40(메뉴·인풋·버튼 행), 44~52(버튼·라디오 행)
+- **아이콘 박스:** 16, 18, 22, 24
+
+---
+
+## 4. 상태 정리 (Figma 기준 + 구현 보완)
+
+| 컴포넌트 | Figma에 명시적 분리 | 구현 시 권장 추가 |
+|----------|---------------------|-------------------|
+| Button | default, hover(일부) | `disabled`, `loading`, `focus-visible` |
+| TextInput | placeholder | `focus`, `error`, `disabled`, `aria-invalid` |
+| SearchBar | — | 입력 `focus`, 버튼 `aria-label` |
+| Pagination | current vs 기본 셀 | `aria-current="page"`, 키보드 포커스 링 |
+| Dropdown | 닫힌 상태 위주 | `aria-expanded`, listbox 패턴 |
+| Badge | — | 숫자만 있을 때 `aria-label` |
+| Toggle | on/off 시각 | `role="switch"`, `aria-checked` |
+| RadioRow | 선택/비선택 | `radiogroup`, `aria-checked` |
+| DataTable | — | `scope`, 헤더-셀 연결, 정렬 버튼 레이블 |
+| SidebarNavItem | active 배경 | `aria-current="page"`, 키보드 탐색 |
+| QuantityStepper | — | `aria-valuenow`, 증감 `aria-label` |
+
+---
+
+## 5. 접근성 고려사항
+
+- **버튼:** 실제 `<button>` 또는 `role="button"` + 키보드 Enter/Space; 아이콘만 있을 때 접근 가능한 이름 필수.
+- **폼 컨트롤:** 라벨과 입력을 `htmlFor`/`id` 또는 `aria-labelledby`로 연결; 검색은 `role="search"` 래퍼 검토.
+- **페이지네이션:** 현재 페이지에 `aria-current`; 이전/다음은 명확한 이름(“이전 페이지” 등).
+- **스위치·라디오:** 키보드로 포커스·조작 가능, 그룹에는 공통 레이블.
+- **테이블:** 데이터 테이블은 헤더 셀 `scope="col"`; 정렬 가능 시 정렬 상태를 스크린 리더에 전달.
+- **색만으로 상태 구분 금지:** 예) Active 행은 배경+굵기 등 복합 큐.
+
+---
+
+## 6. 다음 작업 제안 (구현 단계)
+
+1. `packages/ui` 또는 `components/ui`에 위 11 패밀리를 **토큰 기반**으로 스캐폴딩
+2. 커머스 전용(Product Card, NavBar 등)은 `features/commerce` 쪽에서 조합 컴포넌트로 배치
+3. Storybook 또는 동일 파일 내 variant 표로 **상태 누락분(disabled, loading, error)** 을 Figma와 동기화
+
+---
+
+*본 문서는 Talk to Figma MCP로 해당 노드 트리를 읽어 추출했으며, 로컬 컴포넌트 5건과 혼동하지 말 것.*
