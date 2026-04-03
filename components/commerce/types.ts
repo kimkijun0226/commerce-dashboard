@@ -15,4 +15,14 @@ export interface CartItem {
   unitPrice: number;
   name?: string;
   imageUrl?: string;
+  /** 예: Color: Black */
+  variantLabel?: string;
+}
+
+/** 주문 요약 패널 행 */
+export interface OrderSummaryLine {
+  id: string;
+  label: string;
+  amount: number;
+  muted?: boolean;
 }
