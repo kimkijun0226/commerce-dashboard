@@ -1,0 +1,199 @@
+---
+alwaysApply: false
+---
+
+# Figma 기반 커머스 전용 컴포넌트 추출 (310:2620)
+
+## 분석 출처
+
+- **Figma 파일:** [Commerce---Admin-템플릿](https://www.figma.com/design/Bf68cY42dn4EXToW70Hkf2/Commerce---Admin-%ED%85%9C%ED%94%8C%EB%A6%BF--%EB%B3%B5%EC%82%AC-?node-id=310-2620&t=KcPmKf1JZAmPYLTP-4)
+- **분석 노드:** `310:2620` — **E Commerce 컴포넌트** (FRAME)
+- **MCP:** Talk to Figma `get_node_info` 등으로 트리·스타일 확인 (채널 예: `rhm18wke`)
+- **구현 목표 경로:** `components/commerce/*`
+- **데이터 타입 참고:** `components/commerce/types.ts` (`Product`, `CartItem`)
+
+---
+
+## 1. Figma 디자인에 있는 컴포넌트·블록 목록
+
+| 이름(노드 패턴) | 유형 | 설명 |
+|-----------------|------|------|
+| Navigation Bar | INSTANCE | 상단 GNB, 로고·검색·유저·카트(배지) |
+| Footer | INSTANCE | 다크 푸터, 링크·저작권 |
+| Product Card | INSTANCE | 이미지, 호버 CTA, 위시, 배지 슬롯, 별점, 제목, 정가·할인가 |
+| Rating / Rating Group | INSTANCE | 5성, 별 16px, 채움 `#343839` 근처 |
+| Elements / Cart / Product Cell | FRAME | 장바구니 **한 줄**: 썸네일, 제목·옵션, Remove, 소형 수량, 단가·라인합 |
+| Quantity Button small | INSTANCE | 카트용 수량기, 높이 32, 보더 `#6c7275`, r4 |
+| Elements / Product Loop / Cart / Quantity Button | INSTANCE | PDP/루프용 수량기, h52, 배경 `#f5f5f5`, r8 |
+| Button | INSTANCE | Primary / Outline+아이콘, r8·pill |
+| Feedback_Form / | FRAME | 검색 필드 + Search 버튼 (≈ 기존 `SearchBar`) |
+| user | FRAME | 리뷰: 아바타, 이름, 별, 본문 |
+| Elements (배송 옵션) | INSTANCE | 라디오 행 + 금액 (≈ 기존 `RadioRow`) |
+| Pagination | FRAME | 28×28 셀 페이지네이션 (≈ 기존 `Pagination`) |
+| card 5 | FRAME | 혜택/정책 카드 (아이콘+타이틀+설명) |
+| email / Input | FRAME | 라벨+인풋 (공통 `Input`과 대응) |
+
+**참고:** **주문 요약 패널**(소계·배송·합계·결제 CTA)은 **`310:2620` 단일 프레임 트리에서 독립 섹션으로 확인되지 않음.** 체크아웃/장바구니 **전체 화면** 노드에서 별도 확인 후 토큰을 맞출 것.
+
+---
+
+## 2. 기존 레포(`components/commerce`)와 비교 — 새로 필요한 컴포넌트
+
+| 목표 파일 | 현재 | 판단 |
+|-----------|------|------|
+| `ProductCard.tsx` | 없음 (`Product` 타입만 존재) | **신규** |
+| `ProductGrid.tsx` | 없음 | **신규** (레이아웃·조합) |
+| `CartItemRow.tsx` | 없음 (`CartItem` 타입만 존재) | **신규** |
+| `RatingStars.tsx` | 없음 | **신규** |
+| `ReviewCard.tsx` | 없음 | **신규** |
+| `QuantitySelector.tsx` | `QuantityStepper.tsx`가 동일 역할 | **확장·통합** (이름 통일 또는 래퍼) |
+| `OrderSummaryPanel.tsx` | 없음 | **신규** (Figma는 타 화면에서 검증 권장) |
+
+이미 구현됨·재사용: `SearchBar`, `Pagination`, `RadioRow` (이번 7종 목록 밖이지만 Figma와 직접 대응).
+
+---
+
+## 3. 기존 컴포넌트·타입을 확장해야 하는 부분
+
+- **`QuantityStepper` → `QuantitySelector`**
+  - Figma **두 변형**: 카트 소형(32, 스트로크) vs 제품 루프(52, fill `#f5f5f5`).
+  - `variant: "cart" | "product"` 또는 `size`와 1:1 매핑 후 단일 컴포넌트로 노출 권장.
+- **`types.ts`**
+  - `Product`: 카드용 `salePrice`, `rating`, `reviewCount`, 썸네일·링크 등 필드 보강.
+  - `CartItem`: `name`, `imageUrl`, 옵션 문자열(`variantLabel` 등), 표시용 `lineTotal` 계산 주체 명시.
+- **`components/ui`**
+  - CTA·Remove: `Button`; 배지: `Badge` 또는 `badgeSlot`으로 슬롯화.
+
+---
+
+## 4. Props 인터페이스 설계 (권장)
+
+```ts
+// ProductCard
+type ProductCardProps = {
+  product: Product;
+  href?: string;
+  onAddToCart?: () => void;
+  onWishlistToggle?: () => void;
+  badgeSlot?: React.ReactNode;
+  loading?: boolean;
+  className?: string;
+};
+
+// ProductGrid
+type ProductGridProps = {
+  products: Product[];
+  columns?: { sm?: number; md?: number; lg?: number };
+  gap?: number | string;
+  renderItem?: (p: Product) => React.ReactNode;
+  emptyState?: React.ReactNode;
+  loading?: boolean;
+  className?: string;
+};
+
+// CartItemRow
+type CartItemRowProps = {
+  name: string;
+  imageUrl?: string;
+  variantLabel?: string;
+  quantity: number;
+  unitPrice: number;
+  lineTotal?: number;
+  currency?: string;
+  onQuantityChange?: (n: number) => void;
+  onRemove?: () => void;
+  disabled?: boolean;
+  className?: string;
+};
+
+// RatingStars
+type RatingStarsProps = {
+  value: number;
+  max?: number;
+  size?: "sm" | "md";
+  className?: string;
+  "aria-label"?: string;
+};
+
+// ReviewCard
+type ReviewCardProps = {
+  authorName: string;
+  avatarUrl?: string;
+  rating: number;
+  body: string;
+  date?: string;
+  className?: string;
+};
+
+// QuantitySelector
+type QuantitySelectorProps = {
+  value: number;
+  min?: number;
+  max?: number;
+  onChange: (n: number) => void;
+  variant?: "cart" | "product";
+  disabled?: boolean;
+  className?: string;
+};
+
+// OrderSummaryPanel
+type OrderSummaryLine = { id: string; label: string; amount: number; muted?: boolean };
+type OrderSummaryPanelProps = {
+  lines: OrderSummaryLine[];
+  totalAmount: number;
+  currency?: string;
+  primaryCta?: { label: string; onClick: () => void; disabled?: boolean; loading?: boolean };
+  footnote?: string;
+  className?: string;
+};
+```
+
+---
+
+## 5. 디자인 토큰 (색상·타이포·간격)
+
+- **색상 (`commons/constants/color.ts` → `commerceColors`)**
+  - 카드/페이지: `background.default`, `background.paper`, `background.light`
+  - 텍스트: `text.primary`, `text.secondary`, `text.muted`
+  - 보더: `border.subtle`, `border.default`, `border.strong`
+  - 브랜드 CTA: `primary.main`, `text.inverse`
+  - 별 채움: `neutral.n05_100` (`#343839`)
+  - 리뷰 본문 톤: `#353945`에 가깝게 매핑 시 `primary.light` 또는 확장 토큰 검토
+- **타이포 (`commerceTypography`)**
+  - 상품명: `body2Semi` (16/26)
+  - 가격: 할인가 `caption1Semi`·정가 `caption1` (14/22) 등 Figma 스펙에 맞춤
+  - 혜택 카드 타이틀: Poppins 계열은 `headline7` 등
+- **간격·라운드**
+  - 카드 이미지 영역 262×349(참고), 썸네일 80×96(카트)
+  - 버튼·수량기: r4 / r8 / pill
+  - 그리드 gap: 16~24px 단위 권장
+
+---
+
+## 6. 컴포넌트 상태 (구현 시)
+
+| 컴포넌트 | default | hover | focus | disabled | loading | 기타 |
+|----------|---------|-------|-------|----------|---------|------|
+| ProductCard | 기본 | 이미지 위 CTA 노출 | CTA·링크 focus ring | — | 스켈레톤/버튼 비활성 | 위시 on/off |
+| ProductGrid | 목록 | — | — | — | 스켈레톤 그리드 | empty |
+| CartItemRow | 기본 | Remove | 수량 버튼 | min/max·전체 비활성 | — | — |
+| RatingStars | 표시만 | — | (interactive 시) | — | — | 읽기 전용 권장 |
+| ReviewCard | 기본 | — | 링크·버튼 | — | 아바타 로딩 | 이미지 실패 폴백 |
+| QuantitySelector | 기본 | 버튼 hover | focus-visible | min/max | — | — |
+| OrderSummaryPanel | 기본 | CTA hover | CTA focus | CTA disabled | CTA loading·금액 갱신 | — |
+
+---
+
+## 7. 요청 형식 요약 (한 줄)
+
+- **ProductCard**: PLP용 상품 카드(이미지·별·가격·호버 CTA·위시·배지) **(신규)** `[product, href?, onAddToCart?, onWishlistToggle?, badgeSlot?, loading?, className?]`
+- **ProductGrid**: 상품 카드 그리드 레이아웃 **(신규)** `[products, columns?, gap?, renderItem?, emptyState?, loading?, className?]`
+- **CartItemRow**: 장바구니 라인(썸네일·옵션·수량·Remove·금액) **(신규)** `[name, imageUrl?, variantLabel?, quantity, unitPrice, lineTotal?, currency?, onQuantityChange?, onRemove?, disabled?, className?]`
+- **RatingStars**: N점 만점 별 표시 **(신규)** `[value, max?, size?, aria-label?, className?]`
+- **ReviewCard**: 아바타·이름·별·본문 리뷰 블록 **(신규)** `[authorName, avatarUrl?, rating, body, date?, className?]`
+- **QuantitySelector**: 카트/PDP 수량 조절 **(확장)** `[value, min?, max?, onChange, variant?, disabled?, className?]` — 기존 `QuantityStepper`와 통합 권장
+- **OrderSummaryPanel**: 주문 금액 요약·CTA **(신규, Figma는 장바구니/체크아웃 화면에서 재확인)** `[lines, totalAmount, currency?, primaryCta?, footnote?, className?]`
+
+---
+
+*본 문서는 Figma 노드 `310:2620` 구조를 기준으로 작성했으며, `OrderSummaryPanel`은 동일 캔버스에 전용 블록이 없을 수 있어 화면 단위 추가 분석이 필요할 수 있음.*
