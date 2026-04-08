@@ -37,6 +37,15 @@ const config: StorybookConfig = {
     webpackConfig.resolve.alias ??= {};
     // tsconfig paths: "@/*" -> project root
     webpackConfig.resolve.alias["@"] = path.resolve(__dirname, "..");
+    // Storybook 환경에서 Next 전용 모듈을 mock으로 치환
+    webpackConfig.resolve.alias["next/image"] = path.resolve(
+      __dirname,
+      "mocks/next-image.tsx",
+    );
+    webpackConfig.resolve.alias["next/link"] = path.resolve(
+      __dirname,
+      "mocks/next-link.tsx",
+    );
     webpackConfig.resolve.extensions ??= [".js", ".jsx", ".ts", ".tsx"];
     if (!webpackConfig.resolve.extensions.includes(".ts")) {
       webpackConfig.resolve.extensions.push(".ts");
