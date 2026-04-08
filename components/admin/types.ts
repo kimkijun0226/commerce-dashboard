@@ -16,7 +16,6 @@ export type AdminSidebarItem = {
   href?: string;
   icon?: ReactNode;
   badge?: ReactNode;
-  trailing?: ReactNode;
   active?: boolean;
   disabled?: boolean;
 };

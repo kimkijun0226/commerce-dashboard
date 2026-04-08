@@ -1,4 +1,4 @@
-import { SidebarNavItem } from "@/components/admin/SidebarNavItem";
+import { SidebarNavItem } from "./SidebarNavItem";
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,

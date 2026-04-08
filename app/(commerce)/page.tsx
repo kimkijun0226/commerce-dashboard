@@ -1,7 +1,7 @@
 "use client";
 
 import { adminColors } from "@/commons/constants/color";
-import { DataTable, SidebarNavItem } from "@/components/admin";
+import { AdminSidebarNavItem, AdminTable } from "@/components/admin";
 import {
   SearchBar,
 } from "@/components/commerce";
@@ -209,9 +209,9 @@ export default function CommercePage() {
 
         {/* —— 어드민 components/admin —— */}
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>어드민 · DataTable</h2>
+          <h2 className={sectionTitleClass}>어드민 · AdminTable</h2>
           <div className="mt-4 overflow-hidden rounded-lg border border-[var(--admin-border-brand-subtle)] bg-[var(--admin-background-default)]">
-            <DataTable
+            <AdminTable
               columns={[
                 { key: "id", header: "Product id" },
                 { key: "name", header: "name" },
@@ -237,7 +237,7 @@ export default function CommercePage() {
         </section>
 
         <section className={panelClass}>
-          <h2 className={sectionTitleClass}>어드민 · SidebarNavItem</h2>
+          <h2 className={sectionTitleClass}>어드민 · AdminSidebarNavItem</h2>
           <div
             className="mt-4 w-[260px] rounded-lg border border-[var(--commerce-border-subtle)] bg-white py-2"
             style={{ fontFamily: "var(--admin-font-ui)" }}
@@ -246,23 +246,27 @@ export default function CommercePage() {
               MAIN MENU
             </div>
             <div className="px-2">
-              <SidebarNavItem active href="#" onClick={(e) => e.preventDefault()}>
-                Dashboard
-              </SidebarNavItem>
-              <SidebarNavItem href="#" onClick={(e) => e.preventDefault()}>
-                Order Management
-              </SidebarNavItem>
-              <SidebarNavItem
+              <AdminSidebarNavItem
+                active
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                trailing={
+                label="Dashboard"
+              />
+              <AdminSidebarNavItem
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                label="Order Management"
+              />
+              <AdminSidebarNavItem
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                label="Manage Admins"
+                badge={
                   <Badge variant="outline" size="sm" aria-label="알림 2건">
                     2
                   </Badge>
                 }
-              >
-                Manage Admins
-              </SidebarNavItem>
+              />
             </div>
           </div>
         </section>

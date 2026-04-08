@@ -3,26 +3,29 @@ import { adminTypography } from "@/commons/constants/typography";
 import { cn, typographyToStyle } from "@/components/ui";
 import type { ReactNode } from "react";
 
-export type DataTableColumn<Row> = {
+export type AdminTableColumn<Row> = {
   key: keyof Row & string;
   header: string;
   align?: "left" | "right" | "center";
   scope?: "col" | "row";
 };
 
-export type DataTableProps<Row extends Record<string, ReactNode>> = {
-  columns: readonly DataTableColumn<Row>[];
-  rows: readonly Row[];
-  className?: string;
-  getRowKey?: (row: Row, index: number) => string | number;
-};
+export type AdminTableProps<Row extends Record<string, ReactNode>> =
+  {
+    columns: readonly AdminTableColumn<Row>[];
+    rows: readonly Row[];
+    className?: string;
+    getRowKey?: (row: Row, index: number) => string | number;
+  };
 
-export function DataTable<Row extends Record<string, ReactNode>>({
-  columns,
-  rows,
-  className,
-  getRowKey,
-}: DataTableProps<Row>) {
+/**
+ * 어드민 표준 테이블.
+ * - 기존 `DataTable`을 Admin 명명으로 제공(향후 정렬/필터/로딩 확장 지점)
+ */
+export function AdminTable<Row extends Record<string, ReactNode>>(
+  props: AdminTableProps<Row>,
+) {
+  const { columns, rows, className, getRowKey } = props;
   const headerTypo = typographyToStyle(adminTypography.tableHeader);
   const cellTypo = typographyToStyle(adminTypography.tableCell);
 
@@ -91,3 +94,4 @@ export function DataTable<Row extends Record<string, ReactNode>>({
     </div>
   );
 }
+

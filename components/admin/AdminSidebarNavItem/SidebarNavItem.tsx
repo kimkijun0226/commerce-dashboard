@@ -1,7 +1,11 @@
 import { adminColors } from "@/commons/constants/color";
 import { adminTypography } from "@/commons/constants/typography";
 import { cn, typographyToStyle } from "@/components/ui";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+} from "react";
 
 export type SidebarNavItemProps = {
   active?: boolean;
@@ -10,8 +14,15 @@ export type SidebarNavItemProps = {
   trailing?: ReactNode;
   className?: string;
 } & (
-  | ({ href: string } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "children">)
-  | ({ href?: undefined } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children" | "type">)
+  | ({
+      href: string;
+    } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "children">)
+  | ({
+      href?: undefined;
+    } & Omit<
+        ButtonHTMLAttributes<HTMLButtonElement>,
+        "className" | "children" | "type"
+      >)
 );
 
 export function SidebarNavItem(props: SidebarNavItemProps) {
@@ -101,3 +112,4 @@ function ChevronIcon() {
     </svg>
   );
 }
+
