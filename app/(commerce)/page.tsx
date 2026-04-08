@@ -3,9 +3,6 @@
 import { adminColors } from "@/commons/constants/color";
 import { DataTable, SidebarNavItem } from "@/components/admin";
 import {
-  Pagination,
-  QuantityStepper,
-  RadioRow,
   SearchBar,
 } from "@/components/commerce";
 import {
@@ -26,11 +23,7 @@ const panelClass =
   "rounded-2xl border border-[var(--commerce-border-subtle)] bg-[var(--commerce-background-default)] p-6 shadow-sm";
 
 export default function CommercePage() {
-  const [page, setPage] = useState(1);
   const [toggleOn, setToggleOn] = useState(true);
-  const [shipping, setShipping] = useState("free");
-  const [qtySm, setQtySm] = useState(2);
-  const [qtyMd, setQtyMd] = useState(1);
   const [plan, setPlan] = useState("standard");
   const [terms, setTerms] = useState(false);
 
@@ -212,75 +205,7 @@ export default function CommercePage() {
           </div>
         </section>
 
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>커머스 · Pagination</h2>
-          <div className="mt-4">
-            <Pagination
-              currentPage={page}
-              totalPages={12}
-              onPageChange={setPage}
-            />
-            <p
-              className="mt-2 text-xs"
-              style={{ color: "var(--commerce-text-muted)" }}
-            >
-              현재 페이지: {page}
-            </p>
-          </div>
-        </section>
-
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>커머스 · RadioRow</h2>
-          <fieldset className="mt-4 space-y-2 border-0 p-0">
-            <legend className="sr-only">배송 옵션</legend>
-            <RadioRow
-              name="shipping-demo"
-              value="free"
-              checked={shipping === "free"}
-              onChange={() => setShipping("free")}
-              label="Free shipping"
-              meta="$0.00"
-            />
-            <RadioRow
-              name="shipping-demo"
-              value="paid"
-              checked={shipping === "paid"}
-              onChange={() => setShipping("paid")}
-              label="Express"
-              meta="$12.00"
-            />
-          </fieldset>
-        </section>
-
-        <section className={panelClass}>
-          <h2 className={sectionTitleClass}>커머스 · QuantityStepper</h2>
-          <div className="mt-4 flex flex-wrap items-center gap-6">
-            <div>
-              <p className="mb-2 text-xs text-[var(--commerce-text-muted)]">
-                Small
-              </p>
-              <QuantityStepper
-                size="sm"
-                value={qtySm}
-                min={1}
-                max={10}
-                onChange={setQtySm}
-              />
-            </div>
-            <div>
-              <p className="mb-2 text-xs text-[var(--commerce-text-muted)]">
-                Medium
-              </p>
-              <QuantityStepper
-                size="md"
-                value={qtyMd}
-                min={1}
-                max={99}
-                onChange={setQtyMd}
-              />
-            </div>
-          </div>
-        </section>
+        {/* Figma 목록에 없는 컴포넌트(Pagination/RadioRow/QuantityStepper) 데모는 제거 */}
 
         {/* —— 어드민 components/admin —— */}
         <section className={panelClass}>
