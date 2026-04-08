@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "db:run-migration": "tsx scripts/run-migration.ts",
     "db:run-rls": "tsx scripts/run-rls.ts",
     "db:seed": "tsx scripts/seed-products.ts"
@@ -22,6 +24,14 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "8.6.14",
+    "@storybook/addon-interactions": "8.6.14",
+    "@storybook/addon-links": "8.6.14",
+    "@storybook/nextjs": "8.6.14",
+    "@storybook/react": "8.6.14",
+    "@storybook/react-webpack5": "8.6.14",
+    "@storybook/test": "8.6.14",
+    "@storybook/theming": "8.6.14",
     "@tailwindcss/postcss": "^4",
     "@tanstack/react-query-devtools": "^5.96.1",
     "@types/node": "^20",
@@ -32,6 +42,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "pg": "^8.18.0",
+    "storybook": "8.6.14",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"
