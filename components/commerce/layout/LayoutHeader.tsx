@@ -4,7 +4,7 @@ import { cn } from "@/components/ui";
 import Link from "next/link";
 import type { ButtonHTMLAttributes } from "react";
 import { useState } from "react";
-import { FiMenu, FiSearch, FiShoppingBag, FiUser } from "react-icons/fi";
+import { FiMenu, FiShoppingBag, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
   className?: string;
@@ -17,6 +17,7 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
   return (
     <header
       className={cn(
+        "fixed inset-x-0 top-0 z-50",
         "border-b bg-(--commerce-background-default)",
         "border-(--commerce-border-subtle)",
         className,
@@ -36,33 +37,37 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
         <Link
           href="/"
           className="min-w-0 text-[24px] font-medium leading-6 tracking-normal text-black"
-          style={{ fontFamily: "Poppins" }}
+          style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
           Cursor Commerce
         </Link>
 
         <div className="ml-auto flex items-center gap-4">
-          <IconBtn aria-label="검색">
-            <FiSearch className="size-6" aria-hidden />
-          </IconBtn>
-          <IconBtn aria-label="내 계정">
-            <FiUser className="size-6" aria-hidden />
-          </IconBtn>
-          <IconBtn aria-label="장바구니" className="relative">
-            <FiShoppingBag className="size-6" aria-hidden />
-            {cartCount > 0 ? (
-              <span
-                className="absolute -right-2 -top-2 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
-                style={{
-                  backgroundColor: "var(--commerce-primary-main)",
-                  color: "var(--commerce-text-inverse)",
-                  fontFamily: "Inter",
-                }}
-              >
-                {Math.min(cartCount, 99)}
-              </span>
-            ) : null}
-          </IconBtn>
+          {/* 검색은 잠시 대기 */}
+
+          <Link href="/account" className="inline-flex">
+            <IconBtn aria-label="내 계정">
+              <FiUser className="size-6" aria-hidden />
+            </IconBtn>
+          </Link>
+
+          <Link href="/cart" className="inline-flex">
+            <IconBtn aria-label="장바구니" className="relative">
+              <FiShoppingBag className="size-6" aria-hidden />
+              {cartCount > 0 ? (
+                <span
+                  className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
+                  style={{
+                    backgroundColor: "var(--commerce-primary-main)",
+                    color: "var(--commerce-text-inverse)",
+                    fontFamily: "Inter",
+                  }}
+                >
+                  {Math.min(cartCount, 99)}
+                </span>
+              ) : null}
+            </IconBtn>
+          </Link>
         </div>
       </div>
 

@@ -1,26 +1,193 @@
 @import "tailwindcss";
 
+/* commons/constants/color.ts · typography.ts 구조와 동일한 토큰을 CSS 변수로 제공 */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --------------------------------------------------------------------------
+   * Commerce Color Tokens (commerceColors)
+   * -------------------------------------------------------------------------- */
+  --commerce-primary-main: #141718;
+  --commerce-primary-dark: #121212;
+  --commerce-primary-light: #23262f;
+
+  --commerce-background-default: #ffffff;
+  --commerce-background-paper: #fefefe;
+  --commerce-background-light: #f3f5f7;
+  --commerce-background-elevated: #e8ecef;
+
+  --commerce-text-primary: #141718;
+  --commerce-text-secondary: #6c7275;
+  --commerce-text-muted: #99a1af;
+  --commerce-text-inverse: #ffffff;
+
+  --commerce-border-subtle: #e8ecef;
+  --commerce-border-default: #cbcbcb;
+  --commerce-border-strong: #6c7275;
+
+  --commerce-semantic-info: #377dff;
+  --commerce-semantic-success: #38cb89;
+  --commerce-semantic-warning: #ffab00;
+  --commerce-semantic-danger: #ff5630;
+
+  --commerce-neutral-n01-100: #fefefe;
+  --commerce-neutral-n02-100: #f3f5f7;
+  --commerce-neutral-n03-100: #e8ecef;
+  --commerce-neutral-n04-100: #6c7275;
+  --commerce-neutral-n05-100: #343839;
+  --commerce-neutral-n06-100: #23262f;
+  --commerce-neutral-n07-100: #141718;
+
+  /* --------------------------------------------------------------------------
+   * Admin Color Tokens (adminColors)
+   * -------------------------------------------------------------------------- */
+  --admin-primary-main: #23272e;
+  --admin-primary-dark: #111827;
+  --admin-primary-light: #374151;
+
+  --admin-background-default: #ffffff;
+  --admin-background-paper: #ffffff;
+  --admin-background-light: #f3f4f6;
+  --admin-background-gray: #cac5cd;
+
+  --admin-text-primary: #23272e;
+  --admin-text-secondary: #8b909a;
+  --admin-text-muted: #6b7280;
+  --admin-text-inverse: #ffffff;
+
+  --admin-border-subtle: #e5e7eb;
+  --admin-border-default: #dbdade;
+  --admin-border-brand-subtle: #e9e7fd;
+
+  --admin-brand-primary: #7367f0;
+  --admin-brand-on-primary: #ffffff;
+
+  --admin-semantic-info: #2563eb;
+  --admin-semantic-success: #28c76f;
+  --admin-semantic-warning: #ffab00;
+  --admin-semantic-danger: #ff5630;
+
+  --admin-neutral-n50: #f9fafb;
+  --admin-neutral-n100: #f3f4f6;
+  --admin-neutral-n200: #e5e7eb;
+  --admin-neutral-n300: #d1d5db;
+  --admin-neutral-n400: #9ca3af;
+  --admin-neutral-n500: #6b7280;
+  --admin-neutral-n600: #4b5563;
+  --admin-neutral-n700: #374151;
+  --admin-neutral-n800: #1f2937;
+  --admin-neutral-n900: #111827;
+
+  /* --------------------------------------------------------------------------
+   * Commerce Typography (commerceTypography)
+   * next/font는 --font-geist-sans; Poppins/Inter는 시스템/웹폰트 폴백
+   * -------------------------------------------------------------------------- */
+  --commerce-font-heading:
+    var(--font-poppins), var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --commerce-font-body:
+    "Inter", var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --commerce-font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --commerce-font-weight-regular: 400;
+  --commerce-font-weight-medium: 500;
+  --commerce-font-weight-semibold: 600;
+  --commerce-font-weight-bold: 700;
+
+  --commerce-font-size-base: 16px;
+  --commerce-line-height-body: 26px;
+
+  --commerce-font-size-hero: 96px;
+  --commerce-line-height-hero: 96px;
+  --commerce-font-size-headline-1: 80px;
+  --commerce-line-height-headline-1: 80px;
+  --commerce-font-size-headline-2: 72px;
+  --commerce-line-height-headline-2: 72px;
+  --commerce-font-size-headline-3: 54px;
+  --commerce-line-height-headline-3: 54px;
+  --commerce-font-size-headline-4: 40px;
+  --commerce-line-height-headline-4: 40px;
+  --commerce-font-size-headline-5: 34px;
+  --commerce-line-height-headline-5: 34px;
+  --commerce-font-size-headline-6: 28px;
+  --commerce-line-height-headline-6: 28px;
+  --commerce-font-size-headline-7: 20px;
+  --commerce-line-height-headline-7: 20px;
+
+  --commerce-font-size-body-1: 20px;
+  --commerce-font-size-body-2: 16px;
+  --commerce-font-size-caption-1: 14px;
+  --commerce-line-height-caption-1: 20px;
+  --commerce-font-size-caption-2: 12px;
+  --commerce-line-height-caption-2: 16px;
+
+  --commerce-font-size-button-xl: 26px;
+  --commerce-line-height-button-xl: 32px;
+  --commerce-letter-spacing-button: -0.4px;
+  --commerce-font-size-button-l: 22px;
+  --commerce-line-height-button-l: 28px;
+  --commerce-font-size-button-m: 18px;
+  --commerce-line-height-button-m: 28px;
+  --commerce-font-size-button-s: 16px;
+  --commerce-line-height-button-s: 28px;
+  --commerce-font-size-button-xs: 14px;
+  --commerce-line-height-button-xs: 20px;
+
+  /* --------------------------------------------------------------------------
+   * Admin Typography (adminTypography)
+   * -------------------------------------------------------------------------- */
+  --admin-font-ui:
+    "Public Sans", var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --admin-font-heading:
+    "Poppins", var(--font-geist-sans), ui-sans-serif, sans-serif;
+  --admin-font-body: "Inter", var(--font-geist-sans), ui-sans-serif, sans-serif;
+
+  --admin-font-weight-regular: 400;
+  --admin-font-weight-medium: 500;
+  --admin-font-weight-semibold: 600;
+
+  --admin-font-size-base: 16px;
+
+  --admin-font-size-menu-item: 15px;
+  --admin-line-height-menu-item: 22px;
+  --admin-font-size-menu-section: 11px;
+  --admin-line-height-menu-section: 14px;
+
+  --admin-font-size-table-header: 13px;
+  --admin-line-height-table-header: 15.275px;
+  --admin-font-size-table-cell: 15px;
+  --admin-line-height-table-cell: 22px;
+
+  --admin-font-size-pagination: 13px;
+  --admin-line-height-pagination: 20px;
+
+  --admin-font-size-card-title: 16px;
+  --admin-line-height-card-title: 24px;
+  --admin-font-size-card-description: 14px;
+  --admin-line-height-card-description: 20px;
+
+  --admin-font-size-input-label: 14px;
+  --admin-line-height-input-label: 20px;
+  --admin-font-size-helper: 12px;
+  --admin-line-height-helper: 16px;
+  --admin-font-weight-helper: 100;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* 다크 모드 (커머스 중심; 필요 시 확장) */
+[data-theme="dark"] {
+  --commerce-primary-main: #f3f5f7;
+  --commerce-primary-dark: #e8ecef;
+  --commerce-primary-light: #fefefe;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --commerce-background-default: #0a0a0a;
+  --commerce-background-paper: #141414;
+  --commerce-background-light: #1a1a1a;
+  --commerce-background-elevated: #23262f;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  --commerce-text-primary: #fefefe;
+  --commerce-text-secondary: #b0b8bc;
+  --commerce-text-muted: #6c7275;
+  --commerce-text-inverse: #141718;
+
+  --commerce-border-subtle: #343839;
+  --commerce-border-default: #6c7275;
+  --commerce-border-strong: #e8ecef;
 }
