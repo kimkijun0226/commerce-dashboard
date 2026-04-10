@@ -7,9 +7,9 @@ export default function CommerceLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-(--commerce-background-default)">
+    <div className="flex min-h-screen flex-col bg-(--commerce-background-default)">
       <LayoutHeader />
-      <main className="pt-[60px]">{children}</main>
+      <main className="flex-1 pt-[60px]">{children}</main>
       <LayoutFooter />
     </div>
   );
