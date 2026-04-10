@@ -16,15 +16,7 @@ export type CheckboxProps = Omit<
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(
-    {
-      label,
-      description,
-      error,
-      className,
-      id: idProp,
-      disabled,
-      ...rest
-    },
+    { label, description, error, className, id: idProp, disabled, ...rest },
     ref,
   ) {
     const genId = useId();
