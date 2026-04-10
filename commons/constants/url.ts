@@ -25,6 +25,11 @@ export const COMMERCE_URLS = {
     `/products/${encodeURIComponent(productId)}`,
 } as const;
 
+/** 상품 상세 경로 (`COMMERCE_URLS.PRODUCT_DETAIL` 와 동일) */
+export function getProductDetailUrl(productId: string): string {
+  return COMMERCE_URLS.PRODUCT_DETAIL(productId);
+}
+
 /**
  * 관리자 영역.
  * Figma: Dashboard, Products, Order Management, Customers, Stock, Transaction, Settings, Manage Admins, 연동 설정
