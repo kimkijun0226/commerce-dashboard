@@ -2,6 +2,7 @@
 
 import { ProductGrid } from "@/components/commerce/ProductGrid/ProductGrid";
 import { ProductCard } from "@/components/commerce/ProductCard/ProductCard";
+import { HomeHeroSection } from "@/components/commerce/home/HomeHeroSection";
 import type { Product } from "@/components/commerce/types";
 import { useProductsQuery } from "@/features/products/api/useProductsQuery";
 import { useRouter } from "next/navigation";
@@ -59,6 +60,8 @@ export function HomePage() {
           />
         )}
       </section>
+
+      <HomeHeroSection />
     </div>
   );
 }
