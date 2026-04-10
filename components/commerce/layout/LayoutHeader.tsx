@@ -4,7 +4,7 @@ import { cn } from "@/components/ui";
 import Link from "next/link";
 import type { ButtonHTMLAttributes } from "react";
 import { useState } from "react";
-import { FiMenu, FiShoppingBag, FiUser } from "react-icons/fi";
+import { FiMenu, FiSearch, FiShoppingBag, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
   className?: string;
@@ -43,7 +43,10 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
         </Link>
 
         <div className="ml-auto flex items-center gap-4">
-          {/* 검색은 잠시 대기 */}
+          {/* 검색은 잠시 대기(아이콘만 노출) */}
+          <IconBtn aria-label="검색" onClick={() => {}}>
+            <FiSearch className="size-6" aria-hidden />
+          </IconBtn>
 
           <Link href="/account" className="inline-flex">
             <IconBtn aria-label="내 계정">
