@@ -4,6 +4,7 @@ import { ProductGrid } from "@/components/commerce/ProductGrid/ProductGrid";
 import { ProductCard } from "@/components/commerce/ProductCard/ProductCard";
 import { HomeHeroSection } from "@/components/commerce/home/HomeHeroSection";
 import type { Product } from "@/components/commerce/types";
+import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
 import { useInfiniteProducts } from "@/features/products/api/useInfiniteProducts";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
@@ -33,6 +34,15 @@ export function HomePage() {
   const toggleLike = useCallback((id: string) => {
     setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
   }, []);
+
+  const loadMoreRef = useInfiniteScroll({
+    onLoadMore: () => {
+      if (hasNextPage && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    },
+    enabled: hasNextPage === true && isFetchingNextPage === false,
+  });
 
   return (
     <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-[160px]">
@@ -68,8 +78,21 @@ export function HomePage() {
               )}
             />
 
+            {isFetchingNextPage ? (
+              <div
+                className="mt-10 text-center text-sm text-(--commerce-text-secondary)"
+                role="status"
+                aria-live="polite"
+              >
+                불러오는 중...
+              </div>
+            ) : null}
+
+            {hasNextPage ? <div ref={loadMoreRef} className="h-8" /> : null}
+
+            {/* 옵저버 미지원/사용자 제스처용 보조 버튼 */}
             {hasNextPage ? (
-              <div className="mt-10 flex justify-center">
+              <div className="mt-6 flex justify-center">
                 <Button
                   type="button"
                   variant="primary"
@@ -77,7 +100,7 @@ export function HomePage() {
                   disabled={isFetchingNextPage}
                   onClick={() => fetchNextPage()}
                 >
-                  {isFetchingNextPage ? "불러오는 중..." : "더 보기"}
+                  더 보기
                 </Button>
               </div>
             ) : null}
