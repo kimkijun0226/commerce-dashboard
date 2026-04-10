@@ -20,6 +20,36 @@ const config: StorybookConfig = {
     webpackConfig.module ??= { rules: [] };
     webpackConfig.module.rules ??= [];
 
+    // Tailwind v4는 PostCSS를 통해 globals.css의 `@import "tailwindcss"`를 처리해야 함
+    // Storybook 기본 CSS rule(implicit loaders)에 postcss-loader만 주입한다.
+    const rules = webpackConfig.module.rules as any[];
+    for (const rule of rules) {
+      const testStr = rule?.test?.toString?.() ?? "";
+      if (!testStr.includes("css")) continue;
+      if (!Array.isArray(rule.use)) continue;
+
+      const hasCssLoader = rule.use.some((u: any) => {
+        const loader = typeof u === "string" ? u : u?.loader;
+        return typeof loader === "string" && loader.includes("css-loader");
+      });
+      if (!hasCssLoader) continue;
+
+      const hasPostcss = rule.use.some((u: any) => {
+        const loader = typeof u === "string" ? u : u?.loader;
+        return typeof loader === "string" && loader.includes("postcss-loader");
+      });
+      if (hasPostcss) continue;
+
+      rule.use.push({
+        loader: require.resolve("postcss-loader"),
+        options: {
+          postcssOptions: {
+            config: path.resolve(__dirname, "..", "postcss.config.mjs"),
+          },
+        },
+      });
+    }
+
     webpackConfig.module.rules.push({
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
@@ -59,4 +89,3 @@ const config: StorybookConfig = {
 };
 
 export default config;
-
