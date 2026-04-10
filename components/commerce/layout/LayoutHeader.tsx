@@ -5,8 +5,6 @@ import Link from "next/link";
 import type { ButtonHTMLAttributes } from "react";
 import { useState } from "react";
 import { FiMenu, FiSearch, FiShoppingBag, FiUser } from "react-icons/fi";
-import { SearchOverlay } from "@/features/search/components/SearchOverlay";
-import { useSearchStore } from "@/features/search/store/searchStore";
 
 export type LayoutHeaderProps = {
   className?: string;
@@ -15,21 +13,17 @@ export type LayoutHeaderProps = {
 
 export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isSearchOpen = useSearchStore((s) => s.isOpen);
-  const openSearch = useSearchStore((s) => s.open);
-  const clearSearch = useSearchStore((s) => s.clear);
 
   return (
-    <>
-      <header
-        className={cn(
-          "fixed inset-x-0 top-0 z-50",
-          "border-b bg-(--commerce-background-default)",
-          "border-(--commerce-border-subtle)",
-          className,
-        )}
-      >
-        <div className="mx-auto flex h-[60px] max-w-[1440px] items-center px-4 sm:px-[160px]">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50",
+        "border-b bg-(--commerce-background-default)",
+        "border-(--commerce-border-subtle)",
+        className,
+      )}
+    >
+      <div className="mx-auto flex h-[60px] max-w-[1440px] items-center px-4 sm:px-[160px]">
         <button
           type="button"
           className="mr-3 inline-flex items-center justify-center rounded-md p-2 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info) sm:hidden"
@@ -52,14 +46,13 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
           <IconBtn
             aria-label="검색"
             onClick={() => {
-              isSearchOpen ? clearSearch() : openSearch();
+              const el = document.getElementById("home-search-input") as
+                | HTMLInputElement
+                | null;
+              el?.scrollIntoView({ behavior: "smooth", block: "center" });
+              el?.focus();
             }}
-            className={cn(
-              "transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
-              isSearchOpen
-                ? "text-(--commerce-semantic-info)"
-                : "text-(--commerce-text-primary)",
-            )}
+            className="transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)"
           >
             <FiSearch className="size-6" aria-hidden />
           </IconBtn>
@@ -113,10 +106,7 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
           </div>
         </nav>
       ) : null}
-      </header>
-
-      <SearchOverlay />
-    </>
+    </header>
   );
 }
 
