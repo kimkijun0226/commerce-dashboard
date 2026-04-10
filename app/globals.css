@@ -84,7 +84,7 @@
   --commerce-font-heading:
     var(--font-poppins), var(--font-geist-sans), ui-sans-serif, sans-serif;
   --commerce-font-body:
-    "Inter", var(--font-geist-sans), ui-sans-serif, sans-serif;
+    var(--font-inter), var(--font-geist-sans), ui-sans-serif, sans-serif;
   --commerce-font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --commerce-font-weight-regular: 400;
