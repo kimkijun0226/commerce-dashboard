@@ -3,6 +3,7 @@ export { Button, type ButtonProps } from "./Button/Button";
 export { Checkbox, type CheckboxProps } from "./Checkbox/Checkbox";
 export { cn } from "./cn/cn";
 export { Input, type InputProps } from "./Input/Input";
+export { LoadingSpinner, type LoadingSpinnerProps } from "./LoadingSpinner";
 export {
   Pagination,
   type PageSizeOption,

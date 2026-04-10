@@ -8,7 +8,7 @@ import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
 import { useInfiniteProducts } from "@/features/products/api/useInfiniteProducts";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
-import { Button } from "@/components/ui";
+import { LoadingSpinner } from "@/components/ui";
 
 export function HomePage() {
   const router = useRouter();
@@ -78,32 +78,8 @@ export function HomePage() {
               )}
             />
 
-            {isFetchingNextPage ? (
-              <div
-                className="mt-10 text-center text-sm text-(--commerce-text-secondary)"
-                role="status"
-                aria-live="polite"
-              >
-                불러오는 중...
-              </div>
-            ) : null}
-
             {hasNextPage ? <div ref={loadMoreRef} className="h-8" /> : null}
-
-            {/* 옵저버 미지원/사용자 제스처용 보조 버튼 */}
-            {hasNextPage ? (
-              <div className="mt-6 flex justify-center">
-                <Button
-                  type="button"
-                  variant="primary"
-                  size="md"
-                  disabled={isFetchingNextPage}
-                  onClick={() => fetchNextPage()}
-                >
-                  더 보기
-                </Button>
-              </div>
-            ) : null}
+            {isFetchingNextPage ? <LoadingSpinner className="mt-8" /> : null}
           </div>
         )}
       </section>
