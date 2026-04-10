@@ -9,6 +9,7 @@ import { RatingStars } from "../RatingStars/RatingStars";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export type ProductCardProps = {
   product: Product;
@@ -52,14 +53,32 @@ export function ProductCard({
         ) : null}
         <button
           type="button"
-          className="absolute top-4 right-4 z-20 flex size-8 items-center justify-center rounded-full bg-[var(--commerce-background-paper)] shadow-sm transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--commerce-semantic-info)]"
+          className={cn(
+            "absolute top-4 right-4 z-20 flex size-8 items-center justify-center rounded-full",
+            "overflow-visible",
+            "border border-white/40 bg-white/55 shadow-sm backdrop-blur-md",
+            "transition-all hover:bg-white/70 hover:shadow-md",
+            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
+          )}
           aria-label={
             product.isLiked ? "위시리스트에서 제거" : "위시리스트에 추가"
           }
           aria-pressed={product.isLiked ?? false}
           onClick={() => onWishlistToggle?.()}
         >
-          <HeartIcon filled={product.isLiked} />
+          {product.isLiked ? (
+            <FaHeart
+              className="text-[18px] leading-none"
+              style={{ color: commerceColors.primary.main }}
+              aria-hidden
+            />
+          ) : (
+            <FaRegHeart
+              className="text-[18px] leading-none"
+              style={{ color: commerceColors.primary.main }}
+              aria-hidden
+            />
+          )}
         </button>
         <Link
           href={href}
@@ -149,21 +168,5 @@ export function ProductCard({
         ) : null}
       </div>
     </article>
-  );
-}
-
-function HeartIcon({ filled }: { filled?: boolean }) {
-  return (
-    <svg
-      width={18}
-      height={18}
-      viewBox="0 0 24 24"
-      fill={filled ? commerceColors.primary.main : "none"}
-      stroke={commerceColors.primary.main}
-      strokeWidth={2}
-      aria-hidden
-    >
-      <path d="M12 21s-7-4.35-7-10a5 5 0 0110 0 5 5 0 0110 0c0 5.65-7 10-7 10z" />
-    </svg>
   );
 }
