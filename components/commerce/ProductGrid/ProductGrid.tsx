@@ -1,6 +1,7 @@
 import type { Product } from "@/components/commerce/types";
 import { cn } from "@/components/ui";
 import { ProductCard } from "../ProductCard/ProductCard";
+import { LoadingSkeletonGrid } from "./LoadingSkeletonGrid";
 import type { ReactNode } from "react";
 
 export type ProductGridProps = {
@@ -24,25 +25,17 @@ export function ProductGrid({
 }: ProductGridProps) {
   if (loading) {
     return (
-      <ul
-        className={cn("grid", columnsClassName, gapClassName, className)}
-        aria-busy
-        aria-label="상품 목록 로딩 중"
-      >
-        {Array.from({ length: 8 }, (_, i) => (
-          <li key={i} className="animate-pulse">
-            <div className="aspect-[262/349] w-full rounded-lg bg-[var(--commerce-background-light)]" />
-            <div className="mt-4 h-4 w-3/4 rounded bg-[var(--commerce-background-elevated)]" />
-            <div className="mt-2 h-4 w-1/2 rounded bg-[var(--commerce-background-elevated)]" />
-          </li>
-        ))}
-      </ul>
+      <LoadingSkeletonGrid
+        className={className}
+        columnsClassName={columnsClassName}
+        gapClassName={gapClassName}
+      />
     );
   }
 
   if (products.length === 0) {
     return (
-      <div className="py-12 text-center text-[var(--commerce-text-secondary)]">
+      <div className="py-12 text-center text-(--commerce-text-secondary)">
         {emptyState ?? "표시할 상품이 없습니다."}
       </div>
     );
