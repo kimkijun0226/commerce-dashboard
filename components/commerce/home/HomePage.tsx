@@ -4,18 +4,26 @@ import { ProductGrid } from "@/components/commerce/ProductGrid/ProductGrid";
 import { ProductCard } from "@/components/commerce/ProductCard/ProductCard";
 import { HomeHeroSection } from "@/components/commerce/home/HomeHeroSection";
 import type { Product } from "@/components/commerce/types";
-import { useProductsQuery } from "@/features/products/api/useProductsQuery";
+import { useInfiniteProducts } from "@/features/products/api/useInfiniteProducts";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
+import { Button } from "@/components/ui";
 
 export function HomePage() {
   const router = useRouter();
   const [liked, setLiked] = useState<Record<string, boolean>>({});
 
-  const { data, isLoading, isError } = useProductsQuery({ limit: 12 });
+  const {
+    data,
+    isLoading,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteProducts();
 
   const products = useMemo(() => {
-    const list = data ?? [];
+    const list = data?.pages.flatMap((p) => p.items) ?? [];
     return list.map((p) => ({
       ...p,
       isLiked: liked[p.id] ?? p.isLiked,
@@ -43,21 +51,37 @@ export function HomePage() {
             상품을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
           </div>
         ) : (
-          <ProductGrid
-            products={products as Product[]}
-            columnsClassName="grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-            // Figma(Home `3:677`) 기준 카드 간격은 24px(가로), 섹션 여백은 더 넉넉한 편
-            // 세로가 너무 붙어 보이면 row-gap을 조금 키운다.
-            gapClassName="gap-x-6 gap-y-10 md:gap-x-6 md:gap-y-12"
-            loading={isLoading}
-            renderItem={(p) => (
-              <ProductCard
-                product={p}
-                onAddToCart={() => router.push("/cart")}
-                onWishlistToggle={() => toggleLike(p.id)}
-              />
-            )}
-          />
+          <div>
+            <ProductGrid
+              products={products as Product[]}
+              columnsClassName="grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+              // Figma(Home `3:677`) 기준 카드 간격은 24px(가로), 섹션 여백은 더 넉넉한 편
+              // 세로가 너무 붙어 보이면 row-gap을 조금 키운다.
+              gapClassName="gap-x-6 gap-y-10 md:gap-x-6 md:gap-y-12"
+              loading={isLoading}
+              renderItem={(p) => (
+                <ProductCard
+                  product={p}
+                  onAddToCart={() => router.push("/cart")}
+                  onWishlistToggle={() => toggleLike(p.id)}
+                />
+              )}
+            />
+
+            {hasNextPage ? (
+              <div className="mt-10 flex justify-center">
+                <Button
+                  type="button"
+                  variant="primary"
+                  size="md"
+                  disabled={isFetchingNextPage}
+                  onClick={() => fetchNextPage()}
+                >
+                  {isFetchingNextPage ? "불러오는 중..." : "더 보기"}
+                </Button>
+              </div>
+            ) : null}
+          </div>
         )}
       </section>
 

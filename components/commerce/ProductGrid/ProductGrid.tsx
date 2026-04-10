@@ -45,11 +45,7 @@ export function ProductGrid({
     <ul className={cn("grid", columnsClassName, gapClassName, className)}>
       {products.map((p) => (
         <li key={p.id}>
-          {renderItem ? (
-            renderItem(p)
-          ) : (
-            <ProductCard product={p} />
-          )}
+          {renderItem ? renderItem(p) : <ProductCard product={p} />}
         </li>
       ))}
     </ul>
