@@ -4,6 +4,7 @@ import "../app/globals.css";
 
 const preview: Preview = {
   parameters: {
+    layout: "centered",
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -15,4 +16,3 @@ const preview: Preview = {
 };
 
 export default preview;
-

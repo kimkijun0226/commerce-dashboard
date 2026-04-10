@@ -8,7 +8,7 @@ import { Pagination } from "./Pagination";
 const meta: Meta<typeof Pagination> = {
   title: "Shared/UI/Pagination",
   component: Pagination,
-  parameters: { layout: "padded" },
+  parameters: { layout: "centered" },
   tags: ["autodocs"],
   argTypes: {
     onPageChange: { action: "pageChange" },
