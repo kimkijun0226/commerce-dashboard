@@ -15,7 +15,9 @@ export type LayoutHeaderProps = {
 
 export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isSearchOpen = useSearchStore((s) => s.isOpen);
   const openSearch = useSearchStore((s) => s.open);
+  const clearSearch = useSearchStore((s) => s.clear);
 
   return (
     <>
@@ -47,7 +49,18 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
         </Link>
 
         <div className="ml-auto flex items-center gap-4">
-          <IconBtn aria-label="검색" onClick={() => openSearch()}>
+          <IconBtn
+            aria-label="검색"
+            onClick={() => {
+              isSearchOpen ? clearSearch() : openSearch();
+            }}
+            className={cn(
+              "transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
+              isSearchOpen
+                ? "text-(--commerce-semantic-info)"
+                : "text-(--commerce-text-primary)",
+            )}
+          >
             <FiSearch className="size-6" aria-hidden />
           </IconBtn>
 
