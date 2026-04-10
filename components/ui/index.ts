@@ -9,6 +9,7 @@ export {
   type PaginationProps,
 } from "./Pagination/Pagination";
 export { Radio, type RadioProps } from "./Radio/Radio";
+export { SearchInput, type SearchInputProps } from "./SearchInput/SearchInput";
 export { Select, type SelectOption, type SelectProps } from "./Select/Select";
 export { Switch, type SwitchProps } from "./Switch/Switch";
 export { typographyToStyle } from "./typography-styles/typography-styles";
