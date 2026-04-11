@@ -9,15 +9,19 @@ const TRACKING_TABLE = "_schema_migrations";
 
 function loadEnv() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const secretKey = process.env.SUPABASE_SECRET_KEY;
   const databaseUrl = process.env.DATABASE_URL;
+  /** Supabase 대시보드 > Account > Access Tokens (Management API 전용, service_role 아님) */
+  const accessToken = process.env.SUPABASE_ACCESS_TOKEN;
   if (!url) {
     throw new Error("NEXT_PUBLIC_SUPABASE_URL이 설정되지 않았습니다.");
   }
-  if (!secretKey && !databaseUrl) {
-    throw new Error("SUPABASE_SECRET_KEY 또는 DATABASE_URL이 필요합니다.");
+  if (!databaseUrl && !accessToken) {
+    throw new Error(
+      "마이그레이션 실행을 위해 DATABASE_URL 또는 SUPABASE_ACCESS_TOKEN 중 하나가 필요합니다. " +
+        "SUPABASE_SECRET_KEY(service_role)는 Management API에서 인증되지 않습니다.",
+    );
   }
-  return { url, secretKey, databaseUrl };
+  return { url, databaseUrl, accessToken };
 }
 
 function getMigrationFiles(): string[] {
@@ -82,7 +86,7 @@ async function runViaPg(databaseUrl: string) {
   }
 }
 
-async function runViaManagementApi(secretKey: string, projectRef: string) {
+async function runViaManagementApi(accessToken: string, projectRef: string) {
   const files = getMigrationFiles();
   if (files.length === 0) {
     console.log("실행할 마이그레이션이 없습니다.");
@@ -98,7 +102,7 @@ async function runViaManagementApi(secretKey: string, projectRef: string) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${secretKey}`,
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({ query: sql }),
     });
@@ -112,7 +116,7 @@ async function runViaManagementApi(secretKey: string, projectRef: string) {
 }
 
 async function main() {
-  const { url, secretKey, databaseUrl } = loadEnv();
+  const { url, databaseUrl, accessToken } = loadEnv();
   const projectRef = getProjectRef(url);
 
   if (databaseUrl) {
@@ -121,13 +125,24 @@ async function main() {
     return;
   }
 
-  if (secretKey && projectRef) {
-    console.log("Management API 사용 (모든 파일 실행, SQL은 재실행 방지 처리됨)");
-    await runViaManagementApi(secretKey, projectRef);
+  if (accessToken && projectRef) {
+    console.log(
+      "Management API 사용 (SUPABASE_ACCESS_TOKEN, 모든 파일 순차 실행 — 이미 적용된 SQL은 DB에서 직접 건너뛰지 않음)",
+    );
+    await runViaManagementApi(accessToken, projectRef);
     return;
   }
 
-  throw new Error("DATABASE_URL 또는 SUPABASE_SECRET_KEY + NEXT_PUBLIC_SUPABASE_URL을 설정하세요.");
+  if (accessToken && !projectRef) {
+    throw new Error(
+      "Management API는 NEXT_PUBLIC_SUPABASE_URL에서 프로젝트 ref를 읽어야 합니다. " +
+        "예: https://abcdefghij.supabase.co 또는 Supabase 대시보드의 DATABASE_URL을 .env.local에 넣어 주세요.",
+    );
+  }
+
+  throw new Error(
+    "DATABASE_URL(Postgres 연결 문자열) 또는 SUPABASE_ACCESS_TOKEN + supabase.co URL이 필요합니다.",
+  );
 }
 
 main()
