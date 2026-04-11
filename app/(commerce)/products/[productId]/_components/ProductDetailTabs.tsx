@@ -15,8 +15,8 @@ export type ProductDetailTabsProps = {
 
 /** Figma Tabs/Menu (node 48:8004): Inter 18 Medium, lh 32, tracking -0.4px */
 const TABS: { id: ProductDetailTabId; label: string }[] = [
-  { id: "additional-info", label: "Additional Info" },
-  { id: "reviews", label: "Reviews" },
+  { id: "additional-info", label: "상품 정보" },
+  { id: "reviews", label: "리뷰" },
 ];
 
 export function ProductDetailTabs({
@@ -34,41 +34,43 @@ export function ProductDetailTabs({
 
   return (
     <div className={cn("w-full", className)}>
-      <div
-        role="tablist"
-        aria-label="Product detail tabs"
-        className="flex h-8 flex-wrap items-end gap-x-20 border-b border-[#e8ecef]"
-      >
-        {TABS.map((tab) => {
-          const selected = activeTab === tab.id;
-          const tabId = `${baseId}-${tab.id}`;
-          const panelId = `${baseId}-panel-${tab.id}`;
-          return (
-            <button
-              key={tab.id}
-              type="button"
-              role="tab"
-              id={tabId}
-              aria-selected={selected}
-              aria-controls={panelId}
-              tabIndex={selected ? 0 : -1}
-              className={cn(
-                "relative z-0 -mb-px shrink-0 border-b-2 border-transparent pb-0 text-left text-[18px] font-medium tracking-[-0.4px] transition-colors duration-200",
-                "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
-                selected
-                  ? "z-[1] border-black text-[#121212]"
-                  : "text-[#807e7e] hover:text-[#121212]",
-              )}
-              style={{
-                fontFamily: "var(--commerce-font-body)",
-                lineHeight: "32px",
-              }}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
+      <div className="border-b border-[#e8ecef]">
+        <div
+          role="tablist"
+          aria-label="Product detail tabs"
+          className="flex flex-wrap items-end gap-x-20"
+        >
+          {TABS.map((tab) => {
+            const selected = activeTab === tab.id;
+            const tabId = `${baseId}-${tab.id}`;
+            const panelId = `${baseId}-panel-${tab.id}`;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                id={tabId}
+                aria-selected={selected}
+                aria-controls={panelId}
+                tabIndex={selected ? 0 : -1}
+                className={cn(
+                  "relative pb-2 text-left text-[18px] font-medium tracking-[-0.4px] transition-colors duration-200",
+                  "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--commerce-semantic-info)",
+                  selected
+                    ? "text-[#121212] after:absolute after:right-0 after:-bottom-px after:left-0 after:z-1 after:h-1.5 after:rounded-t-sm after:bg-black"
+                    : "text-[#807e7e] hover:text-[#121212]",
+                )}
+                style={{
+                  fontFamily: "var(--commerce-font-body)",
+                  lineHeight: "32px",
+                }}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div className="min-h-[120px] pt-12 pb-2">
