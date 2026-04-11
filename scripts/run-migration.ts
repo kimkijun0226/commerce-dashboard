@@ -12,6 +12,16 @@ config({ path: join(process.cwd(), ".env.local") });
 const MIGRATIONS_DIR = join(process.cwd(), "supabase", "migrations");
 const TRACKING_TABLE = "_schema_migrations";
 
+/** 스키마는 이미 있는데 적용 이력만 없을 때(특히 0001 재실행) 복구용 */
+function isAlreadyAppliedSchemaError(message: string): boolean {
+  const m = message.toLowerCase();
+  return (
+    m.includes("42710") ||
+    m.includes("42p07") ||
+    m.includes("already exists")
+  );
+}
+
 function loadEnv() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const databaseUrl = process.env.DATABASE_URL;
@@ -72,7 +82,18 @@ async function runViaPg(databaseUrl: string) {
       }
       const sql = readFileSync(join(MIGRATIONS_DIR, file), "utf-8");
       console.log(`실행 중: ${file}`);
-      await client.query(sql);
+      try {
+        await client.query(sql);
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e);
+        if (isAlreadyAppliedSchemaError(msg)) {
+          console.warn(
+            `${file}: DB에 객체가 이미 있어 적용 이력만 남기고 건너뜁니다. (스키마가 레포와 다르면 수동 확인 필요)`,
+          );
+        } else {
+          throw e;
+        }
+      }
       await client.query(
         `INSERT INTO public.${TRACKING_TABLE} (name) VALUES ($1) ON CONFLICT (name) DO NOTHING`,
         [file],
@@ -122,14 +143,13 @@ async function runViaManagementApi(accessToken: string, projectRef: string) {
       await managementDbExec(accessToken, projectRef, sql, false);
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
-      if (msg.includes("42710") || msg.includes("already exists")) {
-        throw new Error(
-          `${file} 실행 실패: DB에 이미 스키마가 있는데 적용 이력(_schema_migrations)이 비어 있을 수 있습니다.\n` +
-            "Supabase > Settings > Database 의 URI를 .env.local 의 DATABASE_URL 에 넣고 `yarn db:run-migration` 을 실행하는 편이 안전합니다.\n" +
-            `원본: ${msg}`,
+      if (isAlreadyAppliedSchemaError(msg)) {
+        console.warn(
+          `${file}: DB에 객체가 이미 있어 적용 이력만 남기고 건너뜁니다. (스키마가 레포와 다르면 수동 확인 필요)`,
         );
+      } else {
+        throw e;
       }
-      throw e;
     }
     const esc = file.replace(/'/g, "''");
     await managementDbExec(
