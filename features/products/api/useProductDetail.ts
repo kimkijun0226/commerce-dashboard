@@ -21,6 +21,8 @@ export type ProductDetailData = {
   measurements: string | null;
   categories: string[] | null;
   additionalInfo: string | null;
+  /** `products.detail_image_urls` — 상품 상세정보 탭 이미지 */
+  detailImageUrls: string[];
   created_at: string;
   updated_at: string;
   reviewSummary: ProductReviewSummary | null;
@@ -39,6 +41,7 @@ function mapRow(row: ProductsRow): ProductDetailData {
     measurements: row.measurements,
     categories: row.categories,
     additionalInfo: row.additional_info,
+    detailImageUrls: row.detail_image_urls ?? [],
     created_at: row.created_at,
     updated_at: row.updated_at,
     reviewSummary: parseProductReviewSummary(row.review_summary),

@@ -1,7 +1,7 @@
-import { ProductDetailAdditionalInfo } from "@/app/(commerce)/products/[productId]/_components/ProductDetailAdditionalInfo";
+import { ProductDetailExtraInfoPanel } from "@/app/(commerce)/products/[productId]/_components/ProductDetailExtraInfoPanel";
+import { ProductDetailImageGallery } from "@/app/(commerce)/products/[productId]/_components/ProductDetailImageGallery";
 import { ProductReviewsSection } from "@/app/(commerce)/products/[productId]/_components/ProductReviewsSection";
 import { ProductDetailTabs } from "@/app/(commerce)/products/[productId]/_components/ProductDetailTabs";
-import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
 import { ProductDetailMedia } from "@/components/commerce/ProductDetail/ProductDetailMedia";
 import { ProductDetailSidebar } from "@/components/commerce/ProductDetail/ProductDetailSidebar";
 import type { ProductDetailData } from "@/features/products/api/useProductDetail";
@@ -9,10 +9,9 @@ import { toCommonsProductDetail } from "@/features/products/api/useProductDetail
 
 export type ProductDetailProps = {
   product: ProductDetailData;
-  initialReviews: ProductReviewListItem[];
 };
 
-export function ProductDetail({ product, initialReviews }: ProductDetailProps) {
+export function ProductDetail({ product }: ProductDetailProps) {
   const detail = toCommonsProductDetail(product);
 
   return (
@@ -27,17 +26,21 @@ export function ProductDetail({ product, initialReviews }: ProductDetailProps) {
 
       <div className="mt-14 w-full pt-10">
         <ProductDetailTabs
-          additionalInfoContent={
-            <ProductDetailAdditionalInfo
-              additionalInfo={product.additionalInfo}
+          productDetailContent={
+            <ProductDetailImageGallery
+              imageUrls={product.detailImageUrls}
               imageAltBase={product.name}
             />
           }
-          reviewsContent={
-            <ProductReviewsSection
-              productId={product.id}
-              initialReviews={initialReviews}
+          extraInfoContent={
+            <ProductDetailExtraInfoPanel
+              productName={product.name}
+              measurements={product.measurements}
+              additionalInfo={product.additionalInfo}
             />
+          }
+          reviewsContent={
+            <ProductReviewsSection productId={product.id} />
           }
         />
       </div>

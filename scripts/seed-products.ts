@@ -4,6 +4,7 @@ import { join } from "path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 import { getServerEnv } from "@/commons/config/env";
+import { parseAdditionalInfoImageUrls } from "@/commons/utils/productDetailParse";
 
 config({ path: join(process.cwd(), ".env.local") });
 
@@ -35,6 +36,7 @@ type Database = {
           image_url: string | null;
           status: ProductStatus;
           additional_info: string | null;
+          detail_image_urls: string[];
           measurements: string | null;
           categories: string[] | null;
           rating_average: number | null;
@@ -51,6 +53,7 @@ type Database = {
           image_url?: string | null;
           status?: ProductStatus;
           additional_info?: string | null;
+          detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
           rating_average?: number | null;
@@ -67,6 +70,7 @@ type Database = {
           image_url?: string | null;
           status?: ProductStatus;
           additional_info?: string | null;
+          detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
           rating_average?: number | null;
@@ -151,6 +155,26 @@ export function createSupabaseClient(): SupabaseClient<Database, "public"> {
 }
 
 type ProductsInsert = Database["public"]["Tables"]["products"]["Insert"];
+
+function enrichProductForInsert(
+  p: ProductsInsert,
+): ProductsInsert & { detail_image_urls: string[] } {
+  const parsed = p.additional_info
+    ? parseAdditionalInfoImageUrls(String(p.additional_info))
+    : [];
+  const urls: string[] = [];
+  if (p.image_url) urls.push(p.image_url);
+  for (const u of parsed) {
+    if (!urls.includes(u)) urls.push(u);
+  }
+  const detail_image_urls = urls.slice(0, 6);
+  const additional_info = [
+    `A/S: 구매일 기준 제조사·유통사 정책을 따릅니다(영업일 기준).`,
+    `개봉·사용 후에는 소비자 귀책에 따른 교환이 제한될 수 있습니다.`,
+    `${p.name} 관련 문의는 고객센터 운영 시간(평일 10:00–18:00)에 접수해 주세요.`,
+  ].join("\n\n");
+  return { ...p, detail_image_urls, additional_info };
+}
 
 const SMARTWATCH_PRODUCT_NAME = "스마트워치 울트라";
 
@@ -691,12 +715,14 @@ export async function insertProducts(
     return;
   }
 
-  const products = getSeedProducts();
-  if (products.length < 40) {
+  const rawProducts = getSeedProducts();
+  if (rawProducts.length < 40) {
     throw new Error(
-      `시드 상품 개수가 40개 미만입니다. 현재: ${products.length}`,
+      `시드 상품 개수가 40개 미만입니다. 현재: ${rawProducts.length}`,
     );
   }
+
+  const products = rawProducts.map((p) => enrichProductForInsert(p));
 
   console.log(`삽입 시도: ${products.length}개`);
   const { error } = await supabase.from("products").insert(products);
@@ -741,17 +767,23 @@ export async function seedSmartwatchReviewsAndDetail(
     return;
   }
 
+  const smartwatchDetailUrls = parseAdditionalInfoImageUrls(
+    SMARTWATCH_ADDITIONAL_INFO,
+  );
+
   const { error: infoError } = await supabase
     .from("products")
     .update({
-      additional_info: SMARTWATCH_ADDITIONAL_INFO,
+      detail_image_urls: smartwatchDetailUrls,
+      additional_info:
+        "배터리·방수 사용 안내는 동봉 매뉴얼을 참고해 주세요. 밴드 교체 시 정품 액세서리 사용을 권장합니다. 직사광선·고온 다습 환경은 피해 주세요.",
     })
     .eq("id", product.id);
 
   if (infoError) {
-    console.warn("additional_info 업데이트 실패:", infoError.message);
+    console.warn("스마트워치 상세 이미지·추가정보 업데이트 실패:", infoError.message);
   } else {
-    console.log("additional_info(Supabase) 반영 완료");
+    console.log("스마트워치 detail_image_urls · additional_info 반영 완료");
   }
 
   const userIds: string[] = [];

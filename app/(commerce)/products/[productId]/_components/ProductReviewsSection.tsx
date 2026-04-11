@@ -4,59 +4,41 @@ import { CustomerReviewsHeader } from "@/app/(commerce)/products/[productId]/_co
 import { ReviewFeedbackBar } from "@/app/(commerce)/products/[productId]/_components/ReviewFeedbackBar";
 import { ReviewList } from "@/app/(commerce)/products/[productId]/_components/ReviewList";
 import { ReviewSummaryDisplay } from "@/app/(commerce)/products/[productId]/_components/ReviewSummaryDisplay";
-import {
-  type ReviewSortOption,
-  sortReviewsByOption,
-} from "@/app/(commerce)/products/[productId]/_components/reviewSort";
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import { useAuth } from "@/commons/hooks/useAuth";
 import { ReviewForm } from "@/components/commerce/ReviewForm";
 import { cn } from "@/components/ui";
-import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
+import { useProductReviews } from "@/features/products/hooks/useProductReviews";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export type ProductReviewsSectionProps = {
   productId: string;
-  initialReviews: ProductReviewListItem[];
-  currentUserId?: string | null;
   isSuperAdmin?: boolean;
   className?: string;
 };
 
 export function ProductReviewsSection({
   productId,
-  initialReviews,
-  currentUserId,
   isSuperAdmin,
   className,
 }: ProductReviewsSectionProps) {
   const { userId: authUserId, isLoading: authLoading } = useAuth();
-  const effectiveUserId = currentUserId ?? authUserId ?? null;
+  const effectiveUserId = authUserId ?? null;
   const queryClient = useQueryClient();
   const [formKey, setFormKey] = useState(0);
   const [draftRating, setDraftRating] = useState(5);
   const [showFullForm, setShowFullForm] = useState(false);
-  const [sort, setSort] = useState<ReviewSortOption>("newest");
 
-  const { data, isPending, isError } = useQuery({
-    queryKey: QUERY_KEYS.reviews.listByProduct(productId),
-    queryFn: async (): Promise<ProductReviewListItem[]> => {
-      const supabase = getSupabaseBrowserClient();
-      const { data: rows, error } = await supabase
-        .from("reviews")
-        .select("id, rating, content, created_at")
-        .eq("product_id", productId)
-        .order("created_at", { ascending: false });
-
-      if (error) throw new Error(`Failed to load reviews: ${error.message}`);
-      return (rows ?? []) as ProductReviewListItem[];
-    },
-    initialData: initialReviews,
-    staleTime: 60 * 1000,
-  });
+  const {
+    reviewCount,
+    averageFromReviews,
+    isPending: summaryPending,
+    isError: summaryError,
+    isSuccess: summarySuccess,
+  } = useProductReviews(productId);
 
   const mutation = useMutation({
     mutationFn: async (payload: { rating: number; body: string }) => {
@@ -72,10 +54,13 @@ export function ProductReviewsSection({
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEYS.reviews.listByProduct(productId),
+        queryKey: ["reviews", "page", productId],
       });
       queryClient.invalidateQueries({
         queryKey: QUERY_KEYS.reviews.byProduct(productId),
+      });
+      queryClient.invalidateQueries({
+        queryKey: QUERY_KEYS.reviews.listByProduct(productId),
       });
       setFormKey((k) => k + 1);
       setShowFullForm(false);
@@ -86,30 +71,32 @@ export function ProductReviewsSection({
     },
   });
 
-  const list = data ?? [];
-  const sortedList = useMemo(
-    () => sortReviewsByOption(list, sort),
-    [list, sort],
-  );
-
-  const sumRating = list.reduce((acc, r) => acc + r.rating, 0);
   const averageRating =
-    list.length > 0 ? Math.round((sumRating / list.length) * 10) / 10 : 0;
+    summarySuccess && reviewCount > 0
+      ? Math.round(averageFromReviews * 10) / 10
+      : 0;
 
   const isLoggedIn = !authLoading && !!effectiveUserId;
 
-  if (isPending && list.length === 0 && !initialReviews.length) {
+  if (summaryError) {
     return (
-      <p className={cn("text-[#99a1af]", className)} style={{ fontFamily: "var(--commerce-font-body)" }}>
-        리뷰를 불러오는 중…
+      <p
+        className={cn("text-[#99a1af]", className)}
+        role="alert"
+        style={{ fontFamily: "var(--commerce-font-body)" }}
+      >
+        리뷰 요약을 불러오지 못했습니다.
       </p>
     );
   }
 
-  if (isError) {
+  if (summaryPending && !summarySuccess) {
     return (
-      <p className={cn("text-[#99a1af]", className)} role="alert" style={{ fontFamily: "var(--commerce-font-body)" }}>
-        리뷰를 불러오지 못했습니다.
+      <p
+        className={cn("text-[#99a1af]", className)}
+        style={{ fontFamily: "var(--commerce-font-body)" }}
+      >
+        리뷰 요약을 불러오는 중…
       </p>
     );
   }
@@ -120,7 +107,7 @@ export function ProductReviewsSection({
         <ReviewSummaryDisplay />
         <CustomerReviewsHeader
           averageRating={averageRating}
-          reviewCount={list.length}
+          reviewCount={reviewCount}
         />
       </div>
 
@@ -159,10 +146,9 @@ export function ProductReviewsSection({
 
       <div className="mt-10">
         <ReviewList
-          reviews={sortedList}
+          productId={productId}
+          currentUserId={effectiveUserId}
           isSuperAdmin={isSuperAdmin}
-          sort={sort}
-          onSortChange={setSort}
         />
       </div>
     </div>

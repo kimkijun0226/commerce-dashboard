@@ -3,6 +3,7 @@
 import { cn } from "@/components/ui";
 import type { ReactNode } from "react";
 import {
+  useCallback,
   useEffect,
   useId,
   useLayoutEffect,
@@ -10,31 +11,33 @@ import {
   useState,
 } from "react";
 
-export type ProductDetailTabId = "additional-info" | "reviews";
+export type ProductDetailTabId = "product-detail" | "extra-info" | "reviews";
 
 export type ProductDetailTabsProps = {
   defaultTab?: ProductDetailTabId;
-  additionalInfoContent: ReactNode;
+  productDetailContent: ReactNode;
+  extraInfoContent: ReactNode;
   reviewsContent: ReactNode;
   className?: string;
 };
 
-/** Figma Tabs/Menu (node 48:8004): Inter 18 Medium, lh 32, tracking -0.4px */
 const TABS: { id: ProductDetailTabId; label: string }[] = [
-  { id: "additional-info", label: "Additional Info" },
-  { id: "reviews", label: "Reviews" },
+  { id: "product-detail", label: "상품 상세정보" },
+  { id: "extra-info", label: "추가정보" },
+  { id: "reviews", label: "리뷰" },
 ];
 
+const PANEL_COUNT = TABS.length;
+
 export function ProductDetailTabs({
-  defaultTab = "additional-info",
-  additionalInfoContent,
+  defaultTab = "product-detail",
+  productDetailContent,
+  extraInfoContent,
   reviewsContent,
   className,
 }: ProductDetailTabsProps) {
   const baseId = useId();
   const [activeTab, setActiveTab] = useState<ProductDetailTabId>(defaultTab);
-  const activeTabRef = useRef(activeTab);
-  activeTabRef.current = activeTab;
 
   const tabListRef = useRef<HTMLDivElement>(null);
   const tabBtnRefs = useRef<
@@ -46,19 +49,18 @@ export function ProductDetailTabs({
     setActiveTab(defaultTab);
   }, [defaultTab]);
 
-  const measureIndicator = () => {
+  const measureIndicator = useCallback(() => {
     const list = tabListRef.current;
-    const tab = activeTabRef.current;
-    const btn = tabBtnRefs.current[tab];
+    const btn = tabBtnRefs.current[activeTab];
     if (!list || !btn) return;
     const lr = list.getBoundingClientRect();
     const br = btn.getBoundingClientRect();
     setIndicator({ left: br.left - lr.left, width: br.width });
-  };
+  }, [activeTab]);
 
   useLayoutEffect(() => {
     measureIndicator();
-  }, [activeTab]);
+  }, [measureIndicator]);
 
   useLayoutEffect(() => {
     const list = tabListRef.current;
@@ -66,13 +68,24 @@ export function ProductDetailTabs({
     const ro = new ResizeObserver(() => measureIndicator());
     ro.observe(list);
     return () => ro.disconnect();
-  }, []);
+  }, [measureIndicator]);
 
   useEffect(() => {
     const onResize = () => measureIndicator();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [measureIndicator]);
+
+  const activeIndex = Math.max(
+    0,
+    TABS.findIndex((t) => t.id === activeTab),
+  );
+
+  const panelFor: Record<ProductDetailTabId, ReactNode> = {
+    "product-detail": productDetailContent,
+    "extra-info": extraInfoContent,
+    reviews: reviewsContent,
+  };
 
   return (
     <div className={cn("w-full", className)}>
@@ -80,8 +93,8 @@ export function ProductDetailTabs({
         <div
           ref={tabListRef}
           role="tablist"
-          aria-label="Product detail tabs"
-          className="relative flex flex-wrap items-end gap-x-10 sm:gap-x-16 md:gap-x-20"
+          aria-label="상품 상세 탭"
+          className="relative flex flex-wrap items-end gap-x-6 sm:gap-x-10 md:gap-x-14"
         >
           <span
             className={cn(
@@ -109,7 +122,7 @@ export function ProductDetailTabs({
                 aria-controls={panelId}
                 tabIndex={selected ? 0 : -1}
                 className={cn(
-                  "relative z-1 pb-3 text-left text-[18px] font-medium tracking-[-0.4px]",
+                  "relative z-1 pb-3 text-left text-[17px] font-medium tracking-[-0.4px] sm:text-[18px]",
                   "transition-[color,transform] duration-300 ease-out",
                   "motion-reduce:transition-none",
                   "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--commerce-semantic-info)",
@@ -134,35 +147,30 @@ export function ProductDetailTabs({
       <div className="relative min-h-[120px] w-full overflow-hidden pt-12 pb-2">
         <div
           className={cn(
-            "flex w-[200%] will-change-transform",
-            "transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            "flex will-change-transform",
+            "w-[300%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
             "motion-reduce:transition-none",
           )}
           style={{
-            transform:
-              activeTab === "additional-info"
-                ? "translateX(0)"
-                : "translateX(-50%)",
+            transform: `translateX(-${(activeIndex * 100) / PANEL_COUNT}%)`,
           }}
         >
-          <div
-            id={`${baseId}-panel-additional-info`}
-            role="tabpanel"
-            aria-labelledby={`${baseId}-additional-info`}
-            aria-hidden={activeTab !== "additional-info"}
-            className="w-1/2 shrink-0 pr-3 sm:pr-5"
-          >
-            {additionalInfoContent}
-          </div>
-          <div
-            id={`${baseId}-panel-reviews`}
-            role="tabpanel"
-            aria-labelledby={`${baseId}-reviews`}
-            aria-hidden={activeTab !== "reviews"}
-            className="w-1/2 shrink-0 pl-3 sm:pl-5"
-          >
-            {reviewsContent}
-          </div>
+          {TABS.map((tab) => {
+            const panelId = `${baseId}-panel-${tab.id}`;
+            const tabId = `${baseId}-${tab.id}`;
+            return (
+              <div
+                key={tab.id}
+                id={panelId}
+                role="tabpanel"
+                aria-labelledby={tabId}
+                aria-hidden={activeTab !== tab.id}
+                className="w-1/3 shrink-0 px-1 sm:px-3"
+              >
+                {panelFor[tab.id]}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

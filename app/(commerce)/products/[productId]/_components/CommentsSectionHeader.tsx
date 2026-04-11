@@ -9,7 +9,7 @@ export type { ReviewSortOption };
 export type CommentsSectionHeaderProps = {
   reviewCount: number;
   sort?: ReviewSortOption;
-  onSortChange: (value: ReviewSortOption) => void;
+  onSortChange?: (value: ReviewSortOption) => void;
   className?: string;
 };
 
@@ -32,7 +32,9 @@ export function CommentsSectionHeader({
       >
         리뷰 {reviewCount}개
       </h3>
-      <ReviewSortDropdown value={sort} onChange={onSortChange} />
+      {onSortChange !== undefined ? (
+        <ReviewSortDropdown value={sort} onChange={onSortChange} />
+      ) : null}
     </div>
   );
 }

@@ -1,90 +1,110 @@
 "use client";
 
-import { CommentsSectionHeader } from "@/app/(commerce)/products/[productId]/_components/CommentsSectionHeader";
-import type { ReviewSortOption } from "@/app/(commerce)/products/[productId]/_components/reviewSort";
-import { ReviewCard } from "@/app/(commerce)/products/[productId]/_components/ReviewCard";
+import { ReviewListItem } from "@/app/(commerce)/products/[productId]/_components/ReviewListItem";
+import { ReviewLoadMoreButton } from "@/app/(commerce)/products/[productId]/_components/ReviewLoadMoreButton";
+import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import { cn } from "@/components/ui";
-import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
-import { useState } from "react";
+import { fetchProductReviewsPage } from "@/features/products/api/useProductReviews";
+import { useQueries } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
 
-const DEFAULT_PAGE_SIZE = 5;
+const PAGE_SIZE = 5;
 
 export type ReviewListProps = {
-  reviews: ProductReviewListItem[];
+  productId: string;
+  currentUserId?: string | null;
   isSuperAdmin?: boolean;
-  pageSize?: number;
-  sort: ReviewSortOption;
-  onSortChange: (value: ReviewSortOption) => void;
   className?: string;
 };
 
 export function ReviewList({
-  reviews,
+  productId,
+  currentUserId,
   isSuperAdmin,
-  pageSize = DEFAULT_PAGE_SIZE,
-  sort,
-  onSortChange,
   className,
 }: ReviewListProps) {
-  const [visible, setVisible] = useState(pageSize);
+  void currentUserId;
+  const [loadedPages, setLoadedPages] = useState<number[]>([1]);
 
-  const shown = reviews.slice(0, visible);
-  const hasMore = visible < reviews.length;
+  const queries = useQueries({
+    queries: loadedPages.map((page) => ({
+      queryKey: QUERY_KEYS.reviews.page(productId, page),
+      queryFn: () => fetchProductReviewsPage(productId, page, PAGE_SIZE),
+      staleTime: 60 * 1000,
+    })),
+  });
 
-  if (reviews.length === 0) {
+  const allReviews = useMemo(
+    () => loadedPages.flatMap((_, idx) => queries[idx]?.data ?? []),
+    [loadedPages, queries],
+  );
+
+  const firstQuery = queries[0];
+  const lastQuery = queries[queries.length - 1];
+
+  const isInitialLoading = Boolean(firstQuery?.isPending);
+  const isInitialError = Boolean(firstQuery?.isError);
+
+  const hasMore = (lastQuery?.data?.length ?? 0) === PAGE_SIZE;
+  const isLoadingMore =
+    loadedPages.length >= 2 && Boolean(lastQuery?.isFetching);
+
+  const handleLoadMore = () => {
+    const next = Math.max(...loadedPages) + 1;
+    setLoadedPages((prev) => (prev.includes(next) ? prev : [...prev, next]));
+  };
+
+  if (isInitialError) {
     return (
-      <div className={cn("flex flex-col gap-10", className)}>
-        <CommentsSectionHeader
-          reviewCount={0}
-          sort={sort}
-          onSortChange={onSortChange}
-        />
-        <p
-          className="text-[15px] leading-7 text-[#6c7275]"
-          style={{ fontFamily: "var(--commerce-font-body)" }}
-        >
-          아직 등록된 리뷰가 없습니다.
-        </p>
-      </div>
+      <p
+        className={cn("text-[15px] leading-7 text-[#b42318]", className)}
+        role="alert"
+        style={{ fontFamily: "var(--commerce-font-body)" }}
+      >
+        리뷰를 불러오지 못했습니다.
+      </p>
+    );
+  }
+
+  if (isInitialLoading) {
+    return (
+      <p
+        className={cn("text-[15px] leading-7 text-[#6c7275]", className)}
+        style={{ fontFamily: "var(--commerce-font-body)" }}
+      >
+        리뷰를 불러오는 중…
+      </p>
+    );
+  }
+
+  if (allReviews.length === 0) {
+    return (
+      <p
+        className={cn("text-[15px] leading-7 text-[#6c7275]", className)}
+        style={{ fontFamily: "var(--commerce-font-body)" }}
+      >
+        아직 등록된 리뷰가 없습니다.
+      </p>
     );
   }
 
   return (
     <div className={cn("flex flex-col gap-10", className)}>
-      <CommentsSectionHeader
-        reviewCount={reviews.length}
-        sort={sort}
-        onSortChange={(v) => {
-          onSortChange(v);
-          setVisible(pageSize);
-        }}
-      />
       <ul className="flex flex-col" aria-label="리뷰 목록">
-        {shown.map((r) => (
+        {allReviews.map((r) => (
           <li
             key={r.id}
             className="border-b border-[#e8ecef] py-10 first:pt-2"
           >
-            <ReviewCard review={r} isSuperAdmin={isSuperAdmin} />
+            <ReviewListItem review={r} isSuperAdmin={isSuperAdmin} />
           </li>
         ))}
       </ul>
       {hasMore ? (
-        <div className="flex justify-center pt-4">
-          <button
-            type="button"
-            onClick={() => setVisible((v) => v + pageSize)}
-            className={cn(
-              "inline-flex h-10 min-w-[158px] items-center justify-center rounded-full border border-[#141718] bg-transparent px-8",
-              "text-base font-medium leading-7 tracking-[-0.4px] text-[#141718]",
-              "transition-colors hover:bg-[#141718]/5 active:bg-[#141718]/10",
-              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
-            )}
-            style={{ fontFamily: "var(--commerce-font-body)" }}
-          >
-            더 보기
-          </button>
-        </div>
+        <ReviewLoadMoreButton
+          onClick={handleLoadMore}
+          isLoading={isLoadingMore}
+        />
       ) : null}
     </div>
   );

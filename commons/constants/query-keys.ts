@@ -12,6 +12,9 @@ export const QUERY_KEYS = {
     /** PDP 탭: 상품별 리뷰 본문 목록 */
     listByProduct: (productId: string) =>
       ["reviews", "listByProduct", productId] as const,
+    /** PDP 리뷰 목록 페이지 단위 (range) */
+    page: (productId: string, page: number) =>
+      ["reviews", "page", productId, page] as const,
     /** 목록용: 여러 상품 id에 대한 리뷰 일괄 조회 후 클라이언트 집계 */
     summaryByProductIds: (sortedUniqueIds: readonly string[]) =>
       ["reviews", "summary", [...sortedUniqueIds]] as const,

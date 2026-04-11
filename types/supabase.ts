@@ -62,6 +62,7 @@ export interface Database {
           image_url: string | null;
           status: ProductStatus;
           additional_info: string | null;
+          detail_image_urls: string[];
           measurements: string | null;
           categories: string[] | null;
           rating_average: number | null;
@@ -78,6 +79,7 @@ export interface Database {
           image_url?: string | null;
           status?: ProductStatus;
           additional_info?: string | null;
+          detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
           rating_average?: number | null;
@@ -94,6 +96,7 @@ export interface Database {
           image_url?: string | null;
           status?: ProductStatus;
           additional_info?: string | null;
+          detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
           rating_average?: number | null;

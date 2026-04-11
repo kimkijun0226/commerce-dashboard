@@ -22,6 +22,7 @@ export type UseProductReviewsResult = {
   hasReviews: boolean;
   isPending: boolean;
   isError: boolean;
+  isSuccess: boolean;
 };
 
 /**
@@ -67,5 +68,6 @@ export function useProductReviews(
     hasReviews: reviewCount > 0,
     isPending,
     isError,
+    isSuccess,
   };
 }

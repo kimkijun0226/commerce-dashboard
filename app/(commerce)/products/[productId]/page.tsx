@@ -1,7 +1,6 @@
 import { getPublicEnv } from "@/commons/config/env";
 import { ProductDetail } from "@/components/commerce/ProductDetail/ProductDetail";
 import { getProductById } from "@/features/products/api/useProductDetail";
-import { getProductReviewsByProductId } from "@/features/reviews/api/getProductReviews";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -27,18 +26,13 @@ export default async function ProductDetailPage({
   params: Promise<{ productId: string }>;
 }) {
   const { productId } = await params;
-  const [product, initialReviews] = await Promise.all([
-    getProductById(productId),
-    getProductReviewsByProductId(productId),
-  ]);
+  const product = await getProductById(productId);
 
   if (!product) {
     notFound();
   }
 
-  return (
-    <ProductDetail product={product} initialReviews={initialReviews} />
-  );
+  return <ProductDetail product={product} />;
 }
 
 export async function generateMetadata({
