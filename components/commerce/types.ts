@@ -1,3 +1,5 @@
+import type { ProductReviewSummary } from "@/commons/types/product-review-summary";
+
 export interface Product {
   id: string;
   name: string;
@@ -6,6 +8,7 @@ export interface Product {
   imageUrl: string;
   rating?: number;
   reviewCount?: number;
+  reviewSummary?: ProductReviewSummary | null;
   isLiked?: boolean;
 }
 

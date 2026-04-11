@@ -1,3 +1,5 @@
+import type { ProductReviewSummary } from "@/commons/types/product-review-summary";
+
 export interface ProductCategory {
   id: string;
   name: string;
@@ -18,6 +20,8 @@ export interface ProductDetail {
   categories?: ProductCategory[] | null;
   rating?: number;
   reviewCount?: number;
+  /** `products.review_summary` (리뷰 수·한 줄 요약) */
+  reviewSummary?: ProductReviewSummary | null;
 }
 
 const PRODUCT_STATUS = ["registered", "hidden", "sold_out"] as const;

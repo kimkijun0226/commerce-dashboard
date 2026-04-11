@@ -169,9 +169,17 @@ export function ProductCard({
             </span>
           ) : null}
         </div>
-        {product.reviewCount !== undefined ? (
+        {product.reviewCount !== undefined && product.reviewCount > 0 ? (
           <span className="text-xs text-[var(--commerce-text-muted)]">
             리뷰 {product.reviewCount.toLocaleString("ko-KR")}개
+          </span>
+        ) : null}
+        {product.reviewSummary?.highlight ? (
+          <span
+            className="line-clamp-2 text-xs leading-4 text-[var(--commerce-text-muted)]"
+            title={product.reviewSummary.highlight}
+          >
+            “{product.reviewSummary.highlight}”
           </span>
         ) : null}
       </div>

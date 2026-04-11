@@ -3,6 +3,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
+import { parseProductReviewSummary } from "@/commons/types/product-review-summary";
 import type { Product } from "@/components/commerce/types";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { Database } from "@/types/supabase";
@@ -20,6 +21,7 @@ function mapProduct(row: ProductsRow): Product {
     imageUrl: row.image_url ?? "",
     rating: row.rating_average ?? undefined,
     reviewCount: undefined,
+    reviewSummary: parseProductReviewSummary(row.review_summary),
   };
 }
 

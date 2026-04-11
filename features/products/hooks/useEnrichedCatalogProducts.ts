@@ -19,7 +19,11 @@ export function useEnrichedCatalogProducts(products: Product[]) {
     return products.map((p) => {
       const s = summaryMap.get(p.id);
       if (!s) {
-        return { ...p, rating: p.rating, reviewCount: undefined };
+        const fromSummary =
+          p.reviewSummary && p.reviewSummary.count > 0
+            ? p.reviewSummary.count
+            : undefined;
+        return { ...p, rating: p.rating, reviewCount: fromSummary };
       }
       return {
         ...p,

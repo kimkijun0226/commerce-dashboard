@@ -1,4 +1,8 @@
 import type { ProductDetail } from "@/commons/types/product";
+import {
+  type ProductReviewSummary,
+  parseProductReviewSummary,
+} from "@/commons/types/product-review-summary";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/supabase";
 
@@ -18,6 +22,7 @@ export type ProductDetailData = {
   categories: string[] | null;
   created_at: string;
   updated_at: string;
+  reviewSummary: ProductReviewSummary | null;
 };
 
 function mapRow(row: ProductsRow): ProductDetailData {
@@ -34,6 +39,7 @@ function mapRow(row: ProductsRow): ProductDetailData {
     categories: row.categories,
     created_at: row.created_at,
     updated_at: row.updated_at,
+    reviewSummary: parseProductReviewSummary(row.review_summary),
   };
 }
 
@@ -59,6 +65,7 @@ export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
         : null,
     rating: p.rating ?? undefined,
     reviewCount: undefined,
+    reviewSummary: p.reviewSummary,
   };
 }
 

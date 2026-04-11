@@ -22,6 +22,12 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
     { fallbackRating: product.rating },
   );
 
+  const summary = product.reviewSummary;
+  const displayReviewCount = hasReviews
+    ? reviewCount
+    : (summary?.count ?? 0);
+  const showReviewCount = displayReviewCount > 0;
+
   const displayPrice = product.salePrice ?? product.price;
   const hasDiscount =
     product.salePrice !== undefined && product.salePrice < product.price;
@@ -34,26 +40,36 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
       aria-label="상품 정보"
     >
       <div className="flex flex-col gap-2 border-b border-(--commerce-border-subtle) pb-6">
-        <div className="flex flex-wrap items-center gap-2">
-          <RatingStars
-            value={isPending ? 0 : displayRating}
-            size="sm"
-          />
-          {!isPending && displayRating > 0 ? (
-            <span
-              className="text-[12px] font-medium leading-5 tabular-nums text-(--commerce-text-primary)"
+        <div className="flex flex-col gap-1.5">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <RatingStars
+              value={isPending ? 0 : displayRating}
+              size="sm"
+            />
+            {!isPending && displayRating > 0 ? (
+              <span
+                className="text-[12px] font-medium leading-5 tabular-nums text-(--commerce-text-primary)"
+                style={{ fontFamily: "var(--commerce-font-body)" }}
+              >
+                {displayRating.toFixed(1)}
+              </span>
+            ) : null}
+            {showReviewCount ? (
+              <span
+                className="text-[12px] leading-5 text-(--commerce-text-secondary)"
+                style={{ fontFamily: "var(--commerce-font-body)" }}
+              >
+                리뷰 {displayReviewCount.toLocaleString("ko-KR")}개
+              </span>
+            ) : null}
+          </div>
+          {summary?.highlight ? (
+            <p
+              className="text-sm leading-5 text-(--commerce-text-tertiary)"
               style={{ fontFamily: "var(--commerce-font-body)" }}
             >
-              {displayRating.toFixed(1)}
-            </span>
-          ) : null}
-          {hasReviews ? (
-            <span
-              className="text-[12px] leading-5 text-(--commerce-text-primary)"
-              style={{ fontFamily: "var(--commerce-font-body)" }}
-            >
-              {reviewCount} Reviews
-            </span>
+              “{summary.highlight}”
+            </p>
           ) : null}
         </div>
 

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import type { Product } from "@/components/commerce/types";
 import { useDebouncedValue } from "@/commons/hooks/useDebouncedValue";
+import { parseProductReviewSummary } from "@/commons/types/product-review-summary";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { Database } from "@/types/supabase";
 
@@ -18,6 +19,7 @@ function mapProduct(row: ProductsRow): Product {
     imageUrl: row.image_url ?? "",
     rating: row.rating_average ?? undefined,
     reviewCount: undefined,
+    reviewSummary: parseProductReviewSummary(row.review_summary),
   };
 }
 
@@ -39,7 +41,7 @@ export function useProductSearch(keyword: string) {
       const { data, error } = await supabase
         .from("products")
         .select(
-          "id, name, description, price, sale_price, image_url, status, rating_average",
+          "id, name, description, price, sale_price, image_url, status, rating_average, review_summary",
         )
         .neq("status", "hidden")
         .or(`name.ilike.%${q}%,description.ilike.%${q}%`);
