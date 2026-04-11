@@ -16,11 +16,12 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { toast } from "sonner";
 
 /**
- * Figma(Commerce 컴포넌트 310:2620 계열) PDP 구매 블록
- * - 수량: 127×52, r8, fill #f5f5f5 (QuantitySelector compact)
- * - 위시리스트: 357×52, 1px stroke #141718, 아이콘 20 + 라벨, gap 8
- * - 장바구니: 508×52, fill #141718, 텍스트 inverse, r8
- * - 열 간격 24px → 127 + 24 + 357 = 508
+ * Figma(노드 37-1912 등 PDP 루프) 구매 블록
+ * - 수량: 고정 127×52, r8, fill #f5f5f5 (QuantitySelector compact)
+ * - 위시리스트: 높이 52, 1px stroke #141718; 가로는 (컨테이너 − 127 − gap)만큼 flex-1
+ *   → 부모가 508px일 때만 357px이 되고, 좁은 오른쪽 컬럼에서도 Add to cart와 우측 정렬 일치
+ * - 장바구니: 컨테이너 전폭(최대 508)×52, fill #141718
+ * - 열 간격 24px (gap-6)
  */
 const PDP_CTA_TYPO: CSSProperties = {
   ...typographyToStyle(commerceTypography.buttonM),
@@ -109,20 +110,20 @@ export function AddToCartSection({
   return (
     <section
       className={cn(
-        "w-full max-w-[508px] border-t border-(--commerce-border-subtle) pt-8",
+        "w-full min-w-0 max-w-[508px] border-t border-(--commerce-border-subtle) pt-8",
         className,
       )}
       aria-label="장바구니 담기"
     >
       <div
         className={cn(
-          "grid w-full grid-cols-1 gap-y-4",
-          "sm:grid-cols-[127px_357px] sm:gap-x-6 sm:gap-y-0",
+          "flex w-full min-w-0 flex-col gap-4",
+          "sm:h-[52px] sm:flex-row sm:items-stretch sm:gap-6",
         )}
       >
         <QuantitySelector
           productLayout="compact"
-          className="box-border shrink-0 justify-self-start sm:justify-self-stretch"
+          className="box-border w-[127px] max-w-[127px] shrink-0"
           value={quantity}
           min={1}
           onChange={setQuantity}
@@ -134,7 +135,7 @@ export function AddToCartSection({
           type="button"
           disabled={cartDisabled || isPending}
           className={cn(
-            "box-border flex h-[52px] min-h-[52px] w-full max-w-[357px] cursor-pointer items-center justify-center gap-2 rounded-lg sm:w-[357px] sm:max-w-none",
+            "box-border flex h-[52px] min-h-[52px] w-full min-w-0 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg",
             "border border-solid border-(--commerce-primary-main) bg-transparent antialiased",
             "text-(--commerce-text-primary) transition-[background-color,box-shadow,opacity,transform] duration-200 ease-in-out",
             "hover:bg-(--commerce-background-light) hover:shadow-[inset_0_0_0_1px_rgba(20,23,24,0.04),0_1px_2px_rgba(20,23,24,0.06)]",
@@ -163,7 +164,7 @@ export function AddToCartSection({
               aria-hidden
             />
           )}
-          <span className="max-w-[min(100%,220px)] truncate text-center leading-[28px]">
+          <span className="min-w-0 truncate text-center leading-[28px]">
             Wishlist
           </span>
         </button>
@@ -173,7 +174,7 @@ export function AddToCartSection({
         type="button"
         disabled={cartDisabled}
         className={cn(
-          "mt-4 box-border flex h-[52px] min-h-[52px] w-full max-w-[508px] cursor-pointer items-center justify-center rounded-lg border-0 antialiased",
+          "mt-4 box-border flex h-[52px] min-h-[52px] w-full min-w-0 max-w-[508px] cursor-pointer items-center justify-center rounded-lg border-0 antialiased",
           "bg-(--commerce-primary-main) text-(--commerce-text-inverse)",
           "transition-[background-color,box-shadow,filter,transform] duration-200 ease-in-out",
           "hover:bg-(--commerce-primary-light) hover:shadow-[0_10px_28px_rgba(20,23,24,0.16),0_2px_6px_rgba(20,23,24,0.08)]",

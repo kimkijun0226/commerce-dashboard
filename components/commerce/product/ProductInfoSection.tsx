@@ -30,8 +30,7 @@ export function ProductInfoSection({
   const hasDiscount =
     product.salePrice !== undefined && product.salePrice < product.price;
 
-  const measurements =
-    product.measurements?.trim() || DEFAULT_MEASUREMENTS;
+  const measurements = product.measurements?.trim() || DEFAULT_MEASUREMENTS;
 
   const categoryLine =
     product.categories && product.categories.length > 0
@@ -40,7 +39,7 @@ export function ProductInfoSection({
 
   return (
     <section
-      className={cn("flex flex-col gap-6", className)}
+      className={cn("flex min-w-0 max-w-full flex-col gap-6", className)}
       aria-label="상품 정보"
     >
       <div className="flex flex-col gap-2 border-b border-(--commerce-border-subtle) pb-6">

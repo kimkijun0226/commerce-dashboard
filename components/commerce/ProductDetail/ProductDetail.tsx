@@ -36,10 +36,12 @@ export function ProductDetail({
           )}
         </div>
 
-        <ProductInfoSection
-          product={toCommonsProductDetail(product)}
-          initialIsLiked={initialIsLiked}
-        />
+        <div className="min-w-0">
+          <ProductInfoSection
+            product={toCommonsProductDetail(product)}
+            initialIsLiked={initialIsLiked}
+          />
+        </div>
       </div>
     </div>
   );
