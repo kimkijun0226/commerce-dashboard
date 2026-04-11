@@ -25,7 +25,7 @@ export function ProductDetail({ product, initialReviews }: ProductDetailProps) {
         <ProductDetailSidebar product={detail} />
       </div>
 
-      <div className="mt-14 w-full border-t border-(--commerce-border-subtle) pt-10">
+      <div className="mt-14 w-full pt-10">
         <ProductDetailTabs
           additionalInfoContent={
             <ProductDetailAdditionalInfo
