@@ -3,28 +3,24 @@
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import { RatingStars } from "@/components/commerce/RatingStars/RatingStars";
 import { cn } from "@/components/ui";
+import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 
-type ReviewRow = {
-  id: string;
-  rating: number;
-  content: string | null;
-  created_at: string;
-};
-
 export type ProductDetailReviewsContentProps = {
   productId: string;
+  initialReviews: ProductReviewListItem[];
   className?: string;
 };
 
 export function ProductDetailReviewsContent({
   productId,
+  initialReviews,
   className,
 }: ProductDetailReviewsContentProps) {
   const { data, isPending, isError } = useQuery({
     queryKey: QUERY_KEYS.reviews.listByProduct(productId),
-    queryFn: async (): Promise<ReviewRow[]> => {
+    queryFn: async (): Promise<ProductReviewListItem[]> => {
       const supabase = getSupabaseBrowserClient();
       const { data: rows, error } = await supabase
         .from("reviews")
@@ -33,8 +29,10 @@ export function ProductDetailReviewsContent({
         .order("created_at", { ascending: false });
 
       if (error) throw new Error(`Failed to load reviews: ${error.message}`);
-      return (rows ?? []) as ReviewRow[];
+      return (rows ?? []) as ProductReviewListItem[];
     },
+    initialData: initialReviews,
+    staleTime: 60 * 1000,
   });
 
   if (isPending) {
