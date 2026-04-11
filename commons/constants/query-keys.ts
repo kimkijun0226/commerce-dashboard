@@ -7,7 +7,8 @@ export const QUERY_KEYS = {
     detail: (productId: string) => ["products", "detail", productId] as const,
   },
   reviews: {
-    count: (productId: string) => ["reviews", "count", productId] as const,
+    /** 상품별 리뷰 목록(평점·개수 계산용) */
+    byProduct: (productId: string) => ["reviews", "byProduct", productId] as const,
   },
   orders: {
     all: ["orders"] as const,

@@ -3,7 +3,7 @@
 import type { ProductDetail } from "@/commons/types/product";
 import { AddToCartSection } from "@/components/commerce/product/AddToCartSection";
 import { RatingStars } from "@/components/commerce/RatingStars/RatingStars";
-import { useProductRating } from "@/features/products/hooks/useProductRating";
+import { useProductReviews } from "@/features/products/hooks/useProductReviews";
 import { cn } from "@/components/ui";
 
 const DEFAULT_MEASUREMENTS = "—";
@@ -19,7 +19,8 @@ export type ProductInfoSectionProps = {
 };
 
 export function ProductInfoSection({ product, className }: ProductInfoSectionProps) {
-  const { rating, reviewCount, showReviewCount } = useProductRating(product);
+  const { reviewCount, ratingDisplay, hasReviews, isPending } =
+    useProductReviews(product.id);
 
   const displayPrice = product.salePrice ?? product.price;
   const hasDiscount =
@@ -39,8 +40,11 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
     >
       <div className="flex flex-col gap-2 border-b border-(--commerce-border-subtle) pb-6">
         <div className="flex flex-wrap items-center gap-2">
-          <RatingStars value={Math.min(5, Math.max(0, rating))} size="sm" />
-          {showReviewCount ? (
+          <RatingStars
+            value={isPending ? 0 : ratingDisplay}
+            size="sm"
+          />
+          {hasReviews ? (
             <span
               className="text-[12px] leading-5 text-(--commerce-text-primary)"
               style={{ fontFamily: "var(--commerce-font-body)" }}
