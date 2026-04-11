@@ -8,7 +8,6 @@ import { useMemo } from "react";
 export type ProductReviewSummary = {
   reviewCount: number;
   averageRating: number;
-  ratingDisplay: number;
 };
 
 function aggregateByProductId(
@@ -25,11 +24,7 @@ function aggregateByProductId(
     const reviewCount = ratings.length;
     const averageRating =
       ratings.reduce((sum, r) => sum + r, 0) / reviewCount;
-    const ratingDisplay = Math.min(
-      5,
-      Math.max(0, Math.round(averageRating)),
-    );
-    out.set(productId, { reviewCount, averageRating, ratingDisplay });
+    out.set(productId, { reviewCount, averageRating });
   }
   return out;
 }

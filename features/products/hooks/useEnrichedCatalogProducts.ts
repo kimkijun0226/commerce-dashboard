@@ -18,12 +18,12 @@ export function useEnrichedCatalogProducts(products: Product[]) {
     }
     return products.map((p) => {
       const s = summaryMap.get(p.id);
-      if (!s || s.reviewCount === 0) {
-        return { ...p, rating: undefined, reviewCount: undefined };
+      if (!s) {
+        return { ...p, rating: p.rating, reviewCount: undefined };
       }
       return {
         ...p,
-        rating: s.ratingDisplay,
+        rating: s.averageRating,
         reviewCount: s.reviewCount,
       };
     });

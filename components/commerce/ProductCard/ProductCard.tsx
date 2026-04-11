@@ -124,7 +124,15 @@ export function ProductCard({
       </div>
       <div className="flex flex-col gap-1 pt-4">
         {product.rating !== undefined ? (
-          <RatingStars value={product.rating} size="sm" />
+          <div className="flex flex-wrap items-center gap-1.5">
+            <RatingStars value={product.rating} size="sm" />
+            <span
+              className="text-xs font-medium tabular-nums text-[var(--commerce-text-secondary)]"
+              aria-label={`평균 ${product.rating.toFixed(1)}점`}
+            >
+              {product.rating.toFixed(1)}
+            </span>
+          </div>
         ) : null}
         <Link
           href={href}

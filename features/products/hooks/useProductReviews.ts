@@ -4,13 +4,20 @@ import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 
+export type UseProductReviewsOptions = {
+  /**
+   * `reviews` 행이 없을 때 사용할 평균(예: `products.rating_average`)
+   */
+  fallbackRating?: number;
+};
+
 export type UseProductReviewsResult = {
   /** `reviews` 행 기준 개수 */
   reviewCount: number;
-  /** 리뷰 `rating` 산술 평균 (없으면 0) */
-  averageRating: number;
-  /** 5점 만점 별 UI용 정수(반올림) */
-  ratingDisplay: number;
+  /** 리뷰 기준 산술 평균(리뷰 없으면 0) */
+  averageFromReviews: number;
+  /** 별·숫자 표시용: 리뷰가 있으면 그 평균, 없으면 fallback */
+  displayRating: number;
   /** 리뷰가 1건 이상일 때만 보조 문구 등 표시 */
   hasReviews: boolean;
   isPending: boolean;
@@ -22,6 +29,7 @@ export type UseProductReviewsResult = {
  */
 export function useProductReviews(
   productId: string,
+  options?: UseProductReviewsOptions,
 ): UseProductReviewsResult {
   const { data, isPending, isError, isSuccess } = useQuery({
     queryKey: QUERY_KEYS.reviews.byProduct(productId),
@@ -39,19 +47,23 @@ export function useProductReviews(
 
   const list = data ?? [];
   const reviewCount = isSuccess ? list.length : 0;
-  const averageRating =
+  const averageFromReviews =
     reviewCount > 0
       ? list.reduce((sum, row) => sum + row.rating, 0) / reviewCount
       : 0;
-  const ratingDisplay = Math.min(
-    5,
-    Math.max(0, Math.round(averageRating)),
-  );
+
+  const fallback = options?.fallbackRating;
+  const displayRating =
+    reviewCount > 0
+      ? Math.min(5, Math.max(0, averageFromReviews))
+      : fallback !== undefined && fallback > 0
+        ? Math.min(5, Math.max(0, fallback))
+        : 0;
 
   return {
     reviewCount,
-    averageRating,
-    ratingDisplay,
+    averageFromReviews,
+    displayRating,
     hasReviews: reviewCount > 0,
     isPending,
     isError,

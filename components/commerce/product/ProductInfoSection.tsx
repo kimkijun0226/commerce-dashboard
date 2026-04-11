@@ -17,8 +17,10 @@ export type ProductInfoSectionProps = {
 };
 
 export function ProductInfoSection({ product, className }: ProductInfoSectionProps) {
-  const { reviewCount, ratingDisplay, hasReviews, isPending } =
-    useProductReviews(product.id);
+  const { reviewCount, displayRating, hasReviews, isPending } = useProductReviews(
+    product.id,
+    { fallbackRating: product.rating },
+  );
 
   const displayPrice = product.salePrice ?? product.price;
   const hasDiscount =
@@ -34,9 +36,17 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
       <div className="flex flex-col gap-2 border-b border-(--commerce-border-subtle) pb-6">
         <div className="flex flex-wrap items-center gap-2">
           <RatingStars
-            value={isPending ? 0 : ratingDisplay}
+            value={isPending ? 0 : displayRating}
             size="sm"
           />
+          {!isPending && displayRating > 0 ? (
+            <span
+              className="text-[12px] font-medium leading-5 tabular-nums text-(--commerce-text-primary)"
+              style={{ fontFamily: "var(--commerce-font-body)" }}
+            >
+              {displayRating.toFixed(1)}
+            </span>
+          ) : null}
           {hasReviews ? (
             <span
               className="text-[12px] leading-5 text-(--commerce-text-primary)"
