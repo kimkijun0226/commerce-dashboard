@@ -11,7 +11,8 @@
     "build-storybook": "storybook build",
     "db:run-migration": "tsx scripts/run-migration.ts",
     "db:run-rls": "tsx scripts/run-rls.ts",
-    "db:seed": "tsx scripts/seed-products.ts"
+    "db:seed": "tsx scripts/seed-products.ts",
+    "db:seed-reviews": "tsx scripts/seed-reviews.ts"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.15.0",
