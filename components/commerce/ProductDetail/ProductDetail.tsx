@@ -1,3 +1,5 @@
+import { ProductDetailReviewsContent } from "@/app/(commerce)/products/[productId]/_components/ProductDetailReviewsContent";
+import { ProductDetailTabs } from "@/app/(commerce)/products/[productId]/_components/ProductDetailTabs";
 import { ProductDetailMedia } from "@/components/commerce/ProductDetail/ProductDetailMedia";
 import { ProductDetailSidebar } from "@/components/commerce/ProductDetail/ProductDetailSidebar";
 import type { ProductDetailData } from "@/features/products/api/useProductDetail";
@@ -18,6 +20,23 @@ export function ProductDetail({ product }: ProductDetailProps) {
           alt={product.name}
         />
         <ProductDetailSidebar product={detail} />
+      </div>
+
+      <div className="mt-14 w-full border-t border-(--commerce-border-subtle) pt-10">
+        <ProductDetailTabs
+          additionalInfoContent={
+            product.additionalInfo?.trim() ? (
+              <div className="whitespace-pre-wrap text-(--commerce-text-primary)">
+                {product.additionalInfo}
+              </div>
+            ) : (
+              <p className="text-(--commerce-text-tertiary)">
+                등록된 추가 정보가 없습니다.
+              </p>
+            )
+          }
+          reviewsContent={<ProductDetailReviewsContent productId={product.id} />}
+        />
       </div>
     </div>
   );

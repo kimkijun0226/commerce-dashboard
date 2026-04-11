@@ -9,6 +9,9 @@ export const QUERY_KEYS = {
   reviews: {
     /** 상품별 리뷰 목록(평점·개수 계산용) */
     byProduct: (productId: string) => ["reviews", "byProduct", productId] as const,
+    /** PDP 탭: 상품별 리뷰 본문 목록 */
+    listByProduct: (productId: string) =>
+      ["reviews", "listByProduct", productId] as const,
     /** 목록용: 여러 상품 id에 대한 리뷰 일괄 조회 후 클라이언트 집계 */
     summaryByProductIds: (sortedUniqueIds: readonly string[]) =>
       ["reviews", "summary", [...sortedUniqueIds]] as const,

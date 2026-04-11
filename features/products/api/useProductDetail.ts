@@ -20,6 +20,7 @@ export type ProductDetailData = {
   status: ProductsRow["status"];
   measurements: string | null;
   categories: string[] | null;
+  additionalInfo: string | null;
   created_at: string;
   updated_at: string;
   reviewSummary: ProductReviewSummary | null;
@@ -37,6 +38,7 @@ function mapRow(row: ProductsRow): ProductDetailData {
     status: row.status,
     measurements: row.measurements,
     categories: row.categories,
+    additionalInfo: row.additional_info,
     created_at: row.created_at,
     updated_at: row.updated_at,
     reviewSummary: parseProductReviewSummary(row.review_summary),
@@ -66,6 +68,7 @@ export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
     rating: p.rating ?? undefined,
     reviewCount: undefined,
     reviewSummary: p.reviewSummary,
+    additional_info: p.additionalInfo ?? null,
   };
 }
 
