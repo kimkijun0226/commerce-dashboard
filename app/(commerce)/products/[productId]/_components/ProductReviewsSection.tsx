@@ -4,6 +4,10 @@ import { CustomerReviewsHeader } from "@/app/(commerce)/products/[productId]/_co
 import { ReviewFeedbackBar } from "@/app/(commerce)/products/[productId]/_components/ReviewFeedbackBar";
 import { ReviewList } from "@/app/(commerce)/products/[productId]/_components/ReviewList";
 import { ReviewSummaryDisplay } from "@/app/(commerce)/products/[productId]/_components/ReviewSummaryDisplay";
+import {
+  type ReviewSortOption,
+  sortReviewsByOption,
+} from "@/app/(commerce)/products/[productId]/_components/reviewSort";
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import { useAuth } from "@/commons/hooks/useAuth";
 import { ReviewForm } from "@/components/commerce/ReviewForm";
@@ -11,7 +15,7 @@ import { cn } from "@/components/ui";
 import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
 export type ProductReviewsSectionProps = {
@@ -22,10 +26,6 @@ export type ProductReviewsSectionProps = {
   className?: string;
 };
 
-/**
- * Figma Product Page 01 · Review Section (37:1912 하위)
- * 간격: AI→헤더 40px, 헤더→폼 64px, 폼→코멘트 40px (gap-10 / gap-16)
- */
 export function ProductReviewsSection({
   productId,
   initialReviews,
@@ -39,6 +39,7 @@ export function ProductReviewsSection({
   const [formKey, setFormKey] = useState(0);
   const [draftRating, setDraftRating] = useState(5);
   const [showFullForm, setShowFullForm] = useState(false);
+  const [sort, setSort] = useState<ReviewSortOption>("newest");
 
   const { data, isPending, isError } = useQuery({
     queryKey: QUERY_KEYS.reviews.listByProduct(productId),
@@ -59,7 +60,7 @@ export function ProductReviewsSection({
 
   const mutation = useMutation({
     mutationFn: async (payload: { rating: number; body: string }) => {
-      if (!effectiveUserId) throw new Error("Not signed in");
+      if (!effectiveUserId) throw new Error("로그인이 필요합니다.");
       const supabase = getSupabaseBrowserClient();
       const { error } = await supabase.from("reviews").insert({
         user_id: effectiveUserId,
@@ -78,14 +79,19 @@ export function ProductReviewsSection({
       });
       setFormKey((k) => k + 1);
       setShowFullForm(false);
-      toast.success("Review submitted.");
+      toast.success("리뷰가 등록되었습니다.");
     },
     onError: (e: Error) => {
-      toast.error(e.message || "Could not submit review.");
+      toast.error(e.message || "리뷰를 등록하지 못했습니다.");
     },
   });
 
   const list = data ?? [];
+  const sortedList = useMemo(
+    () => sortReviewsByOption(list, sort),
+    [list, sort],
+  );
+
   const sumRating = list.reduce((acc, r) => acc + r.rating, 0);
   const averageRating =
     list.length > 0 ? Math.round((sumRating / list.length) * 10) / 10 : 0;
@@ -94,16 +100,16 @@ export function ProductReviewsSection({
 
   if (isPending && list.length === 0 && !initialReviews.length) {
     return (
-      <p className={cn("text-(--commerce-text-tertiary)", className)}>
-        Loading reviews…
+      <p className={cn("text-[#99a1af]", className)} style={{ fontFamily: "var(--commerce-font-body)" }}>
+        리뷰를 불러오는 중…
       </p>
     );
   }
 
   if (isError) {
     return (
-      <p className={cn("text-(--commerce-text-tertiary)", className)} role="alert">
-        Could not load reviews.
+      <p className={cn("text-[#99a1af]", className)} role="alert" style={{ fontFamily: "var(--commerce-font-body)" }}>
+        리뷰를 불러오지 못했습니다.
       </p>
     );
   }
@@ -124,7 +130,7 @@ export function ProductReviewsSection({
             className="text-sm text-[#99a1af]"
             style={{ fontFamily: "var(--commerce-font-body)" }}
           >
-            Checking session…
+            로그인 여부 확인 중…
           </p>
         ) : (
           <ReviewFeedbackBar
@@ -146,13 +152,18 @@ export function ProductReviewsSection({
                 body: values.body,
               })
             }
-            className="rounded-2xl border border-[#e8ecef] bg-[#fefefe]"
+            className="rounded-2xl border border-[#e8ecef] bg-[#fefefe] shadow-sm"
           />
         ) : null}
       </div>
 
       <div className="mt-10">
-        <ReviewList reviews={list} isSuperAdmin={isSuperAdmin} />
+        <ReviewList
+          reviews={sortedList}
+          isSuperAdmin={isSuperAdmin}
+          sort={sort}
+          onSortChange={setSort}
+        />
       </div>
     </div>
   );

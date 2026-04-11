@@ -1,6 +1,7 @@
 "use client";
 
 import { CommentsSectionHeader } from "@/app/(commerce)/products/[productId]/_components/CommentsSectionHeader";
+import type { ReviewSortOption } from "@/app/(commerce)/products/[productId]/_components/reviewSort";
 import { ReviewCard } from "@/app/(commerce)/products/[productId]/_components/ReviewCard";
 import { cn } from "@/components/ui";
 import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
@@ -12,14 +13,17 @@ export type ReviewListProps = {
   reviews: ProductReviewListItem[];
   isSuperAdmin?: boolean;
   pageSize?: number;
+  sort: ReviewSortOption;
+  onSortChange: (value: ReviewSortOption) => void;
   className?: string;
 };
 
-/** Figma Comment section: 제목 행 + 리스트 + Load more (outline pill) */
 export function ReviewList({
   reviews,
   isSuperAdmin,
   pageSize = DEFAULT_PAGE_SIZE,
+  sort,
+  onSortChange,
   className,
 }: ReviewListProps) {
   const [visible, setVisible] = useState(pageSize);
@@ -30,12 +34,16 @@ export function ReviewList({
   if (reviews.length === 0) {
     return (
       <div className={cn("flex flex-col gap-10", className)}>
-        <CommentsSectionHeader reviewCount={0} />
+        <CommentsSectionHeader
+          reviewCount={0}
+          sort={sort}
+          onSortChange={onSortChange}
+        />
         <p
-          className="text-(--commerce-text-tertiary)"
+          className="text-[15px] leading-7 text-[#6c7275]"
           style={{ fontFamily: "var(--commerce-font-body)" }}
         >
-          No reviews yet.
+          아직 등록된 리뷰가 없습니다.
         </p>
       </div>
     );
@@ -43,28 +51,38 @@ export function ReviewList({
 
   return (
     <div className={cn("flex flex-col gap-10", className)}>
-      <CommentsSectionHeader reviewCount={reviews.length} />
-      <ul className="flex flex-col gap-0" aria-label="Customer reviews">
+      <CommentsSectionHeader
+        reviewCount={reviews.length}
+        sort={sort}
+        onSortChange={(v) => {
+          onSortChange(v);
+          setVisible(pageSize);
+        }}
+      />
+      <ul className="flex flex-col" aria-label="리뷰 목록">
         {shown.map((r) => (
-          <li key={r.id} className="pt-0 first:pt-0">
+          <li
+            key={r.id}
+            className="border-b border-[#e8ecef] py-10 first:pt-2"
+          >
             <ReviewCard review={r} isSuperAdmin={isSuperAdmin} />
           </li>
         ))}
       </ul>
       {hasMore ? (
-        <div className="flex justify-center pt-2">
+        <div className="flex justify-center pt-4">
           <button
             type="button"
             onClick={() => setVisible((v) => v + pageSize)}
             className={cn(
               "inline-flex h-10 min-w-[158px] items-center justify-center rounded-full border border-[#141718] bg-transparent px-8",
               "text-base font-medium leading-7 tracking-[-0.4px] text-[#141718]",
-              "transition-colors hover:bg-[#141718]/5",
+              "transition-colors hover:bg-[#141718]/5 active:bg-[#141718]/10",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
             )}
             style={{ fontFamily: "var(--commerce-font-body)" }}
           >
-            Load more
+            더 보기
           </button>
         </div>
       ) : null}

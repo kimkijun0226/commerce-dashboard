@@ -9,10 +9,6 @@ export type CustomerReviewsHeaderProps = {
   className?: string;
 };
 
-/**
- * Figma Review Section 헤더 (48:9221): Customer Reviews + 별 + "N Reviews"
- * — 큰 숫자 평균 없음, 두 줄 구조
- */
 export function CustomerReviewsHeader({
   averageRating,
   reviewCount,
@@ -24,7 +20,7 @@ export function CustomerReviewsHeader({
         className="text-[28px] font-medium leading-[34px] tracking-[-0.6px] text-[#23262f]"
         style={{ fontFamily: "var(--commerce-font-heading)" }}
       >
-        Customer Reviews
+        고객 리뷰
       </h2>
       <div className="flex flex-wrap items-center gap-3">
         <RatingStars
@@ -33,15 +29,15 @@ export function CustomerReviewsHeader({
           palette="product"
           aria-label={
             reviewCount > 0
-              ? `Average rating ${averageRating} out of 5`
-              : "No ratings yet"
+              ? `평균 평점 ${averageRating}점`
+              : "아직 평점 없음"
           }
         />
         <span
           className="text-xs leading-5 text-[#141718]"
           style={{ fontFamily: "var(--commerce-font-body)" }}
         >
-          {reviewCount} {reviewCount === 1 ? "Review" : "Reviews"}
+          리뷰 {reviewCount}개
         </span>
       </div>
     </header>

@@ -13,7 +13,6 @@ export type ReviewFeedbackBarProps = {
   className?: string;
 };
 
-/** Figma Feedback_Form (48:9138): 72px 높이, 16px radius, #fefefe / stroke #e8ecef */
 export function ReviewFeedbackBar({
   isLoggedIn,
   draftRating,
@@ -24,17 +23,18 @@ export function ReviewFeedbackBar({
   return (
     <div
       className={cn(
-        "flex min-h-[72px] flex-wrap items-center gap-4 rounded-2xl border border-[#e8ecef] bg-[#fefefe] px-6 py-3 sm:gap-6",
+        "flex min-h-[72px] flex-wrap items-center gap-4 rounded-2xl border border-[#e8ecef] bg-[#fefefe] px-6 py-3 shadow-sm sm:gap-6",
+        "transition-shadow hover:shadow-md",
         className,
       )}
     >
       <div
         className={cn(
           "flex shrink-0 items-center gap-0.5",
-          !isLoggedIn && "pointer-events-none opacity-50",
+          !isLoggedIn && "pointer-events-none opacity-45",
         )}
         role={isLoggedIn ? "group" : undefined}
-        aria-label={isLoggedIn ? "Select rating" : undefined}
+        aria-label={isLoggedIn ? "별점 선택" : undefined}
       >
         {([1, 2, 3, 4, 5] as const).map((n) => (
           <button
@@ -44,10 +44,10 @@ export function ReviewFeedbackBar({
             onClick={() => onDraftRatingChange(n)}
             className={cn(
               "rounded p-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
-              isLoggedIn && "cursor-pointer",
+              isLoggedIn && "cursor-pointer hover:opacity-80",
             )}
             aria-pressed={draftRating >= n}
-            aria-label={`${n} star${n > 1 ? "s" : ""}`}
+            aria-label={`별점 ${n}점`}
           >
             {n <= draftRating ? (
               <FaStar className="size-4 shrink-0 text-[#141718]" aria-hidden />
@@ -62,7 +62,9 @@ export function ReviewFeedbackBar({
         className="min-w-0 flex-1 text-base leading-[26px] text-[#99a1af]"
         style={{ fontFamily: "var(--commerce-font-body)" }}
       >
-        {isLoggedIn ? "Share your thoughts" : "Sign in to share your thoughts"}
+        {isLoggedIn
+          ? "상품은 어떠셨나요? 아래에서 리뷰를 작성해 보세요."
+          : "로그인하시면 리뷰를 남길 수 있어요."}
       </p>
 
       <div className="ml-auto flex shrink-0 items-center gap-3">
@@ -76,12 +78,12 @@ export function ReviewFeedbackBar({
             className={cn(
               "inline-flex h-10 min-w-[176px] items-center justify-center rounded-full bg-[#141718] px-8",
               "text-base font-medium leading-7 tracking-[-0.4px] text-white",
-              "transition-opacity hover:opacity-90",
+              "transition-opacity hover:opacity-90 active:scale-[0.99]",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
             )}
             style={{ fontFamily: "var(--commerce-font-body)" }}
           >
-            Write Review
+            리뷰 작성
           </button>
         ) : (
           <Link
@@ -89,12 +91,12 @@ export function ReviewFeedbackBar({
             className={cn(
               "inline-flex h-10 min-w-[176px] items-center justify-center rounded-full bg-[#141718] px-8",
               "text-base font-medium leading-7 tracking-[-0.4px] text-white",
-              "transition-opacity hover:opacity-90",
+              "transition-opacity hover:opacity-90 active:scale-[0.99]",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
             )}
             style={{ fontFamily: "var(--commerce-font-body)" }}
           >
-            Write Review
+            Sign in
           </Link>
         )}
       </div>

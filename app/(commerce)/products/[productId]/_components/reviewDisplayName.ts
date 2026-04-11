@@ -35,3 +35,14 @@ export function reviewDisplayName(reviewId: string): string {
   const l = LAST[(h >> 4) % LAST.length];
   return `${f} ${l}`;
 }
+
+/** 아바타 이니셜 (라틴 이름 기준) */
+export function reviewDisplayInitials(displayName: string): string {
+  const parts = displayName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    const a = parts[0][0] ?? "";
+    const b = parts[parts.length - 1][0] ?? "";
+    return `${a}${b}`.toUpperCase();
+  }
+  return displayName.slice(0, 2).toUpperCase() || "?";
+}

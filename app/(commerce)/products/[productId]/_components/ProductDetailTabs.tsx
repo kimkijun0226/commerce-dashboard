@@ -37,7 +37,7 @@ export function ProductDetailTabs({
       <div
         role="tablist"
         aria-label="Product detail tabs"
-        className="flex h-8 flex-wrap items-end gap-x-20"
+        className="flex h-8 flex-wrap items-end gap-x-20 border-b border-[#e8ecef]"
       >
         {TABS.map((tab) => {
           const selected = activeTab === tab.id;
@@ -53,10 +53,10 @@ export function ProductDetailTabs({
               aria-controls={panelId}
               tabIndex={selected ? 0 : -1}
               className={cn(
-                "relative shrink-0 border-b-2 border-transparent pb-0 text-left text-[18px] font-medium tracking-[-0.4px] transition-colors duration-200",
+                "relative z-0 -mb-px shrink-0 border-b-2 border-transparent pb-0 text-left text-[18px] font-medium tracking-[-0.4px] transition-colors duration-200",
                 "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
                 selected
-                  ? "border-black text-[#121212]"
+                  ? "z-[1] border-black text-[#121212]"
                   : "text-[#807e7e] hover:text-[#121212]",
               )}
               style={{
