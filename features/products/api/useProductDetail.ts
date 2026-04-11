@@ -1,3 +1,4 @@
+import type { ProductDetail } from "@/commons/types/product";
 import { createClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/supabase";
 
@@ -13,6 +14,10 @@ export type ProductDetailData = {
   imageUrl: string;
   rating: number | null;
   status: ProductsRow["status"];
+  measurements: string | null;
+  categories: string[] | null;
+  created_at: string;
+  updated_at: string;
 };
 
 function mapRow(row: ProductsRow): ProductDetailData {
@@ -25,6 +30,35 @@ function mapRow(row: ProductsRow): ProductDetailData {
     imageUrl: row.image_url ?? "",
     rating: row.rating_average,
     status: row.status,
+    measurements: row.measurements,
+    categories: row.categories,
+    created_at: row.created_at,
+    updated_at: row.updated_at,
+  };
+}
+
+/** `ProductInfoSection` 등 커머스 UI용 `ProductDetail` 변환 */
+export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
+  return {
+    id: p.id,
+    name: p.name,
+    description: p.description,
+    price: p.price,
+    salePrice: p.salePrice ?? undefined,
+    image_url: p.imageUrl || null,
+    status: p.status,
+    created_at: p.created_at,
+    updated_at: p.updated_at,
+    measurements: p.measurements,
+    categories:
+      p.categories && p.categories.length > 0
+        ? p.categories.map((name, i) => ({
+            id: `cat-${i}-${name}`,
+            name,
+          }))
+        : null,
+    rating: p.rating ?? undefined,
+    reviewCount: undefined,
   };
 }
 

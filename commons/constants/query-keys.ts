@@ -6,6 +6,9 @@ export const QUERY_KEYS = {
       ["products", "list", filters] as const,
     detail: (productId: string) => ["products", "detail", productId] as const,
   },
+  reviews: {
+    count: (productId: string) => ["reviews", "count", productId] as const,
+  },
   orders: {
     all: ["orders"] as const,
     list: (filters?: { userId?: string }) =>
