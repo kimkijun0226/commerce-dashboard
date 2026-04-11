@@ -1,17 +1,15 @@
 "use client";
 
-import { ProductGrid } from "@/components/commerce/ProductGrid/ProductGrid";
-import { ProductCard } from "@/components/commerce/ProductCard/ProductCard";
+import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
 import { HomeHeroSection } from "@/components/commerce/home/HomeHeroSection";
 import type { Product } from "@/components/commerce/types";
 import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
+import { useEnrichedCatalogProducts } from "@/features/products/hooks/useEnrichedCatalogProducts";
 import { useInfiniteProducts } from "@/features/products/api/useInfiniteProducts";
 import { useProductSearch } from "@/features/search/api/useProductSearch";
-import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import { useSearchStore } from "@/features/search/store/searchStore";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { LoadingSpinner, cn } from "@/components/ui";
+import { useCallback, useMemo, useState } from "react";
 
 export function HomePage() {
   const router = useRouter();
@@ -19,16 +17,6 @@ export function HomePage() {
   const keyword = useSearchStore((s) => s.keyword);
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const closeSearch = useSearchStore((s) => s.close);
-
-  useEffect(() => {
-    if (!isSearchOpen) return;
-    const id = window.requestAnimationFrame(() => {
-      const el = document.getElementById("home-search-input") as HTMLInputElement | null;
-      el?.scrollIntoView({ behavior: "smooth", block: "center" });
-      el?.focus();
-    });
-    return () => window.cancelAnimationFrame(id);
-  }, [isSearchOpen]);
 
   const {
     data,
@@ -45,7 +33,7 @@ export function HomePage() {
     isError: isSearchError,
   } = useProductSearch(keyword);
 
-  const products = useMemo(() => {
+  const productsBase = useMemo(() => {
     const showSearch = keyword.trim().length > 0;
     const list = showSearch
       ? (searched ?? [])
@@ -56,9 +44,15 @@ export function HomePage() {
     }));
   }, [data, keyword, liked, searched]);
 
+  const { enrichedProducts } = useEnrichedCatalogProducts(productsBase);
+
   const toggleLike = useCallback((id: string) => {
     setLiked((prev) => ({ ...prev, [id]: !prev[id] }));
   }, []);
+
+  const handleAddToCart = useCallback(() => {
+    router.push("/cart");
+  }, [router]);
 
   const loadMoreRef = useInfiniteScroll({
     onLoadMore: () => {
@@ -72,63 +66,24 @@ export function HomePage() {
       isFetchingNextPage === false,
   });
 
+  const showSearch = keyword.trim().length > 0;
+
   return (
     <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-[160px]">
-      <section aria-label="상품 목록">
-        <header className="mb-12 flex flex-col items-center justify-center gap-6">
-          <h1
-            className="text-[28px] font-medium leading-7 text-(--commerce-text-primary)"
-            style={{ fontFamily: "var(--commerce-font-heading)" }}
-          >
-            All
-          </h1>
-          <div
-            id="home-search-region"
-            className={cn(
-              "w-full max-w-[720px] overflow-hidden transition-all duration-200 ease-out",
-              isSearchOpen
-                ? "max-h-[120px] opacity-100"
-                : "pointer-events-none max-h-0 opacity-0",
-            )}
-            aria-hidden={!isSearchOpen}
-          >
-            {isSearchOpen ? (
-              <HomeSearchBar onEscape={() => closeSearch()} />
-            ) : null}
-          </div>
-        </header>
-
-        {isError || isSearchError ? (
-          <div className="rounded-2xl border border-(--commerce-border-subtle) bg-(--commerce-background-default) p-6 text-(--commerce-text-secondary)">
-            상품을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
-          </div>
-        ) : (
-          <div>
-            <ProductGrid
-              products={products as Product[]}
-              columnsClassName="grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-              // Figma(Home `3:677`) 기준 카드 간격은 24px(가로), 섹션 여백은 더 넉넉한 편
-              // 세로가 너무 붙어 보이면 row-gap을 조금 키운다.
-              gapClassName="gap-x-6 gap-y-10 md:gap-x-6 md:gap-y-12"
-              loading={keyword.trim().length > 0 ? isSearchLoading : isLoading}
-              renderItem={(p) => (
-                <ProductCard
-                  product={p}
-                  onAddToCart={() => router.push("/cart")}
-                  onWishlistToggle={() => toggleLike(p.id)}
-                />
-              )}
-            />
-
-            {keyword.trim().length === 0 && hasNextPage ? (
-              <div ref={loadMoreRef} className="h-8" />
-            ) : null}
-            {keyword.trim().length === 0 && isFetchingNextPage ? (
-              <LoadingSpinner className="mt-8" />
-            ) : null}
-          </div>
-        )}
-      </section>
+      <HomeCatalogSection
+        title="All"
+        keyword={keyword}
+        isSearchOpen={isSearchOpen}
+        onCloseSearch={closeSearch}
+        showFetchError={isError || isSearchError}
+        isProductLoading={showSearch ? isSearchLoading : isLoading}
+        products={enrichedProducts as Product[]}
+        loadMoreRef={loadMoreRef}
+        showLoadMoreSentinel={!showSearch && hasNextPage === true}
+        isFetchingNextPage={isFetchingNextPage}
+        onAddToCart={handleAddToCart}
+        onWishlistToggle={toggleLike}
+      />
 
       <HomeHeroSection />
     </div>
