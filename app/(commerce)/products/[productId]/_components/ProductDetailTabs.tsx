@@ -13,8 +13,9 @@ export type ProductDetailTabsProps = {
   className?: string;
 };
 
+/** Figma Tabs/Menu (node 48:8004): Inter 18 Medium, lh 32, tracking -0.4px */
 const TABS: { id: ProductDetailTabId; label: string }[] = [
-  { id: "additional-info", label: "Additional info" },
+  { id: "additional-info", label: "Additional Info" },
   { id: "reviews", label: "Reviews" },
 ];
 
@@ -36,7 +37,7 @@ export function ProductDetailTabs({
       <div
         role="tablist"
         aria-label="Product detail tabs"
-        className="flex flex-wrap items-end gap-x-2 border-b border-(--commerce-border-subtle)"
+        className="flex h-8 flex-wrap items-end gap-x-20 border-b border-[#e8ecef]"
       >
         {TABS.map((tab) => {
           const selected = activeTab === tab.id;
@@ -52,34 +53,31 @@ export function ProductDetailTabs({
               aria-controls={panelId}
               tabIndex={selected ? 0 : -1}
               className={cn(
-                "relative -mb-px shrink-0 border-b-2 px-5 py-3 text-base font-medium transition-colors duration-200 ease-out sm:px-6 sm:py-3.5",
+                "relative -mb-px shrink-0 border-b-2 border-transparent pb-0 text-left text-[18px] font-medium tracking-[-0.4px] transition-colors duration-200",
                 "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
                 selected
-                  ? "border-(--commerce-primary-main) text-(--commerce-text-primary)"
-                  : "border-transparent text-(--commerce-text-tertiary) hover:text-(--commerce-text-secondary)",
+                  ? "border-[#121212] text-[#121212]"
+                  : "text-[#807e7e] hover:text-[#121212]",
               )}
-              style={{ fontFamily: "var(--commerce-font-body)" }}
+              style={{
+                fontFamily: "var(--commerce-font-body)",
+                lineHeight: "32px",
+              }}
               onClick={() => setActiveTab(tab.id)}
             >
-              <span className="inline-flex items-center justify-center whitespace-nowrap">
-                {tab.label}
-              </span>
+              {tab.label}
             </button>
           );
         })}
       </div>
 
-      <div className="min-h-[120px] pt-8 pb-2">
+      <div className="min-h-[120px] pt-12 pb-2">
         <div
           id={`${baseId}-panel-additional-info`}
           role="tabpanel"
           aria-labelledby={`${baseId}-additional-info`}
           hidden={activeTab !== "additional-info"}
-          className={cn(
-            "text-base leading-[26px] text-(--commerce-text-primary)",
-            activeTab !== "additional-info" && "hidden",
-          )}
-          style={{ fontFamily: "var(--commerce-font-body)" }}
+          className={cn(activeTab !== "additional-info" && "hidden")}
         >
           {additionalInfoContent}
         </div>
@@ -88,11 +86,7 @@ export function ProductDetailTabs({
           role="tabpanel"
           aria-labelledby={`${baseId}-reviews`}
           hidden={activeTab !== "reviews"}
-          className={cn(
-            "text-base leading-[26px] text-(--commerce-text-primary)",
-            activeTab !== "reviews" && "hidden",
-          )}
-          style={{ fontFamily: "var(--commerce-font-body)" }}
+          className={cn(activeTab !== "reviews" && "hidden")}
         >
           {reviewsContent}
         </div>

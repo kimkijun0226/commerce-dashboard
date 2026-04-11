@@ -9,49 +9,40 @@ export type CustomerReviewsHeaderProps = {
   className?: string;
 };
 
+/**
+ * Figma Review Section 헤더 (48:9221): Customer Reviews + 별 + "N Reviews"
+ * — 큰 숫자 평균 없음, 두 줄 구조
+ */
 export function CustomerReviewsHeader({
   averageRating,
   reviewCount,
   className,
 }: CustomerReviewsHeaderProps) {
   return (
-    <header
-      className={cn(
-        "flex flex-col gap-4 border-b border-(--commerce-border-subtle) pb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6",
-        className,
-      )}
-    >
+    <header className={cn("flex flex-col gap-4", className)}>
       <h2
-        className="text-xl font-medium tracking-tight text-(--commerce-text-primary) sm:text-2xl"
+        className="text-[28px] font-medium leading-[34px] tracking-[-0.6px] text-[#23262f]"
         style={{ fontFamily: "var(--commerce-font-heading)" }}
       >
         Customer Reviews
       </h2>
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-3">
+        <RatingStars
+          value={reviewCount > 0 ? averageRating : 0}
+          size="figma"
+          palette="product"
+          aria-label={
+            reviewCount > 0
+              ? `Average rating ${averageRating} out of 5`
+              : "No ratings yet"
+          }
+        />
         <span
-          className="text-[28px] font-medium leading-none tabular-nums text-(--commerce-text-primary) sm:text-[32px]"
-          style={{ fontFamily: "var(--commerce-font-heading)" }}
+          className="text-xs leading-5 text-[#141718]"
+          style={{ fontFamily: "var(--commerce-font-body)" }}
         >
-          {reviewCount > 0 ? averageRating.toFixed(1) : "—"}
+          {reviewCount} {reviewCount === 1 ? "Review" : "Reviews"}
         </span>
-        <div className="flex flex-col gap-1">
-          <RatingStars
-            value={reviewCount > 0 ? averageRating : 0}
-            size="md"
-            aria-label={
-              reviewCount > 0
-                ? `Average rating ${averageRating} out of 5`
-                : "No ratings yet"
-            }
-          />
-          <span
-            className="text-xs text-(--commerce-text-secondary) sm:text-sm"
-            style={{ fontFamily: "var(--commerce-font-body)" }}
-          >
-            {reviewCount}{" "}
-            {reviewCount === 1 ? "review" : "reviews"}
-          </span>
-        </div>
       </div>
     </header>
   );

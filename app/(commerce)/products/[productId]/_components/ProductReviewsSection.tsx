@@ -1,6 +1,7 @@
 "use client";
 
 import { CustomerReviewsHeader } from "@/app/(commerce)/products/[productId]/_components/CustomerReviewsHeader";
+import { ReviewFeedbackBar } from "@/app/(commerce)/products/[productId]/_components/ReviewFeedbackBar";
 import { ReviewList } from "@/app/(commerce)/products/[productId]/_components/ReviewList";
 import { ReviewSummaryDisplay } from "@/app/(commerce)/products/[productId]/_components/ReviewSummaryDisplay";
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
@@ -10,7 +11,6 @@ import { cn } from "@/components/ui";
 import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import Link from "next/link";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -22,6 +22,10 @@ export type ProductReviewsSectionProps = {
   className?: string;
 };
 
+/**
+ * Figma Product Page 01 · Review Section (37:1912 하위)
+ * 간격: AI→헤더 40px, 헤더→폼 64px, 폼→코멘트 40px (gap-10 / gap-16)
+ */
 export function ProductReviewsSection({
   productId,
   initialReviews,
@@ -33,6 +37,8 @@ export function ProductReviewsSection({
   const effectiveUserId = currentUserId ?? authUserId ?? null;
   const queryClient = useQueryClient();
   const [formKey, setFormKey] = useState(0);
+  const [draftRating, setDraftRating] = useState(5);
+  const [showFullForm, setShowFullForm] = useState(false);
 
   const { data, isPending, isError } = useQuery({
     queryKey: QUERY_KEYS.reviews.listByProduct(productId),
@@ -71,6 +77,7 @@ export function ProductReviewsSection({
         queryKey: QUERY_KEYS.reviews.byProduct(productId),
       });
       setFormKey((k) => k + 1);
+      setShowFullForm(false);
       toast.success("Review submitted.");
     },
     onError: (e: Error) => {
@@ -82,6 +89,8 @@ export function ProductReviewsSection({
   const sumRating = list.reduce((acc, r) => acc + r.rating, 0);
   const averageRating =
     list.length > 0 ? Math.round((sumRating / list.length) * 10) / 10 : 0;
+
+  const isLoggedIn = !authLoading && !!effectiveUserId;
 
   if (isPending && list.length === 0 && !initialReviews.length) {
     return (
@@ -100,53 +109,51 @@ export function ProductReviewsSection({
   }
 
   return (
-    <div className={cn("flex w-full flex-col gap-8", className)}>
-      <ReviewSummaryDisplay />
-      <CustomerReviewsHeader
-        averageRating={averageRating}
-        reviewCount={list.length}
-      />
+    <div className={cn("flex w-full max-w-[1120px] flex-col", className)}>
+      <div className="flex flex-col gap-10">
+        <ReviewSummaryDisplay />
+        <CustomerReviewsHeader
+          averageRating={averageRating}
+          reviewCount={list.length}
+        />
+      </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="mt-16 flex flex-col gap-10">
         {authLoading ? (
           <p
-            className="text-sm text-(--commerce-text-tertiary)"
+            className="text-sm text-[#99a1af]"
             style={{ fontFamily: "var(--commerce-font-body)" }}
           >
             Checking session…
           </p>
-        ) : effectiveUserId ? (
+        ) : (
+          <ReviewFeedbackBar
+            isLoggedIn={isLoggedIn}
+            draftRating={draftRating}
+            onDraftRatingChange={setDraftRating}
+            onWriteReviewClick={() => setShowFullForm(true)}
+          />
+        )}
+
+        {isLoggedIn && showFullForm ? (
           <ReviewForm
             key={formKey}
+            initialValues={{ rating: draftRating }}
             disabled={mutation.isPending}
             onSubmit={(values) =>
-              mutation.mutate({ rating: values.rating, body: values.body })
+              mutation.mutate({
+                rating: values.rating,
+                body: values.body,
+              })
             }
+            className="rounded-2xl border border-[#e8ecef] bg-[#fefefe]"
           />
-        ) : (
-          <div
-            className="flex flex-col gap-3 rounded-xl border border-(--commerce-border-subtle) bg-(--commerce-background-paper) p-4 sm:p-5"
-            style={{ fontFamily: "var(--commerce-font-body)" }}
-          >
-            <p className="text-sm text-(--commerce-text-secondary)">
-              Sign in to write a review for this product.
-            </p>
-            <Link
-              href="/login"
-              className={cn(
-                "inline-flex min-h-10 w-fit items-center justify-center rounded-lg px-4 text-sm font-medium",
-                "bg-(--commerce-primary-main) text-(--commerce-text-inverse)",
-                "transition-colors hover:opacity-90",
-                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
-              )}
-            >
-              Sign in
-            </Link>
-          </div>
-        )}
+        ) : null}
       </div>
 
-      <ReviewList reviews={list} isSuperAdmin={isSuperAdmin} />
+      <div className="mt-10">
+        <ReviewList reviews={list} isSuperAdmin={isSuperAdmin} />
+      </div>
     </div>
   );
 }

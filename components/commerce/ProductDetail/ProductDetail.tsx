@@ -16,7 +16,7 @@ export function ProductDetail({ product, initialReviews }: ProductDetailProps) {
   const detail = toCommonsProductDetail(product);
 
   return (
-    <div className="mx-auto max-w-[960px] px-4 py-10 sm:px-8">
+    <div className="mx-auto max-w-[1120px] px-4 py-10 sm:px-8">
       <div className="grid gap-10 md:grid-cols-2 md:gap-12">
         <ProductDetailMedia
           imageUrl={product.imageUrl || null}
