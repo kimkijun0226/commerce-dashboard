@@ -31,7 +31,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               </div>
             ) : (
               <p className="text-(--commerce-text-tertiary)">
-                등록된 추가 정보가 없습니다.
+                No additional information available.
               </p>
             )
           }

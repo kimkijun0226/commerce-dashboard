@@ -32,7 +32,7 @@ export function ProductDetailReviewsContent({
         .eq("product_id", productId)
         .order("created_at", { ascending: false });
 
-      if (error) throw new Error(`리뷰 목록 조회 실패: ${error.message}`);
+      if (error) throw new Error(`Failed to load reviews: ${error.message}`);
       return (rows ?? []) as ReviewRow[];
     },
   });
@@ -40,7 +40,7 @@ export function ProductDetailReviewsContent({
   if (isPending) {
     return (
       <p className={cn("text-(--commerce-text-tertiary)", className)}>
-        리뷰를 불러오는 중…
+        Loading reviews…
       </p>
     );
   }
@@ -48,7 +48,7 @@ export function ProductDetailReviewsContent({
   if (isError) {
     return (
       <p className={cn("text-(--commerce-text-tertiary)", className)} role="alert">
-        리뷰를 불러오지 못했습니다.
+        Could not load reviews.
       </p>
     );
   }
@@ -57,7 +57,7 @@ export function ProductDetailReviewsContent({
   if (list.length === 0) {
     return (
       <p className={cn("text-(--commerce-text-tertiary)", className)}>
-        아직 등록된 리뷰가 없습니다.
+        No reviews yet.
       </p>
     );
   }
@@ -73,13 +73,13 @@ export function ProductDetailReviewsContent({
             <RatingStars
               value={r.rating}
               size="sm"
-              aria-label={`평점 ${r.rating}점`}
+              aria-label={`Rating ${r.rating} out of 5`}
             />
             <time
               dateTime={r.created_at}
               className="text-sm text-(--commerce-text-tertiary)"
             >
-              {new Date(r.created_at).toLocaleDateString("ko-KR", {
+              {new Date(r.created_at).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -91,7 +91,7 @@ export function ProductDetailReviewsContent({
               {r.content}
             </p>
           ) : (
-            <p className="mt-3 text-(--commerce-text-tertiary)">내용 없음</p>
+            <p className="mt-3 text-(--commerce-text-tertiary)">No written review.</p>
           )}
         </li>
       ))}

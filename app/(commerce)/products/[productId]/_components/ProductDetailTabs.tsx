@@ -14,8 +14,8 @@ export type ProductDetailTabsProps = {
 };
 
 const TABS: { id: ProductDetailTabId; label: string }[] = [
-  { id: "additional-info", label: "추가 정보" },
-  { id: "reviews", label: "리뷰" },
+  { id: "additional-info", label: "Additional info" },
+  { id: "reviews", label: "Reviews" },
 ];
 
 export function ProductDetailTabs({
@@ -35,8 +35,8 @@ export function ProductDetailTabs({
     <div className={cn("w-full", className)}>
       <div
         role="tablist"
-        aria-label="상품 상세 탭"
-        className="flex border-b border-(--commerce-border-subtle)"
+        aria-label="Product detail tabs"
+        className="flex flex-wrap items-end gap-x-2 border-b border-(--commerce-border-subtle)"
       >
         {TABS.map((tab) => {
           const selected = activeTab === tab.id;
@@ -52,7 +52,7 @@ export function ProductDetailTabs({
               aria-controls={panelId}
               tabIndex={selected ? 0 : -1}
               className={cn(
-                "relative -mb-px min-h-[52px] flex-1 border-b-2 px-4 text-center text-base font-medium transition-colors duration-200 ease-out",
+                "relative -mb-px shrink-0 border-b-2 px-5 py-3 text-base font-medium transition-colors duration-200 ease-out sm:px-6 sm:py-3.5",
                 "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
                 selected
                   ? "border-(--commerce-primary-main) text-(--commerce-text-primary)"
@@ -61,7 +61,7 @@ export function ProductDetailTabs({
               style={{ fontFamily: "var(--commerce-font-body)" }}
               onClick={() => setActiveTab(tab.id)}
             >
-              <span className="inline-flex min-h-[52px] items-center justify-center py-3">
+              <span className="inline-flex items-center justify-center whitespace-nowrap">
                 {tab.label}
               </span>
             </button>
