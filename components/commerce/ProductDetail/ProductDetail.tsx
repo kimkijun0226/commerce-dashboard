@@ -1,5 +1,5 @@
 import { ProductDetailAdditionalInfo } from "@/app/(commerce)/products/[productId]/_components/ProductDetailAdditionalInfo";
-import { ProductDetailReviewsContent } from "@/app/(commerce)/products/[productId]/_components/ProductDetailReviewsContent";
+import { ProductReviewsSection } from "@/app/(commerce)/products/[productId]/_components/ProductReviewsSection";
 import { ProductDetailTabs } from "@/app/(commerce)/products/[productId]/_components/ProductDetailTabs";
 import type { ProductReviewListItem } from "@/features/reviews/api/getProductReviews";
 import { ProductDetailMedia } from "@/components/commerce/ProductDetail/ProductDetailMedia";
@@ -34,7 +34,7 @@ export function ProductDetail({ product, initialReviews }: ProductDetailProps) {
             />
           }
           reviewsContent={
-            <ProductDetailReviewsContent
+            <ProductReviewsSection
               productId={product.id}
               initialReviews={initialReviews}
             />
