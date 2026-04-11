@@ -1,5 +1,6 @@
 import { LayoutHeader } from "@/components/commerce/layout/LayoutHeader";
 import { LayoutFooter } from "@/components/commerce/layout/LayoutFooter";
+import { Toaster } from "sonner";
 
 export default function CommerceLayout({
   children,
@@ -11,6 +12,7 @@ export default function CommerceLayout({
       <LayoutHeader />
       <main className="flex-1 pt-[60px]">{children}</main>
       <LayoutFooter />
+      <Toaster richColors position="top-center" closeButton />
     </div>
   );
 }

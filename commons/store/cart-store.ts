@@ -49,8 +49,9 @@ export interface CartState {
    * 장바구니에 상품 추가
    * - 동일 id가 이미 있으면 quantity만 증가
    * - 없으면 새 아이템 추가
+   * @returns 성공 여부 (예외 삼킴 시 false)
    */
-  addItem: (product: CartProduct, quantity?: number) => void;
+  addItem: (product: CartProduct, quantity?: number) => boolean;
 
   /**
    * 특정 상품 수량 변경
@@ -151,9 +152,11 @@ export const useCartStore = create<CartState>()(
           const nextItems = upsertItem(items, product, quantity);
           const totals = computeTotals(nextItems);
           set({ items: nextItems, ...totals });
+          return true;
         } catch (err) {
           // 장바구니는 UX 핵심이라, 예외 발생 시 앱 전체가 죽지 않게 방어합니다.
           console.error("addItem 실패:", err);
+          return false;
         }
       },
 

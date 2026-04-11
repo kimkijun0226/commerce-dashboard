@@ -5,9 +5,13 @@ import Image from "next/image";
 
 export type ProductDetailProps = {
   product: ProductDetailData;
+  initialIsLiked?: boolean;
 };
 
-export function ProductDetail({ product }: ProductDetailProps) {
+export function ProductDetail({
+  product,
+  initialIsLiked = false,
+}: ProductDetailProps) {
   return (
     <div className="mx-auto max-w-[960px] px-4 py-10 sm:px-8">
       <div className="grid gap-10 md:grid-cols-2 md:gap-12">
@@ -32,7 +36,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
           )}
         </div>
 
-        <ProductInfoSection product={toCommonsProductDetail(product)} />
+        <ProductInfoSection
+          product={toCommonsProductDetail(product)}
+          initialIsLiked={initialIsLiked}
+        />
       </div>
     </div>
   );

@@ -1,32 +1,13 @@
 "use client";
 
 import type { ProductDetail } from "@/commons/types/product";
-import type { CartProduct, ProductStatus } from "@/commons/store/cart-store";
-import { useCartStore } from "@/commons/store/cart-store";
-import { AddToCartSection } from "@/components/commerce/AddToCartSection/AddToCartSection";
+import { AddToCartSection } from "@/components/commerce/product/AddToCartSection";
 import { RatingStars } from "@/components/commerce/RatingStars/RatingStars";
 import { useProductRating } from "@/features/products/hooks/useProductRating";
 import { cn } from "@/components/ui";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
 
 const DEFAULT_MEASUREMENTS = "—";
 const DEFAULT_CATEGORIES = "—";
-
-function toCartProduct(product: ProductDetail): CartProduct {
-  let status: ProductStatus = "visible";
-  if (product.status === "hidden") status = "hidden";
-  else if (product.status === "sold_out") status = "sold_out";
-
-  return {
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    salePrice: product.salePrice ?? null,
-    imageUrl: product.image_url,
-    status,
-  };
-}
 
 function formatPrice(n: number, currency = "₩") {
   return `${currency}${n.toLocaleString("ko-KR")}`;
@@ -34,32 +15,16 @@ function formatPrice(n: number, currency = "₩") {
 
 export type ProductInfoSectionProps = {
   product: ProductDetail;
+  initialIsLiked?: boolean;
   className?: string;
 };
 
-export function ProductInfoSection({ product, className }: ProductInfoSectionProps) {
+export function ProductInfoSection({
+  product,
+  initialIsLiked = false,
+  className,
+}: ProductInfoSectionProps) {
   const { rating, reviewCount, showReviewCount } = useProductRating(product);
-  const router = useRouter();
-  const addItem = useCartStore((s) => s.addItem);
-  const [quantity, setQuantity] = useState(1);
-  const [wishlisted, setWishlisted] = useState(false);
-
-  useEffect(() => {
-    setQuantity(1);
-  }, [product.id]);
-
-  const cartDisabled =
-    product.status === "hidden" || product.status === "sold_out";
-
-  const handleAddToCart = useCallback(() => {
-    if (cartDisabled) return;
-    addItem(toCartProduct(product), quantity);
-    router.push("/cart");
-  }, [addItem, cartDisabled, product, quantity, router]);
-
-  const handleWishlistToggle = useCallback(() => {
-    setWishlisted((v) => !v);
-  }, []);
 
   const displayPrice = product.salePrice ?? product.price;
   const hasDiscount =
@@ -140,15 +105,7 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
         </span>
       </div>
 
-      <AddToCartSection
-        variant="pdp"
-        quantity={quantity}
-        onQuantityChange={setQuantity}
-        onAddToCart={handleAddToCart}
-        onWishlistToggle={handleWishlistToggle}
-        wishlisted={wishlisted}
-        disabled={cartDisabled}
-      />
+      <AddToCartSection product={product} initialIsLiked={initialIsLiked} />
 
       <div className="flex flex-col gap-2 border-t border-(--commerce-border-subtle) pt-6">
         <span
