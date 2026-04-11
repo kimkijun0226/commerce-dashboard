@@ -1,13 +1,11 @@
 "use client";
 
 import type { ProductDetail } from "@/commons/types/product";
-import { AddToCartSection } from "@/components/commerce/product/AddToCartSection";
 import { RatingStars } from "@/components/commerce/RatingStars/RatingStars";
 import { useProductReviews } from "@/features/products/hooks/useProductReviews";
 import { cn } from "@/components/ui";
 
 const DEFAULT_MEASUREMENTS = "—";
-const DEFAULT_CATEGORIES = "—";
 
 function formatPrice(n: number, currency = "₩") {
   return `${currency}${n.toLocaleString("ko-KR")}`;
@@ -27,11 +25,6 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
     product.salePrice !== undefined && product.salePrice < product.price;
 
   const measurements = product.measurements?.trim() || DEFAULT_MEASUREMENTS;
-
-  const categoryLine =
-    product.categories && product.categories.length > 0
-      ? product.categories.map((c) => c.name).join(", ")
-      : DEFAULT_CATEGORIES;
 
   return (
     <section
@@ -100,23 +93,6 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
           style={{ fontFamily: "var(--commerce-font-body)" }}
         >
           {measurements}
-        </span>
-      </div>
-
-      <AddToCartSection key={product.id} product={product} />
-
-      <div className="flex flex-col gap-2 border-t border-(--commerce-border-subtle) pt-6">
-        <span
-          className="text-[12px] font-normal uppercase leading-5 text-(--commerce-text-secondary)"
-          style={{ fontFamily: "var(--commerce-font-body)" }}
-        >
-          CATEGORY
-        </span>
-        <span
-          className="text-[12px] font-normal leading-5 text-(--commerce-text-primary)"
-          style={{ fontFamily: "var(--commerce-font-body)" }}
-        >
-          {categoryLine}
         </span>
       </div>
     </section>

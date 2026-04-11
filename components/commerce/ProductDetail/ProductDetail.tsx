@@ -1,3 +1,5 @@
+import { AddToCartSection } from "@/components/commerce/product/AddToCartSection";
+import { ProductDetailCategorySection } from "@/components/commerce/product/ProductDetailCategorySection";
 import { ProductInfoSection } from "@/components/commerce/product/ProductInfoSection";
 import type { ProductDetailData } from "@/features/products/api/useProductDetail";
 import { toCommonsProductDetail } from "@/features/products/api/useProductDetail";
@@ -8,6 +10,8 @@ export type ProductDetailProps = {
 };
 
 export function ProductDetail({ product }: ProductDetailProps) {
+  const detail = toCommonsProductDetail(product);
+
   return (
     <div className="mx-auto max-w-[960px] px-4 py-10 sm:px-8">
       <div className="grid gap-10 md:grid-cols-2 md:gap-12">
@@ -32,8 +36,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
           )}
         </div>
 
-        <div className="min-w-0">
-          <ProductInfoSection product={toCommonsProductDetail(product)} />
+        <div className="flex min-w-0 flex-col gap-6">
+          <ProductInfoSection product={detail} />
+          <AddToCartSection key={detail.id} product={detail} />
+          <ProductDetailCategorySection product={detail} />
         </div>
       </div>
     </div>
