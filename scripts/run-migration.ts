@@ -1,6 +1,11 @@
 import { config } from "dotenv";
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
+import {
+  getProjectRefFromSupabaseUrl,
+  managementDbExec,
+  parseSelectStringColumn,
+} from "./managementDbQuery";
 
 config({ path: join(process.cwd(), ".env.local") });
 
@@ -32,11 +37,6 @@ function getMigrationFiles(): string[] {
   } catch {
     return [];
   }
-}
-
-function getProjectRef(url: string): string | null {
-  const m = url?.match(/https?:\/\/([^.]+)\.supabase\.co/);
-  return m ? m[1] : null;
 }
 
 async function runViaPg(databaseUrl: string) {
@@ -93,23 +93,52 @@ async function runViaManagementApi(accessToken: string, projectRef: string) {
     return;
   }
 
-  const managementUrl = `https://api.supabase.com/v1/projects/${projectRef}/database/query`;
+  await managementDbExec(
+    accessToken,
+    projectRef,
+    `CREATE TABLE IF NOT EXISTS public.${TRACKING_TABLE} (
+      name text PRIMARY KEY,
+      executed_at timestamptz NOT NULL DEFAULT now()
+    );`,
+    false,
+  );
+
+  const appliedRaw = await managementDbExec(
+    accessToken,
+    projectRef,
+    `SELECT name FROM public.${TRACKING_TABLE}`,
+    true,
+  );
+  const appliedSet = new Set(parseSelectStringColumn(appliedRaw, "name"));
 
   for (const file of files) {
+    if (appliedSet.has(file)) {
+      console.log(`건너뜀 (이미 적용됨): ${file}`);
+      continue;
+    }
     const sql = readFileSync(join(MIGRATIONS_DIR, file), "utf-8");
     console.log(`실행 중: ${file}`);
-    const response = await fetch(managementUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify({ query: sql }),
-    });
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`${file} 실행 실패: ${errorText}`);
+    try {
+      await managementDbExec(accessToken, projectRef, sql, false);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      if (msg.includes("42710") || msg.includes("already exists")) {
+        throw new Error(
+          `${file} 실행 실패: DB에 이미 스키마가 있는데 적용 이력(_schema_migrations)이 비어 있을 수 있습니다.\n` +
+            "Supabase > Settings > Database 의 URI를 .env.local 의 DATABASE_URL 에 넣고 `yarn db:run-migration` 을 실행하는 편이 안전합니다.\n" +
+            `원본: ${msg}`,
+        );
+      }
+      throw e;
     }
+    const esc = file.replace(/'/g, "''");
+    await managementDbExec(
+      accessToken,
+      projectRef,
+      `INSERT INTO public.${TRACKING_TABLE} (name) VALUES ('${esc}') ON CONFLICT (name) DO NOTHING`,
+      false,
+    );
+    appliedSet.add(file);
     console.log(`완료: ${file}`);
   }
   console.log("마이그레이션 적용이 완료되었습니다.");
@@ -117,7 +146,7 @@ async function runViaManagementApi(accessToken: string, projectRef: string) {
 
 async function main() {
   const { url, databaseUrl, accessToken } = loadEnv();
-  const projectRef = getProjectRef(url);
+  const projectRef = getProjectRefFromSupabaseUrl(url);
 
   if (databaseUrl) {
     console.log("DATABASE_URL 사용 (적용 이력 확인 후 미적용분만 실행)");
@@ -127,7 +156,7 @@ async function main() {
 
   if (accessToken && projectRef) {
     console.log(
-      "Management API 사용 (SUPABASE_ACCESS_TOKEN, 모든 파일 순차 실행 — 이미 적용된 SQL은 DB에서 직접 건너뛰지 않음)",
+      "Management API 사용 (SUPABASE_ACCESS_TOKEN, _schema_migrations 기준으로 미적용분만 실행)",
     );
     await runViaManagementApi(accessToken, projectRef);
     return;
