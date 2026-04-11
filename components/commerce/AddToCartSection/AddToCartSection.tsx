@@ -4,7 +4,17 @@ import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import { Button, cn, typographyToStyle } from "@/components/ui";
 import { QuantitySelector } from "../QuantitySelector/QuantitySelector";
+import type { CSSProperties } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+
+/** Figma: PDP CTA Inter Medium 18/28, letterSpacing -0.4 */
+const pdpCtaTypography: CSSProperties = {
+  ...typographyToStyle(commerceTypography.buttonM),
+  fontFamily: "var(--commerce-font-body)",
+};
+
+const pdpFocusVisible =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--commerce-semantic-info)]";
 
 export type AddToCartSectionProps = {
   quantity: number;
@@ -32,60 +42,75 @@ export function AddToCartSection({
   if (variant === "pdp") {
     return (
       <section
-        className={cn("flex w-full flex-col gap-4", className)}
+        className={cn(
+          "flex w-full flex-col gap-4 border-t border-(--commerce-border-subtle) pt-8",
+          className,
+        )}
         aria-label="장바구니 담기"
       >
-        <div className="flex w-full gap-3">
+        <div className="flex w-full items-stretch gap-4">
           <QuantitySelector
-            className="w-[127px] shrink-0"
+            productLayout="compact"
             value={quantity}
             onChange={onQuantityChange}
             disabled={disabled}
             variant="product"
           />
           {onWishlistToggle ? (
-            <Button
+            <button
               type="button"
-              variant="ghost"
-              size="lg"
               disabled={disabled}
-              className="h-[52px] min-h-[52px] flex-1 rounded-lg border border-(--commerce-primary-main) bg-transparent hover:bg-(--commerce-background-paper)"
-              style={{ color: commerceColors.text.primary }}
-              leftIcon={
-                wishlisted ? (
-                  <FaHeart
-                    className="text-[18px]"
-                    style={{ color: commerceColors.primary.main }}
-                    aria-hidden
-                  />
-                ) : (
-                  <FaRegHeart
-                    className="text-[18px]"
-                    style={{ color: commerceColors.primary.main }}
-                    aria-hidden
-                  />
-                )
-              }
+              className={cn(
+                "inline-flex h-[52px] min-h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-lg bg-transparent",
+                "border border-solid border-(--commerce-primary-main)",
+                "text-(--commerce-text-primary) transition-[background-color,box-shadow,transform,color] duration-200 ease-out",
+                "hover:bg-(--commerce-background-light) hover:shadow-[0_1px_0_rgba(20,23,24,0.06)]",
+                "active:scale-[0.99] active:bg-(--commerce-background-elevated)",
+                "disabled:pointer-events-none disabled:opacity-45",
+                pdpFocusVisible,
+              )}
+              style={pdpCtaTypography}
               aria-label={
                 wishlisted ? "위시리스트에서 제거" : "위시리스트에 추가"
               }
               aria-pressed={wishlisted}
               onClick={onWishlistToggle}
             >
-              Wishlist
-            </Button>
+              {wishlisted ? (
+                <FaHeart
+                  className="size-5 shrink-0"
+                  style={{ color: commerceColors.primary.main }}
+                  aria-hidden
+                />
+              ) : (
+                <FaRegHeart
+                  className="size-5 shrink-0"
+                  style={{ color: commerceColors.primary.main }}
+                  aria-hidden
+                />
+              )}
+              <span className="truncate">Wishlist</span>
+            </button>
           ) : null}
         </div>
-        <Button
+        <button
           type="button"
-          size="lg"
           disabled={disabled}
-          className="h-[52px] min-h-[52px] w-full rounded-lg"
+          className={cn(
+            "h-[52px] min-h-[52px] w-full rounded-lg border-0",
+            "bg-(--commerce-primary-main) text-(--commerce-text-inverse)",
+            "transition-[background-color,box-shadow,filter,transform] duration-200 ease-out",
+            "hover:bg-(--commerce-primary-light) hover:shadow-[0_12px_32px_rgba(20,23,24,0.18)]",
+            "active:translate-y-px active:shadow-[0_6px_16px_rgba(20,23,24,0.14)] active:brightness-[0.97]",
+            "disabled:pointer-events-none disabled:opacity-45 disabled:shadow-none",
+            pdpFocusVisible,
+          )}
+          style={pdpCtaTypography}
           onClick={onAddToCart}
           aria-label="장바구니에 담기"
         >
           Add to cart
-        </Button>
+        </button>
       </section>
     );
   }
