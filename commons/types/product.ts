@@ -1,4 +1,5 @@
 import type { ProductReviewSummary } from "@/commons/types/product-review-summary";
+import type { Json } from "@/types/supabase";
 
 export interface ProductCategory {
   id: string;
@@ -15,7 +16,8 @@ export interface ProductDetail {
   status: "registered" | "hidden" | "sold_out";
   created_at: string | null;
   updated_at: string | null;
-  additional_info?: string | null;
+  /** `products.additional_info` JSON 객체 */
+  additional_info?: Json | null;
   measurements?: string | null;
   categories?: ProductCategory[] | null;
   rating?: number;

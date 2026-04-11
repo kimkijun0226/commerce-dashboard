@@ -4,10 +4,7 @@ import {
   parseProductReviewSummary,
 } from "@/commons/types/product-review-summary";
 import { createClient } from "@/lib/supabase/server";
-import {
-  parseAdditionalInfoSpecs,
-} from "@/commons/utils/productSpecs";
-import type { Database } from "@/types/supabase";
+import type { Database, Json } from "@/types/supabase";
 
 type ProductsRow = Database["public"]["Tables"]["products"]["Row"];
 
@@ -23,10 +20,9 @@ export type ProductDetailData = {
   status: ProductsRow["status"];
   measurements: string | null;
   categories: string[] | null;
-  additionalInfo: string | null;
-  /** `products.additional_info_specs` — 추가정보 탭 키-값 스펙 */
-  additionalInfoSpecs: Record<string, string>;
-  /** `products.detail_image_urls` — 상품 상세정보 탭 이미지 */
+  /** `products.additional_info` — JSON 객체 (추가정보 탭 표) */
+  additionalInfo: Json;
+  /** `products.detail_image_urls` — 상세 이미지 탭 */
   detailImageUrls: string[];
   created_at: string;
   updated_at: string;
@@ -45,8 +41,7 @@ function mapRow(row: ProductsRow): ProductDetailData {
     status: row.status,
     measurements: row.measurements,
     categories: row.categories,
-    additionalInfo: row.additional_info,
-    additionalInfoSpecs: parseAdditionalInfoSpecs(row.additional_info_specs),
+    additionalInfo: row.additional_info ?? {},
     detailImageUrls: row.detail_image_urls ?? [],
     created_at: row.created_at,
     updated_at: row.updated_at,
@@ -77,7 +72,7 @@ export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
     rating: p.rating ?? undefined,
     reviewCount: undefined,
     reviewSummary: p.reviewSummary,
-    additional_info: p.additionalInfo ?? null,
+    additional_info: p.additionalInfo,
   };
 }
 

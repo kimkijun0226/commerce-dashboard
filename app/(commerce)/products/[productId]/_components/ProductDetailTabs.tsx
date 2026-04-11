@@ -22,9 +22,9 @@ export type ProductDetailTabsProps = {
 };
 
 const TABS: { id: ProductDetailTabId; label: string }[] = [
-  { id: "product-detail", label: "상품 상세정보" },
-  { id: "extra-info", label: "추가정보" },
-  { id: "reviews", label: "리뷰" },
+  { id: "product-detail", label: "Detail Images" },
+  { id: "extra-info", label: "Additional Info" },
+  { id: "reviews", label: "Reviews" },
 ];
 
 const PANEL_COUNT = TABS.length;
@@ -93,7 +93,7 @@ export function ProductDetailTabs({
         <div
           ref={tabListRef}
           role="tablist"
-          aria-label="상품 상세 탭"
+          aria-label="Product detail tabs"
           className="relative flex flex-wrap items-end gap-x-6 sm:gap-x-10 md:gap-x-14"
         >
           <span

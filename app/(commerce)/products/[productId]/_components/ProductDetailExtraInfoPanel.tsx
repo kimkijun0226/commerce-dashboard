@@ -1,26 +1,12 @@
 "use client";
 
+import { parseMeasurementRows } from "@/commons/utils/productDetailParse";
 import {
-  additionalInfoPlainText,
-  parseMeasurementRows,
-} from "@/commons/utils/productDetailParse";
-import { orderedSpecEntries } from "@/commons/utils/productSpecs";
+  orderedSpecEntries,
+  parseAdditionalInfoObject,
+} from "@/commons/utils/productSpecs";
+import type { Json } from "@/types/supabase";
 import { cn } from "@/components/ui";
-
-const FALLBACK_BLURBS = [
-  "제품별 소재·세탁·보관 방법은 라벨 및 동봉 안내서를 우선 확인해 주세요.",
-  "전자제품은 전원 어댑터 규격과 사용 환경(온도·습도)을 지켜 주시면 수명을 유지하는 데 도움이 됩니다.",
-  "의류·잡화는 착용 전 보관 상태를 확인하고, 이상이 있을 경우 고객센터로 연락해 주세요.",
-] as const;
-
-function fallbackCopy(seed: string): string {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) {
-    h = (h << 5) - h + seed.charCodeAt(i);
-    h |= 0;
-  }
-  return FALLBACK_BLURBS[Math.abs(h) % FALLBACK_BLURBS.length] ?? FALLBACK_BLURBS[0];
-}
 
 function SpecTable({
   title,
@@ -55,13 +41,13 @@ function SpecTable({
                   className="px-4 py-3 font-semibold text-[#141718] sm:px-5"
                   style={{ fontFamily: "var(--commerce-font-body)" }}
                 >
-                  항목
+                  Field
                 </th>
                 <th
                   className="px-4 py-3 font-semibold text-[#141718] sm:px-5"
                   style={{ fontFamily: "var(--commerce-font-body)" }}
                 >
-                  내용
+                  Value
                 </th>
               </tr>
             </thead>
@@ -94,25 +80,22 @@ function SpecTable({
 }
 
 export type ProductDetailExtraInfoPanelProps = {
-  productName: string;
   measurements: string | null;
-  additionalInfo: string | null;
-  additionalInfoSpecs: Record<string, string>;
+  additionalInfo: Json;
   className?: string;
 };
 
 export function ProductDetailExtraInfoPanel({
-  productName,
   measurements,
   additionalInfo,
-  additionalInfoSpecs,
   className,
 }: ProductDetailExtraInfoPanelProps) {
   const measurementRows = parseMeasurementRows(measurements);
-  const specRows = orderedSpecEntries(additionalInfoSpecs);
-  const body = additionalInfoPlainText(additionalInfo);
-  const narrative =
-    body.trim().length > 0 ? body : fallbackCopy(productName);
+  const specMap = parseAdditionalInfoObject(additionalInfo);
+  const notesText = (specMap.notes ?? "").trim();
+  const { notes: _omit, ...restForTable } = specMap;
+  void _omit;
+  const specRows = orderedSpecEntries(restForTable);
 
   return (
     <div
@@ -122,31 +105,33 @@ export function ProductDetailExtraInfoPanel({
       )}
     >
       <SpecTable
-        title="제품 추가 정보"
+        title="Additional details"
         rows={specRows}
-        emptyMessage="등록된 추가 정보가 없습니다. (Supabase additional_info_specs)"
+        emptyMessage="No additional fields in additional_info (JSON object)."
       />
 
       <SpecTable
-        title="사이즈 · 규격"
+        title="Size & specifications"
         rows={measurementRows}
-        emptyMessage="등록된 규격 정보가 없습니다."
+        emptyMessage="No size or specification data."
       />
 
-      <section className="flex flex-col gap-3 border-t border-[#e8ecef] pt-8">
-        <h3
-          className="text-lg font-semibold tracking-tight text-[#141718]"
-          style={{ fontFamily: "var(--commerce-font-heading)" }}
-        >
-          안내 문구
-        </h3>
-        <p
-          className="whitespace-pre-line text-base leading-[26px] text-[#353945]"
-          style={{ fontFamily: "var(--commerce-font-body)" }}
-        >
-          {narrative}
-        </p>
-      </section>
+      {notesText ? (
+        <section className="flex flex-col gap-3 border-t border-[#e8ecef] pt-8">
+          <h3
+            className="text-lg font-semibold tracking-tight text-[#141718]"
+            style={{ fontFamily: "var(--commerce-font-heading)" }}
+          >
+            Notes
+          </h3>
+          <p
+            className="whitespace-pre-line text-base leading-[26px] text-[#353945]"
+            style={{ fontFamily: "var(--commerce-font-body)" }}
+          >
+            {notesText}
+          </p>
+        </section>
+      ) : null}
     </div>
   );
 }

@@ -21,7 +21,7 @@ export function ProductDetailImageGallery({
         className={cn("text-base leading-7 text-[#6c7275]", className)}
         style={{ fontFamily: "var(--commerce-font-body)" }}
       >
-        등록된 상품 상세 이미지가 없습니다.
+        No detail images yet. Set `detail_image_urls` in Supabase.
       </p>
     );
   }
@@ -40,7 +40,7 @@ export function ProductDetailImageGallery({
         >
           <img
             src={src}
-            alt={`${imageAltBase} — 세로 상세 ${i + 1}`}
+            alt={`${imageAltBase} — detail image ${i + 1}`}
             className="mx-auto block h-auto max-h-[min(92vh,1040px)] w-full object-contain object-center"
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"

@@ -53,10 +53,10 @@ async function runViaPg(databaseUrl: string) {
     `);
 
     const applied = await client.query(
-      `SELECT name FROM public.${TRACKING_TABLE}`
+      `SELECT name FROM public.${TRACKING_TABLE}`,
     );
     const appliedSet = new Set(
-      (applied.rows as { name: string }[]).map((r) => r.name)
+      (applied.rows as { name: string }[]).map((r) => r.name),
     );
 
     const files = getMigrationFiles();
@@ -75,7 +75,7 @@ async function runViaPg(databaseUrl: string) {
       await client.query(sql);
       await client.query(
         `INSERT INTO public.${TRACKING_TABLE} (name) VALUES ($1) ON CONFLICT (name) DO NOTHING`,
-        [file]
+        [file],
       );
       appliedSet.add(file);
       console.log(`완료: ${file}`);

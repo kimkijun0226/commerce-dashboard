@@ -39,8 +39,7 @@ type Database = {
           sale_price: number | null;
           image_url: string | null;
           status: ProductStatus;
-          additional_info: string | null;
-          additional_info_specs: Json;
+          additional_info: Json;
           detail_image_urls: string[];
           measurements: string | null;
           categories: string[] | null;
@@ -57,8 +56,7 @@ type Database = {
           sale_price?: number | null;
           image_url?: string | null;
           status?: ProductStatus;
-          additional_info?: string | null;
-          additional_info_specs?: Json;
+          additional_info?: Json;
           detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
@@ -75,8 +73,7 @@ type Database = {
           sale_price?: number | null;
           image_url?: string | null;
           status?: ProductStatus;
-          additional_info?: string | null;
-          additional_info_specs?: Json;
+          additional_info?: Json;
           detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
@@ -163,12 +160,17 @@ export function createSupabaseClient(): SupabaseClient<Database, "public"> {
 
 type ProductsInsert = Database["public"]["Tables"]["products"]["Insert"];
 
+/** 시드 소스: additional_info에 예전처럼 이미지 URL 문자열을 둘 수 있음 → enrich에서 JSON·detail_image_urls로 변환 */
+type RawProductsInsert = Omit<ProductsInsert, "additional_info"> & {
+  additional_info?: string | null;
+};
+
 function toPortraitDetailUrl(unsplashSrc: string): string {
   const base = unsplashSrc.trim().split("?")[0];
   return `${base}?w=640&h=1200&fit=crop&crop=center&q=80&auto=format`;
 }
 
-function specsForSeedProduct(p: ProductsInsert): Json {
+function specsForSeedProduct(p: RawProductsInsert): Json {
   const base = defaultAdditionalInfoSpecs(String(p.name));
   const c = p.categories ?? [];
   if (c.includes("의류")) {
@@ -198,11 +200,10 @@ function specsForSeedProduct(p: ProductsInsert): Json {
   return base;
 }
 
-function enrichProductForInsert(
-  p: ProductsInsert,
-): ProductsInsert & { detail_image_urls: string[]; additional_info_specs: Json } {
-  const parsed = p.additional_info
-    ? parseAdditionalInfoImageUrls(String(p.additional_info))
+function enrichProductForInsert(p: RawProductsInsert): ProductsInsert {
+  const { additional_info: legacyInfo, ...rest } = p;
+  const parsed = legacyInfo
+    ? parseAdditionalInfoImageUrls(String(legacyInfo))
     : [];
   const portraitLegacy = parsed.map(toPortraitDetailUrl);
   const picked = pickPortraitDetailUrls(`${p.name}-${String(p.image_url)}`, 3);
@@ -211,15 +212,18 @@ function enrichProductForInsert(
     4,
   );
 
-  const additional_info = [
+  const notes = [
     `A/S: 구매일 기준 제조사·유통사 정책을 따릅니다(영업일 기준).`,
     `개봉·사용 후에는 소비자 귀책에 따른 교환이 제한될 수 있습니다.`,
     `${p.name} 관련 문의는 고객센터 운영 시간(평일 10:00–18:00)에 접수해 주세요.`,
   ].join("\n\n");
 
-  const additional_info_specs = specsForSeedProduct(p);
+  const additional_info: Json = {
+    ...(specsForSeedProduct(p) as Record<string, Json>),
+    notes,
+  };
 
-  return { ...p, detail_image_urls, additional_info, additional_info_specs };
+  return { ...rest, additional_info, detail_image_urls };
 }
 
 const SMARTWATCH_PRODUCT_NAME = "스마트워치 울트라";
@@ -260,7 +264,7 @@ function isDuplicateKeyError(err: unknown): err is { code: string } {
   return "code" in err && (err as { code?: unknown }).code === "23505";
 }
 
-function getSeedProducts(): ProductsInsert[] {
+function getSeedProducts(): RawProductsInsert[] {
   // 요구사항 분포
   // - 총 40개
   // - 전자제품 15 / 의류 10 / 가방·액세서리 8 / 운동용품 7
@@ -830,9 +834,11 @@ export async function seedSmartwatchReviewsAndDetail(
     .from("products")
     .update({
       detail_image_urls: smartwatchDetailUrls,
-      additional_info_specs: smartwatchSpecs,
-      additional_info:
-        "배터리·방수 사용 안내는 동봉 매뉴얼을 참고해 주세요. 밴드 교체 시 정품 액세서리 사용을 권장합니다. 직사광선·고온 다습 환경은 피해 주세요.",
+      additional_info: {
+        ...smartwatchSpecs,
+        notes:
+          "배터리·방수 사용 안내는 동봉 매뉴얼을 참고해 주세요. 밴드 교체 시 정품 액세서리 사용을 권장합니다. 직사광선·고온 다습 환경은 피해 주세요.",
+      } satisfies Record<string, Json>,
     })
     .eq("id", product.id);
 

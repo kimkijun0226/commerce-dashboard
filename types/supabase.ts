@@ -61,8 +61,7 @@ export interface Database {
           sale_price: number | null;
           image_url: string | null;
           status: ProductStatus;
-          additional_info: string | null;
-          additional_info_specs: Json;
+          additional_info: Json;
           detail_image_urls: string[];
           measurements: string | null;
           categories: string[] | null;
@@ -79,8 +78,7 @@ export interface Database {
           sale_price?: number | null;
           image_url?: string | null;
           status?: ProductStatus;
-          additional_info?: string | null;
-          additional_info_specs?: Json;
+          additional_info?: Json;
           detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
@@ -97,8 +95,7 @@ export interface Database {
           sale_price?: number | null;
           image_url?: string | null;
           status?: ProductStatus;
-          additional_info?: string | null;
-          additional_info_specs?: Json;
+          additional_info?: Json;
           detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;

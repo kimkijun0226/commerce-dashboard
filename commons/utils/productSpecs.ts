@@ -13,7 +13,8 @@ const DEFAULT_ORDER = [
   "유의사항",
 ] as const;
 
-export function parseAdditionalInfoSpecs(
+/** `products.additional_info` JSON 객체 → 표용 문자열 맵 */
+export function parseAdditionalInfoObject(
   raw: Json | null | undefined,
 ): Record<string, string> {
   if (raw == null || typeof raw !== "object" || Array.isArray(raw)) {
@@ -53,6 +54,9 @@ export function orderedSpecEntries(
     value: specs[label] ?? "",
   }));
 }
+
+/** @deprecated parseAdditionalInfoObject 사용 */
+export const parseAdditionalInfoSpecs = parseAdditionalInfoObject;
 
 export function defaultAdditionalInfoSpecs(productName: string): Record<string, string> {
   const brand = productName.trim().split(/\s+/)[0] || "공급사";
