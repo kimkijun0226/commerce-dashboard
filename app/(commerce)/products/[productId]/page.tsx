@@ -1,4 +1,7 @@
-import { Metadata } from "next";
+import { ProductDetail } from "@/components/commerce/ProductDetail/ProductDetail";
+import { getProductById } from "@/features/products/api/useProductDetail";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export default async function ProductDetailPage({
   params,
@@ -6,22 +9,29 @@ export default async function ProductDetailPage({
   params: Promise<{ productId: string }>;
 }) {
   const { productId } = await params;
-  return (
-    <div>
-      <h1>상품 상세</h1>
-      <p>상품 ID: {productId}</p>
-    </div>
-  );
+  const product = await getProductById(productId);
+
+  if (!product) {
+    notFound();
+  }
+
+  return <ProductDetail product={product} />;
 }
 
-// 메타데이터 생성
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ productId: string }>;
 }): Promise<Metadata> {
   const { productId } = await params;
+  const product = await getProductById(productId);
+
+  if (!product) {
+    return { title: "상품을 찾을 수 없습니다" };
+  }
+
   return {
-    title: `상품 ${productId}`,
+    title: `${product.name} | Cursor Commerce`,
+    description: product.description ?? undefined,
   };
 }
