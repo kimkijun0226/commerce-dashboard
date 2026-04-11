@@ -1,11 +1,11 @@
 "use client";
 
 import { cn } from "@/components/ui";
-import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import { useSearchStore } from "@/features/search/store/searchStore";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import type { ButtonHTMLAttributes } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FiMenu, FiSearch, FiShoppingBag, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
@@ -15,17 +15,11 @@ export type LayoutHeaderProps = {
 
 export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const openSearch = useSearchStore((s) => s.open);
   const closeSearch = useSearchStore((s) => s.close);
-
-  useEffect(() => {
-    if (!isSearchOpen) return;
-    const id = window.requestAnimationFrame(() => {
-      document.getElementById("header-search-input")?.focus();
-    });
-    return () => window.cancelAnimationFrame(id);
-  }, [isSearchOpen]);
 
   return (
     <header
@@ -60,7 +54,14 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
             aria-label={isSearchOpen ? "검색 닫기" : "검색 열기"}
             aria-expanded={isSearchOpen}
             onClick={() => {
-              isSearchOpen ? closeSearch() : openSearch();
+              if (isSearchOpen) {
+                closeSearch();
+                return;
+              }
+              if (pathname !== "/") {
+                router.push("/");
+              }
+              openSearch();
             }}
             className={cn(
               "transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
@@ -97,21 +98,6 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
           </Link>
         </div>
       </div>
-
-      {isSearchOpen ? (
-        <div
-          className="fixed inset-x-0 top-[60px] z-40 border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) shadow-sm"
-          role="search"
-          aria-label="상품 검색 패널"
-        >
-          <div className="mx-auto max-w-[1440px] px-4 py-4 sm:px-[160px]">
-            <HomeSearchBar
-              inputId="header-search-input"
-              onEscape={() => closeSearch()}
-            />
-          </div>
-        </div>
-      ) : null}
 
       {mobileOpen ? (
         <nav

@@ -10,13 +10,25 @@ import { useProductSearch } from "@/features/search/api/useProductSearch";
 import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import { useSearchStore } from "@/features/search/store/searchStore";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
-import { LoadingSpinner } from "@/components/ui";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { LoadingSpinner, cn } from "@/components/ui";
 
 export function HomePage() {
   const router = useRouter();
   const [liked, setLiked] = useState<Record<string, boolean>>({});
   const keyword = useSearchStore((s) => s.keyword);
+  const isSearchOpen = useSearchStore((s) => s.isOpen);
+  const closeSearch = useSearchStore((s) => s.close);
+
+  useEffect(() => {
+    if (!isSearchOpen) return;
+    const id = window.requestAnimationFrame(() => {
+      const el = document.getElementById("home-search-input") as HTMLInputElement | null;
+      el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      el?.focus();
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [isSearchOpen]);
 
   const {
     data,
@@ -70,8 +82,19 @@ export function HomePage() {
           >
             All
           </h1>
-          <div className="w-full max-w-[720px]">
-            <HomeSearchBar />
+          <div
+            id="home-search-region"
+            className={cn(
+              "w-full max-w-[720px] overflow-hidden transition-all duration-200 ease-out",
+              isSearchOpen
+                ? "max-h-[120px] opacity-100"
+                : "pointer-events-none max-h-0 opacity-0",
+            )}
+            aria-hidden={!isSearchOpen}
+          >
+            {isSearchOpen ? (
+              <HomeSearchBar onEscape={() => closeSearch()} />
+            ) : null}
           </div>
         </header>
 
