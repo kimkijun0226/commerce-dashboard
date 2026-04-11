@@ -1,7 +1,6 @@
 import { getPublicEnv } from "@/commons/config/env";
 import { ProductDetail } from "@/components/commerce/ProductDetail/ProductDetail";
 import { getProductById } from "@/features/products/api/useProductDetail";
-import { getProductLikeInitialState } from "@/features/wishlist/getProductLikeInitialState";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -33,11 +32,7 @@ export default async function ProductDetailPage({
     notFound();
   }
 
-  const initialIsLiked = await getProductLikeInitialState(productId);
-
-  return (
-    <ProductDetail product={product} initialIsLiked={initialIsLiked} />
-  );
+  return <ProductDetail product={product} />;
 }
 
 export async function generateMetadata({

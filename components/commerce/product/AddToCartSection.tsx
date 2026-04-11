@@ -1,28 +1,25 @@
 "use client";
 
-import { toggleLikeItem } from "@/app/actions/wishlist";
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { isAuthRequiredError } from "@/commons/errors/auth-required-error";
 import type { CartProduct, ProductStatus } from "@/commons/store/cart-store";
 import { useCartStore } from "@/commons/store/cart-store";
 import type { ProductDetail } from "@/commons/types/product";
 import { QuantitySelector } from "@/components/commerce/QuantitySelector/QuantitySelector";
 import { cn, typographyToStyle } from "@/components/ui";
-import { useRouter } from "next/navigation";
 import type { CSSProperties } from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { toast } from "sonner";
 
 /**
  * Figma(노드 37-1912 등 PDP 루프) 구매 블록
  * - 수량: 고정 127×52, r8, fill #f5f5f5 (QuantitySelector compact)
- * - 위시리스트: 높이 52, 1px stroke #141718; 가로는 (컨테이너 − 127 − gap)만큼 flex-1
- *   → 부모가 508px일 때만 357px이 되고, 좁은 오른쪽 컬럼에서도 Add to cart와 우측 정렬 일치
+ * - 위시리스트: 로컬 UI만 — 선택 시 하트 빨간 채움(미저장)
  * - 장바구니: 컨테이너 전폭(최대 508)×52, fill #141718
- * - 열 간격 24px (gap-6)
  */
+const WISHLIST_ACTIVE_COLOR = commerceColors.semantic.danger;
+
 const PDP_CTA_TYPO: CSSProperties = {
   ...typographyToStyle(commerceTypography.buttonM),
   fontFamily: "var(--commerce-font-body)",
@@ -51,28 +48,13 @@ function toCartProduct(product: ProductDetail): CartProduct {
 
 export type AddToCartSectionProps = {
   product: ProductDetail;
-  initialIsLiked?: boolean;
   className?: string;
 };
 
-export function AddToCartSection({
-  product,
-  initialIsLiked = false,
-  className,
-}: AddToCartSectionProps) {
-  const router = useRouter();
+export function AddToCartSection({ product, className }: AddToCartSectionProps) {
   const addItem = useCartStore((s) => s.addItem);
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(initialIsLiked);
-  const [isPending, setIsPending] = useState(false);
-
-  useEffect(() => {
-    setQuantity(1);
-  }, [product.id]);
-
-  useEffect(() => {
-    setIsWishlisted(initialIsLiked);
-  }, [initialIsLiked, product.id]);
+  const [isWishlisted, setIsWishlisted] = useState(false);
 
   const cartDisabled =
     product.status === "hidden" || product.status === "sold_out";
@@ -87,25 +69,10 @@ export function AddToCartSection({
     }
   }, [addItem, cartDisabled, product, quantity]);
 
-  const handleWishlistToggle = useCallback(async () => {
-    if (cartDisabled || isPending) return;
-    const rollback = isWishlisted;
-    setIsWishlisted(!rollback);
-    setIsPending(true);
-    try {
-      const { liked } = await toggleLikeItem(product.id);
-      setIsWishlisted(liked);
-    } catch (e) {
-      setIsWishlisted(rollback);
-      if (isAuthRequiredError(e)) {
-        router.push("/login");
-        return;
-      }
-      toast.error("위시리스트를 업데이트할 수 없습니다.");
-    } finally {
-      setIsPending(false);
-    }
-  }, [cartDisabled, isPending, isWishlisted, product.id, router]);
+  const handleWishlistToggle = useCallback(() => {
+    if (cartDisabled) return;
+    setIsWishlisted((v) => !v);
+  }, [cartDisabled]);
 
   return (
     <section
@@ -133,7 +100,7 @@ export function AddToCartSection({
 
         <button
           type="button"
-          disabled={cartDisabled || isPending}
+          disabled={cartDisabled}
           className={cn(
             "box-border flex h-[52px] min-h-[52px] w-full min-w-0 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg",
             "border border-solid border-(--commerce-primary-main) bg-transparent antialiased",
@@ -144,17 +111,16 @@ export function AddToCartSection({
             FOCUS_OUTLINE_LIGHT,
           )}
           style={PDP_CTA_TYPO}
-          aria-busy={isPending}
           aria-label={
-            isWishlisted ? "위시리스트에서 제거" : "위시리스트에 추가"
+            isWishlisted ? "위시리스트 해제(표시만)" : "위시리스트 표시(저장 안 함)"
           }
           aria-pressed={isWishlisted}
-          onClick={() => void handleWishlistToggle()}
+          onClick={handleWishlistToggle}
         >
           {isWishlisted ? (
             <FaHeart
               className="size-5 shrink-0"
-              style={{ color: commerceColors.primary.main }}
+              style={{ color: WISHLIST_ACTIVE_COLOR }}
               aria-hidden
             />
           ) : (
@@ -164,7 +130,12 @@ export function AddToCartSection({
               aria-hidden
             />
           )}
-          <span className="min-w-0 truncate text-center leading-[28px]">
+          <span
+            className={cn(
+              "min-w-0 truncate text-center leading-[28px]",
+              isWishlisted && "text-(--commerce-semantic-danger)",
+            )}
+          >
             Wishlist
           </span>
         </button>

@@ -15,15 +15,10 @@ function formatPrice(n: number, currency = "₩") {
 
 export type ProductInfoSectionProps = {
   product: ProductDetail;
-  initialIsLiked?: boolean;
   className?: string;
 };
 
-export function ProductInfoSection({
-  product,
-  initialIsLiked = false,
-  className,
-}: ProductInfoSectionProps) {
+export function ProductInfoSection({ product, className }: ProductInfoSectionProps) {
   const { rating, reviewCount, showReviewCount } = useProductRating(product);
 
   const displayPrice = product.salePrice ?? product.price;
@@ -104,7 +99,7 @@ export function ProductInfoSection({
         </span>
       </div>
 
-      <AddToCartSection product={product} initialIsLiked={initialIsLiked} />
+      <AddToCartSection key={product.id} product={product} />
 
       <div className="flex flex-col gap-2 border-t border-(--commerce-border-subtle) pt-6">
         <span
