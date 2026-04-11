@@ -30,6 +30,7 @@ export function ProductDetail({ product, initialReviews }: ProductDetailProps) {
           additionalInfoContent={
             <ProductDetailAdditionalInfo
               additionalInfo={product.additionalInfo}
+              imageAltBase={product.name}
             />
           }
           reviewsContent={

@@ -154,13 +154,12 @@ type ProductsInsert = Database["public"]["Tables"]["products"]["Insert"];
 
 const SMARTWATCH_PRODUCT_NAME = "스마트워치 울트라";
 
-/** Supabase `products.additional_info` — 상세 탭 전용 긴 본문 */
+/** Supabase `products.additional_info` — 상세 탭용 이미지 URL(줄바꿈 구분) */
 const SMARTWATCH_ADDITIONAL_INFO = [
-  "Ultra 모델은 야외 활동과 러닝에 최적화된 티타늄 케이스와 밝은 항시표시 디스플레이를 갖추고 있습니다. 심박·산소포화도·수면 단계를 한눈에 확인할 수 있으며, iOS 및 Android용 컴패니언 앱과 동기화됩니다.",
-  "GPS는 L1/L5 듀얼 주파수를 지원해 고층 빌딩 사이에서도 추적 안정성이 좋습니다. 오프라인 지도를 미리 내려받아 등산이나 트레일 러닝 중에도 경로를 유지할 수 있습니다.",
-  "배터리는 일반 사용 기준 최대 약 36시간, 배터리 세이버 모드에서는 더 길게 사용할 수 있습니다. 고속 무선 충전 패드와 호환되며, 완충까지 약 1시간 10분이 소요됩니다(환경에 따라 다름).",
-  "5ATM 방수 등급으로 수영과 샤워에 대응합니다. 다이빙이나 스쿠버 등 고압 수중 활동에는 사용하지 마세요. 밴드는 20mm 표준 러그 폭으로 서드파티 스트랩과 호환됩니다.",
-].join("\n\n");
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&q=80",
+  "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=1200&q=80",
+  "https://images.unsplash.com/photo-1617043786394-f977fa162edc?w=1200&q=80",
+].join("\n");
 
 const SMARTWATCH_REVIEW_RATINGS = [5, 4, 5, 4, 5, 3, 5, 4] as const;
 
@@ -211,10 +210,9 @@ function getSeedProducts(): ProductsInsert[] {
       rating_average: 4.6,
       review_summary: { highlight: "착용감과 저음이 좋아요", count: 128 },
       additional_info: [
-        "이 제품은 상세 페이지용 긴 본문 예시입니다. 노이즈 캔슬링 모드는 주변 소음을 효과적으로 줄여주며, 투명 모드로 전환하면 주변 소리를 자연스럽게 들을 수 있습니다.",
-        "배터리는 ANC 켠 상태에서 최대 약 24시간, 끈 상태에서 최대 약 30시간 사용할 수 있습니다. 케이스 포함 시 총 사용 시간은 더 길어집니다.",
-        "방수·방진은 일상 생활 수준의 스플래시에 대응합니다. 샤워나 수영에는 사용하지 마세요.",
-      ].join("\n\n"),
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=80",
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=1200&q=80",
+      ].join("\n"),
       measurements:
         "이어폰(단일): 약 5.2g\n케이스: 약 48g\n케이스 크기: 약 60×48×25mm",
     },
@@ -720,7 +718,7 @@ export async function insertProducts(
 const TARGET_SMARTWATCH_REVIEW_COUNT = 8;
 
 /**
- * 스마트워치 상품의 `additional_info` 동기화 + 시드 리뷰어·리뷰 삽입(Supabase 연동 확인용).
+ * 스마트워치 상품의 `additional_info`(이미지 URL) 동기화 + 시드 리뷰어·리뷰 삽입.
  * 서비스 롤 키 사용 시 RLS를 우회합니다.
  */
 export async function seedSmartwatchReviewsAndDetail(
