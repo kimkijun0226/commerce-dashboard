@@ -27,13 +27,21 @@ export function ProductDetailImageGallery({
   }
 
   return (
-    <div className={cn("flex w-full max-w-none flex-col gap-4 sm:gap-6", className)}>
+    <div
+      className={cn(
+        "flex w-full max-w-none flex-col items-center gap-6 sm:gap-8",
+        className,
+      )}
+    >
       {urls.map((src, i) => (
-        <figure key={`${src}-${i}`} className="m-0 overflow-hidden rounded-xl border border-[#e8ecef] bg-[#fafbfb] shadow-sm">
+        <figure
+          key={`${src}-${i}`}
+          className="m-0 w-full max-w-lg overflow-hidden rounded-xl border border-[#e8ecef] bg-[#f3f5f7] shadow-sm"
+        >
           <img
             src={src}
-            alt={`${imageAltBase} — detail ${i + 1}`}
-            className="h-auto w-full object-cover object-top"
+            alt={`${imageAltBase} — 세로 상세 ${i + 1}`}
+            className="mx-auto block h-auto max-h-[min(92vh,1040px)] w-full object-contain object-center"
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"
             referrerPolicy="no-referrer-when-downgrade"

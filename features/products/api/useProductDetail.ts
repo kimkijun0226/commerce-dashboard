@@ -4,6 +4,9 @@ import {
   parseProductReviewSummary,
 } from "@/commons/types/product-review-summary";
 import { createClient } from "@/lib/supabase/server";
+import {
+  parseAdditionalInfoSpecs,
+} from "@/commons/utils/productSpecs";
 import type { Database } from "@/types/supabase";
 
 type ProductsRow = Database["public"]["Tables"]["products"]["Row"];
@@ -21,6 +24,8 @@ export type ProductDetailData = {
   measurements: string | null;
   categories: string[] | null;
   additionalInfo: string | null;
+  /** `products.additional_info_specs` — 추가정보 탭 키-값 스펙 */
+  additionalInfoSpecs: Record<string, string>;
   /** `products.detail_image_urls` — 상품 상세정보 탭 이미지 */
   detailImageUrls: string[];
   created_at: string;
@@ -41,6 +46,7 @@ function mapRow(row: ProductsRow): ProductDetailData {
     measurements: row.measurements,
     categories: row.categories,
     additionalInfo: row.additional_info,
+    additionalInfoSpecs: parseAdditionalInfoSpecs(row.additional_info_specs),
     detailImageUrls: row.detail_image_urls ?? [],
     created_at: row.created_at,
     updated_at: row.updated_at,

@@ -37,6 +37,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               productName={product.name}
               measurements={product.measurements}
               additionalInfo={product.additionalInfo}
+              additionalInfoSpecs={product.additionalInfoSpecs}
             />
           }
           reviewsContent={

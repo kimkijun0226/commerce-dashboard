@@ -5,6 +5,10 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 import { getServerEnv } from "@/commons/config/env";
 import { parseAdditionalInfoImageUrls } from "@/commons/utils/productDetailParse";
+import {
+  defaultAdditionalInfoSpecs,
+  pickPortraitDetailUrls,
+} from "@/commons/utils/productSpecs";
 
 config({ path: join(process.cwd(), ".env.local") });
 
@@ -36,6 +40,7 @@ type Database = {
           image_url: string | null;
           status: ProductStatus;
           additional_info: string | null;
+          additional_info_specs: Json;
           detail_image_urls: string[];
           measurements: string | null;
           categories: string[] | null;
@@ -53,6 +58,7 @@ type Database = {
           image_url?: string | null;
           status?: ProductStatus;
           additional_info?: string | null;
+          additional_info_specs?: Json;
           detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
@@ -70,6 +76,7 @@ type Database = {
           image_url?: string | null;
           status?: ProductStatus;
           additional_info?: string | null;
+          additional_info_specs?: Json;
           detail_image_urls?: string[];
           measurements?: string | null;
           categories?: string[] | null;
@@ -156,24 +163,63 @@ export function createSupabaseClient(): SupabaseClient<Database, "public"> {
 
 type ProductsInsert = Database["public"]["Tables"]["products"]["Insert"];
 
+function toPortraitDetailUrl(unsplashSrc: string): string {
+  const base = unsplashSrc.trim().split("?")[0];
+  return `${base}?w=640&h=1200&fit=crop&crop=center&q=80&auto=format`;
+}
+
+function specsForSeedProduct(p: ProductsInsert): Json {
+  const base = defaultAdditionalInfoSpecs(String(p.name));
+  const c = p.categories ?? [];
+  if (c.includes("의류")) {
+    return {
+      ...base,
+      원산지: "베트남",
+      "소재·성분": "라벨의 면·폴리 혼방 비율 참조",
+    };
+  }
+  if (c.includes("전자제품")) {
+    return {
+      ...base,
+      원산지: "중국",
+      "KC 인증": "전파인증·안전확인 본체 표기",
+    };
+  }
+  if (c.includes("운동용품")) {
+    return { ...base, 원산지: "대한민국" };
+  }
+  if (c.includes("가방")) {
+    return {
+      ...base,
+      원산지: "이탈리아",
+      구성품: "본체, 태그, 더스트백(모델별 상이)",
+    };
+  }
+  return base;
+}
+
 function enrichProductForInsert(
   p: ProductsInsert,
-): ProductsInsert & { detail_image_urls: string[] } {
+): ProductsInsert & { detail_image_urls: string[]; additional_info_specs: Json } {
   const parsed = p.additional_info
     ? parseAdditionalInfoImageUrls(String(p.additional_info))
     : [];
-  const urls: string[] = [];
-  if (p.image_url) urls.push(p.image_url);
-  for (const u of parsed) {
-    if (!urls.includes(u)) urls.push(u);
-  }
-  const detail_image_urls = urls.slice(0, 6);
+  const portraitLegacy = parsed.map(toPortraitDetailUrl);
+  const picked = pickPortraitDetailUrls(`${p.name}-${String(p.image_url)}`, 3);
+  const detail_image_urls = [...new Set([...portraitLegacy, ...picked])].slice(
+    0,
+    4,
+  );
+
   const additional_info = [
     `A/S: 구매일 기준 제조사·유통사 정책을 따릅니다(영업일 기준).`,
     `개봉·사용 후에는 소비자 귀책에 따른 교환이 제한될 수 있습니다.`,
     `${p.name} 관련 문의는 고객센터 운영 시간(평일 10:00–18:00)에 접수해 주세요.`,
   ].join("\n\n");
-  return { ...p, detail_image_urls, additional_info };
+
+  const additional_info_specs = specsForSeedProduct(p);
+
+  return { ...p, detail_image_urls, additional_info, additional_info_specs };
 }
 
 const SMARTWATCH_PRODUCT_NAME = "스마트워치 울트라";
@@ -769,12 +815,22 @@ export async function seedSmartwatchReviewsAndDetail(
 
   const smartwatchDetailUrls = parseAdditionalInfoImageUrls(
     SMARTWATCH_ADDITIONAL_INFO,
-  );
+  ).map(toPortraitDetailUrl);
+
+  const smartwatchSpecs: Json = {
+    ...defaultAdditionalInfoSpecs(SMARTWATCH_PRODUCT_NAME),
+    제조사: "스마트 디바이스 OEM",
+    원산지: "중국",
+    "KC 인증": "전파인증·전기용품 안전확인 본체 표기",
+    "소재·성분": "알루미늄 케이스, 실리콘 밴드(모델별 상이)",
+    구성품: "본체, 충전 케이블, 빠른 시작 가이드",
+  };
 
   const { error: infoError } = await supabase
     .from("products")
     .update({
       detail_image_urls: smartwatchDetailUrls,
+      additional_info_specs: smartwatchSpecs,
       additional_info:
         "배터리·방수 사용 안내는 동봉 매뉴얼을 참고해 주세요. 밴드 교체 시 정품 액세서리 사용을 권장합니다. 직사광선·고온 다습 환경은 피해 주세요.",
     })
