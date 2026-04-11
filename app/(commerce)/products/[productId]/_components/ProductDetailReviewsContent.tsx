@@ -60,39 +60,79 @@ export function ProductDetailReviewsContent({
     );
   }
 
+  const sumRating = list.reduce((acc, r) => acc + r.rating, 0);
+  const averageRating =
+    list.length > 0 ? Math.round((sumRating / list.length) * 10) / 10 : 0;
+
   return (
-    <ul className={cn("flex flex-col gap-6", className)}>
-      {list.map((r) => (
-        <li
-          key={r.id}
-          className="border-b border-(--commerce-border-subtle) pb-6 last:border-b-0 last:pb-0"
-        >
-          <div className="flex flex-wrap items-center gap-2">
+    <div className={cn("w-full", className)}>
+      <div className="mb-8 flex flex-col gap-4 border-b border-(--commerce-border-subtle) pb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <div className="flex flex-wrap items-center gap-4">
+          <span
+            className="text-[32px] font-medium leading-none tabular-nums tracking-[-0.02em] text-(--commerce-text-primary) sm:text-[36px]"
+            style={{ fontFamily: "var(--commerce-font-heading)" }}
+          >
+            {averageRating.toFixed(1)}
+          </span>
+          <div className="flex flex-col gap-1">
             <RatingStars
-              value={r.rating}
-              size="sm"
-              aria-label={`Rating ${r.rating} out of 5`}
+              value={averageRating}
+              size="md"
+              aria-label={`Average rating ${averageRating} out of 5`}
             />
-            <time
-              dateTime={r.created_at}
-              className="text-sm text-(--commerce-text-tertiary)"
+            <span
+              className="text-xs text-(--commerce-text-secondary) sm:text-sm"
+              style={{ fontFamily: "var(--commerce-font-body)" }}
             >
-              {new Date(r.created_at).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
+              Based on {list.length}{" "}
+              {list.length === 1 ? "review" : "reviews"}
+            </span>
           </div>
-          {r.content?.trim() ? (
-            <p className="mt-3 whitespace-pre-wrap text-(--commerce-text-primary)">
-              {r.content}
-            </p>
-          ) : (
-            <p className="mt-3 text-(--commerce-text-tertiary)">No written review.</p>
-          )}
-        </li>
-      ))}
-    </ul>
+        </div>
+      </div>
+
+      <ul className="flex flex-col gap-4">
+        {list.map((r) => (
+          <li
+            key={r.id}
+            className="rounded-lg border border-(--commerce-border-subtle) bg-(--commerce-background-default) p-4 sm:p-5"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <RatingStars
+                value={r.rating}
+                size="sm"
+                aria-label={`Rating ${r.rating} out of 5`}
+              />
+              <time
+                dateTime={r.created_at}
+                className="shrink-0 text-xs text-(--commerce-text-tertiary) sm:text-sm"
+                style={{ fontFamily: "var(--commerce-font-body)" }}
+              >
+                {new Date(r.created_at).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </time>
+            </div>
+            {r.content?.trim() ? (
+              <p
+                className="mt-3 text-[15px] leading-relaxed text-(--commerce-text-primary) sm:text-base sm:leading-7"
+                style={{ fontFamily: "var(--commerce-font-body)" }}
+              >
+                {r.content}
+              </p>
+            ) : (
+              <p
+                className="mt-3 text-sm text-(--commerce-text-tertiary)"
+                style={{ fontFamily: "var(--commerce-font-body)" }}
+              >
+                No written review.
+              </p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

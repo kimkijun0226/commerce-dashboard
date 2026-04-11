@@ -6,16 +6,14 @@ function splitParagraphs(text: string): string[] {
 }
 
 export type ProductDetailAdditionalInfoProps = {
+  /** Supabase `products.additional_info` */
   additionalInfo: string | null;
-  description: string | null;
 };
 
 export function ProductDetailAdditionalInfo({
   additionalInfo,
-  description,
 }: ProductDetailAdditionalInfoProps) {
-  const primary =
-    additionalInfo?.trim() || description?.trim() || "";
+  const primary = additionalInfo?.trim() ?? "";
 
   if (!primary) {
     return (

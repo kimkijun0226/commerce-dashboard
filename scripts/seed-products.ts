@@ -76,6 +76,60 @@ type Database = {
         };
         Relationships: [];
       };
+      users: {
+        Row: {
+          id: string;
+          email: string;
+          display_name: string | null;
+          role: "user" | "admin";
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          email: string;
+          display_name?: string | null;
+          role?: "user" | "admin";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          email?: string;
+          display_name?: string | null;
+          role?: "user" | "admin";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      reviews: {
+        Row: {
+          id: string;
+          user_id: string;
+          product_id: string;
+          rating: number;
+          content: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          product_id: string;
+          rating: number;
+          content?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          product_id?: string;
+          rating?: number;
+          content?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
@@ -97,6 +151,40 @@ export function createSupabaseClient(): SupabaseClient<Database, "public"> {
 }
 
 type ProductsInsert = Database["public"]["Tables"]["products"]["Insert"];
+
+const SMARTWATCH_PRODUCT_NAME = "스마트워치 울트라";
+
+/** Supabase `products.additional_info` — 상세 탭 전용 긴 본문 */
+const SMARTWATCH_ADDITIONAL_INFO = [
+  "Ultra 모델은 야외 활동과 러닝에 최적화된 티타늄 케이스와 밝은 항시표시 디스플레이를 갖추고 있습니다. 심박·산소포화도·수면 단계를 한눈에 확인할 수 있으며, iOS 및 Android용 컴패니언 앱과 동기화됩니다.",
+  "GPS는 L1/L5 듀얼 주파수를 지원해 고층 빌딩 사이에서도 추적 안정성이 좋습니다. 오프라인 지도를 미리 내려받아 등산이나 트레일 러닝 중에도 경로를 유지할 수 있습니다.",
+  "배터리는 일반 사용 기준 최대 약 36시간, 배터리 세이버 모드에서는 더 길게 사용할 수 있습니다. 고속 무선 충전 패드와 호환되며, 완충까지 약 1시간 10분이 소요됩니다(환경에 따라 다름).",
+  "5ATM 방수 등급으로 수영과 샤워에 대응합니다. 다이빙이나 스쿠버 등 고압 수중 활동에는 사용하지 마세요. 밴드는 20mm 표준 러그 폭으로 서드파티 스트랩과 호환됩니다.",
+].join("\n\n");
+
+const SMARTWATCH_REVIEW_RATINGS = [5, 4, 5, 4, 5, 3, 5, 4] as const;
+
+const SMARTWATCH_REVIEW_CONTENTS = [
+  "GPS가 생각보다 정확해서 러닝 코스 기록이 깔끔해요. 심박 알림도 잘 맞춰줍니다.",
+  "디스플레이가 밝아서 햇빛 아래에서도 잘 보여요. 배터리는 이틀 정도 버텼습니다.",
+  "울트라라서 무게는 좀 있지만 착용감은 괜찮아요. 등산할 때 믿고 씁니다.",
+  "앱 연동은 처음에만 설정하면 이후엔 편해요. 수면 리포트가 꽤 디테일합니다.",
+  "충전 속도 만족. 밤새 착용하고 아침에 20분 충전하면 하루는 충분했어요.",
+  "가격 대비 기대가 컸는데 알림이 가끔 늦게 와요. 펌웨어 업데이트 후 나아졌습니다.",
+  "워치 페이스 선택지가 많아서 좋고, 항상 켜진 화면이 예쁩니다.",
+  "가족 선물로 샀는데 만족한다고 하네요. 포장 상태도 깔끔했습니다.",
+] as const;
+
+const SEED_REVIEWER_NAMES = [
+  "Minji K.",
+  "Alex R.",
+  "Sora T.",
+  "Chris L.",
+  "Taylor M.",
+  "Jordan P.",
+  "Casey W.",
+  "Riley H.",
+] as const;
 
 function isDuplicateKeyError(err: unknown): err is { code: string } {
   if (!err || typeof err !== "object") return false;
@@ -131,7 +219,7 @@ function getSeedProducts(): ProductsInsert[] {
         "이어폰(단일): 약 5.2g\n케이스: 약 48g\n케이스 크기: 약 60×48×25mm",
     },
     {
-      name: "스마트워치 울트라",
+      name: SMARTWATCH_PRODUCT_NAME,
       description: "심박수 모니터와 GPS가 있는 고급 피트니스 트래커",
       price: 329000,
       sale_price: 279000,
@@ -141,6 +229,7 @@ function getSeedProducts(): ProductsInsert[] {
       categories: ["전자제품", "웨어러블", "스마트워치"],
       rating_average: 4.7,
       review_summary: { highlight: "GPS 정확도가 좋아요", count: 92 },
+      additional_info: SMARTWATCH_ADDITIONAL_INFO,
     },
     {
       name: "블루투스 스피커 컴팩트",
@@ -628,9 +717,145 @@ export async function insertProducts(
   console.log(`삽입 완료. products 개수: ${afterCount ?? "unknown"}`);
 }
 
+const TARGET_SMARTWATCH_REVIEW_COUNT = 8;
+
+/**
+ * 스마트워치 상품의 `additional_info` 동기화 + 시드 리뷰어·리뷰 삽입(Supabase 연동 확인용).
+ * 서비스 롤 키 사용 시 RLS를 우회합니다.
+ */
+export async function seedSmartwatchReviewsAndDetail(
+  supabase: ReturnType<typeof createSupabaseClient>,
+): Promise<void> {
+  console.log(`「${SMARTWATCH_PRODUCT_NAME}」 additional_info · 리뷰 시드…`);
+
+  const { data: product, error: productError } = await supabase
+    .from("products")
+    .select("id")
+    .eq("name", SMARTWATCH_PRODUCT_NAME)
+    .maybeSingle();
+
+  if (productError) {
+    console.warn("스마트워치 상품 조회 실패:", productError.message);
+    return;
+  }
+  if (!product) {
+    console.log("스마트워치 상품이 없어 시드를 건너뜁니다.");
+    return;
+  }
+
+  const { error: infoError } = await supabase
+    .from("products")
+    .update({
+      additional_info: SMARTWATCH_ADDITIONAL_INFO,
+    })
+    .eq("id", product.id);
+
+  if (infoError) {
+    console.warn("additional_info 업데이트 실패:", infoError.message);
+  } else {
+    console.log("additional_info(Supabase) 반영 완료");
+  }
+
+  const userIds: string[] = [];
+  for (let i = 0; i < SEED_REVIEWER_NAMES.length; i++) {
+    const email = `seed-reviewer-${i}@seed.cursor-commerce.local`;
+    const { error: upsertError } = await supabase.from("users").upsert(
+      {
+        email,
+        display_name: SEED_REVIEWER_NAMES[i],
+        role: "user",
+      },
+      { onConflict: "email" },
+    );
+    if (upsertError) {
+      console.warn(`사용자 upsert 실패 (${email}):`, upsertError.message);
+    }
+    const { data: row, error: selError } = await supabase
+      .from("users")
+      .select("id")
+      .eq("email", email)
+      .maybeSingle();
+    if (selError) {
+      console.warn(`사용자 조회 실패 (${email}):`, selError.message);
+      continue;
+    }
+    if (row?.id) userIds.push(row.id);
+  }
+
+  if (userIds.length < TARGET_SMARTWATCH_REVIEW_COUNT) {
+    console.warn(
+      `시드 리뷰어 사용자가 ${TARGET_SMARTWATCH_REVIEW_COUNT}명 미만입니다. (현재 ${userIds.length}명)`,
+    );
+    return;
+  }
+
+  const { count: reviewCount, error: countError } = await supabase
+    .from("reviews")
+    .select("*", { count: "exact", head: true })
+    .eq("product_id", product.id);
+
+  if (countError) {
+    console.warn("리뷰 개수 조회 실패:", countError.message);
+    return;
+  }
+
+  const existingCount = reviewCount ?? 0;
+  const toInsert = Math.max(0, TARGET_SMARTWATCH_REVIEW_COUNT - existingCount);
+
+  if (toInsert === 0) {
+    console.log(
+      `스마트워치 리뷰가 이미 ${existingCount}개 이상이어서 삽입을 건너뜁니다.`,
+    );
+  } else {
+    const baseOffset = existingCount;
+    for (let j = 0; j < toInsert; j++) {
+      const i = baseOffset + j;
+      if (i >= SMARTWATCH_REVIEW_RATINGS.length || i >= userIds.length) break;
+      const { error: insError } = await supabase.from("reviews").insert({
+        user_id: userIds[i],
+        product_id: product.id,
+        rating: SMARTWATCH_REVIEW_RATINGS[i],
+        content: SMARTWATCH_REVIEW_CONTENTS[i],
+        created_at: new Date(
+          Date.now() - i * 3 * 24 * 60 * 60 * 1000,
+        ).toISOString(),
+      });
+      if (insError) {
+        if (isDuplicateKeyError(insError)) continue;
+        console.warn("리뷰 삽입 실패:", insError);
+      }
+    }
+    console.log(`스마트워치 리뷰 ${toInsert}건 삽입 시도 완료`);
+  }
+
+  const { data: ratingRows, error: ratingsError } = await supabase
+    .from("reviews")
+    .select("rating")
+    .eq("product_id", product.id);
+
+  if (ratingsError || !ratingRows?.length) {
+    return;
+  }
+
+  const sum = ratingRows.reduce((acc, row) => acc + row.rating, 0);
+  const avg = Math.round((sum / ratingRows.length) * 10) / 10;
+
+  await supabase
+    .from("products")
+    .update({
+      rating_average: avg,
+      review_summary: {
+        count: ratingRows.length,
+        highlight: "GPS and battery life stand out.",
+      },
+    })
+    .eq("id", product.id);
+}
+
 async function main() {
   const supabase = createSupabaseClient();
   await insertProducts(supabase);
+  await seedSmartwatchReviewsAndDetail(supabase);
 }
 
 main()
