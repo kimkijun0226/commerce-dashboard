@@ -15,13 +15,23 @@ import { useCallback, useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { toast } from "sonner";
 
+/**
+ * Figma(Commerce 컴포넌트 310:2620 계열) PDP 구매 블록
+ * - 수량: 127×52, r8, fill #f5f5f5 (QuantitySelector compact)
+ * - 위시리스트: 357×52, 1px stroke #141718, 아이콘 20 + 라벨, gap 8
+ * - 장바구니: 508×52, fill #141718, 텍스트 inverse, r8
+ * - 열 간격 24px → 127 + 24 + 357 = 508
+ */
 const PDP_CTA_TYPO: CSSProperties = {
   ...typographyToStyle(commerceTypography.buttonM),
   fontFamily: "var(--commerce-font-body)",
 };
 
-const FOCUS_VISIBLE =
+const FOCUS_OUTLINE_LIGHT =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--commerce-semantic-info)]";
+
+const FOCUS_OUTLINE_ON_DARK =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/90";
 
 function toCartProduct(product: ProductDetail): CartProduct {
   let status: ProductStatus = "visible";
@@ -104,10 +114,15 @@ export function AddToCartSection({
       )}
       aria-label="장바구니 담기"
     >
-      <div className="flex w-full flex-col gap-4 sm:h-[52px] sm:flex-row sm:items-stretch sm:gap-6">
+      <div
+        className={cn(
+          "grid w-full grid-cols-1 gap-y-4",
+          "sm:grid-cols-[127px_357px] sm:gap-x-6 sm:gap-y-0",
+        )}
+      >
         <QuantitySelector
           productLayout="compact"
-          className="h-[52px] w-full max-w-[127px] shrink-0 sm:w-[127px]"
+          className="box-border shrink-0 justify-self-start sm:justify-self-stretch"
           value={quantity}
           min={1}
           onChange={setQuantity}
@@ -119,12 +134,13 @@ export function AddToCartSection({
           type="button"
           disabled={cartDisabled || isPending}
           className={cn(
-            "inline-flex h-[52px] w-full shrink-0 items-center justify-center gap-2 rounded-lg border border-solid border-(--commerce-primary-main) bg-transparent sm:w-[357px]",
-            "text-(--commerce-text-primary) transition-[background-color,box-shadow,opacity,transform] duration-200 ease-out",
-            "hover:bg-(--commerce-background-light) hover:shadow-[0_1px_0_rgba(20,23,24,0.06)]",
-            "active:scale-[0.99] active:bg-(--commerce-background-elevated)",
-            "disabled:pointer-events-none disabled:opacity-45",
-            FOCUS_VISIBLE,
+            "box-border flex h-[52px] min-h-[52px] w-full max-w-[357px] cursor-pointer items-center justify-center gap-2 rounded-lg sm:w-[357px] sm:max-w-none",
+            "border border-solid border-(--commerce-primary-main) bg-transparent antialiased",
+            "text-(--commerce-text-primary) transition-[background-color,box-shadow,opacity,transform] duration-200 ease-in-out",
+            "hover:bg-(--commerce-background-light) hover:shadow-[inset_0_0_0_1px_rgba(20,23,24,0.04),0_1px_2px_rgba(20,23,24,0.06)]",
+            "active:scale-[0.995] active:bg-(--commerce-background-elevated) active:shadow-none",
+            "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+            FOCUS_OUTLINE_LIGHT,
           )}
           style={PDP_CTA_TYPO}
           aria-busy={isPending}
@@ -147,7 +163,9 @@ export function AddToCartSection({
               aria-hidden
             />
           )}
-          <span className="truncate">Wishlist</span>
+          <span className="max-w-[min(100%,220px)] truncate text-center leading-[28px]">
+            Wishlist
+          </span>
         </button>
       </div>
 
@@ -155,19 +173,19 @@ export function AddToCartSection({
         type="button"
         disabled={cartDisabled}
         className={cn(
-          "mt-4 h-[52px] w-full max-w-[508px] rounded-lg border-0",
+          "mt-4 box-border flex h-[52px] min-h-[52px] w-full max-w-[508px] cursor-pointer items-center justify-center rounded-lg border-0 antialiased",
           "bg-(--commerce-primary-main) text-(--commerce-text-inverse)",
-          "transition-[background-color,box-shadow,filter,transform] duration-200 ease-out",
-          "hover:bg-(--commerce-primary-light) hover:shadow-[0_12px_32px_rgba(20,23,24,0.18)]",
-          "active:translate-y-px active:shadow-[0_6px_16px_rgba(20,23,24,0.14)] active:brightness-[0.97]",
-          "disabled:pointer-events-none disabled:opacity-45 disabled:shadow-none",
-          FOCUS_VISIBLE,
+          "transition-[background-color,box-shadow,filter,transform] duration-200 ease-in-out",
+          "hover:bg-(--commerce-primary-light) hover:shadow-[0_10px_28px_rgba(20,23,24,0.16),0_2px_6px_rgba(20,23,24,0.08)]",
+          "active:translate-y-px active:shadow-[0_4px_14px_rgba(20,23,24,0.14)] active:brightness-[0.96]",
+          "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none",
+          FOCUS_OUTLINE_ON_DARK,
         )}
         style={PDP_CTA_TYPO}
         aria-label="장바구니에 담기"
         onClick={handleAddToCart}
       >
-        Add to cart
+        <span className="leading-[28px] tracking-[-0.4px]">Add to cart</span>
       </button>
     </section>
   );
