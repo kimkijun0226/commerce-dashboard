@@ -26,14 +26,14 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div className={cn("flex flex-col gap-1", className)}>
-        <div className="flex items-start gap-3">
+        <div className="flex items-center gap-3">
           <input
             ref={ref}
             id={id}
             type="checkbox"
             disabled={disabled}
             aria-describedby={error ? errId : undefined}
-            className="mt-0.5 size-4 shrink-0 rounded border cursor-pointer disabled:cursor-not-allowed"
+            className="size-4 shrink-0 rounded border cursor-pointer disabled:cursor-not-allowed"
             style={{
               accentColor: commerceColors.primary.main,
               borderColor: invalid
@@ -46,7 +46,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             <div className="min-w-0 flex-1">
               <label
                 htmlFor={id}
-                className="cursor-pointer"
+                className="cursor-pointer leading-[26px]"
                 style={{
                   ...typographyToStyle(commerceTypography.body2),
                   color: commerceColors.text.primary,

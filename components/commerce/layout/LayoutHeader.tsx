@@ -2,7 +2,7 @@
 
 import { cn } from "@/components/ui";
 import { useSearchStore } from "@/features/search/store/searchStore";
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { ButtonHTMLAttributes } from "react";
 import { useState } from "react";
@@ -73,29 +73,25 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
             <FiSearch className="size-6" aria-hidden />
           </IconBtn>
 
-          <Link href="/account" className="inline-flex">
-            <IconBtn aria-label="내 계정">
-              <FiUser className="size-6" aria-hidden />
-            </IconBtn>
-          </Link>
+          <IconBtn href="/account" aria-label="마이페이지">
+            <FiUser className="size-6" aria-hidden />
+          </IconBtn>
 
-          <Link href="/cart" className="inline-flex">
-            <IconBtn aria-label="장바구니" className="relative">
-              <FiShoppingBag className="size-6" aria-hidden />
-              {cartCount > 0 ? (
-                <span
-                  className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
-                  style={{
-                    backgroundColor: "var(--commerce-primary-main)",
-                    color: "var(--commerce-text-inverse)",
-                    fontFamily: "Inter",
-                  }}
-                >
-                  {Math.min(cartCount, 99)}
-                </span>
-              ) : null}
-            </IconBtn>
-          </Link>
+          <IconBtn href="/cart" aria-label="장바구니" className="relative">
+            <FiShoppingBag className="size-6" aria-hidden />
+            {cartCount > 0 ? (
+              <span
+                className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
+                style={{
+                  backgroundColor: "var(--commerce-primary-main)",
+                  color: "var(--commerce-text-inverse)",
+                  fontFamily: "Inter",
+                }}
+              >
+                {Math.min(cartCount, 99)}
+              </span>
+            ) : null}
+          </IconBtn>
         </div>
       </div>
 
@@ -127,20 +123,33 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
 }
 
 function IconBtn({
+  href,
   className,
   children,
   ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement>) {
+}: (ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined }) | (Omit<LinkProps, "href"> & { href: string } & { className?: string; children?: React.ReactNode; ["aria-label"]?: string })) {
+  const base = cn(
+    "inline-flex items-center justify-center rounded-md p-2",
+    "text-(--commerce-text-primary)",
+    "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
+    className,
+  );
+
+  if (href) {
+    // Link 렌더링 시 <a>가 되므로 button 중첩/Link 안 button 문제를 피할 수 있습니다.
+    const linkProps = rest as Omit<LinkProps, "href">;
+    return (
+      <Link href={href} className={base} {...linkProps}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <button
       type="button"
-      className={cn(
-        "inline-flex items-center justify-center rounded-md p-2",
-        "text-(--commerce-text-primary)",
-        "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
-        className,
-      )}
-      {...rest}
+      className={base}
+      {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}
     >
       {children}
     </button>
