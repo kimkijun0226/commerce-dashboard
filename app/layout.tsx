@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
 import { ReactQueryProvider } from "@/app/_providers/ReactQueryProvider";
+import { SupabaseAuthProvider } from "@/app/_providers/SupabaseAuthProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,7 +42,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
       >
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <SupabaseAuthProvider>{children}</SupabaseAuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
     // 상위 디렉토리의 lockfile이 있어도 프로젝트 루트를 고정
     root: path.resolve(__dirname),
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

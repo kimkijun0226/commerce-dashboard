@@ -3,6 +3,7 @@
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
+import { useSessionStore } from "@/commons/store/session-store";
 
 export type UseAuthResult = {
   user: User | null;
@@ -14,6 +15,8 @@ export type UseAuthResult = {
 export function useAuth(): UseAuthResult {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const setStoreUser = useSessionStore((s) => s.setUser);
+  const clearStoreUser = useSessionStore((s) => s.clearUser);
 
   useEffect(() => {
     const supabase = getSupabaseBrowserClient();
@@ -35,6 +38,25 @@ export function useAuth(): UseAuthResult {
   }, []);
 
   const userId = user?.id ?? null;
+
+  // Provider가 전역 동기화를 담당하지만, useAuth만 단독으로 쓰는 화면에서도
+  // store가 비어있지 않게 최소 동기화를 한 번 더 보장합니다.
+  useEffect(() => {
+    if (isLoading) return;
+    if (!user) {
+      clearStoreUser();
+      return;
+    }
+    setStoreUser({
+      id: user.id,
+      email: user.email ?? "",
+      displayName:
+        (user.user_metadata?.displayName as string | undefined) ??
+        (user.user_metadata?.name as string | undefined) ??
+        null,
+      role: "user",
+    });
+  }, [user, isLoading, setStoreUser, clearStoreUser]);
 
   return {
     user,
