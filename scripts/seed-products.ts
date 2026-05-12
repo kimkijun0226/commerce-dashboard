@@ -903,9 +903,35 @@ export async function seedSmartwatchReviewsAndDetail(
     for (let j = 0; j < toInsert; j++) {
       const i = baseOffset + j;
       if (i >= SMARTWATCH_REVIEW_RATINGS.length || i >= userIds.length) break;
+      const uid = userIds[i];
+      if (!uid) break;
+
+      const { data: line, error: lineErr } = await supabase
+        .from("order_items")
+        .select("order_id, orders!inner(user_id, status, payment_status)")
+        .eq("product_id", product.id)
+        .eq("orders.user_id", uid)
+        .eq("orders.status", "paid")
+        .eq("orders.payment_status", "success")
+        .limit(1)
+        .maybeSingle();
+
+      if (lineErr) {
+        console.warn("스마트워치 리뷰용 주문 조회 실패:", lineErr.message);
+        continue;
+      }
+      const orderId = (line as { order_id: string } | null)?.order_id;
+      if (!orderId) {
+        console.warn(
+          `스마트워치 리뷰 시드: 사용자 ${uid}의 결제 완료 주문(해당 상품)이 없어 건너뜁니다.`,
+        );
+        continue;
+      }
+
       const { error: insError } = await supabase.from("reviews").insert({
-        user_id: userIds[i],
+        user_id: uid,
         product_id: product.id,
+        order_id: orderId,
         rating: SMARTWATCH_REVIEW_RATINGS[i],
         content: SMARTWATCH_REVIEW_CONTENTS[i],
         created_at: new Date(

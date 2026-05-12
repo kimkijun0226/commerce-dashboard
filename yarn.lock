@@ -6346,6 +6346,11 @@ range-parser@^1.2.1:
   resolved "https://registry.npmjs.org/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
+react-daum-postcode@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-daum-postcode/-/react-daum-postcode-4.0.0.tgz#834183cbcb77343b9be5b6fe8ffc90a2635c9936"
+  integrity sha512-2CGR8Aa/5637IKaplJXv5m9S/qQWWYBr30FhQ9mK9nXiisVbTvrpU9D4U1mgr8YYCKw2RgcK8daN+F+PJhW+ig==
+
 react-docgen-typescript@^2.2.2:
   version "2.4.0"
   resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-2.4.0.tgz#033428b4a6a639d050ac8baf2a5195c596521713"

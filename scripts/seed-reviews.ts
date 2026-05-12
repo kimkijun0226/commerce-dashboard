@@ -224,7 +224,8 @@ async function insertReviewBatches(
 /**
  * 등록된(registered) 상품 최대 20개에 대해 리뷰를 랜덤 생성합니다.
  * - 사용자 최소 30명 보장
- * - (user_id, product_id) 기준 기존 리뷰가 있으면 해당 사용자는 그 상품에서 제외
+ * - (order_id, product_id) 기준으로 아직 리뷰가 없는 결제 완료 주문만 사용
+ * - 동일 주문·동일 상품은 1건만 (여러 수량이어도 주문당 1건)
  * - 삽입은 10건 단위 배치
  */
 export async function insertReviews(
@@ -257,24 +258,11 @@ export async function insertReviews(
     `[reviews] 대상 상품 ${selected.length}개 (registered 중 최대 ${MAX_PRODUCTS}개)`,
   );
 
-  const { data: users, error: usersError } = await supabase
-    .from("users")
-    .select("id");
-
-  if (usersError || !users?.length) {
-    console.error(
-      "[reviews] 사용자 목록 조회 실패:",
-      usersError?.message ?? "데이터 없음",
-    );
-    throw usersError ?? new Error("users empty");
-  }
-
-  const userIds = users.map((u) => u.id);
   const productIds = selected.map((p) => p.id);
 
   const { data: existingRows, error: revError } = await supabase
     .from("reviews")
-    .select("user_id, product_id")
+    .select("order_id, product_id")
     .in("product_id", productIds);
 
   if (revError) {
@@ -282,12 +270,11 @@ export async function insertReviews(
     throw revError;
   }
 
-  const reviewedByProduct = new Map<string, Set<string>>();
-  for (const pid of productIds) {
-    reviewedByProduct.set(pid, new Set());
-  }
+  const taken = new Set<string>();
   for (const row of existingRows ?? []) {
-    reviewedByProduct.get(row.product_id)?.add(row.user_id);
+    if (row.order_id) {
+      taken.add(`${row.order_id}:${row.product_id}`);
+    }
   }
 
   const toInsert: ReviewInsert[] = [];
@@ -296,29 +283,57 @@ export async function insertReviews(
     const product = selected[pi];
     if (!product) continue;
     const targetCount = counts[pi] ?? 3;
-    const used = reviewedByProduct.get(product.id);
-    if (!used) continue;
 
-    const eligible = shuffleInPlace(
-      userIds.filter((uid) => !used.has(uid)),
-    );
-    const picked = eligible.slice(0, targetCount);
+    const { data: purchaseLinesData, error: plError } = await supabase
+      .from("order_items")
+      .select("order_id, orders!inner(user_id, status, payment_status)")
+      .eq("product_id", product.id)
+      .eq("orders.status", "paid")
+      .eq("orders.payment_status", "success");
 
-    if (picked.length < targetCount) {
-      console.warn(
-        `[reviews] 상품 "${product.name}" (${product.id}): 목표 ${targetCount}명 → 실제 ${picked.length}명 (후보 부족)`,
-      );
+    if (plError) {
+      console.error(`[reviews] 주문 조회 실패 (${product.name}):`, plError.message);
+      continue;
     }
 
-    for (const uid of picked) {
-      used.add(uid);
+    type PurchaseLine = {
+      order_id: string;
+      orders: { user_id: string } | { user_id: string }[] | null;
+    };
+    const purchaseLines = (purchaseLinesData ?? []) as PurchaseLine[];
+
+    type Pair = { userId: string; orderId: string };
+    const byOrder = new Map<string, Pair>();
+    for (const line of purchaseLines ?? []) {
+      const o = line.orders as { user_id: string } | { user_id: string }[] | null;
+      const ord = Array.isArray(o) ? o[0] : o;
+      if (!ord?.user_id) continue;
+      byOrder.set(line.order_id, { userId: ord.user_id, orderId: line.order_id });
+    }
+
+    const candidates = shuffleInPlace([...byOrder.values()]);
+    let added = 0;
+
+    for (const c of candidates) {
+      if (added >= targetCount) break;
+      const slot = `${c.orderId}:${product.id}`;
+      if (taken.has(slot)) continue;
+      taken.add(slot);
       toInsert.push({
-        user_id: uid,
+        user_id: c.userId,
         product_id: product.id,
+        order_id: c.orderId,
         rating: randomRating(),
         content: randomContent(),
         created_at: randomCreatedAtISO(),
       });
+      added += 1;
+    }
+
+    if (added < targetCount) {
+      console.warn(
+        `[reviews] 상품 "${product.name}" (${product.id}): 목표 ${targetCount}건 → 실제 ${added}건 (결제 완료 주문·슬롯 부족)`,
+      );
     }
   }
 
