@@ -10,8 +10,8 @@ export type CommerceProductGridProps = {
   columnsClassName?: string;
   gapClassName?: string;
   className?: string;
-  onAddToCart: () => void;
-  onWishlistToggle: (productId: string) => void;
+  onAddToCart: (product: Product) => void;
+  onWishlistToggle?: (productId: string) => void;
 };
 
 export function CommerceProductGrid({
@@ -33,8 +33,10 @@ export function CommerceProductGrid({
       renderItem={(p) => (
         <ProductCard
           product={p}
-          onAddToCart={() => onAddToCart()}
-          onWishlistToggle={() => onWishlistToggle(p.id)}
+          onAddToCart={() => onAddToCart(p)}
+          onWishlistToggle={
+            onWishlistToggle ? () => onWishlistToggle(p.id) : undefined
+          }
         />
       )}
     />

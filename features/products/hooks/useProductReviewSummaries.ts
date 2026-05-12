@@ -1,7 +1,6 @@
 "use client";
 
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
-import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 
@@ -10,23 +9,10 @@ export type ProductReviewSummary = {
   averageRating: number;
 };
 
-function aggregateByProductId(
-  rows: { product_id: string; rating: number }[],
+function toMap(
+  summaries: Record<string, ProductReviewSummary>,
 ): Map<string, ProductReviewSummary> {
-  const buckets = new Map<string, number[]>();
-  for (const row of rows) {
-    const list = buckets.get(row.product_id) ?? [];
-    list.push(row.rating);
-    buckets.set(row.product_id, list);
-  }
-  const out = new Map<string, ProductReviewSummary>();
-  for (const [productId, ratings] of buckets) {
-    const reviewCount = ratings.length;
-    const averageRating =
-      ratings.reduce((sum, r) => sum + r, 0) / reviewCount;
-    out.set(productId, { reviewCount, averageRating });
-  }
-  return out;
+  return new Map(Object.entries(summaries));
 }
 
 /**
@@ -42,16 +28,19 @@ export function useProductReviewSummaries(productIds: string[]) {
   return useQuery({
     queryKey: QUERY_KEYS.reviews.summaryByProductIds(sortedUniqueIds),
     queryFn: async () => {
-      const supabase = getSupabaseBrowserClient();
-      const { data, error } = await supabase
-        .from("reviews")
-        .select("product_id, rating")
-        .in("product_id", [...sortedUniqueIds]);
-
-      if (error) {
-        throw new Error(`리뷰 요약 조회 실패: ${error.message}`);
+      const res = await fetch("/api/catalog/review-summaries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productIds: sortedUniqueIds }),
+      });
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(text || "리뷰 요약 조회 실패");
       }
-      return aggregateByProductId(data ?? []);
+      const json = (await res.json()) as {
+        summaries?: Record<string, ProductReviewSummary>;
+      };
+      return toMap(json.summaries ?? {});
     },
     enabled: sortedUniqueIds.length > 0,
   });

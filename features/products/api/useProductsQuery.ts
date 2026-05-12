@@ -46,8 +46,13 @@ export function useProductsQuery(params?: UseProductsParams) {
 
       let query = supabase
         .from("products")
-        .select("id, name, price, sale_price, image_url, status, rating_average")
-        .neq("status", "hidden");
+        .select(
+          "id, name, price, sale_price, image_url, status, rating_average, created_at",
+        )
+        .neq("status", "hidden")
+        .order("created_at", { ascending: false })
+        // created_at이 동일한 경우에도 순서가 고정되도록 tie-breaker 추가
+        .order("id", { ascending: false });
 
       if (params?.limit) {
         query = query.limit(params.limit);

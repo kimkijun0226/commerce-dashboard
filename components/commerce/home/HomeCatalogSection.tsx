@@ -19,8 +19,8 @@ export type HomeCatalogSectionProps = {
   loadMoreRef: RefObject<HTMLDivElement | null>;
   showLoadMoreSentinel: boolean;
   isFetchingNextPage: boolean;
-  onAddToCart: () => void;
-  onWishlistToggle: (productId: string) => void;
+  onAddToCart: (product: Product) => void;
+  onWishlistToggle?: (productId: string) => void;
 };
 
 export function HomeCatalogSection({
