@@ -23,7 +23,6 @@ export function ReviewList({
   isSuperAdmin,
   className,
 }: ReviewListProps) {
-  void currentUserId;
   const [loadedPages, setLoadedPages] = useState<number[]>([1]);
 
   const queries = useQueries({
@@ -96,7 +95,12 @@ export function ReviewList({
             key={r.id}
             className="border-b border-[#e8ecef] py-10 first:pt-2"
           >
-            <ReviewListItem review={r} isSuperAdmin={isSuperAdmin} />
+            <ReviewListItem
+              review={r}
+              productId={productId}
+              currentUserId={currentUserId ?? null}
+              isSuperAdmin={isSuperAdmin}
+            />
           </li>
         ))}
       </ul>

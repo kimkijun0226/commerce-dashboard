@@ -1,4 +1,5 @@
 import { getPublicEnv } from "@/commons/config/env";
+import { getReviewWriteEligibility } from "@/app/(commerce)/products/[productId]/review-actions";
 import { ProductDetail } from "@/components/commerce/ProductDetail/ProductDetail";
 import { getProductById } from "@/features/products/api/useProductDetail";
 import type { Metadata } from "next";
@@ -22,17 +23,43 @@ function resolveAbsoluteImageUrl(
 
 export default async function ProductDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ productId: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { productId } = await params;
+  const sp = (await Promise.resolve(
+    searchParams ?? {},
+  )) as Record<string, string | string[] | undefined>;
+  const rawOpen = sp.openReview;
+  const openVal = Array.isArray(rawOpen) ? rawOpen[0] : rawOpen;
+  const defaultReviewsTab =
+    openVal === "1" || openVal === "true" || openVal === "yes";
+  const rawOrder = sp.orderId;
+  const orderIdParam =
+    typeof rawOrder === "string"
+      ? rawOrder.trim()
+      : Array.isArray(rawOrder)
+        ? String(rawOrder[0] ?? "").trim()
+        : "";
+
   const product = await getProductById(productId);
 
   if (!product) {
     notFound();
   }
 
-  return <ProductDetail product={product} />;
+  const reviewWriteEligibility = await getReviewWriteEligibility(productId);
+
+  return (
+    <ProductDetail
+      product={product}
+      reviewWriteEligibility={reviewWriteEligibility}
+      defaultReviewsTab={defaultReviewsTab}
+      initialReviewOrderId={orderIdParam || null}
+    />
+  );
 }
 
 export async function generateMetadata({

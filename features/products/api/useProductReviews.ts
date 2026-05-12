@@ -10,6 +10,7 @@ export type Review = {
   users: {
     display_name: string | null;
     email: string;
+    image_url: string | null;
   } | null;
 };
 
@@ -20,19 +21,29 @@ function normalizeUsersEmbed(
   if (Array.isArray(raw)) {
     const first = raw[0];
     if (first && typeof first === "object" && "email" in first) {
-      const o = first as { display_name: string | null; email: string };
+      const o = first as {
+        display_name: string | null;
+        email: string;
+        image_url?: string | null;
+      };
       return {
         display_name: o.display_name ?? null,
         email: o.email,
+        image_url: o.image_url ?? null,
       };
     }
     return null;
   }
   if (typeof raw === "object" && raw !== null && "email" in raw) {
-    const o = raw as { display_name: string | null; email: string };
+    const o = raw as {
+      display_name: string | null;
+      email: string;
+      image_url?: string | null;
+    };
     return {
       display_name: o.display_name ?? null,
       email: o.email,
+      image_url: o.image_url ?? null,
     };
   }
   return null;
@@ -58,7 +69,8 @@ export async function fetchProductReviewsPage(
       created_at,
       users (
         display_name,
-        email
+        email,
+        image_url
       )
     `,
     )
