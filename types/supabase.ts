@@ -30,6 +30,8 @@ export interface Database {
           id: string;
           email: string;
           display_name: string | null;
+          image_url: string | null;
+          phone: string | null;
           role: UserRole;
           created_at: string;
           updated_at: string;
@@ -38,6 +40,8 @@ export interface Database {
           id?: string;
           email: string;
           display_name?: string | null;
+          image_url?: string | null;
+          phone?: string | null;
           role?: UserRole;
           created_at?: string;
           updated_at?: string;
@@ -46,6 +50,8 @@ export interface Database {
           id?: string;
           email?: string;
           display_name?: string | null;
+          image_url?: string | null;
+          phone?: string | null;
           role?: UserRole;
           created_at?: string;
           updated_at?: string;
@@ -276,6 +282,7 @@ export interface Database {
           id: string;
           user_id: string;
           product_id: string;
+          order_id: string;
           rating: number;
           content: string | null;
           created_at: string;
@@ -284,6 +291,7 @@ export interface Database {
           id?: string;
           user_id: string;
           product_id: string;
+          order_id: string;
           rating: number;
           content?: string | null;
           created_at?: string;
@@ -292,6 +300,7 @@ export interface Database {
           id?: string;
           user_id?: string;
           product_id?: string;
+          order_id?: string;
           rating?: number;
           content?: string | null;
           created_at?: string;
