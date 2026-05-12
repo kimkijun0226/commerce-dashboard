@@ -1,22 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-/**
- * 상품 노출 상태
- *
- * - 요구사항 문서 기준 타입입니다.
- * - DB 스키마(0001_init_schema.sql)의 products.status는 'registered'를 사용하지만,
- *   장바구니 UI 레벨에서는 'visible'로 표현하는 경우가 있어 분리했습니다.
- */
 export type ProductStatus = "visible" | "hidden" | "sold_out";
 
-/**
- * 장바구니 아이템(= products 테이블에서 장바구니에 필요한 최소 필드)
- *
- * - id: products.id (uuid를 문자열로 보관)
- * - price / salePrice: products.price, products.sale_price 매핑
- * - imageUrl: products.image_url 매핑
- */
 export interface CartItem {
   id: string;
   name: string;
@@ -27,66 +13,86 @@ export interface CartItem {
   status?: ProductStatus;
 }
 
-/**
- * addItem에 전달되는 "상품" 타입
- *
- * - 수량은 별도 파라미터로 받기 때문에 quantity를 제외합니다.
- * - 실제 서비스에서는 products.Row에서 필요한 필드만 pick해서 넣어주면 됩니다.
- */
 export type CartProduct = Omit<CartItem, "quantity">;
 
+type CartApiItem = {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  imageUrl: string | null;
+  salePrice: number | null;
+  status?: "registered" | "hidden" | "sold_out" | ProductStatus;
+};
+
 export interface CartState {
-  /** 장바구니 담긴 아이템 목록 */
   items: CartItem[];
-
-  /** 전체 수량 합계 (items 기반 자동 계산) */
   totalQuantity: number;
-
-  /** 전체 금액 합계 (salePrice 우선, items 기반 자동 계산) */
-  totalAmount: number;
-
-  /**
-   * 장바구니에 상품 추가
-   * - 동일 id가 이미 있으면 quantity만 증가
-   * - 없으면 새 아이템 추가
-   * @returns 성공 여부 (예외 삼킴 시 false)
-   */
-  addItem: (product: CartProduct, quantity?: number) => boolean;
-
-  /**
-   * 특정 상품 수량 변경
-   * - quantity <= 0 이면 해당 아이템 제거
-   */
-  updateItemQuantity: (productId: string, quantity: number) => void;
-
-  /** 특정 상품 제거 */
-  removeItem: (productId: string) => void;
-
-  /** 장바구니 비우기 */
+  /** 상품 합계(할인 적용 후) */
+  subtotal: number;
+  /** 배송비 */
+  shippingFee: number;
+  /** 결제 예정 금액(상품 합계 + 배송비 - 할인) */
+  total: number;
+  isSyncing: boolean;
+  cartOwner: "guest" | string | null;
+  syncWithServer: (userId: string) => Promise<void>;
+  addItem: (product: CartProduct, quantity?: number) => Promise<boolean>;
+  updateItemQuantity: (productId: string, quantity: number) => Promise<void>;
+  removeItem: (productId: string) => Promise<void>;
+  resetForGuest: () => void;
   clear: () => void;
 }
 
 const STORAGE_KEY = "commerce_cart_v1";
 
 function clampQuantity(value: number): number {
-  // 장바구니 수량은 정수 양수만 의미가 있으므로, UI/입력 오류를 방어합니다.
   if (!Number.isFinite(value)) return 0;
   return Math.floor(value);
 }
+
 function getUnitPrice(item: Pick<CartItem, "price" | "salePrice">): number {
-  // 할인 가격이 있으면 salePrice를 우선 적용합니다.
   return item.salePrice ?? item.price;
+}
+
+export function calcShippingFee(subtotal: number): number {
+  // subtotal >= 50,000원 무료 배송
+  return subtotal >= 50_000 ? 0 : 2_500;
 }
 
 function computeTotals(
   items: CartItem[],
-): Pick<CartState, "totalAmount" | "totalQuantity"> {
+): Pick<CartState, "subtotal" | "totalQuantity" | "shippingFee" | "total"> {
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
-  const totalAmount = items.reduce(
+  const subtotal = items.reduce(
     (acc, item) => acc + getUnitPrice(item) * item.quantity,
     0,
   );
-  return { totalQuantity, totalAmount };
+  const shippingFee = calcShippingFee(subtotal);
+  const total = Math.max(0, subtotal + shippingFee);
+  return { totalQuantity, subtotal, shippingFee, total };
+}
+
+function normalizeStatus(status: CartApiItem["status"]): ProductStatus {
+  if (status === "hidden") return "hidden";
+  if (status === "sold_out") return "sold_out";
+  return "visible";
+}
+
+function fromApiItem(item: CartApiItem): CartItem {
+  return {
+    id: item.id,
+    name: item.name,
+    price: Number(item.price),
+    salePrice: item.salePrice == null ? null : Number(item.salePrice),
+    imageUrl: item.imageUrl,
+    quantity: clampQuantity(item.quantity),
+    status: normalizeStatus(item.status),
+  };
+}
+
+function setItemsState(items: CartItem[]) {
+  return { items, ...computeTotals(items) };
 }
 
 function removeById(items: CartItem[], productId: string): CartItem[] {
@@ -102,16 +108,10 @@ function upsertItem(
   if (nextQty <= 0) return items;
 
   const idx = items.findIndex((it) => it.id === product.id);
-  if (idx === -1) {
-    // 새 아이템 추가
-    return [...items, { ...product, quantity: nextQty }];
-  }
+  if (idx === -1) return [...items, { ...product, quantity: nextQty }];
 
-  // 기존 아이템이면 수량만 증가
-  const prev = items[idx];
-  const updated: CartItem = { ...prev, quantity: prev.quantity + nextQty };
   const next = items.slice();
-  next[idx] = updated;
+  next[idx] = { ...next[idx], quantity: next[idx].quantity + nextQty };
   return next;
 }
 
@@ -126,85 +126,180 @@ function updateQuantity(
   const idx = items.findIndex((it) => it.id === productId);
   if (idx === -1) return items;
 
-  const prev = items[idx];
   const next = items.slice();
-  next[idx] = { ...prev, quantity: nextQty };
+  next[idx] = { ...next[idx], quantity: nextQty };
   return next;
 }
 
-/**
- * 장바구니 Zustand 스토어
- *
- * - persist 미들웨어로 localStorage에 저장합니다.
- * - 저장 시에는 items만 보관하고, total* 값은 로드/액션마다 다시 계산합니다.
- *   (데이터 무결성을 위해 파생값은 항상 items 기준으로 유지)
- */
+async function parseCartResponse(res: Response): Promise<CartItem[] | null> {
+  if (res.status === 401) return null;
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(text || "장바구니 API 요청에 실패했습니다.");
+  }
+  const json = (await res.json()) as { items?: CartApiItem[] };
+  return (json.items ?? []).map(fromApiItem);
+}
+
+async function requestCart(
+  input: RequestInfo | URL,
+  init?: RequestInit,
+): Promise<CartItem[] | null> {
+  const res = await fetch(input, {
+    ...init,
+    headers: {
+      "Content-Type": "application/json",
+      ...(init?.headers ?? {}),
+    },
+  });
+  return parseCartResponse(res);
+}
+
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
       totalQuantity: 0,
-      totalAmount: 0,
+      subtotal: 0,
+      shippingFee: 0,
+      total: 0,
+      isSyncing: false,
+      cartOwner: null,
 
-      addItem: (product, quantity = 1) => {
+      syncWithServer: async (userId) => {
+        set({ isSyncing: true });
         try {
-          const items = get().items;
-          const nextItems = upsertItem(items, product, quantity);
-          const totals = computeTotals(nextItems);
-          set({ items: nextItems, ...totals });
+          const localItems = get().items;
+          const cartOwner = get().cartOwner;
+          const serverItems = await requestCart("/api/cart", { method: "GET" });
+          if (!serverItems) {
+            set({ isSyncing: false });
+            return;
+          }
+
+          const serverIds = new Set(serverItems.map((item) => item.id));
+          const itemsToMerge =
+            cartOwner === "guest"
+              ? localItems.filter((item) => !serverIds.has(item.id))
+              : [];
+          let nextItems = serverItems;
+
+          // 비로그인 상태에서 담아둔 로컬 장바구니를 로그인 후 서버 장바구니로 이관합니다.
+          for (const item of itemsToMerge) {
+            const merged = await requestCart("/api/cart", {
+              method: "POST",
+              body: JSON.stringify({ productId: item.id, quantity: item.quantity }),
+            });
+            if (merged) nextItems = merged;
+          }
+
+          set({
+            ...setItemsState(nextItems),
+            isSyncing: false,
+            cartOwner: userId,
+          });
+        } catch (err) {
+          console.error("syncWithServer 실패:", err);
+          set({ isSyncing: false });
+        }
+      },
+
+      addItem: async (product, quantity = 1) => {
+        const prevItems = get().items;
+        const nextItems = upsertItem(prevItems, product, quantity);
+        set(setItemsState(nextItems));
+
+        try {
+          const serverItems = await requestCart("/api/cart", {
+            method: "POST",
+            body: JSON.stringify({ productId: product.id, quantity }),
+          });
+          if (serverItems) set(setItemsState(serverItems));
+          else set({ cartOwner: "guest" });
           return true;
         } catch (err) {
-          // 장바구니는 UX 핵심이라, 예외 발생 시 앱 전체가 죽지 않게 방어합니다.
           console.error("addItem 실패:", err);
+          set(setItemsState(prevItems));
           return false;
         }
       },
 
-      updateItemQuantity: (productId, quantity) => {
+      updateItemQuantity: async (productId, quantity) => {
+        const prevItems = get().items;
+        const nextItems = updateQuantity(prevItems, productId, quantity);
+        set(setItemsState(nextItems));
+
         try {
-          const items = get().items;
-          const nextItems = updateQuantity(items, productId, quantity);
-          const totals = computeTotals(nextItems);
-          set({ items: nextItems, ...totals });
+          const serverItems = await requestCart("/api/cart", {
+            method: "PATCH",
+            body: JSON.stringify({ productId, quantity }),
+          });
+          if (serverItems) set(setItemsState(serverItems));
+          else set({ cartOwner: "guest" });
         } catch (err) {
           console.error("updateItemQuantity 실패:", err);
+          set(setItemsState(prevItems));
         }
       },
 
-      removeItem: (productId) => {
+      removeItem: async (productId) => {
+        const prevItems = get().items;
+        const nextItems = removeById(prevItems, productId);
+        set(setItemsState(nextItems));
+
         try {
-          const items = get().items;
-          const nextItems = removeById(items, productId);
-          const totals = computeTotals(nextItems);
-          set({ items: nextItems, ...totals });
+          const serverItems = await requestCart(
+            `/api/cart?productId=${encodeURIComponent(productId)}`,
+            { method: "DELETE" },
+          );
+          if (serverItems) set(setItemsState(serverItems));
+          else set({ cartOwner: "guest" });
         } catch (err) {
           console.error("removeItem 실패:", err);
+          set(setItemsState(prevItems));
         }
+      },
+
+      resetForGuest: () => {
+        const owner = get().cartOwner;
+        if (owner === "guest") return;
+        set({
+          items: [],
+          totalQuantity: 0,
+          subtotal: 0,
+          shippingFee: 0,
+          total: 0,
+          cartOwner: "guest",
+        });
       },
 
       clear: () => {
-        try {
-          set({ items: [], totalQuantity: 0, totalAmount: 0 });
-        } catch (err) {
-          console.error("clear 실패:", err);
-        }
+        set({ items: [], totalQuantity: 0, subtotal: 0, shippingFee: 0, total: 0 });
       },
     }),
     {
       name: STORAGE_KEY,
-      // items만 저장하고, total*은 items로부터 재계산되도록 partialize 합니다.
-      partialize: (state) => ({ items: state.items }),
-      // localStorage 복원 시 total*을 items 기반으로 복구합니다.
+      partialize: (state) => ({
+        items: state.items,
+        cartOwner: state.cartOwner,
+      }),
       onRehydrateStorage: () => (state, err) => {
         if (err) {
           console.error("장바구니 스토어 복원 실패:", err);
           return;
         }
         if (!state) return;
+        if (state.cartOwner !== "guest" && state.cartOwner !== null) {
+          state.items = [];
+          state.cartOwner = "guest";
+        }
         const totals = computeTotals(state.items);
-        state.totalAmount = totals.totalAmount;
+        state.subtotal = totals.subtotal;
+        state.shippingFee = totals.shippingFee;
+        state.total = totals.total;
         state.totalQuantity = totals.totalQuantity;
       },
     },
   ),
 );
+

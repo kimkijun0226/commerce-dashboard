@@ -2,9 +2,10 @@
 
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { Button, cn, typographyToStyle } from "@/components/ui";
+import { cn, typographyToStyle } from "@/components/ui";
 import { QuantitySelector } from "../QuantitySelector/QuantitySelector";
 import Image from "next/image";
+import { FiX } from "react-icons/fi";
 
 export type CartItemRowProps = {
   name: string;
@@ -43,66 +44,90 @@ export function CartItemRow({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-4 border-b border-[var(--commerce-border-subtle)] py-6 last:border-b-0",
+        "grid gap-4 border-b border-[var(--commerce-border-subtle)] py-6 last:border-b-0",
+        "sm:min-h-36 sm:grid-cols-[minmax(0,1fr)_80px_90px_96px] sm:items-center sm:gap-x-5",
         className,
       )}
     >
-      <div className="relative h-24 w-20 shrink-0 overflow-hidden bg-[var(--commerce-background-light)]">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={name}
-            fill
-            unoptimized={
-              imageUrl.startsWith("http://") ||
-              imageUrl.startsWith("https://")
-            }
-            className="object-cover"
-            sizes="80px"
-          />
-        ) : null}
-      </div>
-      <div className="min-w-0 flex-1">
-        <p
-          className="line-clamp-2"
-          style={{
-            ...typographyToStyle(commerceTypography.caption1Semi),
-            color: commerceColors.text.primary,
-          }}
-        >
-          {name}
-        </p>
-        {variantLabel ? (
+      <div className="flex min-w-0 gap-4">
+        <div className="relative h-24 w-20 shrink-0 overflow-hidden bg-[var(--commerce-background-light)]">
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={name}
+              fill
+              unoptimized={
+                imageUrl.startsWith("http://") ||
+                imageUrl.startsWith("https://")
+              }
+              className="object-cover"
+              sizes="80px"
+            />
+          ) : null}
+        </div>
+
+        <div className="min-w-0 flex-1">
           <p
-            className="mt-1"
-            style={{
-              ...typographyToStyle(commerceTypography.caption2),
-              color: commerceColors.text.secondary,
-            }}
-          >
-            {variantLabel}
-          </p>
-        ) : null}
-        {onRemove ? (
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            className="mt-2 h-auto min-h-0 px-0 py-0 text-left underline"
+            className="line-clamp-2"
             style={{
               ...typographyToStyle(commerceTypography.caption1Semi),
-              color: commerceColors.text.secondary,
+              color: commerceColors.text.primary,
             }}
-            onClick={onRemove}
-            disabled={disabled}
           >
-            Remove
-          </Button>
-        ) : null}
+            {name}
+          </p>
+          {variantLabel ? (
+            <p
+              className="mt-1"
+              style={{
+                ...typographyToStyle(commerceTypography.caption2),
+                color: commerceColors.text.secondary,
+              }}
+            >
+              {variantLabel}
+            </p>
+          ) : null}
+          {onRemove ? (
+            <button
+              type="button"
+              className={cn(
+                "mt-2 inline-flex items-center gap-1 rounded-sm text-left",
+                "cursor-pointer transition-colors hover:text-(--commerce-primary-main)",
+                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
+                "disabled:cursor-not-allowed disabled:opacity-50",
+              )}
+              style={{
+                ...typographyToStyle(commerceTypography.caption1Semi),
+                color: commerceColors.text.secondary,
+              }}
+              onClick={onRemove}
+              disabled={disabled}
+            >
+              <FiX className="size-4" aria-hidden />
+              <span>Remove</span>
+            </button>
+          ) : null}
+        </div>
       </div>
-      <div className="flex flex-wrap items-center gap-6 sm:ml-auto">
+
+      <div className="flex items-center justify-between gap-4 sm:flex sm:justify-center">
+        <span
+          className="sm:hidden"
+          style={{
+            ...typographyToStyle(commerceTypography.caption1Semi),
+            color: commerceColors.text.secondary,
+          }}
+        >
+          Quantity
+        </span>
         {onQuantityChange ? (
           <QuantitySelector
+            className={cn(
+              "w-20 overflow-hidden",
+              // Figma cart quantity: 80x32. 기본 QuantitySelector는 버튼 px 때문에
+              // 80px 컬럼을 넘을 수 있어 cart row에서는 hit area를 명시적으로 맞춥니다.
+              "[&>button]:w-6 [&>button]:px-0 [&>span]:min-w-8",
+            )}
             value={quantity}
             min={1}
             onChange={onQuantityChange}
@@ -120,26 +145,48 @@ export function CartItemRow({
             {quantity}
           </span>
         )}
-        <div className="flex flex-col items-end gap-1 text-right sm:min-w-[120px]">
-          <span
-            className="tabular-nums"
-            style={{
-              ...typographyToStyle(commerceTypography.body2),
-              color: commerceColors.primary.dark,
-            }}
-          >
-            {formatMoney(unitPrice, currency)}
-          </span>
-          <span
-            className="tabular-nums"
-            style={{
-              ...typographyToStyle(commerceTypography.body2Semi),
-              color: commerceColors.primary.dark,
-            }}
-          >
-            {formatMoney(total, currency)}
-          </span>
-        </div>
+      </div>
+
+      <div className="flex items-center justify-between text-right sm:flex sm:justify-center">
+        <span
+          className="sm:hidden"
+          style={{
+            ...typographyToStyle(commerceTypography.caption1Semi),
+            color: commerceColors.text.secondary,
+          }}
+        >
+          Price
+        </span>
+        <span
+          className="w-full tabular-nums text-center"
+          style={{
+            ...typographyToStyle(commerceTypography.body2),
+            color: commerceColors.primary.dark,
+          }}
+        >
+          {formatMoney(unitPrice, currency)}
+        </span>
+      </div>
+
+      <div className="flex items-center justify-between text-right sm:flex sm:justify-center">
+        <span
+          className="sm:hidden"
+          style={{
+            ...typographyToStyle(commerceTypography.caption1Semi),
+            color: commerceColors.text.secondary,
+          }}
+        >
+          Subtotal
+        </span>
+        <span
+          className="w-full tabular-nums text-center"
+          style={{
+            ...typographyToStyle(commerceTypography.body2Semi),
+            color: commerceColors.primary.dark,
+          }}
+        >
+          {formatMoney(total, currency)}
+        </span>
       </div>
     </div>
   );
