@@ -9,6 +9,17 @@ export const AUTH_URLS = {
 export const ACCOUNT_URLS = {
   ACCOUNT: "/account",
   ORDERS: "/account/orders",
+  REVIEWS: "/account/reviews",
+  /** 미작성 상품평 목록(앵커) — 쿠팡식 “작성 가능한 상품평” 구역으로 스크롤 */
+  REVIEWS_PENDING_INVITES: "/account/reviews#pending-review-invites",
+  WISHLIST: "/account/wishlist",
+  ADDRESSES: "/account/addresses",
+} as const;
+
+/** 마이페이지 주문 상세 (`/account/orders/[orderId]`) */
+export const ACCOUNT_ORDER_URLS = {
+  DETAIL: (orderId: string) =>
+    `${ACCOUNT_URLS.ORDERS}/${encodeURIComponent(orderId)}`,
 } as const;
 
 /**
@@ -20,9 +31,13 @@ export const COMMERCE_URLS = {
   PRODUCTS: "/products",
   CART: "/cart",
   CHECKOUT: "/checkout",
+  ADDRESSES: "/addresses",
   ORDER_COMPLETE: "/checkout/complete",
   PRODUCT_DETAIL: (productId: string) =>
     `/products/${encodeURIComponent(productId)}`,
+  /** 리뷰 작성 폼을 열고 특정 주문에 연결할 때 (주문별 리뷰 1건) */
+  PRODUCT_DETAIL_REVIEW_WRITE: (productId: string, orderId: string) =>
+    `/products/${encodeURIComponent(productId)}?openReview=1&orderId=${encodeURIComponent(orderId)}`,
 } as const;
 
 /** 상품 상세 경로 (`COMMERCE_URLS.PRODUCT_DETAIL` 와 동일) */
@@ -55,11 +70,15 @@ export const ROUTE_CONFIG_MAP = {
   [AUTH_URLS.SIGNUP]: "public",
   [COMMERCE_URLS.HOME]: "public",
   [COMMERCE_URLS.PRODUCTS]: "public",
-  [COMMERCE_URLS.CART]: "authenticated",
+  [COMMERCE_URLS.CART]: "public",
   [COMMERCE_URLS.CHECKOUT]: "authenticated",
+  [COMMERCE_URLS.ADDRESSES]: "authenticated",
   [COMMERCE_URLS.ORDER_COMPLETE]: "authenticated",
   [ACCOUNT_URLS.ACCOUNT]: "authenticated",
   [ACCOUNT_URLS.ORDERS]: "authenticated",
+  [ACCOUNT_URLS.REVIEWS]: "authenticated",
+  [ACCOUNT_URLS.WISHLIST]: "authenticated",
+  [ACCOUNT_URLS.ADDRESSES]: "authenticated",
   [ADMIN_URLS.DASHBOARD]: "admin",
   [ADMIN_URLS.ORDERS]: "admin",
   [ADMIN_URLS.PRODUCTS]: "admin",
@@ -76,6 +95,7 @@ export const ROUTE_CONFIG_MAP = {
 const PRODUCT_DETAIL_PREFIX = `${COMMERCE_URLS.PRODUCTS}/`;
 /** `ADMIN_URLS.ORDER_DETAIL` 과 동일 접두사 */
 const ADMIN_ORDER_DETAIL_PREFIX = `${ADMIN_URLS.ORDERS}/`;
+const ACCOUNT_ORDER_DETAIL_PREFIX = `${ACCOUNT_URLS.ORDERS}/`;
 
 function normalizePathname(pathname: string): string {
   const path = pathname.split("?")[0] ?? pathname;
@@ -97,6 +117,13 @@ function isAdminOrderDetailPath(path: string): boolean {
   );
 }
 
+function isAccountOrderDetailPath(path: string): boolean {
+  return (
+    path.startsWith(ACCOUNT_ORDER_DETAIL_PREFIX) &&
+    path.length > ACCOUNT_ORDER_DETAIL_PREFIX.length
+  );
+}
+
 /**
  * 정적 경로는 ROUTE_CONFIG_MAP 기준.
  * 동적: `/products/[productId]` → public, `/admin/orders/[orderId]` → admin
@@ -108,6 +135,7 @@ export function getRouteAccess(pathname: string): RouteAccess | undefined {
   }
   if (isProductDetailPath(path)) return "public";
   if (isAdminOrderDetailPath(path)) return "admin";
+  if (isAccountOrderDetailPath(path)) return "authenticated";
   return undefined;
 }
 
