@@ -6,6 +6,7 @@ import { commerceTypography } from "@/commons/constants/typography";
 import type { Product } from "@/components/commerce/types";
 import { Button, cn, typographyToStyle } from "@/components/ui";
 import { RatingStars } from "../RatingStars/RatingStars";
+import { CardLikeButton } from "@/components/commerce/likes/CardLikeButton";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -51,35 +52,44 @@ export function ProductCard({
             {badgeSlot}
           </div>
         ) : null}
-        <button
-          type="button"
-          className={cn(
-            "absolute top-4 right-4 z-20 flex size-8 items-center justify-center rounded-full",
-            "overflow-visible",
-            "border border-white/40 bg-white/55 shadow-sm backdrop-blur-md",
-            "transition-all hover:bg-white/70 hover:shadow-md",
-            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
-          )}
-          aria-label={
-            product.isLiked ? "위시리스트에서 제거" : "위시리스트에 추가"
-          }
-          aria-pressed={product.isLiked ?? false}
-          onClick={() => onWishlistToggle?.()}
-        >
-          {product.isLiked ? (
-            <FaHeart
-              className="text-[18px] leading-none"
-              style={{ color: commerceColors.primary.main }}
-              aria-hidden
-            />
-          ) : (
-            <FaRegHeart
-              className="text-[18px] leading-none"
-              style={{ color: commerceColors.primary.main }}
-              aria-hidden
-            />
-          )}
-        </button>
+        {onWishlistToggle ? (
+          <button
+            type="button"
+            className={cn(
+              "absolute top-4 right-4 z-20 flex size-8 items-center justify-center rounded-full",
+              "overflow-visible",
+              "border border-white/40 bg-white/55 shadow-sm backdrop-blur-md",
+              "transition-all hover:bg-white/70 hover:shadow-md",
+              "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
+            )}
+            aria-label={
+              product.isLiked ? "위시리스트에서 제거" : "위시리스트에 추가"
+            }
+            aria-pressed={product.isLiked ?? false}
+            onClick={() => onWishlistToggle?.()}
+          >
+            {product.isLiked ? (
+              <FaHeart
+                className="text-[18px] leading-none"
+                style={{ color: commerceColors.primary.main }}
+                aria-hidden
+              />
+            ) : (
+              <FaRegHeart
+                className="text-[18px] leading-none"
+                style={{ color: commerceColors.primary.main }}
+                aria-hidden
+              />
+            )}
+          </button>
+        ) : (
+          <CardLikeButton
+            productId={product.id}
+            initialLiked={product.isLiked ?? false}
+            syncOnMount={false}
+            className="absolute top-4 right-4 z-20"
+          />
+        )}
         <Link
           href={href}
           className="absolute inset-0 z-0 block outline-none focus-visible:ring-2 focus-visible:ring-[var(--commerce-semantic-info)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--commerce-background-light)]"

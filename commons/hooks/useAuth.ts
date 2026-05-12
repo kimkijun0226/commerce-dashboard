@@ -15,6 +15,7 @@ export type UseAuthResult = {
 export function useAuth(): UseAuthResult {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const storeUser = useSessionStore((s) => s.user);
   const setStoreUser = useSessionStore((s) => s.setUser);
   const clearStoreUser = useSessionStore((s) => s.clearUser);
 
@@ -37,14 +38,15 @@ export function useAuth(): UseAuthResult {
     };
   }, []);
 
-  const userId = user?.id ?? null;
+  const userId = storeUser?.id ?? user?.id ?? null;
+  const effectiveLoading = isLoading && !storeUser;
 
   // Provider가 전역 동기화를 담당하지만, useAuth만 단독으로 쓰는 화면에서도
   // store가 비어있지 않게 최소 동기화를 한 번 더 보장합니다.
   useEffect(() => {
-    if (isLoading) return;
+    if (effectiveLoading) return;
     if (!user) {
-      clearStoreUser();
+      if (!storeUser) clearStoreUser();
       return;
     }
     setStoreUser({
@@ -56,12 +58,12 @@ export function useAuth(): UseAuthResult {
         null,
       role: "user",
     });
-  }, [user, isLoading, setStoreUser, clearStoreUser]);
+  }, [user, effectiveLoading, setStoreUser, clearStoreUser, storeUser]);
 
   return {
     user,
     userId,
-    isLoading,
+    isLoading: effectiveLoading,
     isLoggedIn: userId !== null,
   };
 }

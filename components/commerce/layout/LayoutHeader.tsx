@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/components/ui";
+import { useCartStore } from "@/commons/store/cart-store";
 import { useSearchStore } from "@/features/search/store/searchStore";
 import Link, { type LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,10 +14,12 @@ export type LayoutHeaderProps = {
   cartCount?: number;
 };
 
-export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
+export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const totalQuantity = useCartStore((s) => s.totalQuantity);
+  const displayCartCount = cartCount ?? totalQuantity;
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const openSearch = useSearchStore((s) => s.open);
   const closeSearch = useSearchStore((s) => s.close);
@@ -79,7 +82,7 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
 
           <IconBtn href="/cart" aria-label="장바구니" className="relative">
             <FiShoppingBag className="size-6" aria-hidden />
-            {cartCount > 0 ? (
+            {displayCartCount > 0 ? (
               <span
                 className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
                 style={{
@@ -88,7 +91,7 @@ export function LayoutHeader({ className, cartCount = 2 }: LayoutHeaderProps) {
                   fontFamily: "Inter",
                 }}
               >
-                {Math.min(cartCount, 99)}
+                {Math.min(displayCartCount, 99)}
               </span>
             ) : null}
           </IconBtn>

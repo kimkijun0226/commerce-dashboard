@@ -24,11 +24,20 @@ export interface SessionState {
   /** 관리자 여부 (user?.role === "admin" 기반 자동 계산) */
   isAdmin: boolean;
 
+  /**
+   * 로그인 후 게스트 찜 동기화가 끝났을 때 UI 재동기화를 위해 증가시키는 nonce
+   * (메인 카드 배치 liked, PDP liked 등에서 재조회 트리거로 사용)
+   */
+  likesSyncNonce: number;
+
   /** 사용자 세션 설정(로그인/세션 복원 등에서 사용) */
   setUser: (user: UserSession) => void;
 
   /** 사용자 세션 제거(로그아웃 등에서 사용) */
   clearUser: () => void;
+
+  /** 찜 동기화 완료 후 UI 재조회 트리거 */
+  bumpLikesSyncNonce: () => void;
 }
 
 /**
@@ -41,6 +50,7 @@ export const useSessionStore = create<SessionState>((set) => ({
   user: null,
   isAuthenticated: false,
   isAdmin: false,
+  likesSyncNonce: 0,
 
   setUser: (user) => {
     set({
@@ -56,5 +66,9 @@ export const useSessionStore = create<SessionState>((set) => ({
       isAuthenticated: false,
       isAdmin: false,
     });
+  },
+
+  bumpLikesSyncNonce: () => {
+    set((prev) => ({ likesSyncNonce: prev.likesSyncNonce + 1 }));
   },
 }));

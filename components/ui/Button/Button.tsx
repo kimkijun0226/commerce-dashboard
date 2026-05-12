@@ -2,6 +2,7 @@ import { adminColors, commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import { cn } from "../cn/cn";
 import { typographyToStyle } from "../typography-styles/typography-styles";
+import { forwardRef } from "react";
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 const heights = { sm: 36, md: 40, lg: 48 } as const;
@@ -19,19 +20,22 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   rightIcon?: ReactNode;
 };
 
-export function Button({
-  variant = "primary",
-  size = "md",
-  loading = false,
-  leftIcon,
-  rightIcon,
-  className,
-  disabled,
-  children,
-  type = "button",
-  style,
-  ...rest
-}: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    variant = "primary",
+    size = "md",
+    loading = false,
+    leftIcon,
+    rightIcon,
+    className,
+    disabled,
+    children,
+    type = "button",
+    style,
+    ...rest
+  },
+  ref,
+) {
   const h = heights[size];
   const typo = typographyToStyle(sizeTypography[size]);
   const isDisabled = disabled || loading;
@@ -69,6 +73,7 @@ export function Button({
 
   return (
     <button
+      ref={ref}
       type={type}
       disabled={isDisabled}
       className={cn(
@@ -97,4 +102,4 @@ export function Button({
       {!loading && rightIcon}
     </button>
   );
-}
+});

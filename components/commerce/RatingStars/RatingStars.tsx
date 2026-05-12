@@ -8,14 +8,19 @@ export type RatingStarsProps = {
   /** 0~max, 소수 허용 (0.5 단위로 반올림해 별·반별 표시) */
   value: number;
   max?: number;
-  size?: "sm" | "md" | "figma";
+  size?: "sm" | "md" | "figma" | "figmaLg";
   /** PDP 피그마: 채움 #141718, 빈 별 #6c7275 */
   palette?: "default" | "product";
   className?: string;
   "aria-label"?: string;
 };
 
-const sizeClass = { sm: "size-4", md: "size-5", figma: "size-4" } as const;
+const sizeClass = {
+  sm: "size-4",
+  md: "size-5",
+  figma: "size-4",
+  figmaLg: "size-5",
+} as const;
 
 type Segment = "full" | "half" | "empty";
 
@@ -54,17 +59,19 @@ export function RatingStars({
     `평점 ${clamped.toFixed(1)}점, 만점 ${max}점`;
   const fillColor =
     palette === "product"
-      ? "#141718"
+      ? commerceColors.semantic.warning
       : commerceColors.neutral.n05_100;
   const emptyColor =
-    palette === "product" ? "#6c7275" : commerceColors.neutral.n05_100;
+    palette === "product"
+      ? commerceColors.text.secondary
+      : commerceColors.neutral.n05_100;
   const iconCls = cn(sizeClass[size], "shrink-0");
 
   return (
     <span
       className={cn(
         "inline-flex items-center",
-        size === "figma" ? "gap-1" : "gap-0.5",
+        size === "figma" || size === "figmaLg" ? "gap-1" : "gap-0.5",
         className,
       )}
       role="img"

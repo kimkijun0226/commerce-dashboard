@@ -1,6 +1,5 @@
 "use client";
 
-import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import type { CartProduct, ProductStatus } from "@/commons/store/cart-store";
 import { useCartStore } from "@/commons/store/cart-store";
@@ -9,8 +8,8 @@ import { QuantitySelector } from "@/components/commerce/QuantitySelector/Quantit
 import { cn, typographyToStyle } from "@/components/ui";
 import type { CSSProperties } from "react";
 import { useCallback, useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { toast } from "sonner";
+import { LikeButton } from "@/components/commerce/likes/LikeButton";
 
 /**
  * Figma(노드 37-1912 등 PDP 루프) 구매 블록
@@ -18,8 +17,6 @@ import { toast } from "sonner";
  * - 위시리스트: 로컬 UI만 — 선택 시 하트 빨간 채움(미저장)
  * - 장바구니: 컨테이너 전폭(최대 508)×52, fill #141718
  */
-const WISHLIST_ACTIVE_COLOR = commerceColors.semantic.danger;
-
 const PDP_CTA_TYPO: CSSProperties = {
   ...typographyToStyle(commerceTypography.buttonM),
   fontFamily: "var(--commerce-font-body)",
@@ -54,25 +51,19 @@ export type AddToCartSectionProps = {
 export function AddToCartSection({ product, className }: AddToCartSectionProps) {
   const addItem = useCartStore((s) => s.addItem);
   const [quantity, setQuantity] = useState(1);
-  const [isWishlisted, setIsWishlisted] = useState(false);
 
   const cartDisabled =
     product.status === "hidden" || product.status === "sold_out";
 
-  const handleAddToCart = useCallback(() => {
+  const handleAddToCart = useCallback(async () => {
     if (cartDisabled) return;
-    const ok = addItem(toCartProduct(product), quantity);
+    const ok = await addItem(toCartProduct(product), quantity);
     if (ok) {
       toast.success("장바구니에 담았습니다.");
     } else {
       toast.error("장바구니에 담지 못했습니다. 잠시 후 다시 시도해 주세요.");
     }
   }, [addItem, cartDisabled, product, quantity]);
-
-  const handleWishlistToggle = useCallback(() => {
-    if (cartDisabled) return;
-    setIsWishlisted((v) => !v);
-  }, [cartDisabled]);
 
   return (
     <section
@@ -98,47 +89,10 @@ export function AddToCartSection({ product, className }: AddToCartSectionProps) 
           variant="product"
         />
 
-        <button
-          type="button"
-          disabled={cartDisabled}
-          className={cn(
-            "box-border flex h-[52px] min-h-[52px] w-full min-w-0 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg",
-            "border border-solid border-(--commerce-primary-main) bg-transparent antialiased",
-            "text-(--commerce-text-primary) transition-[background-color,box-shadow,opacity,transform] duration-200 ease-in-out",
-            "hover:bg-(--commerce-background-light) hover:shadow-[inset_0_0_0_1px_rgba(20,23,24,0.04),0_1px_2px_rgba(20,23,24,0.06)]",
-            "active:scale-[0.995] active:bg-(--commerce-background-elevated) active:shadow-none",
-            "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
-            FOCUS_OUTLINE_LIGHT,
-          )}
-          style={PDP_CTA_TYPO}
-          aria-label={
-            isWishlisted ? "위시리스트 해제(표시만)" : "위시리스트 표시(저장 안 함)"
-          }
-          aria-pressed={isWishlisted}
-          onClick={handleWishlistToggle}
-        >
-          {isWishlisted ? (
-            <FaHeart
-              className="size-5 shrink-0"
-              style={{ color: WISHLIST_ACTIVE_COLOR }}
-              aria-hidden
-            />
-          ) : (
-            <FaRegHeart
-              className="size-5 shrink-0"
-              style={{ color: commerceColors.primary.main }}
-              aria-hidden
-            />
-          )}
-          <span
-            className={cn(
-              "min-w-0 truncate text-center leading-[28px]",
-              isWishlisted && "text-(--commerce-semantic-danger)",
-            )}
-          >
-            Wishlist
-          </span>
-        </button>
+        <LikeButton
+          productId={product.id}
+          className={cn(FOCUS_OUTLINE_LIGHT)}
+        />
       </div>
 
       <button

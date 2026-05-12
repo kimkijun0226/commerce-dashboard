@@ -16,6 +16,7 @@ type SignupFormValues = {
   name: string;
   username: string;
   email: string;
+  phone: string;
   password: string;
   confirmPassword: string;
   agreeToTerms: boolean;
@@ -44,6 +45,7 @@ export default function SignupPage() {
       name: "",
       username: "",
       email: "",
+      phone: "",
       password: "",
       confirmPassword: "",
       agreeToTerms: false,
@@ -60,10 +62,12 @@ export default function SignupPage() {
       const supabase = createClient();
       const name = values.name.trim();
       const username = values.username.trim();
+      const phone = values.phone.trim();
 
       const data: Record<string, string> = {};
       if (name) data.name = name;
       if (username) data.username = username;
+      if (phone) data.phone = phone;
 
       const { error } = await supabase.auth.signUp({
         email: values.email.trim(),
@@ -189,6 +193,20 @@ export default function SignupPage() {
                     disabled={isLoading}
                     autoComplete="email"
                     error={errors.email?.message}
+                    className="placeholder:text-[#6C7275]"
+                  />
+
+                  <Input
+                    variant="underline"
+                    required
+                    inputMode="tel"
+                    placeholder="연락처"
+                    {...register("phone", {
+                      required: "연락처는 필수입니다.",
+                    })}
+                    disabled={isLoading}
+                    autoComplete="tel"
+                    error={errors.phone?.message}
                     className="placeholder:text-[#6C7275]"
                   />
 

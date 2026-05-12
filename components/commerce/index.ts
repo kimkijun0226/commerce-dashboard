@@ -4,7 +4,7 @@ export {
   CheckoutForm,
   type CheckoutFormProps,
   type CheckoutFormValues,
-} from "./CheckoutForm/CheckoutForm";
+} from "./CheckoutForm";
 export { FilterBar, type FilterBarProps } from "./FilterBar/FilterBar";
 export {
   AddToCartSection,
@@ -18,6 +18,7 @@ export {
   OrderSummaryPanel,
   type OrderSummaryPanelProps,
 } from "./OrderSummaryPanel/OrderSummaryPanel";
+export { OrderSummary, type OrderSummaryProps } from "./OrderSummary";
 export { ProductCard, type ProductCardProps } from "./ProductCard/ProductCard";
 export { ProductGrid, type ProductGridProps } from "./ProductGrid/ProductGrid";
 export {
@@ -29,11 +30,14 @@ export { ReviewCard, type ReviewCardProps } from "./ReviewCard/ReviewCard";
 export {
   ReviewForm,
   type ReviewFormProps,
-  type ReviewFormValues,
 } from "./ReviewForm/ReviewForm";
 export { SearchBar, type SearchBarProps } from "./SearchBar/SearchBar";
 export {
   TossPayment,
+  type TossPaymentHandle,
+  type TossPaymentMethod,
   type TossPaymentProps,
-  type TossPaymentRequest,
-} from "./TossPayment/TossPayment";
+  type TossPaymentRequestParams,
+} from "./TossPayment";
+export { MyReviewsSection, type MyReviewsSectionProps } from "./MyReviewsSection/MyReviewsSection";
+export type { MyReviewListModel } from "./MyReviewsSection/types";
