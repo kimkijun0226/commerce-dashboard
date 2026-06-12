@@ -393,7 +393,15 @@ export interface Database {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      update_product_review_summary_for_reviewer: {
+        Args: {
+          p_product_id: string;
+          p_review_summary: Json;
+        };
+        Returns: undefined;
+      };
+    };
     Enums: {
       user_role: UserRole;
     };

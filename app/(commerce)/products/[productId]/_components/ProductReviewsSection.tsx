@@ -1,8 +1,8 @@
 "use client";
 
+// 리뷰 탭 안에서 통계, 작성 UI, 로그인 안내, 서버에서 내려준 요약/목록 슬롯을 조합합니다.
 import { CustomerReviewsHeader } from "@/app/(commerce)/products/[productId]/_components/CustomerReviewsHeader";
 import { ReviewFeedbackBar } from "@/app/(commerce)/products/[productId]/_components/ReviewFeedbackBar";
-import { ReviewList } from "@/app/(commerce)/products/[productId]/_components/ReviewList";
 import type { ReviewWriteEligibility } from "@/app/(commerce)/products/[productId]/review-actions";
 import { useAuth } from "@/commons/hooks/useAuth";
 import { commerceColors } from "@/commons/constants/color";
@@ -10,6 +10,7 @@ import { Button, cn } from "@/components/ui";
 import { useProductReviews } from "@/features/products/hooks/useProductReviews";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import type { ReactNode } from "react";
 import { useCallback, useEffect, useState } from "react";
 
 export type ProductReviewsSectionProps = {
@@ -19,35 +20,39 @@ export type ProductReviewsSectionProps = {
   initialComposerOpen?: boolean;
   /** URL `orderId=` — 해당 주문에 리뷰 연결 */
   initialReviewOrderId?: string | null;
-  isSuperAdmin?: boolean;
+  reviewSummarySection?: ReactNode;
+  reviewListSection?: ReactNode;
   className?: string;
 };
 
+// 리뷰 탭 내부의 작성 흐름과 서버 슬롯을 연결하는 상위 섹션입니다.
 export function ProductReviewsSection({
   productId,
   reviewWriteEligibility,
   initialComposerOpen = false,
   initialReviewOrderId = null,
-  isSuperAdmin,
+  reviewSummarySection,
+  reviewListSection,
   className,
 }: ProductReviewsSectionProps) {
   const router = useRouter();
   const productPath = `/products/${encodeURIComponent(productId)}`;
 
   const { userId: authUserId, isLoading: authLoading } = useAuth();
-  const effectiveUserId = authUserId ?? null;
 
   const [showComposer, setShowComposer] = useState(!!initialComposerOpen);
 
+  // 작성 링크용 쿼리를 정리할 때는 현재 상품 경로만 남기고 교체합니다.
   const clearReviewUrlAndRefresh = useCallback(() => {
     router.replace(productPath, { scroll: false });
-    router.refresh();
   }, [productPath, router]);
 
+  /** 제출 후 `openReview` 등은 지우되, 리뷰 탭은 유지 (`?tab=reviews`) */
   const afterReviewSubmitted = useCallback(() => {
     setShowComposer(false);
-    clearReviewUrlAndRefresh();
-  }, [clearReviewUrlAndRefresh]);
+    const withReviewsTab = `${productPath}?tab=reviews&aiRefreshing=1`;
+    router.replace(withReviewsTab, { scroll: false });
+  }, [productPath, router]);
 
   const cancelComposer = useCallback(() => {
     setShowComposer(false);
@@ -57,7 +62,9 @@ export function ProductReviewsSection({
   }, [clearReviewUrlAndRefresh, initialComposerOpen, initialReviewOrderId]);
 
   useEffect(() => {
-    setShowComposer(!!initialComposerOpen);
+    queueMicrotask(() => {
+      setShowComposer(!!initialComposerOpen);
+    });
   }, [initialComposerOpen, productId]);
 
   const closeComposer = cancelComposer;
@@ -75,44 +82,41 @@ export function ProductReviewsSection({
       ? Math.round(averageFromReviews * 10) / 10
       : 0;
 
-  const isLoggedIn = !authLoading && !!effectiveUserId;
+  const isLoggedIn = !authLoading && !!authUserId;
 
-  if (summaryError) {
-    return (
-      <p
-        className={cn(className)}
-        role="alert"
-        style={{
-          fontFamily: "var(--commerce-font-body)",
-          color: commerceColors.text.muted,
-        }}
-      >
-        리뷰 요약을 불러오지 못했습니다.
-      </p>
-    );
-  }
-
-  if (summaryPending && !summarySuccess) {
-    return (
-      <p
-        className={cn(className)}
-        style={{
-          fontFamily: "var(--commerce-font-body)",
-          color: commerceColors.text.muted,
-        }}
-      >
-        리뷰 요약을 불러오는 중…
-      </p>
-    );
-  }
+  const summaryStatsLoading = summaryPending && !summarySuccess;
 
   return (
     <div className={cn("flex w-full max-w-[1120px] flex-col", className)}>
       <div className="flex flex-col gap-6">
-        <CustomerReviewsHeader
-          averageRating={averageRating}
-          reviewCount={reviewCount}
-        />
+        {summaryError ? (
+          <p
+            role="alert"
+            style={{
+              fontFamily: "var(--commerce-font-body)",
+              color: commerceColors.text.muted,
+            }}
+          >
+            리뷰 통계를 불러오지 못했습니다.
+          </p>
+        ) : summaryStatsLoading ? (
+          <p
+            style={{
+              fontFamily: "var(--commerce-font-body)",
+              color: commerceColors.text.muted,
+            }}
+          >
+            리뷰 통계를 불러오는 중…
+          </p>
+        ) : (
+          <CustomerReviewsHeader
+            averageRating={averageRating}
+            reviewCount={reviewCount}
+          />
+        )}
+        {reviewSummarySection ? (
+          <div className="flex flex-col gap-3">{reviewSummarySection}</div>
+        ) : null}
       </div>
 
       <div className="mt-6 flex flex-col gap-6">
@@ -200,11 +204,7 @@ export function ProductReviewsSection({
       </div>
 
       <div className="mt-10">
-        <ReviewList
-          productId={productId}
-          currentUserId={effectiveUserId}
-          isSuperAdmin={isSuperAdmin}
-        />
+        {reviewListSection}
       </div>
     </div>
   );

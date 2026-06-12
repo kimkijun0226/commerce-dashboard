@@ -24,7 +24,7 @@ export function LayoutFooter({ className }: LayoutFooterProps) {
             className="text-[20px] font-medium leading-6"
             style={{ fontFamily: "var(--commerce-font-heading)" }}
           >
-            Cursor Commerce
+            Commerce Dashboard
           </Link>
 
           <nav aria-label="푸터 링크" className="flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -51,7 +51,7 @@ export function LayoutFooter({ className }: LayoutFooterProps) {
         <div className="border-t border-(--commerce-border-strong)/60 py-5">
           <div className="flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:justify-between">
             <p className="text-(--commerce-background-elevated)">
-              Copyright © 2026 Cursor Commerce. All rights reserved
+              Copyright © 2026 Commerce Dashboard. All rights reserved
             </p>
             <div className="flex items-center gap-4">
               <FooterLink href="/privacy" className="text-(--commerce-text-inverse)">

@@ -1,5 +1,6 @@
 "use client";
 
+// 작성된 리뷰를 인라인으로 수정하고, 성공 후 목록/요약 갱신까지 이어 주는 폼입니다.
 import { updateReview } from "@/app/(commerce)/products/[productId]/review-actions";
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
@@ -10,6 +11,8 @@ import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+
+const REVIEW_AI_REFRESH_EVENT = "commerce:review-ai-refresh-start";
 
 export type ReviewEditFormProps = {
   reviewId: string;
@@ -24,6 +27,7 @@ export type ReviewEditFormProps = {
 
 type ErrorCode = "AUTH_REQUIRED" | "NOT_FOUND" | "FORBIDDEN" | "VALIDATION";
 
+// 서버 액션 에러 메시지에서 코드와 사용자 표시 문구를 분리합니다.
 function parseActionError(err: unknown): { code?: ErrorCode; message: string } {
   if (!(err instanceof Error)) return { message: "요청을 처리하지 못했습니다." };
   const raw = err.message ?? "요청을 처리하지 못했습니다.";
@@ -42,11 +46,13 @@ function parseActionError(err: unknown): { code?: ErrorCode; message: string } {
   return { message: raw };
 }
 
+// 입력 별점을 0.5점 단위의 유효한 범위로 맞춥니다.
 function normalizeRating(value: number) {
   const stepped = Math.round(Number(value) * 2) / 2;
   return Math.max(1, Math.min(5, stepped));
 }
 
+// 기존 리뷰를 수정하고, 성공 후 목록/요약 갱신 이벤트를 함께 보냅니다.
 export function ReviewEditForm({
   reviewId,
   productId,
@@ -75,6 +81,7 @@ export function ReviewEditForm({
 
   const canSubmit = body.trim().length >= 10 && !pending;
 
+  // 별의 절반/전체 영역을 구분해 수정 중 별점 미리보기를 계산합니다.
   function ratingFromPointer(star: number, clientX: number, rect: DOMRect) {
     const mid = rect.left + rect.width / 2;
     return clientX < mid ? star - 0.5 : star;
@@ -104,6 +111,13 @@ export function ReviewEditForm({
               qc.invalidateQueries({ queryKey: QUERY_KEYS.reviews.byProduct(productId) }),
               qc.invalidateQueries({ queryKey: QUERY_KEYS.reviews.listByProduct(productId) }),
             ]);
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(
+                new CustomEvent(REVIEW_AI_REFRESH_EVENT, {
+                  detail: { productId },
+                }),
+              );
+            }
             toast.success("리뷰가 수정되었습니다.");
             onSuccess?.();
             onCancel();

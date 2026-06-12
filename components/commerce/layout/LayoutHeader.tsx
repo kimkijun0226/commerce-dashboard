@@ -49,7 +49,7 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
           className="min-w-0 text-[24px] font-medium leading-6 tracking-normal text-black"
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
-          Cursor Commerce
+          Commerce Dashboard
         </Link>
 
         <div className="ml-auto flex items-center gap-4">

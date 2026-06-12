@@ -1,10 +1,20 @@
 "use server";
 
+// 주문 단위 리뷰 작성/수정/삭제와 작성 가능 여부 계산을 담당하는 서버 액션 모음입니다.
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { redirect } from "next/navigation";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
-import { getEligibleOrderIdsForProduct } from "@/lib/commerce/reviewWriteOrder";
+import {
+  findFirstUnreviewedPaidOrderIdForProduct,
+  getEligibleOrderIdsForProduct,
+} from "@/lib/commerce/reviewWriteOrder";
+import {
+  applyFullReviewSummaryAfterReviewMutation,
+  applyIncrementalReviewSummaryAfterCreate,
+} from "@/app/(commerce)/products/[productId]/review-summary-actions";
+import { checkAdminAccess } from "@/lib/auth/admin";
 import type { Database } from "@/types/supabase";
 
 export type ReviewActionErrorCode =
@@ -16,6 +26,7 @@ export type ReviewActionErrorCode =
   | "PURCHASE_REQUIRED"
   | "ALL_ORDERS_REVIEWED";
 
+// 클라이언트가 코드 기준으로 분기할 수 있도록 표준화된 액션 에러를 만듭니다.
 function throwActionError(code: ReviewActionErrorCode, message: string): never {
   throw new Error(`${code}:${message}`);
 }
@@ -67,6 +78,7 @@ async function assertOrderEligibleForProductReview(
   productId: string,
   orderId: string,
 ): Promise<void> {
+  // 특정 주문으로 리뷰를 쓰려 할 때 소유권, 결제 상태, 중복 여부를 한 번에 검증합니다.
   const { data: order, error: orderErr } = await supabase
     .from("orders")
     .select("id, user_id, status, payment_status")
@@ -116,6 +128,7 @@ async function resolveReviewOrderId(
   productId: string,
   preferredOrderId?: string | null,
 ): Promise<string> {
+  // 주문이 명시되면 그 주문을, 아니면 다음 리뷰 가능한 주문을 자동으로 선택합니다.
   const pref = preferredOrderId?.trim();
   if (pref) {
     await assertOrderEligibleForProductReview(supabase, userId, productId, pref);
@@ -147,49 +160,87 @@ export async function getReviewWriteEligibility(
       user.id,
       pid,
     );
-    if (eligibleIds.length === 0) {
-      return { canCreate: false, reason: "no_purchase", pendingCount: 0 };
+    if (eligibleIds.length > 0) {
+      const { data: existing, error: existingErr } = await supabase
+        .from("reviews")
+        .select("order_id")
+        .eq("user_id", user.id)
+        .eq("product_id", pid);
+
+      if (existingErr) {
+        console.error("[getReviewWriteEligibility]", existingErr);
+        return { canCreate: false, reason: "no_purchase", pendingCount: 0 };
+      }
+
+      const reviewed = new Set((existing ?? []).map((r) => r.order_id));
+      const pendingCount = eligibleIds.filter((id) => !reviewed.has(id)).length;
+
+      if (pendingCount === 0) {
+        return {
+          canCreate: false,
+          reason: "all_orders_reviewed",
+          pendingCount: 0,
+        };
+      }
+
+      return { canCreate: true, pendingCount };
     }
 
-    const { data: existing, error: existingErr } = await supabase
-      .from("reviews")
-      .select("order_id")
-      .eq("user_id", user.id)
-      .eq("product_id", pid);
-
-    if (existingErr) {
-      console.error("[getReviewWriteEligibility]", existingErr);
-      return { canCreate: false, reason: "no_purchase", pendingCount: 0 };
+    /** 본인 구매 슬롯이 없어도, DB에 미작성 결제 주문이 있으면 관리자는 리뷰 작성 UI를 쓸 수 있음 */
+    const isAdmin = await checkAdminAccess();
+    if (isAdmin) {
+      const anySlot = await findFirstUnreviewedPaidOrderIdForProduct(
+        supabase,
+        pid,
+      );
+      if (anySlot) {
+        return { canCreate: true, pendingCount: 1 };
+      }
     }
 
-    const reviewed = new Set((existing ?? []).map((r) => r.order_id));
-    const pendingCount = eligibleIds.filter((id) => !reviewed.has(id)).length;
-
-    if (pendingCount === 0) {
-      return {
-        canCreate: false,
-        reason: "all_orders_reviewed",
-        pendingCount: 0,
-      };
-    }
-
-    return { canCreate: true, pendingCount };
+    return { canCreate: false, reason: "no_purchase", pendingCount: 0 };
   } catch (e) {
     console.error("[getReviewWriteEligibility]", e);
     return { canCreate: false, reason: "no_purchase", pendingCount: 0 };
   }
 }
 
+// action 입력에서 들어온 id 값을 공통 규칙으로 정리합니다.
 function parseId(value: unknown): string {
   return String(value ?? "").trim();
 }
 
+// 별점 입력을 0.5점 단위의 유효 범위 안으로 보정합니다.
 function normalizeRating(value: unknown): number {
   const stepped = Math.round(Number(value) * 2) / 2;
   const rating = Math.max(1, Math.min(5, stepped));
   return rating;
 }
 
+/** 리뷰 INSERT/수정/삭제 응답을 막지 않도록 AI 요약·DB 반영은 응답 전송 이후 실행 */
+function scheduleIncrementalAiReviewSummary(
+  productId: string,
+  newReview: { rating: number; content: string },
+): void {
+  after(() => {
+    void applyIncrementalReviewSummaryAfterCreate(productId, newReview).catch(
+      (err) => {
+        console.error("[scheduleIncrementalAiReviewSummary]", err);
+      },
+    );
+  });
+}
+
+// 리뷰 수정/삭제 후에는 전체 리뷰 기준으로 요약을 다시 만들도록 예약합니다.
+function scheduleFullAiReviewSummaryRebuild(productId: string): void {
+  after(() => {
+    void applyFullReviewSummaryAfterReviewMutation(productId).catch((err) => {
+      console.error("[scheduleFullAiReviewSummaryRebuild]", err);
+    });
+  });
+}
+
+// 리뷰 액션에서 공통으로 쓰는 최소 입력 검증입니다.
 function validateReviewInput(
   rating: number,
   content: string,
@@ -217,6 +268,7 @@ export type CreateReviewInput = {
   orderId?: string | null;
 };
 
+// 주문 단위 리뷰를 생성하고, 응답 후 AI 요약 갱신 작업을 비동기로 예약합니다.
 export async function createReview(input: CreateReviewInput): Promise<void> {
   const productId = parseId(input.productId);
   const { rating, content } = validateReviewInput(input.rating, input.content);
@@ -231,12 +283,29 @@ export async function createReview(input: CreateReviewInput): Promise<void> {
     redirect(`/login?next=/products/${encodeURIComponent(productId)}`);
   }
 
-  const orderId = await resolveReviewOrderId(
-    supabase,
-    user.id,
-    productId,
-    input.orderId,
-  );
+  let orderId: string;
+  try {
+    orderId = await resolveReviewOrderId(
+      supabase,
+      user.id,
+      productId,
+      input.orderId,
+    );
+  } catch (e) {
+    const pref = String(input.orderId ?? "").trim();
+    const isAdmin = await checkAdminAccess();
+    if (!isAdmin || pref) {
+      throw e;
+    }
+    const fallback = await findFirstUnreviewedPaidOrderIdForProduct(
+      supabase,
+      productId,
+    );
+    if (!fallback) {
+      throw e;
+    }
+    orderId = fallback;
+  }
 
   const { error } = await supabase.from("reviews").insert({
     user_id: user.id,
@@ -261,11 +330,14 @@ export async function createReview(input: CreateReviewInput): Promise<void> {
     throw new Error(error.message);
   }
 
+  scheduleIncrementalAiReviewSummary(productId, { rating, content });
+
   revalidatePath(`/products/${productId}`);
   revalidatePath("/account/reviews");
   revalidatePath("/account", "layout");
 }
 
+// 본인 리뷰만 수정하고, 수정 후 전체 요약 재생성을 예약합니다.
 export async function updateReview(
   reviewId: string,
   productId: string,
@@ -314,11 +386,15 @@ export async function updateReview(
     .eq("user_id", user.id);
 
   if (updateError) throw new Error(updateError.message);
+
+  scheduleFullAiReviewSummaryRebuild(pid);
+
   revalidatePath(`/products/${pid}`);
   revalidatePath("/account/reviews");
   revalidatePath("/account", "layout");
 }
 
+// 본인 리뷰만 삭제하고, 삭제 후 전체 요약 재생성을 예약합니다.
 export async function deleteReview(
   reviewId: string,
   productId: string,
@@ -361,6 +437,9 @@ export async function deleteReview(
     .eq("user_id", user.id);
 
   if (deleteError) throw new Error(deleteError.message);
+
+  scheduleFullAiReviewSummaryRebuild(pid);
+
   revalidatePath(`/products/${pid}`);
   revalidatePath("/account/reviews");
   revalidatePath("/account", "layout");

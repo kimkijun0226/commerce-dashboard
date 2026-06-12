@@ -80,11 +80,14 @@
 
   /* --------------------------------------------------------------------------
    * Commerce Typography (commerceTypography)
-   * next/font는 --font-geist-sans; Poppins/Inter는 시스템/웹폰트 폴백
+   * next/font: Poppins(제목), Noto Sans KR(본문), Inter(라벨), Geist 보조
    * -------------------------------------------------------------------------- */
   --commerce-font-heading:
     var(--font-poppins), var(--font-geist-sans), ui-sans-serif, sans-serif;
   --commerce-font-body:
+    var(--font-noto-sans-kr), var(--font-inter), var(--font-geist-sans),
+    ui-sans-serif, sans-serif;
+  --commerce-font-label:
     var(--font-inter), var(--font-geist-sans), ui-sans-serif, sans-serif;
   --commerce-font-mono: var(--font-geist-mono), ui-monospace, monospace;
 

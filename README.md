@@ -1,4 +1,4 @@
-# Cursor Commerce Dashboard
+# Commerce Dashboard
 
 일반 커머스 영역(홈·상품·장바구니·체크아웃)과 **어드민 대시보드**를 한 저장소에서 다루는 프로젝트입니다. Next.js App Router 위에서 **Supabase(Postgres + Auth + RLS)** 를 붙였고, 화면은 Figma Commerce & Admin 템플릿을 기준으로 토큰·간격을 맞춰 두었습니다.
 
@@ -21,7 +21,7 @@
 
 **결제:** 토스페이먼츠 플로우에 맞춘 체크아웃·주문 데이터(`toss_order_id` 등)와 `TossPayment` UI 래퍼 — 실제 SDK 호출은 상위에서 `onRequestPayment`로 주입하는 구조입니다.  
 
-**디자인 워크플로:** Cursor에서 **Talk to Figma MCP**로 노드·문서 정보를 읽고, `commons/constants/color.ts`, `typography.ts` 같은 토큰과 컴포넌트 주석에 Figma 노드 기준을 남겨 두었습니다.
+**디자인 워크플로:** **Talk to Figma MCP**로 노드·문서 정보를 읽고, `commons/constants/color.ts`, `typography.ts` 같은 토큰과 컴포넌트 주석에 Figma 노드 기준을 남겨 두었습니다.
 
 ---
 

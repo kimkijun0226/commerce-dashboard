@@ -1,5 +1,5 @@
 {
-  "name": "cursor-commerce-dashboard",
+  "name": "commerce-dashboard",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -24,12 +24,15 @@
     "db:migration:user-addresses-address-only": "tsx scripts/run-migration.ts 0013_user_addresses_address_only.sql",
     "db:migration:reviews-one-per-purchase": "tsx scripts/run-migration.ts 0018_reviews_one_per_product_purchase.sql",
     "db:migration:reviews-order-scoped": "tsx scripts/run-migration.ts 0019_reviews_order_scoped.sql",
+    "db:migration:review-summary-reviewer-rpc": "tsx scripts/run-migration.ts 0020_product_review_summary_reviewer_rpc.sql",
+    "db:migration:review-summary-rpc-service-role": "tsx scripts/run-migration.ts 0021_product_review_summary_rpc_service_role.sql",
     "db:add-users-image-url": "tsx scripts/migrations/0017-add-users-image-url.ts",
     "db:run-rls": "tsx scripts/run-rls.ts",
     "db:seed": "tsx scripts/seed-products.ts",
     "db:seed-reviews": "tsx scripts/seed-reviews.ts"
   },
   "dependencies": {
+    "@google/genai": "^2.4.0",
     "@supabase/auth-helpers-nextjs": "^0.15.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.95.3",

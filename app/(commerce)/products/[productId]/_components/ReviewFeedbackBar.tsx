@@ -1,5 +1,6 @@
 "use client";
 
+// 상품 상세에서 바로 리뷰를 남길 수 있는 인라인 입력 바입니다.
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
@@ -12,6 +13,8 @@ import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 
+const REVIEW_AI_REFRESH_EVENT = "commerce:review-ai-refresh-start";
+
 export type ReviewFeedbackBarProps = {
   productId: string;
   /** 특정 주문에 대한 리뷰 작성 시 주문 ID */
@@ -21,6 +24,7 @@ export type ReviewFeedbackBarProps = {
   className?: string;
 };
 
+// 리뷰 작성 입력과 별점 선택, 제출 직후 캐시 정리까지 한 번에 처리합니다.
 export function ReviewFeedbackBar({
   productId,
   orderId,
@@ -69,6 +73,7 @@ export function ReviewFeedbackBar({
 
   const starColor = commerceColors.semantic.warning;
 
+  // 별 아이콘의 왼쪽/오른쪽 절반 클릭을 0.5점 단위 점수로 바꿉니다.
   function ratingFromPointer(star: number, clientX: number, rect: DOMRect) {
     const mid = rect.left + rect.width / 2;
     return clientX < mid ? star - 0.5 : star;
@@ -108,6 +113,13 @@ export function ReviewFeedbackBar({
               qc.invalidateQueries({ queryKey: QUERY_KEYS.reviews.byProduct(productId) }),
               qc.invalidateQueries({ queryKey: QUERY_KEYS.reviews.listByProduct(productId) }),
             ]);
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(
+                new CustomEvent(REVIEW_AI_REFRESH_EVENT, {
+                  detail: { productId },
+                }),
+              );
+            }
             setBody("");
             setRating(5);
             setPreviewRating(null);

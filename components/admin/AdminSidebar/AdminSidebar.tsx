@@ -21,7 +21,7 @@ export type AdminSidebarProps = {
 };
 
 export function AdminSidebar({
-  brand = "Cursor Commerce",
+  brand = "Commerce Dashboard",
   onToggleCollapse,
   sections,
   className,

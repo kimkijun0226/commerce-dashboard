@@ -43,7 +43,7 @@ BEGIN
       additional_info_specs = jsonb_build_object(
         '제조사', brand || ' 공급사',
         '원산지', origin,
-        '수입·판매원', 'Cursor Commerce',
+        '수입·판매원', 'Commerce Dashboard',
         'KC 인증', '전기·전자 해당 시 본체 표기 참조',
         '사용연령', '만 14세 이상 권장',
         '품질보증', '구매일 기준 1년(소비자 과실 제외)',

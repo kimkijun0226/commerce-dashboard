@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Noto_Sans_KR, Poppins } from "next/font/google";
 import { ReactQueryProvider } from "@/app/_providers/ReactQueryProvider";
 import { SupabaseAuthProvider } from "@/app/_providers/SupabaseAuthProvider";
 import "./globals.css";
@@ -27,8 +27,15 @@ const inter = Inter({
   display: "swap",
 });
 
+const notoSansKr = Noto_Sans_KR({
+  variable: "--font-noto-sans-kr",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Cursor Commerce Dashboard",
+  title: "Commerce Dashboard",
   description: "커머스 사용자 영역 + 관리자 대시보드",
 };
 
@@ -40,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} ${notoSansKr.variable} antialiased`}
       >
         <ReactQueryProvider>
           <SupabaseAuthProvider>{children}</SupabaseAuthProvider>

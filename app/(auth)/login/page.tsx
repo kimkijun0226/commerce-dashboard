@@ -111,7 +111,7 @@ export default function LoginPage() {
                 color: "#ffffff",
               }}
             >
-              Cursor Commerce
+              Commerce Dashboard
             </div>
           </div>
         </div>

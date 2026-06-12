@@ -1,5 +1,6 @@
 "use client";
 
+// 상품 상세의 리뷰/디테일 이미지/추가정보 탭을 애니메이션 전환과 함께 보여 줍니다.
 import { cn } from "@/components/ui";
 import type { ReactNode } from "react";
 import {
@@ -22,15 +23,16 @@ export type ProductDetailTabsProps = {
 };
 
 const TABS: { id: ProductDetailTabId; label: string }[] = [
+  { id: "reviews", label: "Reviews" },
   { id: "product-detail", label: "Detail Images" },
   { id: "extra-info", label: "Additional Info" },
-  { id: "reviews", label: "Reviews" },
 ];
 
 const PANEL_COUNT = TABS.length;
 
+// 탭 헤더와 슬라이드 패널을 함께 관리하는 상품 상세 탭 컨테이너입니다.
 export function ProductDetailTabs({
-  defaultTab = "product-detail",
+  defaultTab = "reviews",
   productDetailContent,
   extraInfoContent,
   reviewsContent,
@@ -45,10 +47,12 @@ export function ProductDetailTabs({
   >({});
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
+  // 부모 prop이 바뀌면 현재 활성 탭도 동기화합니다.
   useEffect(() => {
     setActiveTab(defaultTab);
   }, [defaultTab]);
 
+  // 활성 탭 버튼 위치를 읽어 하단 인디케이터 길이와 위치를 갱신합니다.
   const measureIndicator = useCallback(() => {
     const list = tabListRef.current;
     const btn = tabBtnRefs.current[activeTab];
@@ -81,6 +85,7 @@ export function ProductDetailTabs({
     TABS.findIndex((t) => t.id === activeTab),
   );
 
+  // 탭 id를 실제 패널 콘텐츠와 매핑해 슬라이드 영역에서 재사용합니다.
   const panelFor: Record<ProductDetailTabId, ReactNode> = {
     "product-detail": productDetailContent,
     "extra-info": extraInfoContent,

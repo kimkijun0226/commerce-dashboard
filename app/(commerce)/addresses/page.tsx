@@ -25,7 +25,9 @@ export default async function AddressesStandalonePage({
 }) {
   const sp = await Promise.resolve(searchParams ?? {});
   const next = typeof sp.next === "string" ? sp.next : undefined;
-  const mode = next === "/checkout" ? "pick" : next === "/account" ? "defaultOnly" : "manage";
+  /** 결제 흐름에서만 주소 선택(pick). `next=/account` 등은 복귀 경로일 뿐 전체 주소록(manage) 유지 */
+  const mode = next === "/checkout" ? "pick" : "manage";
+  const pickReturnHref = mode === "pick" ? next : undefined;
 
   const supabase = await createClient();
   const {
@@ -68,7 +70,7 @@ export default async function AddressesStandalonePage({
       <div className="mx-auto mt-10 w-full max-w-[960px]">
         <AddressBook
           initialAddresses={(addresses ?? []) as unknown as AddressRow[]}
-          nextHref={next}
+          nextHref={pickReturnHref}
           showHeader={false}
           mode={mode}
         />

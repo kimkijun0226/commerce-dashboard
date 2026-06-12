@@ -118,7 +118,7 @@ export default function SignupPage() {
                 color: "#ffffff",
               }}
             >
-              Cursor Commerce
+              Commerce Dashboard
             </div>
           </div>
         </div>

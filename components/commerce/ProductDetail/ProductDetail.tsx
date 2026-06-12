@@ -1,28 +1,35 @@
+// 상품 기본 정보와 탭 영역을 조합해 상세 페이지 본문 레이아웃을 만듭니다.
 import type { ReviewWriteEligibility } from "@/app/(commerce)/products/[productId]/review-actions";
 import { ProductDetailExtraInfoPanel } from "@/app/(commerce)/products/[productId]/_components/ProductDetailExtraInfoPanel";
 import { ProductDetailImageGallery } from "@/app/(commerce)/products/[productId]/_components/ProductDetailImageGallery";
 import { ProductReviewsSection } from "@/app/(commerce)/products/[productId]/_components/ProductReviewsSection";
 import { ProductDetailTabs } from "@/app/(commerce)/products/[productId]/_components/ProductDetailTabs";
-import { ReviewSummaryDisplay } from "@/app/(commerce)/products/[productId]/_components/ReviewSummaryDisplay";
 import { ProductDetailMedia } from "@/components/commerce/ProductDetail/ProductDetailMedia";
 import { ProductDetailSidebar } from "@/components/commerce/ProductDetail/ProductDetailSidebar";
 import type { ProductDetailData } from "@/features/products/api/useProductDetail";
 import { toCommonsProductDetail } from "@/features/products/api/useProductDetail";
+import type { ReactNode } from "react";
 
 export type ProductDetailProps = {
   product: ProductDetailData;
   reviewWriteEligibility: ReviewWriteEligibility;
-  /** 리뷰 탭을 처음부터 열지 (예: ?openReview=1) */
-  defaultReviewsTab?: boolean;
+  /** `?openReview=1` 등으로 들어왔을 때만 작성 폼을 바로 펼침 (`tab=reviews`만으로는 펼치지 않음) */
+  initialComposerOpen?: boolean;
   initialReviewOrderId?: string | null;
+  reviewSummarySection?: ReactNode;
+  reviewListSection?: ReactNode;
 };
 
+// 상세 미디어, 사이드바, 탭 영역을 조합해 PDP 본문 전체를 구성합니다.
 export function ProductDetail({
   product,
   reviewWriteEligibility,
-  defaultReviewsTab = false,
+  initialComposerOpen = false,
   initialReviewOrderId = null,
+  reviewSummarySection,
+  reviewListSection,
 }: ProductDetailProps) {
+  // 공용 커머스 사이드바 컴포넌트가 받는 형태로 상세 데이터를 변환합니다.
   const detail = toCommonsProductDetail(product);
 
   return (
@@ -35,13 +42,9 @@ export function ProductDetail({
         <ProductDetailSidebar product={detail} />
       </div>
 
-      <div className="mt-10">
-        <ReviewSummaryDisplay />
-      </div>
-
       <div className="mt-14 w-full pt-10">
         <ProductDetailTabs
-          defaultTab={defaultReviewsTab ? "reviews" : "product-detail"}
+          defaultTab="reviews"
           productDetailContent={
             <ProductDetailImageGallery
               imageUrls={product.detailImageUrls}
@@ -58,10 +61,10 @@ export function ProductDetail({
             <ProductReviewsSection
               productId={product.id}
               reviewWriteEligibility={reviewWriteEligibility}
-              initialComposerOpen={
-                defaultReviewsTab && reviewWriteEligibility.canCreate
-              }
+              initialComposerOpen={initialComposerOpen}
               initialReviewOrderId={initialReviewOrderId}
+              reviewSummarySection={reviewSummarySection}
+              reviewListSection={reviewListSection}
             />
           }
         />

@@ -37,7 +37,7 @@ export function AddressBook({
   nextHref?: string;
   showHeader?: boolean;
   className?: string;
-  mode?: "manage" | "pick" | "defaultOnly";
+  mode?: "manage" | "pick";
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -57,7 +57,7 @@ export function AddressBook({
       style={{ fontFamily: "var(--commerce-font-body)" }}
     >
       {showHeader ? (
-        <header className="flex items-start justify-between gap-4">
+        <header className="relative z-[1] flex items-start justify-between gap-4">
           <div>
             <h2
               style={{
@@ -78,31 +78,33 @@ export function AddressBook({
             </p>
           </div>
 
-          <Button
-            size="md"
-            disabled={pending}
-            className={mode !== "manage" ? "hidden" : undefined}
-            onClick={() => {
-              setAdding(true);
-              setEditingId(null);
-            }}
-          >
-            새 주소 추가
-          </Button>
+          {mode === "manage" ? (
+            <Button
+              size="md"
+              disabled={pending}
+              onClick={() => {
+                setAdding(true);
+                setEditingId(null);
+              }}
+            >
+              새 주소 추가
+            </Button>
+          ) : null}
         </header>
       ) : (
-        <div className="flex justify-end">
-          <Button
-            size="md"
-            disabled={pending}
-            className={mode !== "manage" ? "hidden" : undefined}
-            onClick={() => {
-              setAdding(true);
-              setEditingId(null);
-            }}
-          >
-            새 주소 추가
-          </Button>
+        <div className="relative z-[1] flex justify-end">
+          {mode === "manage" ? (
+            <Button
+              size="md"
+              disabled={pending}
+              onClick={() => {
+                setAdding(true);
+                setEditingId(null);
+              }}
+            >
+              새 주소 추가
+            </Button>
+          ) : null}
         </div>
       )}
 

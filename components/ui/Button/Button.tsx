@@ -41,7 +41,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   const isDisabled = disabled || loading;
 
   const base =
-    "box-border inline-flex items-center justify-center gap-2 rounded-lg px-4 font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--commerce-semantic-info)] disabled:pointer-events-none disabled:opacity-50";
+    "box-border inline-flex transform-gpu cursor-pointer select-none items-center justify-center gap-2 rounded-lg px-4 font-medium " +
+    "transition-[transform,box-shadow,opacity,background-color,color,border-color] duration-200 ease-out motion-reduce:transition-none " +
+    "enabled:hover:scale-[1.02] enabled:active:scale-[0.98] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 " +
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--commerce-semantic-info)] " +
+    "disabled:cursor-not-allowed disabled:opacity-50 " +
+    (loading ? "pointer-events-none cursor-wait " : "");
 
   const variantStyles: Record<
     NonNullable<ButtonProps["variant"]>,
@@ -78,7 +83,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       disabled={isDisabled}
       className={cn(
         base,
-        variant === "ghost" && "hover:bg-[var(--admin-neutral-n100)]",
+        variant === "primary" &&
+          "enabled:hover:shadow-md enabled:hover:opacity-[0.92]",
+        variant === "secondary" &&
+          "enabled:hover:bg-white enabled:hover:shadow-sm enabled:hover:border-(--commerce-border-strong)",
+        variant === "ghost" &&
+          "enabled:hover:bg-[var(--admin-neutral-n100)]",
+        variant === "danger" &&
+          "enabled:hover:opacity-[0.92] enabled:hover:shadow-md",
         className,
       )}
       style={{

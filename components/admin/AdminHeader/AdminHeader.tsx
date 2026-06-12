@@ -13,7 +13,7 @@ export type AdminHeaderProps = {
 };
 
 export function AdminHeader({
-  brand = "Cursor Commerce",
+  brand = "Commerce Dashboard",
   userSlot,
   onLogout,
   className,

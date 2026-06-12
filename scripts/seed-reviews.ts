@@ -170,7 +170,7 @@ async function ensureMinUsers(
     const name =
       DISPLAY_NAME_POOL[j % DISPLAY_NAME_POOL.length] ?? `User ${j + 1}`;
     rows.push({
-      email: `review-autoseed-${batchBase}-${j}@seed.cursor-commerce.local`,
+      email: `review-autoseed-${batchBase}-${j}@seed.commerce-dashboard.local`,
       display_name: `${name} #${j + 1}`,
       role: "user",
     });

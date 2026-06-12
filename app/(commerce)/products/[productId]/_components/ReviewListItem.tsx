@@ -1,5 +1,6 @@
 "use client";
 
+// 개별 리뷰 카드와 수정/삭제 액션, 계정 페이지용 압축 레이아웃을 함께 처리합니다.
 import { reviewDisplayInitials } from "@/app/(commerce)/products/[productId]/_components/reviewDisplayName";
 import { deleteReview } from "@/app/(commerce)/products/[productId]/review-actions";
 import { ReviewEditForm } from "@/components/commerce/ReviewEditForm";
@@ -13,6 +14,8 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { FiEdit2, FiTrash2, FiX } from "react-icons/fi";
+
+const REVIEW_AI_REFRESH_EVENT = "commerce:review-ai-refresh-start";
 
 export type ReviewListItemProps = {
   review: Review;
@@ -28,6 +31,7 @@ export type ReviewListItemProps = {
   hideProfileAvatar?: boolean;
 };
 
+// 표시 이름이 없을 때도 카드가 비지 않도록 email/해시 기반 대체 이름을 만듭니다.
 function displayNameForReview(review: Review): string {
   const dn = review.users?.display_name?.trim();
   if (dn) return dn;
@@ -46,11 +50,13 @@ function formatReviewRatingLabel(rating: number): string {
   return Number.isInteger(stepped) ? String(stepped) : stepped.toFixed(1);
 }
 
+// 계정 페이지 압축 레이아웃에서 항상 소수 첫째 자리까지 보이게 합니다.
 function formatReviewRatingOneDecimal(rating: number): string {
   const stepped = Math.round(rating * 2) / 2;
   return stepped.toFixed(1);
 }
 
+// 리뷰 본문, 작성자 정보, 본인 액션 버튼을 조합해 한 카드로 렌더링합니다.
 export function ReviewListItem({
   review,
   productId,
@@ -84,6 +90,7 @@ export function ReviewListItem({
   const actionBtn = compact ? "size-7" : "size-8";
   const actionIcon = compact ? "size-3.5" : "size-4";
 
+  // 본인 리뷰일 때만 수정/삭제 액션을 노출하고, 삭제 후에는 요약 갱신 이벤트도 함께 보냅니다.
   const reviewActions = isOwnReview ? (
     <div className={cn("flex shrink-0 items-center gap-0.5")} aria-label="리뷰 관리">
       <button
@@ -144,6 +151,13 @@ export function ReviewListItem({
                         queryKey: QUERY_KEYS.reviews.listByProduct(productId),
                       }),
                     ]);
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(
+                        new CustomEvent(REVIEW_AI_REFRESH_EVENT, {
+                          detail: { productId },
+                        }),
+                      );
+                    }
                     toast.success("리뷰가 삭제되었습니다.");
                     onAfterMutate?.();
                   } catch (err) {

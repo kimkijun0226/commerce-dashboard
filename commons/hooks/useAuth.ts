@@ -43,12 +43,14 @@ export function useAuth(): UseAuthResult {
 
   // Provider가 전역 동기화를 담당하지만, useAuth만 단독으로 쓰는 화면에서도
   // store가 비어있지 않게 최소 동기화를 한 번 더 보장합니다.
+  // 이미 같은 사용자로 `SupabaseAuthProvider`가 `users.role`까지 반영했다면 덮어쓰지 않습니다.
   useEffect(() => {
     if (effectiveLoading) return;
     if (!user) {
       if (!storeUser) clearStoreUser();
       return;
     }
+    if (storeUser?.id === user.id) return;
     setStoreUser({
       id: user.id,
       email: user.email ?? "",

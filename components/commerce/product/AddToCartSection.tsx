@@ -1,14 +1,13 @@
 "use client";
 
+// PDP의 수량 선택, 좋아요, 장바구니 버튼을 한 묶음으로 보여 주는 구매 영역입니다.
 import { commerceTypography } from "@/commons/constants/typography";
-import type { CartProduct, ProductStatus } from "@/commons/store/cart-store";
-import { useCartStore } from "@/commons/store/cart-store";
 import type { ProductDetail } from "@/commons/types/product";
+import { AddToCartButton } from "@/components/commerce/product/AddToCartButton";
 import { QuantitySelector } from "@/components/commerce/QuantitySelector/QuantitySelector";
 import { cn, typographyToStyle } from "@/components/ui";
 import type { CSSProperties } from "react";
-import { useCallback, useState } from "react";
-import { toast } from "sonner";
+import { useState } from "react";
 import { LikeButton } from "@/components/commerce/likes/LikeButton";
 
 /**
@@ -28,42 +27,18 @@ const FOCUS_OUTLINE_LIGHT =
 const FOCUS_OUTLINE_ON_DARK =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/90";
 
-function toCartProduct(product: ProductDetail): CartProduct {
-  let status: ProductStatus = "visible";
-  if (product.status === "hidden") status = "hidden";
-  else if (product.status === "sold_out") status = "sold_out";
-
-  return {
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    salePrice: product.salePrice ?? null,
-    imageUrl: product.image_url,
-    status,
-  };
-}
-
 export type AddToCartSectionProps = {
   product: ProductDetail;
   className?: string;
 };
 
+// 구매 관련 컨트롤들을 현재 상품 상태에 맞게 묶어서 표시합니다.
 export function AddToCartSection({ product, className }: AddToCartSectionProps) {
-  const addItem = useCartStore((s) => s.addItem);
   const [quantity, setQuantity] = useState(1);
 
+  // 숨김/품절 상품은 수량 선택과 담기 버튼을 함께 비활성화합니다.
   const cartDisabled =
     product.status === "hidden" || product.status === "sold_out";
-
-  const handleAddToCart = useCallback(async () => {
-    if (cartDisabled) return;
-    const ok = await addItem(toCartProduct(product), quantity);
-    if (ok) {
-      toast.success("장바구니에 담았습니다.");
-    } else {
-      toast.error("장바구니에 담지 못했습니다. 잠시 후 다시 시도해 주세요.");
-    }
-  }, [addItem, cartDisabled, product, quantity]);
 
   return (
     <section
@@ -95,8 +70,9 @@ export function AddToCartSection({ product, className }: AddToCartSectionProps) 
         />
       </div>
 
-      <button
-        type="button"
+      <AddToCartButton
+        product={product}
+        quantity={quantity}
         disabled={cartDisabled}
         className={cn(
           "mt-4 box-border flex h-[52px] min-h-[52px] w-full min-w-0 max-w-[508px] cursor-pointer items-center justify-center rounded-lg border-0 antialiased",
@@ -108,11 +84,7 @@ export function AddToCartSection({ product, className }: AddToCartSectionProps) 
           FOCUS_OUTLINE_ON_DARK,
         )}
         style={PDP_CTA_TYPO}
-        aria-label="장바구니에 담기"
-        onClick={handleAddToCart}
-      >
-        <span className="leading-[28px] tracking-[-0.4px]">Add to cart</span>
-      </button>
+      />
     </section>
   );
 }

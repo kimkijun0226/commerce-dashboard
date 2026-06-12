@@ -850,7 +850,7 @@ export async function seedSmartwatchReviewsAndDetail(
 
   const userIds: string[] = [];
   for (let i = 0; i < SEED_REVIEWER_NAMES.length; i++) {
-    const email = `seed-reviewer-${i}@seed.cursor-commerce.local`;
+    const email = `seed-reviewer-${i}@seed.commerce-dashboard.local`;
     const { error: upsertError } = await supabase.from("users").upsert(
       {
         email,

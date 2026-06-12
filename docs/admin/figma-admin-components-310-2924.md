@@ -29,7 +29,7 @@
 ### 1-1. Sidebar/Menu 영역
 
 - **AdminSidebar(메뉴 컨테이너)**
-  - 로고 영역: “Cursor Commerce”(Poppins 20) + 우측 아이콘(Indent/Collapse 느낌)
+  - 로고 영역: “Commerce Dashboard”(Poppins 20) + 우측 아이콘(Indent/Collapse 느낌)
   - 섹션 라벨: “MAIN MENU”, “PRODUCTS”, “ADMIN”(Public Sans 11)
   - 네비 아이템(List): 아이콘(22) + 텍스트(15) + 우측 chevron + (일부) Badge(22)
   - 활성 항목 배경: `#f3f4f8` 계열, 텍스트는 더 진하게(세미볼드)

@@ -1,4 +1,4 @@
-# Cursor Commerce Dashboard - 프로젝트 가이드
+# Commerce Dashboard - 프로젝트 가이드
 
 > 프로젝트 구조, 폴더별 용도, 향후 개발 방향을 정리한 문서입니다.  
 > PDF로 저장하려면: VS Code 확장 `Markdown PDF` 또는 브라우저에서 HTML 출력 후 인쇄 > PDF로 저장
@@ -9,7 +9,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| **프로젝트명** | cursor-commerce-dashboard |
+| **프로젝트명** | commerce-dashboard |
 | **성격** | 커머스 사용자 영역 + 관리자 대시보드 공존 |
 | **기술 스택** | Next.js 16 (App Router), TypeScript, React 19, Tailwind CSS 4 |
 | **패키지 매니저** | yarn |
@@ -20,7 +20,7 @@
 ## 2. 폴더 구조
 
 ```
-cursor-commerce-dashboard/
+commerce-dashboard/
 ├── app/                          # Next.js App Router (페이지·API·레이아웃)
 │   ├── (auth)/                   # 인증 Route Group (URL에 (auth) 미포함)
 │   │   ├── login/page.tsx
@@ -84,7 +84,7 @@ cursor-commerce-dashboard/
 ├── docs/                         # 문서
 │   └── PROJECT_GUIDE.md
 │
-├── .cursor/rules/                # Cursor AI 규칙
+├── .cursor/rules/                # 에디터 AI 규칙
 ├── package.json
 ├── tsconfig.json
 ├── next.config.ts
