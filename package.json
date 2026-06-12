@@ -29,7 +29,8 @@
     "db:add-users-image-url": "tsx scripts/migrations/0017-add-users-image-url.ts",
     "db:run-rls": "tsx scripts/run-rls.ts",
     "db:seed": "tsx scripts/seed-products.ts",
-    "db:seed-reviews": "tsx scripts/seed-reviews.ts"
+    "db:seed-reviews": "tsx scripts/seed-reviews.ts",
+    "db:backfill-review-ai": "tsx scripts/backfill-review-ai-summaries.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
