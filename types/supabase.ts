@@ -502,6 +502,7 @@ export interface Database {
     };
     Views: Record<string, never>;
     Functions: {
+      get_sales_simulation: { Args: {p_days?: number; p_department?: string; p_page?: number; p_status?: string; p_date?: string}; Returns: Json };
       get_admin_dashboard: { Args: Record<PropertyKey, never>; Returns: Json };
       get_catalog_category_products: {
         Args: { p_category: string; p_department?: string };
