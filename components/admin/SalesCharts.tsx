@@ -29,23 +29,39 @@ ChartJS.register(
   Legend,
 );
 const palette = [
-  "#68775e",
-  "#bd9874",
-  "#8c9faf",
-  "#c3a1a6",
-  "#b8b884",
-  "#9789aa",
-  "#7faaa0",
-  "#cfb68e",
-  "#8a9099",
-  "#a8b49c",
+  "#8981dc",
+  "#80c99e",
+  "#ffc653",
+  "#ff7f3f",
+  "#88d0df",
+  "#a3dd6b",
+  "#b4a4e6",
+  "#a9d8bf",
+  "#ffd995",
+  "#b4dfe8",
 ];
+const semanticColors: Record<string, string> = {
+  의류: "#80c99e",
+  홈: "#8981dc",
+  뷰티: "#ffc653",
+  "결제 완료": "#80c99e",
+  취소: "#ff7f3f",
+  환불: "#8981dc",
+  "결제 대기": "#ffc653",
+};
 const won = (value: number) => `${value.toLocaleString("ko-KR")}원`;
 const count = (value: number) => `${value.toLocaleString("ko-KR")}건`;
 const base = {
   responsive: true,
   maintainAspectRatio: false,
-  animation: false as const,
+  animation: {
+    duration: () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? 0
+        : 500,
+    easing: "easeOutQuart" as const,
+  },
   locale: "ko-KR",
   color: "#52525b",
   font: { family: "Arial, sans-serif", size: 11 },
@@ -191,14 +207,21 @@ export function SalesBreakdownChart({
         해당 기간 데이터가 없습니다.
       </p>
     );
+  const colors = rows.map((r, i) =>
+    kind === "hours"
+      ? palette[0]
+      : (semanticColors[r.label] ?? palette[i % palette.length]),
+  );
   const data = {
     labels,
     datasets: [
       {
         label: "주문 수",
         data: rows.map((r) => r.orders),
-        backgroundColor: rows.map((_, i) => palette[i % palette.length]),
-        borderWidth: 0,
+        backgroundColor: colors,
+        borderColor: "#ffffff",
+        borderWidth: kind === "doughnut" ? 2 : 0,
+        hoverOffset: kind === "doughnut" ? 5 : 0,
         borderRadius: kind === "doughnut" ? 0 : 2,
       },
     ],
@@ -239,6 +262,7 @@ export function SalesBreakdownChart({
   const doughnutOptions: ChartOptions<"doughnut"> = {
     ...base,
     cutout: "68%",
+    animation: { ...base.animation, animateRotate: true, animateScale: true },
     plugins: {
       legend: {
         position: "bottom",
@@ -293,7 +317,14 @@ export function SalesBreakdownChart({
             <tbody>
               {rows.map((r, i) => (
                 <tr key={r.label} className="border-b">
-                  <td className="py-2">{labels[i]}</td>
+                  <td className="py-2">
+                    <span
+                      aria-hidden="true"
+                      className="mr-2 inline-block h-2.5 w-2.5 rounded-full"
+                      style={{ backgroundColor: colors[i] }}
+                    />
+                    {labels[i]}
+                  </td>
                   <td>{count(r.orders)}</td>
                   <td>{won(r.revenue)}</td>
                 </tr>

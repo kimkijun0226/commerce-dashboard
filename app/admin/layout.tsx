@@ -1,6 +1,5 @@
 import { AdminShell } from "@/components/admin/AdminShell";
-import { checkAdminAccess } from "@/lib/auth/admin";
-import { createClient } from "@/lib/supabase/server";
+import { checkAdminAccess, getAdminUser } from "@/lib/auth/admin";
 import { notFound, redirect } from "next/navigation";
 export const metadata = {
   title: "오브온 관리자",
@@ -12,10 +11,7 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getAdminUser();
   if (!user) redirect("/login?next=/admin");
   if (!(await checkAdminAccess())) notFound();
   return <AdminShell>{children}</AdminShell>;
