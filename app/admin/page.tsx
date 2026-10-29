@@ -94,7 +94,7 @@ export default async function AdminPage({
           </p>
         </div>
         <Link href="/admin/live" className="border bg-white px-4 py-2 text-sm">
-          실제 주문 대시보드 →
+          주문·결제 대시보드 →
         </Link>
       </div>
       <div className="border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">

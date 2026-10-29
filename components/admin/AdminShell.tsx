@@ -13,7 +13,7 @@ import { AdminLayout, AdminHeader, AdminSidebar } from "@/components/admin";
 import type { ReactNode } from "react";
 const links = [
   { href: "/admin", label: "판매 분석", icon: <FiGrid /> },
-  { href: "/admin/live", label: "실제 주문 대시보드", icon: <FiGrid /> },
+  { href: "/admin/live", label: "주문·결제 대시보드", icon: <FiGrid /> },
   { href: "/admin/products", label: "상품 관리", icon: <FiPackage /> },
   { href: "/admin/orders", label: "주문 · 배송", icon: <FiShoppingBag /> },
   { href: "/admin/settings", label: "로고 · 배너", icon: <FiSettings /> },

@@ -5,12 +5,22 @@ import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { AdminMetricCard } from "@/components/admin";
 import { STOREFRONTS, parseStoreKey } from "@/lib/catalog/storefront";
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   if (!(await checkAdminAccess())) notFound();
+  const source =
+    (await searchParams).source === "actual" ? "actual" : "simulation";
+  const simulated = source === "simulation";
   const supabase = await createClient();
-  const { data, error } = await supabase.rpc("get_admin_dashboard");
+  const { data, error } = await supabase.rpc(
+    simulated ? "get_admin_payment_preview" : "get_admin_dashboard",
+  );
   if (error) throw new Error(`대시보드 조회 실패: ${error.message}`);
   const stats = data as {
+    paymentCount?: number;
     products: number;
     visible: number;
     orders: number;
@@ -23,12 +33,45 @@ export default async function AdminPage() {
     <div className="space-y-7">
       <div>
         <p className="text-xs tracking-widest text-gray-400">OVERVIEW</p>
-        <h1 className="mt-2 text-2xl font-semibold">실제 주문 대시보드</h1>
+        <h1 className="mt-2 text-2xl font-semibold">주문·결제 매출 대시보드</h1>
         <p className="mt-2 text-sm text-gray-500">
-          실제 고객 주문과 결제만 집계합니다. 시뮬레이션 판매는 포함되지
-          않습니다.
+          {simulated
+            ? "DB에 저장된 시뮬레이션 결제 완료 데이터를 집계합니다."
+            : "실제 고객 주문과 결제만 집계합니다."}
         </p>
       </div>
+      <nav aria-label="결제 데이터 선택" className="flex flex-wrap gap-2">
+        <Link
+          href="/admin/live?source=simulation"
+          aria-current={simulated ? "page" : undefined}
+          className={`border px-4 py-2 text-sm ${simulated ? "bg-black text-white" : "bg-white"}`}
+        >
+          시뮬레이션 결제
+        </Link>
+        <Link
+          href="/admin/live?source=actual"
+          aria-current={!simulated ? "page" : undefined}
+          className={`border px-4 py-2 text-sm ${!simulated ? "bg-black text-white" : "bg-white"}`}
+        >
+          실제 결제
+        </Link>
+      </nav>
+      {simulated ? (
+        <p className="border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
+          시뮬레이션 결제 완료 {stats.paymentCount?.toLocaleString()}건 · 실제
+          PG 승인·고객 결제·재고에 영향을 주지 않는 별도 데이터입니다.
+        </p>
+      ) : stats.orders === 0 ? (
+        <div className="border bg-white p-4 text-sm leading-6">
+          <p>아직 실제 고객 주문이 없어 결제 매출이 0원입니다.</p>
+          <Link
+            href="/admin/live?source=simulation"
+            className="mt-2 inline-block underline"
+          >
+            채워진 시뮬레이션 결제 매출 보기 →
+          </Link>
+        </div>
+      ) : null}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AdminMetricCard
           title="전체 상품"

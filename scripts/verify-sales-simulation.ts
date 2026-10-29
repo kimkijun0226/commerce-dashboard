@@ -94,6 +94,47 @@ async function main() {
     `select count(*) filter(where ordered_at>now() or discount_amount>gross_amount or quantity not between 1 and 3) as invalid from sales_simulations`,
   )) as { invalid: number }[];
   assert.equal(integrity[0].invalid, 0);
+  const paymentResults = (await query(
+    `begin; ${claim} select get_admin_payment_preview() as preview, (select coalesce(sum(amount),0) from sales_simulation_payments) as expected, (select count(*) from sales_simulation_payments) as payment_count; rollback;`,
+  )) as {
+    preview: {
+      revenue: number;
+      paymentCount: number;
+      dailyRevenue: { day: string; amount: number }[];
+    };
+    expected: string;
+    payment_count: number;
+  }[];
+  const payment = paymentResults[0];
+  assert.equal(payment.preview.revenue, Number(payment.expected));
+  assert.equal(payment.preview.paymentCount, payment.payment_count);
+  assert.equal(payment.preview.dailyRevenue.length, 7);
+  const lastSeven = (await query(
+    `select coalesce(sum(amount),0) as amount from sales_simulation_payments where paid_at >= (((now() at time zone 'Asia/Seoul')::date-6)::timestamp at time zone 'Asia/Seoul')`,
+  )) as { amount: string }[];
+  assert.equal(
+    payment.preview.dailyRevenue.reduce((sum, row) => sum + row.amount, 0),
+    Number(lastSeven[0].amount),
+  );
+  await assert.rejects(
+    query(
+      `begin; set local role anon; select get_admin_payment_preview(); rollback;`,
+    ),
+    /permission denied/,
+  );
+  await assert.rejects(
+    query(
+      `begin; select set_config('request.jwt.claims',json_build_object('sub',(select id from users where role<>'admin' limit 1),'role','authenticated')::text,true); set local role authenticated; select get_admin_payment_preview(); rollback;`,
+    ),
+    /Administrator required/,
+  );
+  const paymentAccess = (await query(
+    `begin; select set_config('request.jwt.claims',json_build_object('sub',(select id from users where role<>'admin' limit 1),'role','authenticated')::text,true); set local role authenticated; select count(*) as visible from sales_simulation_payments; rollback;`,
+  )) as { visible: number }[];
+  assert.equal(paymentAccess[0].visible, 0);
+  console.log(
+    "PASS: payment totals, seven-day revenue and payment access controls",
+  );
   console.log(
     "PASS: aggregate reconciliation, dates, department/status filters, pagination, admin-only RPC and RLS",
   );
