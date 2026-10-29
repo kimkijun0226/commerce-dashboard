@@ -14,10 +14,10 @@ export function ProductCardSkeleton({ className }: ProductCardSkeletonProps) {
       )}
       aria-hidden
     >
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-[#f3f4f5]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[3px] bg-[#f3f4f5]">
         <div className="absolute right-2 top-2 flex gap-1.5 sm:right-3 sm:top-3">
-          <div className="size-8 rounded-full bg-white/80" />
-          <div className="size-8 rounded-full bg-white/80" />
+          <div className="size-8 rounded-[3px] bg-white/80" />
+          <div className="size-8 rounded-[3px] bg-white/80" />
         </div>
       </div>
       <div className="flex flex-col pt-3">
@@ -27,7 +27,7 @@ export function ProductCardSkeleton({ className }: ProductCardSkeletonProps) {
         </div>
         <div className="mt-1.5 flex h-7 items-center"><div className="h-4 w-20 rounded bg-[#e1e5e8]" /></div>
         <div className="mt-2 flex h-4 items-center gap-1.5">
-          <div className="size-3 rounded-full bg-[#e8ebed]" />
+          <div className="size-3 rounded-[3px] bg-[#e8ebed]" />
           <div className="h-2.5 w-16 rounded bg-[#e8ebed]" />
         </div>
       </div>

@@ -157,6 +157,7 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
     <div className="mx-auto max-w-[1800px] px-4 py-6 sm:px-6 lg:px-8">
       <StorefrontNav active={department} />
       <HomeCatalogSection
+        campaignProducts={initialItems ?? []}
         department={department}
         categories={categories}
         selectedCategory={category}

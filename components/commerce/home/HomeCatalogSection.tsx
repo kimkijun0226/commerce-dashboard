@@ -1,5 +1,6 @@
 "use client";
 
+import { StorefrontCampaign } from "./StorefrontCampaign";
 import { STOREFRONTS, type StoreKey } from "@/lib/catalog/storefront";
 import { CatalogFetchError } from "@/components/commerce/catalog/CatalogFetchError";
 import { CommerceProductGrid } from "@/components/commerce/catalog/CommerceProductGrid";
@@ -12,6 +13,7 @@ import { useEffect } from "react";
 import { FiRotateCcw, FiSearch } from "react-icons/fi";
 
 export type HomeCatalogSectionProps = {
+  campaignProducts: Product[];
   categories: CatalogCategory[];
   department: StoreKey;
   selectedCategory: string;
@@ -35,7 +37,7 @@ export type HomeCatalogSectionProps = {
 };
 
 export function HomeCatalogSection({
-  department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
+  campaignProducts, department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
   total, allTotal, keyword, isSearchOpen, onSearchFocusHandled, onCloseSearch, showFetchError,
   isProductLoading, products, loadMoreRef, showLoadMoreSentinel,
   isFetchingNextPage, onAddToCart, onWishlistToggle,
@@ -59,7 +61,7 @@ export function HomeCatalogSection({
 
   return (
     <section aria-label="상품 목록">
-      <header className="mb-6 rounded-2xl border border-(--commerce-border-subtle) p-4 sm:p-7" style={{ background: "var(--store-hero)" }}>
+      <header className="mb-6 rounded-[3px] border border-(--commerce-border-subtle) p-4 sm:p-7" style={{ background: "var(--store-hero)" }}>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-[10px] font-semibold tracking-[0.2em] text-[#949ca3]">{store.eyebrow}</p>
@@ -67,7 +69,7 @@ export function HomeCatalogSection({
             <p className="mt-2 max-w-lg text-xs leading-6 text-(--commerce-text-secondary) sm:text-sm">{store.description}</p>
           </div>
           <div id="home-search-region" className="w-full sm:max-w-[420px]">
-            <HomeSearchBar placeholder={store.search} className="rounded-xl !border-transparent !bg-[#f4f5f6] !px-4 !py-3 focus-within:ring-2 focus-within:ring-[#141718]/15" onEscape={onCloseSearch} />
+            <HomeSearchBar placeholder={store.search} className="rounded-[3px] !border-transparent !bg-[#f4f5f6] !px-4 !py-3 focus-within:ring-2 focus-within:ring-[#141718]/15" onEscape={onCloseSearch} />
           </div>
         </div>
         <div role="group" aria-label="상품 카테고리" className="mt-5 flex flex-wrap items-center gap-2 pb-1">
@@ -76,7 +78,7 @@ export function HomeCatalogSection({
             return (
               <button key={choice.value} type="button" aria-pressed={active} onClick={() => onCategoryChange(choice.value)}
                 onMouseEnter={() => onCategoryIntent(choice.value)} onFocus={() => onCategoryIntent(choice.value)} onTouchStart={() => onCategoryIntent(choice.value)}
-                className={cn("inline-flex min-h-8 shrink-0 items-center gap-1 rounded-full px-3 py-1.5 text-xs sm:min-h-10 sm:px-4 sm:py-2 sm:text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
+                className={cn("inline-flex min-h-8 shrink-0 items-center gap-1 rounded-[3px] px-3 py-1.5 text-xs sm:min-h-10 sm:px-4 sm:py-2 sm:text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
                   active ? "bg-(--commerce-primary-main) font-semibold text-white" : "bg-white/60 text-(--commerce-text-secondary) hover:bg-[#e9ecee] hover:text-black")}>
                 {choice.name}
                 <span className={cn("text-[10px] tabular-nums", active ? "text-white/50" : "text-[#9ba2a8]")}>{choice.count}</span>
@@ -86,6 +88,8 @@ export function HomeCatalogSection({
         </div>
       </header>
 
+      <StorefrontCampaign department={department} products={campaignProducts} />
+
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-baseline gap-2">
           <h2 className="text-lg font-semibold text-(--commerce-text-primary)">{selectedCategory || "전체 상품"}</h2>
@@ -94,18 +98,18 @@ export function HomeCatalogSection({
           </p>
         </div>
         {hasFilters ? (
-          <button type="button" onClick={onResetFilters} className="inline-flex min-h-10 items-center gap-1.5 rounded-lg px-2 text-xs text-[#6c7275] hover:bg-[#f3f5f7] focus-visible:outline-2">
+          <button type="button" onClick={onResetFilters} className="inline-flex min-h-10 items-center gap-1.5 rounded-[3px] px-2 text-xs text-[#6c7275] hover:bg-[#f3f5f7] focus-visible:outline-2">
             <FiRotateCcw aria-hidden /> 필터 초기화
           </button>
         ) : null}
       </div>
 
       {showFetchError ? <CatalogFetchError /> : !isProductLoading && products.length === 0 ? (
-        <div className="flex flex-col items-center rounded-2xl border border-dashed border-[#dce0e3] px-4 py-20 text-center">
+        <div className="flex flex-col items-center rounded-[3px] border border-dashed border-[#dce0e3] px-4 py-20 text-center">
           <FiSearch className="mb-4 size-8 text-[#9ca4aa]" aria-hidden />
           <h3 className="text-lg font-semibold">조건에 맞는 상품이 없어요</h3>
           <p className="mt-2 text-sm text-[#6c7275]">다른 검색어를 입력하거나 카테고리를 바꿔 보세요.</p>
-          <button type="button" onClick={onResetFilters} className="mt-5 rounded-full bg-[#141718] px-5 py-3 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2">전체 상품 보기</button>
+          <button type="button" onClick={onResetFilters} className="mt-5 rounded-[3px] bg-[#141718] px-5 py-3 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2">전체 상품 보기</button>
         </div>
       ) : (
         <div aria-busy={isProductLoading || isFetchingNextPage}>

@@ -61,7 +61,7 @@ export function ProductCard({ product, href = storeProductUrl(product.id, produc
 
   return (
     <article className={cn("group relative flex min-w-0 w-full flex-col", className)}>
-      <div ref={imageRef} className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-[#f3f4f5]">
+      <div ref={imageRef} className="relative aspect-[4/5] w-full overflow-hidden rounded-[3px] bg-[#f3f4f5]">
         {badgeSlot ? <div className="pointer-events-none absolute left-3 top-3 z-20">{badgeSlot}</div> : null}
         <Link href={href} onMouseEnter={prefetchDetail} onFocus={prefetchDetail} onTouchStart={prefetchDetail} className="absolute inset-0 z-0 block outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black" aria-label={`${name} 상세 보기`}>
           {loading ? <div className="size-full animate-pulse bg-gray-100" /> : (
@@ -74,14 +74,14 @@ export function ProductCard({ product, href = storeProductUrl(product.id, produc
         <div className="absolute right-2 top-2 z-20 flex items-center gap-1.5 sm:right-3 sm:top-3">
           {onWishlistToggle ? (
             <button type="button" onClick={onWishlistToggle} aria-label={product.isLiked ? "위시리스트에서 제거" : "위시리스트에 추가"} aria-pressed={product.isLiked ?? false}
-              className="flex size-8 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur-sm focus-visible:outline-2">
+              className="flex size-8 items-center justify-center rounded-[3px] bg-white/90 shadow-sm backdrop-blur-sm focus-visible:outline-2">
               {product.isLiked ? <FaHeart className="size-4 text-rose-500" /> : <FaRegHeart className="size-4" />}
             </button>
           ) : <CardLikeButton productId={product.id} initialLiked={product.isLiked ?? false} syncOnMount={false} className="!bg-white/90 !backdrop-blur-sm" />}
           {onAddToCart && !loading ? (
             <button type="button" disabled={pending} aria-busy={pending} aria-label={`${name} 장바구니에 담기`}
               onClick={() => { if (product.options?.length) setShowOptions(true); else void add(); }}
-              className="flex size-8 items-center justify-center rounded-full bg-white/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-[#141718] hover:text-white focus-visible:outline-2 disabled:opacity-50">
+              className="flex size-8 items-center justify-center rounded-[3px] bg-white/90 shadow-sm backdrop-blur-sm transition-colors hover:bg-[#141718] hover:text-white focus-visible:outline-2 disabled:opacity-50">
               <FiShoppingCart className="size-4" aria-hidden />
             </button>
           ) : null}
