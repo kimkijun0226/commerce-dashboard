@@ -1,3 +1,4 @@
+import { ProductReviewsSection } from "./_components/ProductReviewsSection";
 import { getPublicEnv } from "@/commons/config/env";
 import { EnhancedReviewSummary } from "@/app/(commerce)/products/[productId]/_components/EnhancedReviewSummary";
 import { getReviewWriteEligibility } from "@/app/(commerce)/products/[productId]/review-actions";
@@ -88,36 +89,33 @@ export default async function ProductDetailPage({
         ? String(rawOrder[0] ?? "").trim()
         : "";
 
-  const [product, reviewWriteEligibility] = await Promise.all([
-    getProductById(productId),
-    getReviewWriteEligibility(productId),
-  ]);
+  const product = await getProductById(productId);
 
   if (!product) {
     notFound();
   }
 
-  const initialComposerOpen =
-    openReviewRequested && reviewWriteEligibility.canCreate;
-
   return (
-    <ProductDetail
-      product={product}
-      reviewWriteEligibility={reviewWriteEligibility}
-      initialComposerOpen={initialComposerOpen}
-      initialReviewOrderId={orderIdParam || null}
-      reviewSummarySection={
-        <Suspense fallback={<ReviewSummarySkeleton />}>
-          <ReviewSummarySection productId={productId} />
-        </Suspense>
-      }
-      reviewListSection={
-        <Suspense fallback={<ReviewListSkeleton />}>
-          <ReviewListSection productId={productId} />
-        </Suspense>
-      }
-    />
+    <ProductDetail product={product} reviewsSection={
+      <Suspense fallback={<ReviewListSkeleton />}>
+        <ProductReviewsContent productId={productId} openReviewRequested={openReviewRequested} orderId={orderIdParam || null} />
+      </Suspense>
+    } />
   );
+}
+
+async function ProductReviewsContent({ productId, openReviewRequested, orderId }: {
+  productId: string; openReviewRequested: boolean; orderId: string | null;
+}) {
+  const reviewWriteEligibility = await getReviewWriteEligibility(productId);
+  return <ProductReviewsSection
+    productId={productId}
+    reviewWriteEligibility={reviewWriteEligibility}
+    initialComposerOpen={openReviewRequested && reviewWriteEligibility.canCreate}
+    initialReviewOrderId={orderId}
+    reviewSummarySection={<Suspense fallback={<ReviewSummarySkeleton />}><ReviewSummarySection productId={productId} /></Suspense>}
+    reviewListSection={<Suspense fallback={<ReviewListSkeleton />}><ReviewListSection productId={productId} /></Suspense>}
+  />;
 }
 
 // users embed는 서버/클라이언트 응답 모양이 조금 달라질 수 있어 상세 페이지용으로 한 번 정규화합니다.

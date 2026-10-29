@@ -8,7 +8,7 @@ export function ProductDetailPageSkeleton() {
     <div role="status" aria-label="상품 상세 로딩 중" className="mx-auto max-w-[1120px] px-4 py-10 sm:px-8">
       <div aria-hidden>
         <div className="grid gap-10 md:grid-cols-2 md:gap-12">
-          <div className="aspect-square w-full motion-safe:animate-pulse rounded-2xl bg-(--commerce-background-light)" />
+          <div className="aspect-square w-full self-start motion-safe:animate-pulse rounded-2xl bg-(--commerce-background-light)" />
 
           <div className="flex min-w-0 flex-col gap-6">
             <div className="space-y-4 motion-safe:animate-pulse">

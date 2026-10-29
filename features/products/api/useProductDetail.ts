@@ -6,7 +6,8 @@ import {
   parseAiReviewSummaryFromProductJson,
   parseProductReviewSummary,
 } from "@/commons/types/product-review-summary";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
+import { unstable_cache } from "next/cache";
 import type { Database, Json } from "@/types/supabase";
 import { cache } from "react";
 
@@ -108,10 +109,10 @@ export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
  * - 없거나 `hidden`이면 `null`
  * - Supabase 오류는 throw
  */
-export const getProductById = cache(async function getProductById(
+const getCachedProductById = unstable_cache(async function getProductById(
   productId: string,
 ): Promise<ProductDetailData | null> {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
 
   // 502 등 일시 장애에 대해 짧게 재시도(SSR/metadata에서 바로 터지는 것 방지)
   let lastErr: string | null = null;
@@ -120,6 +121,7 @@ export const getProductById = cache(async function getProductById(
       .from("products")
       .select("*")
       .eq("id", productId)
+      .neq("status", "hidden")
       .maybeSingle();
 
     if (error) {
@@ -145,4 +147,6 @@ export const getProductById = cache(async function getProductById(
   }
 
   throw new Error(`상품 조회 실패: ${lastErr ?? "알 수 없는 오류"}`);
-});
+}, ["public-product-detail"], { revalidate: 30, tags: ["catalog"] });
+
+export const getProductById = cache(getCachedProductById);

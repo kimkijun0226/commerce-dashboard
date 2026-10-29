@@ -4,7 +4,8 @@ import { parseProductOptions } from "@/commons/utils/productOptions";
 import type { Product } from "@/components/commerce/types";
 import { CATALOG_PAGE_SIZE } from "@/lib/catalog/constants";
 import { buildCatalogSearchFilter } from "@/lib/catalog/filters";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
+import { unstable_cache } from "next/cache";
 import type { Database } from "@/types/supabase";
 
 export { CATALOG_PAGE_SIZE, CATALOG_SEARCH_PAGE_SIZE } from "@/lib/catalog/constants";
@@ -29,12 +30,12 @@ function mapProduct(row: ProductsRow): Product {
 
 export type CatalogCategory = { name: string; productCount: number };
 
-export async function getCatalogCategories(): Promise<CatalogCategory[]> {
-  const supabase = await createClient();
+export const getCatalogCategories = unstable_cache(async (): Promise<CatalogCategory[]> => {
+  const supabase = createPublicClient();
   const { data, error } = await supabase.rpc("get_catalog_categories");
   if (error) throw new Error(`카테고리 조회 실패: ${error.message}`);
   return (data ?? []).map((row) => ({ name: row.name, productCount: Number(row.product_count) }));
-}
+}, ["public-catalog-categories"], { revalidate: 30, tags: ["catalog"] });
 
 export type CatalogProductsParams = {
   page?: number;
@@ -52,7 +53,11 @@ export async function getCatalogProducts(params: CatalogProductsParams = {}) {
   const q = String(params.q ?? "").trim();
   const category = String(params.category ?? "").trim();
 
-  const supabase = await createClient();
+  return getCachedCatalogProducts(page, pageSize, q, category);
+}
+
+const getCachedCatalogProducts = unstable_cache(async (page: number, pageSize: number, q: string, category: string) => {
+  const supabase = createPublicClient();
   const offset = page * pageSize;
 
   const columns = "id, name, price, sale_price, image_url, status, rating_average, review_summary, created_at, additional_info, options, search_text";
@@ -81,5 +86,4 @@ export async function getCatalogProducts(params: CatalogProductsParams = {}) {
     total: count ?? 0,
     hasMore: offset + (data ?? []).length < (count ?? 0),
   };
-}
-
+}, ["public-catalog-products"], { revalidate: 30, tags: ["catalog"] });

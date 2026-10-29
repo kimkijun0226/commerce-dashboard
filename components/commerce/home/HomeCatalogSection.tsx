@@ -14,6 +14,7 @@ export type HomeCatalogSectionProps = {
   categories: CatalogCategory[];
   selectedCategory: string;
   onCategoryChange: (category: string) => void;
+  onCategoryIntent: (category: string) => void;
   onResetFilters: () => void;
   total: number;
   allTotal: number;
@@ -32,7 +33,7 @@ export type HomeCatalogSectionProps = {
 };
 
 export function HomeCatalogSection({
-  categories, selectedCategory, onCategoryChange, onResetFilters,
+  categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
   total, allTotal, keyword, isSearchOpen, onSearchFocusHandled, onCloseSearch, showFetchError,
   isProductLoading, products, loadMoreRef, showLoadMoreSentinel,
   isFetchingNextPage, onAddToCart, onWishlistToggle,
@@ -70,6 +71,7 @@ export function HomeCatalogSection({
             const active = choice.value === selectedCategory;
             return (
               <button key={choice.value} type="button" aria-pressed={active} onClick={() => onCategoryChange(choice.value)}
+                onMouseEnter={() => onCategoryIntent(choice.value)} onFocus={() => onCategoryIntent(choice.value)} onTouchStart={() => onCategoryIntent(choice.value)}
                 className={cn("inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
                   active ? "bg-[#141718] font-semibold text-white" : "bg-[#f4f5f6] text-[#626a71] hover:bg-[#e9ecee] hover:text-black")}>
                 {choice.name}

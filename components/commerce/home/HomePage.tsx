@@ -3,7 +3,7 @@
 import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
 import type { Product } from "@/components/commerce/types";
 import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
-import { useInfiniteProducts } from "@/features/products/api/useInfiniteProducts";
+import { useInfiniteProducts, usePrefetchCatalog } from "@/features/products/api/useInfiniteProducts";
 import { useDebouncedValue } from "@/commons/hooks/useDebouncedValue";
 import type { CatalogCategory } from "@/lib/catalog/products";
 import { useSearchStore } from "@/features/search/store/searchStore";
@@ -28,6 +28,7 @@ export function HomePage({ initialItems, initialTotal, categories }: HomePagePro
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const closeSearch = useSearchStore((s) => s.close);
   const setKeyword = useSearchStore((s) => s.setKeyword);
+  const prefetchCatalog = usePrefetchCatalog();
   const [category, setCategory] = useState("");
   const debouncedKeyword = useDebouncedValue(keyword.trim(), 350);
   const isSearchPending = keyword.trim() !== debouncedKeyword;
@@ -40,6 +41,20 @@ export function HomePage({ initialItems, initialTotal, categories }: HomePagePro
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteProducts({ initialItems, initialTotal, q: debouncedKeyword, category });
+
+  useEffect(() => {
+    if (debouncedKeyword) return;
+    let cancelled = false;
+    const prepareCategories = async () => {
+      for (const item of categories.slice(0, 6)) {
+        if (cancelled) break;
+        await prefetchCatalog("", item.name, 3);
+      }
+    };
+    // Start after the initial viewport has had a chance to load; keep image priority low.
+    const timer = window.setTimeout(() => { void prepareCategories(); }, 1200);
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, [categories, debouncedKeyword, prefetchCatalog]);
 
   const productsBase = useMemo(() => data?.pages.flatMap((p) => p.items) ?? [], [data]);
   const resetFilters = () => {
@@ -141,6 +156,7 @@ export function HomePage({ initialItems, initialTotal, categories }: HomePagePro
         categories={categories}
         selectedCategory={category}
         onCategoryChange={setCategory}
+        onCategoryIntent={(value) => { void prefetchCatalog(debouncedKeyword, value); }}
         onResetFilters={resetFilters}
         total={data?.pages[0]?.total ?? 0}
         allTotal={initialTotal ?? 0}

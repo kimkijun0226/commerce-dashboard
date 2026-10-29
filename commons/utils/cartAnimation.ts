@@ -30,7 +30,7 @@ export async function animateToCart(source: CartAnimationSource | null) {
       { transform: "translate(0, 0) scale(1)", opacity: 0.95 },
       { transform: `translate(${dx * 0.35}px, ${dy * 0.5 - 80}px) scale(.55)`, opacity: 0.9, offset: 0.45 },
       { transform: `translate(${dx}px, ${dy}px) scale(.07)`, opacity: 0.2 },
-    ], { duration: 720, easing: "cubic-bezier(.32,.02,.58,1)", fill: "forwards" }).finished;
+    ], { duration: 420, easing: "cubic-bezier(.32,.02,.58,1)", fill: "forwards" }).finished;
     target.getAnimations().forEach((animation) => animation.cancel());
     target.animate([
       { transform: "scale(1) rotate(0deg)" },
@@ -39,7 +39,7 @@ export async function animateToCart(source: CartAnimationSource | null) {
       { transform: "scale(1.08) rotate(14deg)", offset: 0.6 },
       { transform: "scale(1.03) rotate(-8deg)", offset: 0.78 },
       { transform: "scale(1) rotate(0deg)" },
-    ], { duration: 560, easing: "ease-out" });
+    ], { duration: 320, easing: "ease-out" });
   } catch (error) {
     // Route changes can cancel a flight; storage success must remain unaffected.
     if (!(error instanceof DOMException && error.name === "AbortError")) console.error("장바구니 애니메이션 실패", error);

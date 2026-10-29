@@ -22,11 +22,10 @@ export function ProductCardSkeleton({ className }: ProductCardSkeletonProps) {
       </div>
       <div className="flex flex-col pt-3">
         <div className="mb-1 flex h-4 items-center"><div className="h-2.5 w-12 rounded bg-[#e8ebed]" /></div>
-        <div className="flex h-10 flex-col justify-center gap-2">
+        <div className="flex h-5 flex-col justify-center gap-2">
           <div className="h-3 w-4/5 rounded bg-[#e8ebed]" />
-          <div className="h-3 w-3/5 rounded bg-[#e8ebed]" />
         </div>
-        <div className="mt-2 flex h-7 items-center"><div className="h-4 w-20 rounded bg-[#e1e5e8]" /></div>
+        <div className="mt-1.5 flex h-7 items-center"><div className="h-4 w-20 rounded bg-[#e1e5e8]" /></div>
         <div className="mt-2 flex h-4 items-center gap-1.5">
           <div className="size-3 rounded-full bg-[#e8ebed]" />
           <div className="h-2.5 w-16 rounded bg-[#e8ebed]" />

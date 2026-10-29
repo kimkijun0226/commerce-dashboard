@@ -1,3 +1,4 @@
+import { useSessionStore } from "@/commons/store/session-store";
 import { getCartItemKey } from "@/commons/utils/productOptions";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -149,6 +150,7 @@ async function requestCart(
   input: RequestInfo | URL,
   init?: RequestInit,
 ): Promise<CartItem[] | null> {
+  if (!useSessionStore.getState().isAuthenticated) return null;
   const res = await fetch(input, {
     ...init,
     headers: {

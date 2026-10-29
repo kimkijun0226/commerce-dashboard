@@ -8,7 +8,7 @@ import { FiStar } from "react-icons/fi";
 
 export type ProductInfoSectionProps = { product: ProductDetail; className?: string };
 export function ProductInfoSection({ product, className }: ProductInfoSectionProps) {
-  const { reviewCount, displayRating, hasReviews, isPending } = useProductReviews(product.id, { fallbackRating: product.rating });
+  const { reviewCount, displayRating, hasReviews, isPending } = useProductReviews(product.id, { fallbackRating: product.rating, fallbackCount: product.reviewSummary?.count });
   const count = hasReviews ? reviewCount : product.reviewSummary?.count ?? 0;
   const price = product.salePrice ?? product.price;
   const info = product.additional_info;

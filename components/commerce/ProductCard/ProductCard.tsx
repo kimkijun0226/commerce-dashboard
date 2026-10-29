@@ -1,5 +1,7 @@
 "use client";
 
+import { CATALOG_IMAGE_SIZES, warmProductImage } from "@/commons/utils/productImage";
+
 import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
 import { getProductDetailUrl } from "@/commons/constants/url";
 import { getProductDisplayName, formatWon } from "@/commons/utils/productDisplay";
@@ -24,15 +26,17 @@ export type ProductCardProps = {
   loading?: boolean;
   className?: string;
   imagePriority?: boolean;
+  imageEager?: boolean;
 };
 
-export function ProductCard({ product, href = getProductDetailUrl(product.id), onAddToCart, onWishlistToggle, badgeSlot, loading, className, imagePriority = false }: ProductCardProps) {
+export function ProductCard({ product, href = getProductDetailUrl(product.id), onAddToCart, onWishlistToggle, badgeSlot, loading, className, imagePriority = false, imageEager = false }: ProductCardProps) {
   const router = useRouter();
   const prefetched = useRef<string | null>(null);
   const prefetchDetail = () => {
     if (prefetched.current === href) return;
     prefetched.current = href;
     router.prefetch(href);
+    warmProductImage(product.imageUrl, true);
   };
   const imageRef = useRef<HTMLDivElement>(null);
   const [pending, setPending] = useState(false);
@@ -47,10 +51,9 @@ export function ProductCard({ product, href = getProductDetailUrl(product.id), o
     if (!onAddToCart || pending) return;
     setPending(true);
     try {
-      const success = await onAddToCart(selectedOptions);
-      if (success === false) return;
       setShowOptions(false);
-      await animateToCart(source);
+      void animateToCart(source);
+      await onAddToCart(selectedOptions);
     } finally {
       setPending(false);
     }
@@ -60,12 +63,12 @@ export function ProductCard({ product, href = getProductDetailUrl(product.id), o
     <article className={cn("group relative flex min-w-0 w-full flex-col", className)}>
       <div ref={imageRef} className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-[#f3f4f5]">
         {badgeSlot ? <div className="pointer-events-none absolute left-3 top-3 z-20">{badgeSlot}</div> : null}
-        <Link href={href} onMouseEnter={prefetchDetail} onFocus={prefetchDetail} className="absolute inset-0 z-0 block outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black" aria-label={`${name} 상세 보기`}>
+        <Link href={href} onMouseEnter={prefetchDetail} onFocus={prefetchDetail} onTouchStart={prefetchDetail} className="absolute inset-0 z-0 block outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black" aria-label={`${name} 상세 보기`}>
           {loading ? <div className="size-full animate-pulse bg-gray-100" /> : (
             <Image src={product.imageUrl} alt="" fill unoptimized={shouldBypassImageOptimization(product.imageUrl)}
-              quality={60} preload={imagePriority}
+              quality={60} preload={imagePriority} loading={imagePriority ? undefined : imageEager ? "eager" : "lazy"}
               className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.035]"
-              sizes="(max-width: 479px) calc((100vw - 44px) / 2), (max-width: 639px) calc((100vw - 56px) / 3), (max-width: 767px) calc((100vw - 88px) / 3), (max-width: 1023px) calc((100vw - 108px) / 4), (max-width: 1535px) calc((100vw - 144px) / 5), (max-width: 1799px) calc((100vw - 164px) / 6), 273px" />
+              sizes={CATALOG_IMAGE_SIZES} />
           )}
         </Link>
         <div className="absolute right-2 top-2 z-20 flex items-center gap-1.5 sm:right-3 sm:top-3">
@@ -86,10 +89,10 @@ export function ProductCard({ product, href = getProductDetailUrl(product.id), o
       </div>
       <div className="flex flex-col pt-3">
         {product.brand ? <p className="mb-1 text-[11px] font-semibold tracking-wide text-[#737b82] sm:text-xs">{product.brand}</p> : null}
-        <Link href={href} onMouseEnter={prefetchDetail} onFocus={prefetchDetail} className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-black">
-          <h3 className="line-clamp-2 min-h-10 text-[13px] font-medium leading-5 tracking-[-0.2px] text-[#252a2e] sm:text-sm">{name}</h3>
+        <Link href={href} onMouseEnter={prefetchDetail} onFocus={prefetchDetail} onTouchStart={prefetchDetail} className="rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-black">
+          <h3 className="line-clamp-2 text-[13px] font-medium leading-5 tracking-[-0.2px] text-[#252a2e] sm:text-sm">{name}</h3>
         </Link>
-        <div className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
           {hasDiscount ? <span className="text-sm font-bold text-[#e05c42]">{Math.round((1 - displayPrice / product.price) * 100)}%</span> : null}
           <span className="text-[15px] font-bold tracking-[-0.4px] text-[#141718] sm:text-lg">{formatWon(displayPrice)}</span>
           {hasDiscount ? <span className="text-xs text-[#9aa1a7] line-through">{formatWon(product.price)}</span> : null}

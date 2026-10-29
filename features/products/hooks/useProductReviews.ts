@@ -9,6 +9,7 @@ export type UseProductReviewsOptions = {
    * `reviews` 행이 없을 때 사용할 평균(예: `products.rating_average`)
    */
   fallbackRating?: number;
+  fallbackCount?: number;
 };
 
 export type UseProductReviewsResult = {
@@ -26,7 +27,7 @@ export type UseProductReviewsResult = {
 };
 
 /**
- * `reviews` 테이블에서 특정 상품의 리뷰를 모두 가져와 개수·평균 별점을 계산합니다.
+ * 첫 화면은 서버 집계를 재사용하고, 리뷰 변경 시 최신 평점으로 갱신합니다.
  */
 export function useProductReviews(
   productId: string,
@@ -34,6 +35,7 @@ export function useProductReviews(
 ): UseProductReviewsResult {
   const { data, isPending, isError, isSuccess } = useQuery({
     queryKey: QUERY_KEYS.reviews.byProduct(productId),
+    initialData: options?.fallbackCount !== undefined ? { count: options.fallbackCount, average: options.fallbackRating ?? 0 } : undefined,
     queryFn: async () => {
       const supabase = getSupabaseBrowserClient();
       const { data: rows, error } = await supabase
@@ -42,16 +44,13 @@ export function useProductReviews(
         .eq("product_id", productId);
 
       if (error) throw new Error(`리뷰 조회 실패: ${error.message}`);
-      return rows ?? [];
+      const count = rows?.length ?? 0;
+      return { count, average: count > 0 ? rows!.reduce((sum, row) => sum + row.rating, 0) / count : 0 };
     },
   });
 
-  const list = data ?? [];
-  const reviewCount = isSuccess ? list.length : 0;
-  const averageFromReviews =
-    reviewCount > 0
-      ? list.reduce((sum, row) => sum + row.rating, 0) / reviewCount
-      : 0;
+  const reviewCount = data?.count ?? 0;
+  const averageFromReviews = data?.average ?? 0;
 
   const fallback = options?.fallbackRating;
   const displayRating =

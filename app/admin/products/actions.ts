@@ -1,7 +1,7 @@
 "use server";
 
 import { parseOptionEditor } from "@/commons/utils/productOptions";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -21,6 +21,7 @@ export async function saveProductKeywords(formData: FormData) {
   const { data, error } = await supabase.from("products")
     .update({ search_keywords: keywords, ...(options ? { options: options.map((option) => ({ ...option })) } : {}) }).eq("id", id).select("id").single();
   if (error || !data) throw new Error(`검색 키워드 저장 실패: ${error?.message ?? "상품이 없습니다."}`);
+  updateTag("catalog");
   revalidatePath("/admin/products");
   revalidatePath("/", "layout");
 }

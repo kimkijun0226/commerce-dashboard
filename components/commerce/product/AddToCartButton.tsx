@@ -32,11 +32,11 @@ export function AddToCartButton({ product, quantity, disabled = false, className
         status: product.status === "registered" ? "visible" : product.status,
         selectedOptions,
       };
+      setShowOptions(false);
+      void animateToCart(source);
       const ok = await addItem(item, quantity);
       if (!ok) { toast.error("장바구니에 담지 못했습니다. 다시 시도해 주세요."); return; }
-      setShowOptions(false);
       toast.success("장바구니에 담았습니다.");
-      await animateToCart(source);
     } finally { setPending(false); }
   }
   return <>

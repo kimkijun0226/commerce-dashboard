@@ -34,6 +34,7 @@ export function CommerceProductGrid({
         <ProductCard
           product={p}
           imagePriority={index === 0}
+          imageEager={index < 6}
           onAddToCart={(selectedOptions) => onAddToCart(p, selectedOptions)}
           onWishlistToggle={
             onWishlistToggle ? () => onWishlistToggle(p.id) : undefined

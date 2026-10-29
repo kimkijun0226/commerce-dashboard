@@ -104,7 +104,7 @@ export function ProductDetailTabs({
           <span
             className={cn(
               "pointer-events-none absolute -bottom-px z-2 h-1 rounded-full bg-[#141718]",
-              "transition-[left,width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              "transition-[left,width] duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]",
               "motion-reduce:transition-none",
             )}
             style={{ left: indicator.left, width: indicator.width }}
@@ -128,7 +128,7 @@ export function ProductDetailTabs({
                 tabIndex={selected ? 0 : -1}
                 className={cn(
                   "relative z-1 pb-3 text-left text-[17px] font-medium tracking-[-0.4px] sm:text-[18px]",
-                  "transition-[color,transform] duration-300 ease-out",
+                  "transition-[color,transform] duration-150 ease-out",
                   "motion-reduce:transition-none",
                   "focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--commerce-semantic-info)",
                   "active:scale-[0.99] motion-reduce:active:scale-100",
@@ -153,7 +153,7 @@ export function ProductDetailTabs({
         <div
           className={cn(
             "flex will-change-transform",
-            "w-[300%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            "w-[300%] transition-transform duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]",
             "motion-reduce:transition-none",
           )}
           style={{
