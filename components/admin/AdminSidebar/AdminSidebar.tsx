@@ -28,7 +28,10 @@ export function AdminSidebar({
 }: AdminSidebarProps) {
   return (
     <aside
-      className={cn("w-[260px] shrink-0 border-r bg-white", className)}
+      className={cn(
+        "sticky top-0 h-screen w-[244px] shrink-0 self-start overflow-y-auto border-r bg-white",
+        className,
+      )}
       style={{ borderColor: adminColors.border.default }}
       aria-label="관리자 사이드바"
     >
@@ -66,7 +69,7 @@ export function AdminSidebar({
             >
               {sec.label}
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {sec.items.map((it) => (
                 <AdminSidebarNavItem
                   key={it.key}
@@ -79,7 +82,9 @@ export function AdminSidebar({
                   onClick={(e: MouseEvent<HTMLAnchorElement>) => {
                     if (it.disabled) e.preventDefault();
                   }}
-                  className={it.disabled ? "pointer-events-none opacity-60" : undefined}
+                  className={
+                    it.disabled ? "pointer-events-none opacity-60" : undefined
+                  }
                 />
               ))}
             </div>
@@ -102,4 +107,3 @@ function CollapseIcon() {
     </svg>
   );
 }
-

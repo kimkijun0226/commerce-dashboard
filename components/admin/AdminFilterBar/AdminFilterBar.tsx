@@ -37,7 +37,7 @@ export function AdminFilterBar({
       style={{ borderColor: adminColors.border.default }}
       aria-label="필터"
     >
-      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-3">
+      <div className="flex min-w-0 flex-1 flex-wrap items-end gap-3">
         {leftSlot}
       </div>
       <div className="flex items-center gap-2">
@@ -68,4 +68,3 @@ export function AdminFilterBar({
     </div>
   );
 }
-

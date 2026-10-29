@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { adminColors } from "@/commons/constants/color";
 import { adminTypography } from "@/commons/constants/typography";
 import { cn, typographyToStyle } from "@/components/ui";
@@ -20,9 +21,9 @@ export type SidebarNavItemProps = {
   | ({
       href?: undefined;
     } & Omit<
-        ButtonHTMLAttributes<HTMLButtonElement>,
-        "className" | "children" | "type"
-      >)
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      "className" | "children" | "type"
+    >)
 );
 
 export function SidebarNavItem(props: SidebarNavItemProps) {
@@ -67,7 +68,7 @@ export function SidebarNavItem(props: SidebarNavItemProps) {
   if (href !== undefined) {
     const a = rest as AnchorHTMLAttributes<HTMLAnchorElement>;
     return (
-      <a
+      <Link
         href={href}
         className={sharedClass}
         style={sharedStyle}
@@ -75,7 +76,7 @@ export function SidebarNavItem(props: SidebarNavItemProps) {
         {...a}
       >
         {content}
-      </a>
+      </Link>
     );
   }
 
@@ -112,4 +113,3 @@ function ChevronIcon() {
     </svg>
   );
 }
-

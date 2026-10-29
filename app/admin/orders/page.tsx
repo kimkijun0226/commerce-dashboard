@@ -49,12 +49,12 @@ export default async function OrdersPage({
     `/admin/orders?${new URLSearchParams({ page: String(p), q, fulfillment: status, payment })}`;
   return (
     <div className="space-y-5">
-      <h1 className="text-2xl font-semibold">주문 · 배송 관리</h1>
+      <h1 className="admin-page-heading">주문 · 배송 관리</h1>
       <p className="text-sm text-gray-500">
         전체 주문 {(count ?? 0).toLocaleString()}건 · 주문을 선택하면 상품,
         배송지, 송장 정보를 확인할 수 있습니다.
       </p>
-      <form className="flex flex-wrap gap-2 border border-gray-200 bg-white p-4">
+      <form className="admin-filter">
         <input
           name="q"
           defaultValue={q}
@@ -84,10 +84,10 @@ export default async function OrdersPage({
           <option value="">전체 결제 상태</option>
           <option value="paid">결제 완료만</option>
         </select>
-        <button className="bg-black px-4 py-2 text-sm text-white">조회</button>
+        <button className="admin-button">조회</button>
       </form>
-      <div className="overflow-x-auto border border-gray-200 bg-white">
-        <table className="w-full min-w-[700px] text-left text-sm">
+      <div className="admin-panel admin-table-panel overflow-x-auto">
+        <table className="admin-data-table min-w-[700px]">
           <thead className="border-b bg-gray-50 text-xs text-gray-500">
             <tr>
               <th className="p-4">주문번호 / 일시</th>
@@ -139,7 +139,7 @@ export default async function OrdersPage({
                 </td>
                 <td className="pr-4">
                   <Link
-                    className="whitespace-nowrap border px-3 py-2 text-xs"
+                    className="admin-button-secondary whitespace-nowrap"
                     href={`/admin/orders/${order.id}`}
                   >
                     배송 관리

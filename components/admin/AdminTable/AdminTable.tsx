@@ -10,13 +10,12 @@ export type AdminTableColumn<Row> = {
   scope?: "col" | "row";
 };
 
-export type AdminTableProps<Row extends Record<string, ReactNode>> =
-  {
-    columns: readonly AdminTableColumn<Row>[];
-    rows: readonly Row[];
-    className?: string;
-    getRowKey?: (row: Row, index: number) => string | number;
-  };
+export type AdminTableProps<Row extends Record<string, ReactNode>> = {
+  columns: readonly AdminTableColumn<Row>[];
+  rows: readonly Row[];
+  className?: string;
+  getRowKey?: (row: Row, index: number) => string | number;
+};
 
 /**
  * 어드민 표준 테이블.
@@ -32,7 +31,7 @@ export function AdminTable<Row extends Record<string, ReactNode>>(
   return (
     <div className={cn("w-full overflow-x-auto", className)}>
       <table
-        className="w-full border-collapse text-left"
+        className="admin-data-table w-full border-collapse text-left"
         style={{ color: adminColors.text.primary }}
       >
         <thead>
@@ -52,8 +51,6 @@ export function AdminTable<Row extends Record<string, ReactNode>>(
                   ...headerTypo,
                   color: adminColors.text.secondary,
                   textAlign: col.align ?? "left",
-                  borderRightWidth: 1,
-                  borderRightStyle: "solid",
                   borderColor: adminColors.border.default,
                 }}
               >
@@ -79,8 +76,6 @@ export function AdminTable<Row extends Record<string, ReactNode>>(
                   style={{
                     ...cellTypo,
                     textAlign: col.align ?? "left",
-                    borderRightWidth: 1,
-                    borderRightStyle: "solid",
                     borderColor: adminColors.border.default,
                   }}
                 >
@@ -94,4 +89,3 @@ export function AdminTable<Row extends Record<string, ReactNode>>(
     </div>
   );
 }
-

@@ -1,3 +1,9 @@
+import {
+  FiPackage,
+  FiShoppingCart,
+  FiDollarSign,
+  FiTruck,
+} from "react-icons/fi";
 import Link from "next/link";
 import { DailySalesChart } from "@/components/admin/SalesCharts";
 import { checkAdminAccess } from "@/lib/auth/admin";
@@ -23,26 +29,26 @@ export default async function AdminPage() {
   return (
     <div className="space-y-7">
       <div>
-        <p className="text-xs tracking-widest text-gray-400">OVERVIEW</p>
-        <h1 className="mt-2 text-2xl font-semibold">주문·결제 매출 대시보드</h1>
+        <p className="admin-page-eyebrow">OVERVIEW</p>
+        <h1 className="admin-page-heading mt-2">주문·결제 매출 대시보드</h1>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AdminMetricCard
           title="전체 상품"
+          icon={<FiPackage />}
           value={`${stats.products.toLocaleString()}개`}
           trend={{ direction: "flat", label: `판매중 ${stats.visible}개` }}
-          className="!rounded-[3px]"
         />
         <AdminMetricCard
           title="전체 주문"
+          icon={<FiShoppingCart />}
           value={`${stats.orders.toLocaleString()}건`}
-          className="!rounded-[3px]"
         />
         <AdminMetricCard
           title="누적 결제 매출"
+          icon={<FiDollarSign />}
           value={`${stats.revenue.toLocaleString()}원`}
           trend={{ direction: "flat", label: "취소·환불 주문 제외" }}
-          className="!rounded-[3px]"
         />
         <Link
           href="/admin/orders?fulfillment=preparing&payment=paid"
@@ -50,13 +56,13 @@ export default async function AdminPage() {
         >
           <AdminMetricCard
             title="배송 준비 필요"
+            icon={<FiTruck />}
             value={`${stats.pendingShipment.toLocaleString()}건`}
-            className="!rounded-[3px]"
           />
         </Link>
       </div>
       <div className="grid gap-5 lg:grid-cols-[2fr_1fr]">
-        <section className="border border-gray-200 bg-white p-5">
+        <section className="admin-panel">
           <h2 className="font-semibold">최근 7일 결제 매출</h2>
           <p className="mt-1 text-xs text-gray-400">
             한국 시간 · 결제 완료일 기준
@@ -69,7 +75,7 @@ export default async function AdminPage() {
             }))}
           />
         </section>
-        <section className="border border-gray-200 bg-white p-5">
+        <section className="admin-panel">
           <h2 className="font-semibold">매장별 상품</h2>
           <div className="mt-5 space-y-4">
             {Object.values(STOREFRONTS).map((store) => (

@@ -2,7 +2,13 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
-import { AdminMetricCard } from "@/components/admin";
+import {
+  AdminMetricCard,
+  AdminFilterBar,
+  AdminSelect,
+  AdminTable,
+  AdminStatusBadge,
+} from "@/components/admin";
 import {
   DailySalesChart,
   SalesBreakdownChart,
@@ -13,6 +19,26 @@ import {
   type SalesData,
   type SalesGroup,
 } from "@/lib/admin/sales";
+import {
+  FiDollarSign,
+  FiShoppingCart,
+  FiPackage,
+  FiTrendingUp,
+  FiTag,
+  FiRotateCcw,
+  FiXCircle,
+  FiTruck,
+} from "react-icons/fi";
+const metricIcons = [
+  FiDollarSign,
+  FiShoppingCart,
+  FiPackage,
+  FiTrendingUp,
+  FiTag,
+  FiRotateCcw,
+  FiXCircle,
+  FiTruck,
+];
 const number = (n: number) => n.toLocaleString("ko-KR");
 const won = (n: number) => `${number(n)}원`;
 function Breakdown({
@@ -25,7 +51,7 @@ function Breakdown({
   kind?: "bar" | "doughnut" | "hours";
 }) {
   return (
-    <section className="min-w-0 border border-gray-200 bg-white p-5">
+    <section className="admin-panel">
       <h2 className="font-semibold">{title}</h2>
       <SalesBreakdownChart
         title={title}
@@ -85,63 +111,62 @@ export default async function AdminPage({
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs tracking-widest text-gray-400">
-            SALES INTELLIGENCE
-          </p>
-          <h1 className="mt-2 text-2xl font-semibold">판매 분석 대시보드</h1>
+          <p className="admin-page-eyebrow">SALES INTELLIGENCE</p>
+          <h1 className="admin-page-heading mt-2">판매 분석 대시보드</h1>
           <p className="mt-2 text-sm text-gray-500">
             매출의 흐름부터 상품별 성과와 주문 한 건까지.
           </p>
         </div>
-        <Link href="/admin/live" className="border bg-white px-4 py-2 text-sm">
+        <Link href="/admin/live" className="admin-button-secondary">
           주문·결제 대시보드 →
         </Link>
       </div>
-      <form
-        key={`${days}:${department}:${view}`}
-        className="flex flex-wrap items-end gap-3 border bg-white p-4"
-      >
+      <form key={`${days}:${department}:${view}`}>
         <input type="hidden" name="view" value={view} />
-        <label className="space-y-1 text-xs text-gray-500">
-          <span className="block">조회 기간</span>
-          <select
-            name="days"
-            aria-label="조회 기간"
-            defaultValue={days}
-            className="min-w-32 border p-2 text-sm text-gray-900"
-          >
-            {[7, 30, 90].map((n) => (
-              <option value={n} key={n}>
-                최근 {n}일
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="space-y-1 text-xs text-gray-500">
-          <span className="block">매장</span>
-          <select
-            name="department"
-            aria-label="매장"
-            defaultValue={department}
-            className="min-w-32 border p-2 text-sm text-gray-900"
-          >
-            <option value="">전체 매장</option>
-            {["fashion", "beauty", "home"].map((k) => (
-              <option value={k} key={k}>
-                {salesLabels[k]}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button className="bg-black px-5 py-2 text-sm text-white">조회</button>
-        <p className="py-2 text-xs text-gray-400">
-          {stats.start} ~ {stats.end}
-        </p>
+        <AdminFilterBar
+          className="admin-filter"
+          leftSlot={
+            <>
+              <label className="space-y-2">
+                <span className="block">조회 기간</span>
+                <AdminSelect
+                  name="days"
+                  aria-label="조회 기간"
+                  defaultValue={String(days)}
+                  options={[7, 30, 90].map((n) => ({
+                    value: String(n),
+                    label: `최근 ${n}일`,
+                  }))}
+                  className="min-w-36"
+                />
+              </label>
+              <label className="space-y-2">
+                <span className="block">매장</span>
+                <AdminSelect
+                  name="department"
+                  aria-label="매장"
+                  defaultValue={department}
+                  options={[
+                    { value: "", label: "전체 매장" },
+                    ...["fashion", "beauty", "home"].map((k) => ({
+                      value: k,
+                      label: salesLabels[k],
+                    })),
+                  ]}
+                  className="min-w-36"
+                />
+              </label>
+              <button className="admin-button">조회</button>
+            </>
+          }
+          rightSlot={
+            <p className="pb-2 text-xs text-(--admin-text-muted)">
+              {stats.start} ~ {stats.end}
+            </p>
+          }
+        />
       </form>
-      <nav
-        aria-label="판매 분석 메뉴"
-        className="flex flex-wrap gap-1 border-b"
-      >
+      <nav aria-label="판매 분석 메뉴" className="admin-tabs">
         {[
           ["overview", "매출 요약"],
           ["products", "상품별 판매"],
@@ -152,7 +177,7 @@ export default async function AdminPage({
             key={key}
             href={url({ view: key, page: 1, status: "", date: "" })}
             aria-current={view === key ? "page" : undefined}
-            className={`px-4 py-3 text-sm ${view === key ? "border-b-2 border-black font-semibold" : "text-gray-500"}`}
+            className="whitespace-nowrap"
           >
             {label}
           </Link>
@@ -160,14 +185,15 @@ export default async function AdminPage({
       </nav>
       {view === "overview" && (
         <>
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            {cards.map(([title, value, label]) => {
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {cards.map(([title, value, label], index) => {
+              const Icon = metricIcons[index];
               const card = (
                 <AdminMetricCard
                   title={title}
+                  icon={<Icon />}
                   value={value}
                   trend={{ direction: "flat", label }}
-                  className="!rounded-[3px]"
                 />
               );
               return title === "배송 준비" ? (
@@ -183,7 +209,7 @@ export default async function AdminPage({
               );
             })}
           </div>
-          <section className="border bg-white p-5">
+          <section className="admin-panel">
             <div className="flex justify-between">
               <h2 className="font-semibold">일별 매출 추이</h2>
               <Link
@@ -218,51 +244,48 @@ export default async function AdminPage({
         </>
       )}
       {view === "products" && (
-        <section className="border bg-white p-5">
+        <section className="admin-panel">
           <h2 className="font-semibold">상품 매출 순위 · TOP 50</h2>
           <p className="mt-1 text-xs text-gray-400">
             상품명을 누르면 상품 관리에서 상세 정보를 확인할 수 있습니다. 주문
             수는 취소·환불 포함, 판매 수량과 매출은 결제 완료 기준입니다.
           </p>
-          <div className="mt-5 overflow-x-auto">
-            <table className="w-full min-w-[660px] text-left text-sm">
-              <thead className="border-y bg-gray-50 text-xs text-gray-500">
-                <tr>
-                  {["순위", "상품", "매장", "주문", "판매 수량", "순매출"].map(
-                    (h) => (
-                      <th className="p-3" key={h}>
-                        {h}
-                      </th>
-                    ),
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {stats.products.map((p, i) => (
-                  <tr key={p.product_id ?? p.product_name} className="border-b">
-                    <td className="p-3 text-gray-400">{i + 1}</td>
-                    <td className="max-w-72 p-3 font-medium">
-                      {p.product_id ? (
-                        <Link
-                          className="hover:underline"
-                          href={`/admin/products/${p.product_id}`}
-                        >
-                          {p.product_name}
-                        </Link>
-                      ) : (
-                        p.product_name
-                      )}
-                    </td>
-                    <td className="p-3">{salesLabels[p.department]}</td>
-                    <td className="p-3">{number(p.orders)}건</td>
-                    <td className="p-3">{number(p.units ?? 0)}개</td>
-                    <td className="whitespace-nowrap p-3 font-semibold">
-                      {won(p.revenue)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mt-6">
+            <AdminTable
+              columns={[
+                { key: "rank", header: "순위" },
+                { key: "name", header: "상품" },
+                { key: "department", header: "매장" },
+                { key: "orders", header: "주문", align: "right" },
+                { key: "units", header: "판매 수량", align: "right" },
+                { key: "revenue", header: "순매출", align: "right" },
+              ]}
+              rows={stats.products.map((p, i) => ({
+                key: `${p.product_id}:${p.product_name}`,
+                rank: (
+                  <span className="text-(--admin-text-muted)">{i + 1}</span>
+                ),
+                name: p.product_id ? (
+                  <Link
+                    className="block min-w-40 max-w-72 font-medium hover:underline"
+                    href={`/admin/products/${p.product_id}`}
+                  >
+                    {p.product_name}
+                  </Link>
+                ) : (
+                  p.product_name
+                ),
+                department: salesLabels[p.department],
+                orders: `${number(p.orders)}건`,
+                units: `${number(p.units ?? 0)}개`,
+                revenue: (
+                  <span className="whitespace-nowrap font-semibold">
+                    {won(p.revenue)}
+                  </span>
+                ),
+              }))}
+              getRowKey={(row) => String(row.key)}
+            />
           </div>
           {!stats.products.length && (
             <p className="py-8 text-center text-sm text-gray-400">
@@ -281,16 +304,14 @@ export default async function AdminPage({
                 direction: "flat",
                 label: `재구매 ${number(s.returning)}건 · 신규 ${number(s.orders - s.returning)}건`,
               }}
-              className="!rounded-[3px]"
             />
             <AdminMetricCard
               title="출고 대기 주문"
               value={`${number(s.pendingShipment)}건`}
               trend={{
                 direction: "flat",
-                label: "기존 데이터와 실제 주문의 출고 대기 합계",
+                label: "결제 완료 · 출고 대기",
               }}
-              className="!rounded-[3px]"
             />
           </div>
           <div className="grid gap-4 lg:grid-cols-2">
@@ -310,7 +331,7 @@ export default async function AdminPage({
         </>
       )}
       {view === "orders" && (
-        <section className="border bg-white p-5">
+        <section className="admin-panel">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="font-semibold">
               판매 내역{" "}
@@ -321,7 +342,8 @@ export default async function AdminPage({
                 <Link
                   key={k}
                   href={url({ status: k, page: 1 })}
-                  className={`px-3 py-2 text-xs ${status === k ? "bg-black text-white" : "bg-gray-100"}`}
+                  className="admin-status-filter"
+                  aria-current={status === k ? "page" : undefined}
                 >
                   {salesLabels[k] ?? "전체"}
                 </Link>
@@ -342,10 +364,10 @@ export default async function AdminPage({
                 min={stats.start}
                 max={stats.end}
                 defaultValue={date}
-                className="ml-2 border p-2 text-sm text-black"
+                className="admin-field ml-2"
               />
             </label>
-            <button className="border px-3 py-2 text-xs">날짜 조회</button>
+            <button className="admin-button-secondary">날짜 조회</button>
             {date && (
               <Link
                 className="p-2 text-xs underline"
@@ -357,7 +379,7 @@ export default async function AdminPage({
           </form>
           <div className="mt-5 space-y-2">
             {stats.rows.map((r) => (
-              <details key={r.id} className="border">
+              <details key={r.id} className="admin-sale-row">
                 <summary className="cursor-pointer p-4 text-sm">
                   <span className="mr-3 text-xs text-gray-400">
                     {new Date(r.ordered_at).toLocaleString("ko-KR", {
@@ -371,7 +393,21 @@ export default async function AdminPage({
                   <strong>{r.product_name}</strong>
                   <span className="mt-2 flex justify-between gap-2 text-xs text-gray-500">
                     <span>
-                      {r.id} · {salesLabels[r.status]} · {r.quantity}개
+                      {r.id} ·{" "}
+                      <AdminStatusBadge
+                        variant={
+                          r.status === "paid"
+                            ? "success"
+                            : r.status === "pending"
+                              ? "warning"
+                              : r.status === "canceled"
+                                ? "danger"
+                                : "neutral"
+                        }
+                      >
+                        {salesLabels[r.status]}
+                      </AdminStatusBadge>{" "}
+                      · {r.quantity}개
                     </span>
                     <span>{won(r.gross_amount - r.discount_amount)}</span>
                   </span>
