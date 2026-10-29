@@ -61,3 +61,17 @@ Use case: ads-marketing. Wide landscape 1536x1024 photograph for OVEON Korean ec
 ### fashion-9 생성 프롬프트
 
 Use case: ads-marketing. Wide landscape 1536x1024 photograph for OVEON Korean ecommerce campaign. Two adult Korean friends in cream casual cotton clothes walking away from camera along a quiet Seoul concrete gallery staircase, mostly rear three-quarter view, relaxed unposed movement, no visible faces front-on, one person holding a plain canvas tote, believable ordinary bodies, clothing creases, natural hair flyaways, subjects on right two thirds, large calm shadowed architecture on left. Photograph should look convincingly like a real unretouched location shoot captured on a full-frame camera with a 50mm lens, mild real film grain, realistic microtexture and incidental detail, soft natural window or overcast daylight. Subtle premium editorial color grading, restrained highlights. Preserve genuine human irregularity, imperfect hair and fabric, NOT glossy AI beauty aesthetic, NOT waxy skin, NOT airbrushed, NOT beauty-filtered, NOT doll-like face, NOT over-sharpened, no dramatic fake haze. No text, logos, borders, UI, collage, or watermark. Full bleed composition with copy space on left.
+
+
+## 광고 문구 개정
+
+사진 속 아이템을 제목에 먼저 제시하고, 보조 문구는 카테고리·스타일링·사용 장면을 설명합니다. 반복되던 추상적인 감성 표현을 줄이고, 실제로 제공하지 않는 할인·쿠폰·판매 순위·신상품 주장은 넣지 않았습니다. 아래 사례의 짧은 기획전 제목과 구체적인 상품 안내 구성을 참고해 30개 문구를 새로 작성했습니다.
+
+- 무신사 스탠다드 공식 채널의 아이템별 기획전: https://pf.kakao.com/_xbHxhNxb/posts
+- 무신사 니트 기획전 검색 결과: https://www.musinsa.com/content/1557195718576340286?contentCategoryCode=013 (본문 접근 제한)
+- Pinterest의 쇼핑 배너 사례: https://in.pinterest.com/pin/749638300509939524/
+- Pinterest의 가을 쇼핑 배너 모음: https://kr.pinterest.com/sammm0325/띠배너/
+- 네이버 OGQ 가을 배너 검색 결과: https://ogqmarket.naver.com/artworks/stockImage/detail?artworkId=5fdfe36afa183
+- KREAM 니트 기획전: https://kream.co.kr/exhibitions/11688
+
+참고 대상의 문구·할인 혜택·상표 문장은 그대로 복사하지 않았습니다.
