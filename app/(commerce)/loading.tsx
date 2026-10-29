@@ -6,5 +6,5 @@ import { ProductDetailPageSkeleton } from "@/components/ui/ProductDetailPageSkel
 
 export default function CommerceLoading() {
   const pathname = usePathname();
-  return pathname.startsWith("/products/") ? <ProductDetailPageSkeleton /> : <CatalogPageSkeleton />;
+  return pathname.includes("/products/") ? <ProductDetailPageSkeleton /> : <CatalogPageSkeleton />;
 }

@@ -6,12 +6,13 @@ import { useCallback } from "react";
 import { infiniteQueryOptions, useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@/commons/constants/query-keys";
 import type { Product } from "@/components/commerce/types";
+import type { StoreKey } from "@/lib/catalog/storefront";
 import { CATALOG_PAGE_SIZE } from "@/lib/catalog/constants";
 
 export type CatalogPage = { items: Product[]; hasMore: boolean; total: number };
 
-async function fetchCatalogPage(page: number, q: string, category: string, signal: AbortSignal): Promise<CatalogPage> {
-  const params = new URLSearchParams({ page: String(page), pageSize: String(CATALOG_PAGE_SIZE) });
+async function fetchCatalogPage(page: number, q: string, category: string, department: StoreKey, signal: AbortSignal): Promise<CatalogPage> {
+  const params = new URLSearchParams({ page: String(page), pageSize: String(CATALOG_PAGE_SIZE), department });
   if (q) params.set("q", q);
   if (category) params.set("category", category);
   const res = await fetch(`/api/catalog/products?${params}`, { signal });
@@ -22,25 +23,25 @@ async function fetchCatalogPage(page: number, q: string, category: string, signa
   return res.json();
 }
 
-function catalogQueryOptions(q: string, category: string) {
+function catalogQueryOptions(q: string, category: string, department: StoreKey) {
   return infiniteQueryOptions({
     gcTime: 10 * 60_000,
-    queryKey: [...QUERY_KEYS.products.all, "infinite", q, category],
+    queryKey: [...QUERY_KEYS.products.all, "infinite", department, q, category],
     initialPageParam: 0,
-    queryFn: ({ pageParam, signal }) => fetchCatalogPage(pageParam, q, category, signal),
+    queryFn: ({ pageParam, signal }) => fetchCatalogPage(pageParam, q, category, department, signal),
     getNextPageParam: (lastPage, allPages) => lastPage.hasMore ? allPages.length : undefined,
   });
 }
 
-export function usePrefetchCatalog() {
+export function usePrefetchCatalog(department: StoreKey = "fashion") {
   const client = useQueryClient();
   return useCallback(async (q: string, category: string, imageCount = 6) => {
     if (!canPrefetchImages()) return;
-    const options = catalogQueryOptions(q.trim(), category);
+    const options = catalogQueryOptions(q.trim(), category, department);
     await client.prefetchInfiniteQuery(options);
     const result = client.getQueryData(options.queryKey);
     result?.pages[0]?.items.slice(0, imageCount).forEach((product) => warmProductImage(product.imageUrl));
-  }, [client]);
+  }, [client, department]);
 }
 
 export function useInfiniteProducts(options?: {
@@ -48,11 +49,12 @@ export function useInfiniteProducts(options?: {
   initialTotal?: number;
   q?: string;
   category?: string;
+  department?: StoreKey;
 }) {
   const q = options?.q?.trim() ?? "";
   const category = options?.category ?? "";
   return useInfiniteQuery({
-    ...catalogQueryOptions(q, category),
+    ...catalogQueryOptions(q, category, options?.department ?? "fashion"),
     initialData: options?.initialItems && !q && !category
       ? {
         pageParams: [0],

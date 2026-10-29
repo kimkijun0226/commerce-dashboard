@@ -102,6 +102,7 @@ export interface Database {
       };
       products: {
         Row: {
+          department: "fashion" | "beauty" | "home";
           id: string;
           name: string;
           search_keywords: string[];
@@ -122,6 +123,7 @@ export interface Database {
           updated_at: string;
         };
         Insert: {
+          department?: "fashion" | "beauty" | "home";
           id?: string;
           name: string;
           search_keywords?: string[];
@@ -141,6 +143,7 @@ export interface Database {
           updated_at?: string;
         };
         Update: {
+          department?: "fashion" | "beauty" | "home";
           id?: string;
           name?: string;
           search_keywords?: string[];
@@ -482,11 +485,11 @@ export interface Database {
     Views: Record<string, never>;
     Functions: {
       get_catalog_category_products: {
-        Args: { p_category: string };
+        Args: { p_category: string; p_department?: string };
         Returns: Database["public"]["Tables"]["products"]["Row"][];
       };
       get_catalog_categories: {
-        Args: Record<string, never>;
+        Args: { p_department?: string };
         Returns: { name: string; product_count: number }[];
       };
       update_product_review_summary_for_reviewer: {

@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
     imageSizes: [32, 48, 64, 96, 128, 192, 256, 320],
     qualities: [60, 75],
     remotePatterns: [
+      { protocol: "https", hostname: "www.cosrx.com", pathname: "/cdn/shop/**" },
+      { protocol: "https", hostname: "cdn.shopify.com", pathname: "/s/files/**" },
+      { protocol: "https", hostname: "fermliving.com", pathname: "/cdn/shop/**" },
       {
         protocol: "https",
         hostname: "shopping-phinf.pstatic.net",

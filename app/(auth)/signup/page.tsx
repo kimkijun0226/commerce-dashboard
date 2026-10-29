@@ -118,7 +118,7 @@ export default function SignupPage() {
                 color: "#ffffff",
               }}
             >
-              Commerce Dashboard
+              오브온 · OVEON
             </div>
           </div>
         </div>

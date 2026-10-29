@@ -1,5 +1,6 @@
 "use client";
 
+import { STOREFRONTS, type StoreKey } from "@/lib/catalog/storefront";
 import { CatalogFetchError } from "@/components/commerce/catalog/CatalogFetchError";
 import { CommerceProductGrid } from "@/components/commerce/catalog/CommerceProductGrid";
 import type { Product } from "@/components/commerce/types";
@@ -12,6 +13,7 @@ import { FiRotateCcw, FiSearch } from "react-icons/fi";
 
 export type HomeCatalogSectionProps = {
   categories: CatalogCategory[];
+  department: StoreKey;
   selectedCategory: string;
   onCategoryChange: (category: string) => void;
   onCategoryIntent: (category: string) => void;
@@ -33,7 +35,7 @@ export type HomeCatalogSectionProps = {
 };
 
 export function HomeCatalogSection({
-  categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
+  department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
   total, allTotal, keyword, isSearchOpen, onSearchFocusHandled, onCloseSearch, showFetchError,
   isProductLoading, products, loadMoreRef, showLoadMoreSentinel,
   isFetchingNextPage, onAddToCart, onWishlistToggle,
@@ -49,6 +51,7 @@ export function HomeCatalogSection({
     return () => window.cancelAnimationFrame(id);
   }, [isSearchOpen, onSearchFocusHandled]);
 
+  const store = STOREFRONTS[department];
   const hasFilters = Boolean(keyword.trim() || selectedCategory);
   const choices = [{ name: "All", value: "", count: allTotal }, ...categories.map((category) => ({
     name: category.name, value: category.name, count: category.productCount,
@@ -56,14 +59,15 @@ export function HomeCatalogSection({
 
   return (
     <section aria-label="상품 목록">
-      <header className="mb-6 border-b border-[#e8ebed] pb-5">
+      <header className="mb-6 rounded-2xl border border-(--commerce-border-subtle) p-4 sm:p-7" style={{ background: "var(--store-hero)" }}>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-[#949ca3]">THE COLLECTION</p>
-            <h1 className="mt-1.5 text-2xl font-bold tracking-[-0.8px] text-[#141718] sm:text-[28px]">상품 둘러보기</h1>
+            <p className="text-[10px] font-semibold tracking-[0.2em] text-[#949ca3]">{store.eyebrow}</p>
+            <h1 className="mt-1.5 text-2xl font-bold tracking-[-0.8px] text-[#141718] sm:text-[28px]">{store.title}</h1>
+            <p className="mt-2 max-w-lg text-xs leading-6 text-(--commerce-text-secondary) sm:text-sm">{store.description}</p>
           </div>
           <div id="home-search-region" className="w-full sm:max-w-[420px]">
-            <HomeSearchBar className="rounded-xl !border-transparent !bg-[#f4f5f6] !px-4 !py-3 focus-within:ring-2 focus-within:ring-[#141718]/15" onEscape={onCloseSearch} />
+            <HomeSearchBar placeholder={store.search} className="rounded-xl !border-transparent !bg-[#f4f5f6] !px-4 !py-3 focus-within:ring-2 focus-within:ring-[#141718]/15" onEscape={onCloseSearch} />
           </div>
         </div>
         <div role="group" aria-label="상품 카테고리" className="mt-5 flex flex-wrap items-center gap-2 pb-1">
@@ -72,8 +76,8 @@ export function HomeCatalogSection({
             return (
               <button key={choice.value} type="button" aria-pressed={active} onClick={() => onCategoryChange(choice.value)}
                 onMouseEnter={() => onCategoryIntent(choice.value)} onFocus={() => onCategoryIntent(choice.value)} onTouchStart={() => onCategoryIntent(choice.value)}
-                className={cn("inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
-                  active ? "bg-[#141718] font-semibold text-white" : "bg-[#f4f5f6] text-[#626a71] hover:bg-[#e9ecee] hover:text-black")}>
+                className={cn("inline-flex min-h-8 shrink-0 items-center gap-1 rounded-full px-3 py-1.5 text-xs sm:min-h-10 sm:px-4 sm:py-2 sm:text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2",
+                  active ? "bg-(--commerce-primary-main) font-semibold text-white" : "bg-white/60 text-(--commerce-text-secondary) hover:bg-[#e9ecee] hover:text-black")}>
                 {choice.name}
                 <span className={cn("text-[10px] tabular-nums", active ? "text-white/50" : "text-[#9ba2a8]")}>{choice.count}</span>
               </button>

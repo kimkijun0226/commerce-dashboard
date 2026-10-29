@@ -11,6 +11,7 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
   const { reviewCount, displayRating, hasReviews, isPending } = useProductReviews(product.id, { fallbackRating: product.rating, fallbackCount: product.reviewSummary?.count });
   const count = hasReviews ? reviewCount : product.reviewSummary?.count ?? 0;
   const price = product.salePrice ?? product.price;
+  const department = product.categories?.[0]?.name;
   const info = product.additional_info;
   const brand = info && typeof info === "object" && !Array.isArray(info) && typeof info["브랜드"] === "string" ? info["브랜드"] : "";
   const fullName = getProductDisplayName(product.name);
@@ -31,7 +32,7 @@ export function ProductInfoSection({ product, className }: ProductInfoSectionPro
       {product.description ? <p className="mt-7 whitespace-pre-line border-t border-[#e8ebed] pt-6 text-sm leading-7 text-[#727b83]">{product.description}</p> : null}
       <dl className="mt-7 grid grid-cols-[80px_1fr] gap-x-3 gap-y-3 rounded-xl bg-[#f7f8f9] p-4 text-xs leading-5">
         <dt className="text-[#8c959d]">배송 안내</dt><dd>50,000원 이상 무료 배송</dd>
-        <dt className="text-[#8c959d]">사이즈 안내</dt><dd className="whitespace-pre-line text-[#626b73]">{product.measurements || "상품 상세 안내를 확인해 주세요."}</dd>
+        <dt className="text-[#8c959d]">{department === "뷰티" ? "사용·구성 안내" : department === "홈" ? "치수 안내" : "사이즈 안내"}</dt><dd className="whitespace-pre-line text-[#626b73]">{product.measurements || "상품 상세 안내를 확인해 주세요."}</dd>
       </dl>
     </section>
   );

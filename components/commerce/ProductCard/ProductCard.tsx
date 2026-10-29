@@ -3,7 +3,7 @@
 import { CATALOG_IMAGE_SIZES, warmProductImage } from "@/commons/utils/productImage";
 
 import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
-import { getProductDetailUrl } from "@/commons/constants/url";
+import { storeProductUrl } from "@/lib/catalog/storefront";
 import { getProductDisplayName, formatWon } from "@/commons/utils/productDisplay";
 import { animateToCart, captureCartImage, type CartAnimationSource } from "@/commons/utils/cartAnimation";
 import type { Product } from "@/components/commerce/types";
@@ -29,7 +29,7 @@ export type ProductCardProps = {
   imageEager?: boolean;
 };
 
-export function ProductCard({ product, href = getProductDetailUrl(product.id), onAddToCart, onWishlistToggle, badgeSlot, loading, className, imagePriority = false, imageEager = false }: ProductCardProps) {
+export function ProductCard({ product, href = storeProductUrl(product.id, product.department), onAddToCart, onWishlistToggle, badgeSlot, loading, className, imagePriority = false, imageEager = false }: ProductCardProps) {
   const router = useRouter();
   const prefetched = useRef<string | null>(null);
   const prefetchDetail = () => {

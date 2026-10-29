@@ -1,5 +1,8 @@
 "use client";
 
+import { STOREFRONTS, storeFromPath } from "@/lib/catalog/storefront";
+import { useSessionStore } from "@/commons/store/session-store";
+import Image from "next/image";
 import { cn } from "@/components/ui";
 import { useCartStore } from "@/commons/store/cart-store";
 import { useSearchStore } from "@/features/search/store/searchStore";
@@ -18,6 +21,8 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const store = STOREFRONTS[storeFromPath(pathname)];
+  const isAuthenticated = useSessionStore(s => s.isAuthenticated);
   const totalQuantity = useCartStore((s) => s.totalQuantity);
   const displayCartCount = cartCount ?? totalQuantity;
   const isSearchOpen = useSearchStore((s) => s.isOpen);
@@ -33,26 +38,28 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
         className,
       )}
     >
-      <div className="mx-auto flex h-[60px] max-w-[1800px] items-center px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[60px] max-w-[1800px] items-center px-3 sm:px-6 lg:px-8">
         <button
           type="button"
-          className="mr-3 inline-flex items-center justify-center rounded-md p-2 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info) sm:hidden"
+          className="mr-2 inline-flex items-center justify-center rounded-md p-1.5 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info) sm:hidden"
           aria-label="메뉴 열기"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >
-          <FiMenu className="size-6" aria-hidden />
+          <FiMenu className="size-5 sm:size-6" aria-hidden />
         </button>
 
         <Link
-          href="/"
-          className="min-w-0 truncate text-[18px] sm:text-[24px] font-medium leading-6 tracking-normal text-black"
+          href={store.path}
+          aria-label={`오브온 · ${store.name} 홈`}
+          className="flex min-w-0 items-center gap-2 sm:gap-3"
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
-          Commerce Dashboard
+          <Image src="/brand/oveon-logo.svg" alt="OVEON" width={112} height={25} className="h-auto w-20 sm:w-28" />
+          <span className="hidden min-[400px]:inline border-l border-(--commerce-border-subtle) pl-2 text-xs font-medium text-(--commerce-primary-main) sm:pl-3 sm:text-sm">{store.name}</span>
         </Link>
 
-        <div className="ml-auto flex shrink-0 items-center gap-1 pl-2 sm:gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-1 pl-1 sm:gap-3">
           <IconBtn
             aria-label={isSearchOpen ? "검색 닫기" : "검색 열기"}
             aria-expanded={isSearchOpen}
@@ -61,8 +68,8 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
                 closeSearch();
                 return;
               }
-              if (pathname !== "/") {
-                router.push("/");
+              if (pathname !== store.path) {
+                router.push(store.path);
               }
               openSearch();
             }}
@@ -73,16 +80,15 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
                 : "text-(--commerce-text-primary)",
             )}
           >
-            <FiSearch className="size-6" aria-hidden />
+            <FiSearch className="size-5 sm:size-6" aria-hidden />
           </IconBtn>
 
-          <IconBtn href="/account" aria-label="마이페이지">
-            <FiUser className="size-6" aria-hidden />
-          </IconBtn>
+          {isAuthenticated ? <IconBtn href="/account" aria-label="마이페이지"><FiUser className="size-5 sm:size-6" aria-hidden /></IconBtn>
+            : <Link href={`/login?next=${encodeURIComponent(pathname)}`} className="mx-1 inline-flex min-h-9 items-center rounded-full bg-(--commerce-primary-main) px-3 text-xs font-semibold text-white transition-opacity hover:opacity-80 sm:px-4 sm:text-sm">로그인</Link>}
 
           <span data-cart-target className="relative inline-flex">
           <IconBtn href="/cart" aria-label="장바구니" className="relative">
-            <FiShoppingCart className="size-6" aria-hidden />
+            <FiShoppingCart className="size-5 sm:size-6" aria-hidden />
             {displayCartCount > 0 ? (
               <span
                 className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
@@ -107,18 +113,8 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
         >
           <div className="mx-auto max-w-[1440px] px-4 py-3">
             <div className="flex flex-col gap-2 text-[14px] font-medium leading-6">
-              <Link href="/" className="rounded px-2 py-2 text-(--commerce-text-primary)">
-                Home
-              </Link>
-              <Link href="/products" className="rounded px-2 py-2 text-(--commerce-text-secondary)">
-                Shop
-              </Link>
-              <Link href="/products" className="rounded px-2 py-2 text-(--commerce-text-secondary)">
-                Product
-              </Link>
-              <Link href="/account" className="rounded px-2 py-2 text-(--commerce-text-secondary)">
-                Contact Us
-              </Link>
+              {Object.values(STOREFRONTS).map(item => <Link key={item.key} href={item.path} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">오브온 · {item.name}</Link>)}
+              <Link href={isAuthenticated ? "/account" : "/login"} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">{isAuthenticated ? "마이페이지" : "로그인 / 회원가입"}</Link>
             </div>
           </div>
         </nav>
@@ -134,7 +130,7 @@ function IconBtn({
   ...rest
 }: (ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined }) | (Omit<LinkProps, "href"> & { href: string } & { className?: string; children?: React.ReactNode; ["aria-label"]?: string })) {
   const base = cn(
-    "inline-flex items-center justify-center rounded-md p-2",
+    "inline-flex items-center justify-center rounded-md p-1.5 sm:p-2",
     "text-(--commerce-text-primary)",
     "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
     className,

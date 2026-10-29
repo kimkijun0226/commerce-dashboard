@@ -198,3 +198,34 @@
 }
 
 body:has(dialog[open]) { overflow: hidden; }
+
+[data-store="fashion"] {
+  --store-accent-soft: #f2f0eb;
+  --store-hero: linear-gradient(120deg, #f4f2ed, #fafaf8);
+}
+[data-store="beauty"] {
+  --commerce-primary-main: #89565e;
+  --commerce-primary-dark: #70434a;
+  --commerce-primary-light: #a16d76;
+  --commerce-background-default: #fffaf9;
+  --commerce-background-light: #f7eeed;
+  --commerce-background-elevated: #eddfdd;
+  --commerce-text-primary: #453236;
+  --commerce-text-secondary: #8c7275;
+  --commerce-border-subtle: #efdfdf;
+  --store-accent-soft: #f6e8e7;
+  --store-hero: linear-gradient(120deg, #f3dfdf, #fff8f4);
+}
+[data-store="home"] {
+  --commerce-primary-main: #56634c;
+  --commerce-primary-dark: #3f4d37;
+  --commerce-primary-light: #6e7c63;
+  --commerce-background-default: #fbfaf6;
+  --commerce-background-light: #f0efe6;
+  --commerce-background-elevated: #e4e5d8;
+  --commerce-text-primary: #373d31;
+  --commerce-text-secondary: #7b806e;
+  --commerce-border-subtle: #e4e5d9;
+  --store-accent-soft: #ebeddf;
+  --store-hero: linear-gradient(120deg, #e4e8d8, #f8f3e9);
+}

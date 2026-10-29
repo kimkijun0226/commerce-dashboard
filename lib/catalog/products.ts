@@ -1,3 +1,4 @@
+import { parseStoreKey, type StoreKey } from "./storefront";
 import { parseProductReviewSummary } from "@/commons/types/product-review-summary";
 import { getProductDisplayName } from "@/commons/utils/productDisplay";
 import { parseProductOptions } from "@/commons/utils/productOptions";
@@ -15,6 +16,7 @@ type ProductsRow = Database["public"]["Tables"]["products"]["Row"];
 function mapProduct(row: ProductsRow): Product {
   return {
     id: row.id,
+    department: parseStoreKey(row.department),
     name: getProductDisplayName(row.name),
     brand: row.additional_info && typeof row.additional_info === "object" && !Array.isArray(row.additional_info) && typeof row.additional_info["브랜드"] === "string"
       ? row.additional_info["브랜드"] : undefined,
@@ -30,9 +32,9 @@ function mapProduct(row: ProductsRow): Product {
 
 export type CatalogCategory = { name: string; productCount: number };
 
-export const getCatalogCategories = unstable_cache(async (): Promise<CatalogCategory[]> => {
+export const getCatalogCategories = unstable_cache(async (department: StoreKey = "fashion"): Promise<CatalogCategory[]> => {
   const supabase = createPublicClient();
-  const { data, error } = await supabase.rpc("get_catalog_categories");
+  const { data, error } = await supabase.rpc("get_catalog_categories", { p_department: department });
   if (error) throw new Error(`카테고리 조회 실패: ${error.message}`);
   return (data ?? []).map((row) => ({ name: row.name, productCount: Number(row.product_count) }));
 }, ["public-catalog-categories"], { revalidate: 30, tags: ["catalog"] });
@@ -42,6 +44,7 @@ export type CatalogProductsParams = {
   pageSize?: number;
   q?: string;
   category?: string;
+  department?: StoreKey;
 };
 
 export async function getCatalogProducts(params: CatalogProductsParams = {}) {
@@ -53,18 +56,18 @@ export async function getCatalogProducts(params: CatalogProductsParams = {}) {
   const q = String(params.q ?? "").trim();
   const category = String(params.category ?? "").trim();
 
-  return getCachedCatalogProducts(page, pageSize, q, category);
+  return getCachedCatalogProducts(page, pageSize, q, category, parseStoreKey(params.department));
 }
 
-const getCachedCatalogProducts = unstable_cache(async (page: number, pageSize: number, q: string, category: string) => {
+const getCachedCatalogProducts = unstable_cache(async (page: number, pageSize: number, q: string, category: string, department: StoreKey) => {
   const supabase = createPublicClient();
   const offset = page * pageSize;
 
-  const columns = "id, name, price, sale_price, image_url, status, rating_average, review_summary, created_at, additional_info, options, search_text";
+  const columns = "department, id, name, price, sale_price, image_url, status, rating_average, review_summary, created_at, additional_info, options, search_text";
   const base = category
-    ? supabase.rpc("get_catalog_category_products", { p_category: category }, { count: "exact" }).select(columns)
+    ? supabase.rpc("get_catalog_category_products", { p_category: category, p_department: department }, { count: "exact" }).select(columns)
     : supabase.from("products").select(columns, { count: "exact" });
-  const visible = base.neq("status", "hidden");
+  const visible = base.neq("status", "hidden").eq("department", department);
   const query = q ? visible.or(buildCatalogSearchFilter(q)) : visible;
 
   const { data, error, count } = await query

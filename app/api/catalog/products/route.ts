@@ -1,3 +1,4 @@
+import { parseStoreKey } from "@/lib/catalog/storefront";
 import { NextRequest, NextResponse } from "next/server";
 import { CATALOG_PAGE_SIZE, CATALOG_SEARCH_PAGE_SIZE } from "@/lib/catalog/constants";
 import { getCatalogProducts } from "@/lib/catalog/products";
@@ -19,7 +20,7 @@ export async function GET(request: NextRequest) {
   const pageSize = Math.max(1, Math.min(200, normalizeInt(sp.get("pageSize"), defaultSize)));
 
   try {
-    const { items, hasMore, total } = await getCatalogProducts({ q, category, page, pageSize });
+    const { items, hasMore, total } = await getCatalogProducts({ q, category, page, pageSize, department: parseStoreKey(sp.get("department")) });
     return NextResponse.json({ items, page, pageSize, hasMore, total });
   } catch (err) {
     const message = err instanceof Error ? err.message : "상품 조회에 실패했습니다.";

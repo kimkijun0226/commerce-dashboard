@@ -1,5 +1,7 @@
 "use client";
 
+import type { StoreKey } from "@/lib/catalog/storefront";
+import { StorefrontNav } from "@/components/commerce/layout/StorefrontNav";
 import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
 import type { Product } from "@/components/commerce/types";
 import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
@@ -18,9 +20,10 @@ export type HomePageProps = {
   initialItems?: Product[];
   initialTotal?: number;
   categories: CatalogCategory[];
+  department?: StoreKey;
 };
 
-export function HomePage({ initialItems, initialTotal, categories }: HomePageProps) {
+export function HomePage({ initialItems, initialTotal, categories, department = "fashion" }: HomePageProps) {
   const isAuthed = useSessionStore((s) => s.isAuthenticated);
   const likesSyncNonce = useSessionStore((s) => s.likesSyncNonce);
   const addItem = useCartStore((s) => s.addItem);
@@ -28,7 +31,7 @@ export function HomePage({ initialItems, initialTotal, categories }: HomePagePro
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const closeSearch = useSearchStore((s) => s.close);
   const setKeyword = useSearchStore((s) => s.setKeyword);
-  const prefetchCatalog = usePrefetchCatalog();
+  const prefetchCatalog = usePrefetchCatalog(department);
   const [category, setCategory] = useState("");
   const debouncedKeyword = useDebouncedValue(keyword.trim(), 350);
   const isSearchPending = keyword.trim() !== debouncedKeyword;
@@ -40,7 +43,7 @@ export function HomePage({ initialItems, initialTotal, categories }: HomePagePro
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteProducts({ initialItems, initialTotal, q: debouncedKeyword, category });
+  } = useInfiniteProducts({ initialItems, initialTotal, q: debouncedKeyword, category, department });
 
   useEffect(() => {
     if (debouncedKeyword) return;
@@ -152,7 +155,9 @@ export function HomePage({ initialItems, initialTotal, categories }: HomePagePro
 
   return (
     <div className="mx-auto max-w-[1800px] px-4 py-6 sm:px-6 lg:px-8">
+      <StorefrontNav active={department} />
       <HomeCatalogSection
+        department={department}
         categories={categories}
         selectedCategory={category}
         onCategoryChange={setCategory}

@@ -1,3 +1,4 @@
+import { StorefrontTheme } from "@/components/commerce/layout/StorefrontTheme";
 import { LayoutHeader } from "@/components/commerce/layout/LayoutHeader";
 import { LayoutFooter } from "@/components/commerce/layout/LayoutFooter";
 import { CartInitializer } from "@/components/commerce/layout/CartInitializer";
@@ -11,7 +12,7 @@ export default function CommerceLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col bg-(--commerce-background-default)">
+    <StorefrontTheme>
       <CartInitializer />
       <LayoutHeader />
       <main className="flex-1 pt-[60px]">{children}</main>
@@ -19,6 +20,6 @@ export default function CommerceLayout({
       {/* 기존 sonner와 별도로, 새 Retry/Diff UI에서 쓰는 react-hot-toast도 함께 노출합니다. */}
       <HotToaster position="top-center" />
       <Toaster richColors position="top-center" closeButton />
-    </div>
+    </StorefrontTheme>
   );
 }

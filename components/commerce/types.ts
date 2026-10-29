@@ -3,6 +3,7 @@ import type { ProductReviewSummary } from "@/commons/types/product-review-summar
 
 export interface Product {
   id: string;
+  department?: import("@/lib/catalog/storefront").StoreKey;
   name: string;
   brand?: string;
   options?: ProductOption[];

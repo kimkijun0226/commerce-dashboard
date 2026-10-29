@@ -1,3 +1,4 @@
+import { parseStoreKey, type StoreKey } from "@/lib/catalog/storefront";
 import { parseProductOptions, type ProductOption } from "@/commons/utils/productOptions";
 import { getProductDisplayName } from "@/commons/utils/productDisplay";
 import type { ProductDetail } from "@/commons/types/product";
@@ -33,6 +34,7 @@ async function sleep(ms: number) {
 
 /** 상품 상세 페이지용 데이터 (Supabase Row 매핑) */
 export type ProductDetailData = {
+  department: StoreKey;
   id: string;
   name: string;
   options: ProductOption[];
@@ -56,6 +58,7 @@ export type ProductDetailData = {
 
 function mapRow(row: ProductsRow): ProductDetailData {
   return {
+    department: parseStoreKey(row.department),
     id: row.id,
     name: getProductDisplayName(row.name),
     options: parseProductOptions(row.options),

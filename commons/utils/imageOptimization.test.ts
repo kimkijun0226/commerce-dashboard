@@ -3,7 +3,7 @@ import test from "node:test";
 import { shouldBypassImageOptimization } from "./imageOptimization";
 
 test("configured product images use Next.js resizing", () => {
-  for (const src of ["/images/shirt.webp", "https://images.unsplash.com/photo-shirt?w=1800", "https://shopping-phinf.pstatic.net/main_5520909/55209097628.jpg"]) {
+  for (const src of ["/images/shirt.webp", "https://cdn.shopify.com/s/files/1/test.jpg", "https://www.cosrx.com/cdn/shop/files/test.jpg", "https://images.unsplash.com/photo-shirt?w=1800", "https://shopping-phinf.pstatic.net/main_5520909/55209097628.jpg"]) {
     assert.equal(shouldBypassImageOptimization(src), false, src);
   }
 });

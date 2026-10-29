@@ -153,7 +153,7 @@ async function main() {
   }
   const statements = ["BEGIN;", "SET LOCAL statement_timeout = '30s';"];
   if (reset) statements.push(...TABLES.map((table) => `DELETE FROM public.${table};`));
-  for (const migration of ["0022_imported_reviews.sql", "0023_composed_korean_reviews.sql", "0024_catalog_categories.sql", "0025_product_search_options.sql", "0026_cart_selected_options.sql"]) {
+  for (const migration of ["0022_imported_reviews.sql", "0023_composed_korean_reviews.sql", "0024_catalog_categories.sql", "0025_product_search_options.sql", "0026_cart_selected_options.sql", "0027_storefront_departments.sql"]) {
     statements.push(await readFile(join(process.cwd(), "supabase/migrations", migration), "utf8"));
   }
   if (refresh) {

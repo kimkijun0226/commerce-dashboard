@@ -16,10 +16,12 @@ export async function saveProductKeywords(formData: FormData) {
   if (raw.length > 10000 || keywords.length > 50 || keywords.some((value) => value.length > 100)) {
     throw new Error("키워드는 최대 50개, 각 100자까지 입력할 수 있습니다.");
   }
+  const department = formData.get("department");
+  if (department !== null && !["fashion", "beauty", "home"].includes(String(department))) throw new Error("올바른 매장을 선택해 주세요.");
   const options = formData.has("options") ? parseOptionEditor(String(formData.get("options") ?? "")) : undefined;
   const supabase = await createClient();
   const { data, error } = await supabase.from("products")
-    .update({ search_keywords: keywords, ...(options ? { options: options.map((option) => ({ ...option })) } : {}) }).eq("id", id).select("id").single();
+    .update({ ...(department ? { department: department as "fashion" | "beauty" | "home" } : {}), search_keywords: keywords, ...(options ? { options: options.map((option) => ({ ...option })) } : {}) }).eq("id", id).select("id").single();
   if (error || !data) throw new Error(`검색 키워드 저장 실패: ${error?.message ?? "상품이 없습니다."}`);
   updateTag("catalog");
   revalidatePath("/admin/products");

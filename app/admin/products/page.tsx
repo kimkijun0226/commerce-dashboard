@@ -9,16 +9,20 @@ export default async function AdminProductsPage() {
   if (!(await checkAdminAccess())) notFound();
   const supabase = await createClient();
   const { data, error } = await supabase.from("products")
-    .select("id, name, search_keywords, options").order("created_at", { ascending: false });
+    .select("id, name, department, search_keywords, options").order("created_at", { ascending: false });
   if (error) throw new Error(`상품 조회 실패: ${error.message}`);
   return (
     <main className="mx-auto max-w-4xl space-y-6 p-6">
-      <h1 className="text-xl font-bold">상품 검색 · 옵션 관리</h1>
+      <h1 className="text-xl font-bold">매장 · 검색 · 옵션 관리</h1>
       <p>고객이 검색할 동의어를 쉼표 또는 줄바꿈으로 구분하세요. 예: 스웻 팬츠, 트레이닝 바지</p>
       {(data ?? []).map((product) => (
         <form key={product.id} action={saveProductKeywords} className="space-y-2 rounded border p-4">
           <h2 className="font-semibold">{getProductDisplayName(product.name)}</h2>
           <input type="hidden" name="productId" value={product.id} />
+          <label className="block" htmlFor={`department-${product.id}`}>오브온 매장</label>
+          <select id={`department-${product.id}`} name="department" defaultValue={product.department} className="rounded border p-2">
+            <option value="fashion">의류</option><option value="beauty">뷰티</option><option value="home">홈</option>
+          </select>
           <label className="block" htmlFor={`keywords-${product.id}`}>검색 키워드</label>
           <textarea id={`keywords-${product.id}`} name="keywords" rows={2}
             defaultValue={product.search_keywords.join(", ")} maxLength={10000}

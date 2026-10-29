@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { safeReturnPath } from "@/commons/utils/safeReturnPath";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
@@ -75,7 +76,7 @@ export default function LoginPage() {
       }
 
       toast.success("로그인되었습니다.");
-      router.push("/");
+      router.push(safeReturnPath(new URLSearchParams(window.location.search).get("next")));
       router.refresh();
     } catch (err) {
       toast.error(
@@ -111,7 +112,7 @@ export default function LoginPage() {
                 color: "#ffffff",
               }}
             >
-              Commerce Dashboard
+              오브온 · OVEON
             </div>
           </div>
         </div>

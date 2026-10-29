@@ -35,8 +35,9 @@ const notoSansKr = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "Commerce Dashboard",
-  description: "커머스 사용자 영역 + 관리자 대시보드",
+  title: "오브온 | 취향이 켜지는 순간",
+  icons: { icon: "/brand/oveon-symbol.svg" },
+  description: "옷, 뷰티, 홈. 나의 취향으로 일상을 켜는 라이프스타일 셀렉트숍 오브온.",
 };
 
 export default function RootLayout({
