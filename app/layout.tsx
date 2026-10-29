@@ -35,9 +35,9 @@ const notoSansKr = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "오브온 | 취향이 켜지는 순간",
-  icons: { icon: "/brand/oveon-symbol.svg" },
-  description: "옷, 뷰티, 홈. 나의 취향으로 일상을 켜는 라이프스타일 셀렉트숍 오브온.",
+  title: "RÊVIE 레비 | LIVE YOUR DREAM",
+  icons: { icon: "/brand/revie-symbol.svg" },
+  description: "상상하던 나, 꿈꾸던 공간이 일상이 되는 곳. 패션·뷰티·리빙을 하나의 취향으로 연결하는 RÊVIE(레비).",
 };
 
 export default function RootLayout({

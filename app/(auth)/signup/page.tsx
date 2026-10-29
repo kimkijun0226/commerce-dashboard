@@ -118,7 +118,7 @@ export default function SignupPage() {
                 color: "#ffffff",
               }}
             >
-              오브온 · OVEON
+              <Image src="/brand/revie-logo.svg" alt="RÊVIE 레비" width={140} height={41} className="h-auto w-36 brightness-0 invert"/>
             </div>
           </div>
         </div>

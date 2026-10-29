@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   FiGrid,
@@ -27,8 +28,15 @@ export function AdminShell({ children }: { children: ReactNode }) {
         <>
           <AdminHeader
             brand={
-              <span className="tracking-[0.12em]">
-                OVEON <span className="text-xs text-gray-400">ADMIN</span>
+              <span className="inline-flex items-center gap-3 tracking-[0.12em]">
+                <Image
+                  src="/brand/revie-logo.svg"
+                  alt="RÊVIE"
+                  width={96}
+                  height={28}
+                  className="h-7 w-24 object-contain"
+                />
+                <span className="text-xs text-gray-400">ADMIN</span>
               </span>
             }
             userSlot={
@@ -61,7 +69,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
           sections={[
             {
               id: "manage",
-              label: "오브온",
+              label: "레비",
               items: links.map((link) => ({
                 key: link.href,
                 ...link,

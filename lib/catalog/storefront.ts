@@ -1,8 +1,8 @@
 export type StoreKey = "fashion" | "beauty" | "home";
 export const STOREFRONTS = {
-  fashion: { key: "fashion", path: "/", label: "옷", name: "의류", title: "입는 취향을 발견하다", eyebrow: "OVEON WARDROBE", description: "오늘의 나를 표현하는 옷. 매일 손이 가는 취향을 만나보세요.", search: "상품명이나 브랜드를 검색해 보세요" },
-  beauty: { key: "beauty", path: "/beauty", label: "화장품", name: "뷰티", title: "나를 돌보는 작은 순간", eyebrow: "OVEON BEAUTY", description: "나를 위한 작은 루틴. 피부에 닿는 일상에도 취향을 더해보세요.", search: "세럼, 크림, 코스알엑스를 검색해 보세요" },
-  home: { key: "home", path: "/home", label: "가구", name: "홈", title: "머무는 공간에 나다운 온기", eyebrow: "OVEON HOME", description: "의자 하나, 테이블 하나에서 시작되는 나만의 공간.", search: "의자, 테이블, 펌리빙을 검색해 보세요" },
+  fashion: { key: "fashion", path: "/", label: "옷", name: "의류", title: "상상하던 나를 입다.", eyebrow: "RÊVIE FASHION", description: "옷은 단순히 몸을 감싸는 것이 아니라, 내가 되고 싶은 모습을 표현하는 하나의 방식입니다.", search: "상품명이나 브랜드를 검색해 보세요" },
+  beauty: { key: "beauty", path: "/beauty", label: "화장품", name: "뷰티", title: "나다운 아름다움을 발견하다.", eyebrow: "RÊVIE BEAUTY", description: "아름다움은 정해진 기준이 아닌, 나를 알아가고 가꾸는 시간 속에서 완성됩니다.", search: "세럼, 크림, 코스알엑스를 검색해 보세요" },
+  home: { key: "home", path: "/home", label: "가구", name: "홈", title: "꿈꾸던 공간을 완성하다.", eyebrow: "RÊVIE LIVING", description: "공간은 단순히 머무는 장소가 아니라, 나의 취향과 감성이 쌓여 나만의 세계가 되는 곳입니다.", search: "의자, 테이블, 펌리빙을 검색해 보세요" },
 } as const;
 export function parseStoreKey(value: unknown): StoreKey {
   return value === "beauty" || value === "home" ? value : "fashion";

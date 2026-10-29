@@ -2,7 +2,7 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { checkAdminAccess, getAdminUser } from "@/lib/auth/admin";
 import { notFound, redirect } from "next/navigation";
 export const metadata = {
-  title: "오브온 관리자",
+  title: "레비 관리자",
   robots: { index: false, follow: false },
 };
 

@@ -18,8 +18,8 @@ export function LayoutFooter({ className }: LayoutFooterProps) {
     >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-[160px]">
         <div className="border-b border-white/15 pb-8 pt-10">
-          <p className="text-xl font-medium tracking-tight">취향이 켜지는 순간, 오브온.</p>
-          <p className="mt-3 max-w-2xl text-sm leading-7 opacity-70">오늘의 나를 표현하는 옷, 나를 위한 작은 뷰티 루틴, 마음이 놓이는 집 안의 한 장면까지. 내가 좋아하는 선택들이 모여 온전히 나다운 일상이 되도록.</p>
+          <p className="text-xl font-medium tracking-tight">상상하던 나, 꿈꾸던 공간이 일상이 되는 곳.</p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 opacity-70">레비는 옷과 뷰티, 가구와 리빙을 하나의 취향으로 연결합니다. 당신이 선택하는 모든 것이 모여, 상상하던 나와 꿈꾸던 공간을 완성할 수 있도록.</p>
         </div>
         {/* top */}
         <div className="flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between">
@@ -28,8 +28,9 @@ export function LayoutFooter({ className }: LayoutFooterProps) {
             className="text-[20px] font-medium leading-6"
             style={{ fontFamily: "var(--commerce-font-heading)" }}
           >
-            OVEON · 오브온
+            RÊVIE · 레비
           </Link>
+          <p className="text-[10px] tracking-[0.25em] opacity-70">LIVE YOUR DREAM</p>
 
           <nav aria-label="푸터 링크" className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <FooterLink href="/about">About</FooterLink>
@@ -55,7 +56,7 @@ export function LayoutFooter({ className }: LayoutFooterProps) {
         <div className="border-t border-(--commerce-border-strong)/60 py-5">
           <div className="flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:justify-between">
             <p className="text-(--commerce-background-elevated)">
-              Copyright © 2026 OVEON · 오브온. All rights reserved
+              Copyright © 2026 RÊVIE · 레비. All rights reserved
             </p>
             <div className="flex items-center gap-4">
               <FooterLink href="/privacy" className="text-(--commerce-text-inverse)">

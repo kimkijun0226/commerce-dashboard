@@ -13,10 +13,15 @@ const allSettings = unstable_cache(
   ["store-settings"],
   { revalidate: 30, tags: ["store-settings"] },
 );
+function storeLogo(url: string | null | undefined) {
+  return !url || url === "/brand/oveon-logo.svg"
+    ? "/brand/revie-logo.svg"
+    : url;
+}
 export async function getStoreSettings(store: StoreKey) {
   const row = (await allSettings()).find((row) => row.department === store);
   return {
-    logoUrl: row?.logo_url ?? "/brand/oveon-logo.svg",
+    logoUrl: storeLogo(row?.logo_url),
     banners:
       Array.isArray(row?.banners) && row.banners.length
         ? (row.banners as unknown as CampaignBanner[])
@@ -26,9 +31,6 @@ export async function getStoreSettings(store: StoreKey) {
 export async function getStoreLogos() {
   const rows = await allSettings();
   return Object.fromEntries(
-    rows.map((row) => [
-      row.department,
-      row.logo_url ?? "/brand/oveon-logo.svg",
-    ]),
+    rows.map((row) => [row.department, storeLogo(row.logo_url)]),
   );
 }

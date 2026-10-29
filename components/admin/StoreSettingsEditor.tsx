@@ -52,10 +52,10 @@ export function StoreSettingsEditor({
         />
         <button
           type="button"
-          onClick={() => setLogo("/brand/oveon-logo.svg")}
+          onClick={() => setLogo("/brand/revie-logo.svg")}
           className="text-xs text-gray-500 underline"
         >
-          오브온 기본 로고 사용
+          레비 기본 로고 사용
         </button>
         <p className="text-xs text-gray-500">
           이 매장 헤더에 반영됩니다. 투명 배경 PNG·WebP를 권장합니다.

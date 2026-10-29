@@ -76,7 +76,7 @@ export default async function AdminPage() {
                 href={`/admin/products?department=${store.key}`}
                 className="flex justify-between border-b pb-3 text-sm"
               >
-                <span>오브온 · {store.name}</span>
+                <span>레비 · {store.name}</span>
                 <strong>
                   {stats.departments?.find(
                     (d) => parseStoreKey(d.department) === store.key,

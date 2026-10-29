@@ -41,11 +41,11 @@ export function StorefrontCampaign({ department, campaigns, onSelect }: { depart
   const { title, description } = slide;
   const target = { category: slide.category, q: slide.q };
   return (
-    <header aria-label={`${STOREFRONTS[department].name} 오브온 광고`} aria-roledescription="캐러셀"
+    <header aria-label={`${STOREFRONTS[department].name} 레비 광고`} aria-roledescription="캐러셀"
       onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
       onFocusCapture={() => setInteracting(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}
       className="relative mb-5 isolate h-[400px] overflow-hidden rounded-[3px] bg-[#282925] text-white sm:h-[420px] lg:h-[480px]">
-      <Image key={`${department}-${index}`} src={slide.imageUrl} unoptimized={shouldBypassImageOptimization(slide.imageUrl)} alt={`${STOREFRONTS[department].name} 오브온 브랜드 캠페인 화보`} fill
+      <Image key={`${department}-${index}`} src={slide.imageUrl} unoptimized={shouldBypassImageOptimization(slide.imageUrl)} alt={`${STOREFRONTS[department].name} 레비 브랜드 캠페인 화보`} fill
         sizes="(max-width: 1799px) 100vw, 1736px" quality={75} preload={index === 0} loading={index === 0 ? undefined : "eager"}
         className={department === "fashion" ? "object-cover object-[65%_center] sm:object-top" : "object-cover object-[65%_center] sm:object-center"} />
       <div aria-hidden className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-black/5 sm:bg-linear-to-r sm:from-black/65 sm:via-black/15 sm:to-transparent" />
@@ -57,7 +57,7 @@ export function StorefrontCampaign({ department, campaigns, onSelect }: { depart
         <span className="mt-5 inline-flex w-fit items-center gap-3 border-b border-white/70 pb-1.5 text-xs font-medium sm:mt-7 sm:text-sm">컬렉션 둘러보기 <FiArrowRight aria-hidden /></span>
       </div>
       <div className="pointer-events-none absolute bottom-5 left-6 right-6 z-20 flex items-end justify-between sm:left-10 sm:right-8 lg:left-14">
-        <span className="text-[9px] tracking-[0.18em] text-white/65">OVEON<span className="hidden sm:inline"> — 취향이 켜지는 순간</span></span>
+        <span className="text-[9px] tracking-[0.18em] text-white/65">RÊVIE<span className="hidden sm:inline"> — LIVE YOUR DREAM</span></span>
         <div className="pointer-events-auto flex items-center gap-0.5 bg-black/30 px-1 py-0.5 backdrop-blur-sm">
           <button type="button" aria-label="이전 광고" onClick={() => move(-1)} className="grid size-8 place-items-center hover:bg-white/15"><FiChevronLeft aria-hidden /></button>
           <span className="min-w-10 text-center text-[10px] tabular-nums" aria-live={paused || interacting ? "polite" : "off"}>{String(index + 1).padStart(2, "0")} / {edits.length}</span>

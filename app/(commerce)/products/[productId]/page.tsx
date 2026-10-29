@@ -330,10 +330,10 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "상품을 찾을 수 없습니다 - 오브온",
+      title: "상품을 찾을 수 없습니다 - 레비",
       description:
         "요청하신 상품을 찾을 수 없습니다. 목록에서 다른 상품을 둘러보세요.",
-      keywords: ["오브온", "상품", "커머스"],
+      keywords: ["레비", "상품", "커머스"],
     };
   }
 
@@ -346,7 +346,7 @@ export async function generateMetadata({
     `${baseSite}${DEFAULT_OG_PATH}`;
 
   return {
-    title: `${product.name} - 오브온`,
+    title: `${product.name} - 레비`,
     description,
     keywords: [product.name, "상품", "커머스"],
     openGraph: {

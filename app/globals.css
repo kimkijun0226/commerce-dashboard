@@ -200,7 +200,15 @@
 body:has(dialog[open]) { overflow: hidden; }
 
 [data-store="fashion"] {
-  --store-accent-soft: #f2f0eb;
+  --commerce-primary-main: #594639;
+  --commerce-primary-dark: #45372d;
+  --commerce-primary-light: #8c7562;
+  --commerce-background-default: #fdfbf8;
+  --commerce-background-paper: #fffdfa;
+  --commerce-background-light: #f4eee7;
+  --commerce-text-primary: #302b26;
+  --commerce-border-subtle: #e6ddd3;
+  --store-accent-soft: #f4eee7;
   --store-hero: linear-gradient(120deg, #f4f2ed, #fafaf8);
 }
 [data-store="beauty"] {

@@ -58,11 +58,11 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
 
         <Link
           href={store.path}
-          aria-label={`오브온 · ${store.name} 홈`}
+          aria-label={`레비 · ${store.name} 홈`}
           className="flex min-w-0 items-center gap-2 sm:gap-3"
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
-          <Image src={logos?.[store.key] ?? "/brand/oveon-logo.svg"} unoptimized alt="OVEON" width={112} height={25} className="h-6 w-20 object-contain sm:h-7 sm:w-28" />
+          <Image src={logos?.[store.key] ?? "/brand/revie-logo.svg"} unoptimized alt="RÊVIE" width={112} height={25} className="h-6 w-20 object-contain sm:h-7 sm:w-28" />
           <span className="hidden min-[400px]:inline border-l border-(--commerce-border-subtle) pl-2 text-xs font-medium text-(--commerce-primary-main) sm:pl-3 sm:text-sm">{store.name}</span>
         </Link>
 
@@ -126,7 +126,7 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
         >
           <div className="mx-auto max-w-[1440px] px-4 py-3">
             <div className="flex flex-col gap-2 text-[14px] font-medium leading-6">
-              {Object.values(STOREFRONTS).map(item => <Link key={item.key} href={item.path} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">오브온 · {item.name}</Link>)}
+              {Object.values(STOREFRONTS).map(item => <Link key={item.key} href={item.path} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">레비 · {item.name}</Link>)}
               <Link href={isAuthenticated ? "/account" : "/login"} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">{isAuthenticated ? "마이페이지" : "로그인 / 회원가입"}</Link>
             </div>
           </div>
