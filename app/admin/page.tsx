@@ -97,14 +97,6 @@ export default async function AdminPage({
           주문·결제 대시보드 →
         </Link>
       </div>
-      <div className="border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-        <strong>통합 판매 데이터</strong>
-        <p className="mt-1 text-xs leading-5">
-          기존 포트폴리오 판매 데이터와 실제 주문을 함께 집계합니다. 한국 시간
-          기준이며 순매출은 배송비를 제외한 할인 후 결제 완료액입니다.
-          취소·환불·결제 대기 주문은 매출에서 제외합니다.
-        </p>
-      </div>
       <form
         key={`${days}:${department}:${view}`}
         className="flex flex-wrap items-end gap-3 border bg-white p-4"

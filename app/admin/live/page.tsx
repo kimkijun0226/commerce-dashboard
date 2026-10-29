@@ -25,14 +25,7 @@ export default async function AdminPage() {
       <div>
         <p className="text-xs tracking-widest text-gray-400">OVERVIEW</p>
         <h1 className="mt-2 text-2xl font-semibold">주문·결제 매출 대시보드</h1>
-        <p className="mt-2 text-sm text-gray-500">
-          기존 포트폴리오 데이터에 실제 주문·결제를 자동으로 합산합니다.
-        </p>
       </div>
-      <p className="border bg-white p-4 text-sm leading-6 text-gray-600">
-        통합 결제 완료 {stats.paymentCount?.toLocaleString()}건 · 새 결제 승인
-        건은 자동으로 누적되며 취소·환불 주문은 매출에서 제외됩니다.
-      </p>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <AdminMetricCard
           title="전체 상품"
