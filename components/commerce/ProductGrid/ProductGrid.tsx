@@ -8,7 +8,7 @@ export type ProductGridProps = {
   products: Product[];
   columnsClassName?: string;
   gapClassName?: string;
-  renderItem?: (product: Product) => ReactNode;
+  renderItem?: (product: Product, index: number) => ReactNode;
   emptyState?: ReactNode;
   loading?: boolean;
   className?: string;
@@ -43,9 +43,9 @@ export function ProductGrid({
 
   return (
     <ul className={cn("grid", columnsClassName, gapClassName, className)}>
-      {products.map((p) => (
+      {products.map((p, index) => (
         <li key={p.id}>
-          {renderItem ? renderItem(p) : <ProductCard product={p} />}
+          {renderItem ? renderItem(p, index) : <ProductCard product={p} imagePriority={index === 0} />}
         </li>
       ))}
     </ul>

@@ -1,5 +1,4 @@
 import { getPublicEnv } from "@/commons/config/env";
-import { parseAiReviewSummaryFromProductJson } from "@/commons/types/product-review-summary";
 import { EnhancedReviewSummary } from "@/app/(commerce)/products/[productId]/_components/EnhancedReviewSummary";
 import { getReviewWriteEligibility } from "@/app/(commerce)/products/[productId]/review-actions";
 import { ReviewList } from "@/app/(commerce)/products/[productId]/_components/ReviewList";
@@ -89,13 +88,15 @@ export default async function ProductDetailPage({
         ? String(rawOrder[0] ?? "").trim()
         : "";
 
-  const product = await getProductById(productId);
+  const [product, reviewWriteEligibility] = await Promise.all([
+    getProductById(productId),
+    getReviewWriteEligibility(productId),
+  ]);
 
   if (!product) {
     notFound();
   }
 
-  const reviewWriteEligibility = await getReviewWriteEligibility(productId);
   const initialComposerOpen =
     openReviewRequested && reviewWriteEligibility.canCreate;
 
@@ -155,18 +156,8 @@ function normalizeUsersEmbed(raw: unknown): Review["users"] {
 
 // 첫 렌더에 바로 쓸 수 있도록 저장된 AI 요약을 서버에서 먼저 읽어 옵니다.
 async function fetchInitialReviewSummary(productId: string) {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("products")
-    .select("review_summary")
-    .eq("id", productId)
-    .maybeSingle();
-
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  return parseAiReviewSummaryFromProductJson(data?.review_summary ?? null);
+  const product = await getProductById(productId);
+  return product?.aiReviewSummary ?? null;
 }
 
 // 신뢰도 UI에서 쓸 기본 지표를 서버에서 먼저 계산해 초기 렌더에 함께 싣습니다.

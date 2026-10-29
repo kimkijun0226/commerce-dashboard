@@ -7,13 +7,14 @@ import { createServerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { getPublicEnv } from "@/commons/config/env";
 import type { Database } from "@/types/supabase";
+import { cache } from "react";
 
 /**
  * 서버용 Supabase 클라이언트 생성
  * - 요청별로 새 인스턴스 (요청 간 격리)
  * - cookies로 세션 읽기·갱신 → 브라우저와 세션 동기화
  */
-export async function createClient() {
+export const createClient = cache(async function createClient() {
   const cookieStore = await cookies();
   const { supabase } = getPublicEnv();
   return createServerClient<Database>(supabase.url, supabase.publishableKey, {
@@ -33,4 +34,4 @@ export async function createClient() {
       },
     },
   });
-}
+});

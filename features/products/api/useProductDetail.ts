@@ -3,10 +3,12 @@ import { getProductDisplayName } from "@/commons/utils/productDisplay";
 import type { ProductDetail } from "@/commons/types/product";
 import {
   type ProductReviewSummary,
+  parseAiReviewSummaryFromProductJson,
   parseProductReviewSummary,
 } from "@/commons/types/product-review-summary";
 import { createClient } from "@/lib/supabase/server";
 import type { Database, Json } from "@/types/supabase";
+import { cache } from "react";
 
 type ProductsRow = Database["public"]["Tables"]["products"]["Row"];
 
@@ -48,6 +50,7 @@ export type ProductDetailData = {
   created_at: string;
   updated_at: string;
   reviewSummary: ProductReviewSummary | null;
+  aiReviewSummary: ReturnType<typeof parseAiReviewSummaryFromProductJson>;
 };
 
 function mapRow(row: ProductsRow): ProductDetailData {
@@ -68,6 +71,7 @@ function mapRow(row: ProductsRow): ProductDetailData {
     created_at: row.created_at,
     updated_at: row.updated_at,
     reviewSummary: parseProductReviewSummary(row.review_summary),
+    aiReviewSummary: parseAiReviewSummaryFromProductJson(row.review_summary),
   };
 }
 
@@ -104,7 +108,7 @@ export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
  * - 없거나 `hidden`이면 `null`
  * - Supabase 오류는 throw
  */
-export async function getProductById(
+export const getProductById = cache(async function getProductById(
   productId: string,
 ): Promise<ProductDetailData | null> {
   const supabase = await createClient();
@@ -141,4 +145,4 @@ export async function getProductById(
   }
 
   throw new Error(`상품 조회 실패: ${lastErr ?? "알 수 없는 오류"}`);
-}
+});

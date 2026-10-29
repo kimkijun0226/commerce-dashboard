@@ -28,6 +28,7 @@ export function useInfiniteProducts(options?: {
   const q = options?.q?.trim() ?? "";
   const category = options?.category ?? "";
   return useInfiniteQuery<CatalogPage>({
+    gcTime: 10 * 60_000,
     queryKey: [...QUERY_KEYS.products.all, "infinite", q, category],
     initialPageParam: 0,
     queryFn: ({ pageParam, signal }) => fetchCatalogPage(Number(pageParam), q, category, signal),

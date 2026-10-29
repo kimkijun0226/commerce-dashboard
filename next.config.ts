@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
     root: path.resolve(__dirname),
   },
   images: {
+    minimumCacheTTL: 86400,
+    deviceSizes: [360, 480, 640, 768, 960, 1200, 1600, 1920],
+    imageSizes: [32, 48, 64, 96, 128, 192, 256, 320],
+    qualities: [60, 75],
     remotePatterns: [
       {
         protocol: "https",

@@ -30,9 +30,10 @@ export function CommerceProductGrid({
       columnsClassName={columnsClassName}
       gapClassName={gapClassName}
       loading={loading}
-      renderItem={(p) => (
+      renderItem={(p, index) => (
         <ProductCard
           product={p}
+          imagePriority={index === 0}
           onAddToCart={(selectedOptions) => onAddToCart(p, selectedOptions)}
           onWishlistToggle={
             onWishlistToggle ? () => onWishlistToggle(p.id) : undefined
