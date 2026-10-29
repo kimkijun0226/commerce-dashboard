@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DailySalesChart } from "@/components/admin/SalesCharts";
 import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
@@ -18,7 +19,6 @@ export default async function AdminPage() {
     departments: { department: string; count: number }[];
     dailyRevenue: { day: string; amount: number }[];
   };
-  const max = Math.max(1, ...stats.dailyRevenue.map((d) => d.amount));
   return (
     <div className="space-y-7">
       <div>
@@ -59,27 +59,13 @@ export default async function AdminPage() {
           <p className="mt-1 text-xs text-gray-400">
             한국 시간 · 결제 완료일 기준
           </p>
-          <div className="mt-7 grid h-48 grid-cols-7 items-end gap-2">
-            {stats.dailyRevenue.map((day) => (
-              <div
-                key={day.day}
-                className="flex h-full flex-col items-center justify-end gap-2"
-              >
-                <span className="text-[10px] text-gray-500">
-                  {day.amount.toLocaleString()}원
-                </span>
-                <div
-                  className="w-full max-w-12 bg-[#56634c]"
-                  style={{
-                    height: `${Math.max(day.amount ? 3 : 0, (day.amount / max) * 130)}px`,
-                  }}
-                />
-                <span className="border-t pt-2 text-xs text-gray-500">
-                  {day.day}
-                </span>
-              </div>
-            ))}
-          </div>
+          <DailySalesChart
+            valueLabel="결제 매출"
+            rows={stats.dailyRevenue.map((d) => ({
+              day: d.day,
+              revenue: d.amount,
+            }))}
+          />
         </section>
         <section className="border border-gray-200 bg-white p-5">
           <h2 className="font-semibold">매장별 상품</h2>

@@ -4,6 +4,10 @@ import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 import { AdminMetricCard } from "@/components/admin";
 import {
+  DailySalesChart,
+  SalesBreakdownChart,
+} from "@/components/admin/SalesCharts";
+import {
   salesFilters,
   salesLabels,
   type SalesData,
@@ -11,32 +15,26 @@ import {
 } from "@/lib/admin/sales";
 const number = (n: number) => n.toLocaleString("ko-KR");
 const won = (n: number) => `${number(n)}원`;
-function Breakdown({ title, rows }: { title: string; rows: SalesGroup[] }) {
-  const max = Math.max(1, ...rows.map((r) => r.orders));
+function Breakdown({
+  title,
+  rows,
+  kind = "bar",
+}: {
+  title: string;
+  rows: SalesGroup[];
+  kind?: "bar" | "doughnut" | "hours";
+}) {
   return (
-    <section className="border border-gray-200 bg-white p-5">
+    <section className="min-w-0 border border-gray-200 bg-white p-5">
       <h2 className="font-semibold">{title}</h2>
-      <div className="mt-5 space-y-4">
-        {rows.map((r) => (
-          <div key={r.label}>
-            <div className="mb-2 flex justify-between gap-3 text-sm">
-              <span>{salesLabels[r.label] ?? r.label}</span>
-              <span>
-                {number(r.orders)}건 · {won(r.revenue)}
-              </span>
-            </div>
-            <div className="h-2 bg-gray-100">
-              <div
-                className="h-2 bg-[#68775e]"
-                style={{ width: `${(r.orders / max) * 100}%` }}
-              />
-            </div>
-          </div>
-        ))}
-        {!rows.length && (
-          <p className="text-sm text-gray-400">해당 기간 데이터가 없습니다.</p>
-        )}
-      </div>
+      <SalesBreakdownChart
+        title={title}
+        rows={rows.map((r) => ({
+          ...r,
+          label: salesLabels[r.label] ?? r.label,
+        }))}
+        kind={kind}
+      />
     </section>
   );
 }
@@ -65,7 +63,6 @@ export default async function AdminPage({
   const change = stats.previousRevenue
     ? `${((s.revenue / stats.previousRevenue - 1) * 100).toFixed(1)}%`
     : "비교 매출 없음";
-  const max = Math.max(1, ...stats.daily.map((d) => d.revenue));
   const cards = [
     ["순매출", won(s.revenue), `직전 ${days}일 대비 ${change}`],
     ["주문 수", `${number(s.orders)}건`, `결제 완료 ${number(s.paid)}건`],
@@ -193,43 +190,26 @@ export default async function AdminPage({
               </Link>
             </div>
             <p className="mt-1 text-xs text-gray-400">
-              막대를 누르면 해당 날짜의 판매 내역을 확인할 수 있습니다.
+              차트의 점을 누르면 해당 날짜의 판매 내역을 확인할 수 있습니다.
             </p>
-            <div className="mt-6 overflow-x-auto">
-              <div className="flex h-56 min-w-[560px] items-end gap-1">
-                {stats.daily.map((d, i) => (
-                  <div
-                    key={d.day}
-                    className="flex h-full min-w-1 flex-1 flex-col justify-end"
-                    title={`${d.day} · ${won(d.revenue)} · ${d.orders}건`}
-                  >
-                    <Link
-                      href={url({
-                        view: "orders",
-                        page: 1,
-                        date: d.day,
-                        status: "",
-                      })}
-                      aria-label={`${d.day} 매출 ${won(d.revenue)}, 주문 ${d.orders}건`}
-                      className="block bg-[#68775e] transition-colors hover:bg-[#293b24] focus:bg-[#293b24]"
-                      style={{
-                        height: `${Math.max(d.revenue ? 2 : 0, (d.revenue / max) * 180)}px`,
-                      }}
-                    />
-                    <span className="mt-2 h-5 whitespace-nowrap text-[10px] text-gray-400">
-                      {i % Math.ceil(days / 7) === 0 ? d.day.slice(5) : ""}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <DailySalesChart
+              rows={stats.daily.map((d) => ({
+                ...d,
+                href: url({ view: "orders", page: 1, date: d.day, status: "" }),
+              }))}
+            />
           </section>
           <div className="grid gap-4 lg:grid-cols-2">
             <Breakdown
+              kind="doughnut"
               title="매장별 주문 수 · 순매출"
               rows={stats.departments}
             />
-            <Breakdown title="주문 상태" rows={stats.statuses} />
+            <Breakdown
+              kind="doughnut"
+              title="주문 상태"
+              rows={stats.statuses}
+            />
           </div>
         </>
       )}
@@ -317,7 +297,11 @@ export default async function AdminPage({
             />
             <Breakdown title="지역별 주문" rows={stats.regions} />
             <Breakdown title="결제 수단" rows={stats.payments} />
-            <Breakdown title="시간대별 주문 · 한국 시간" rows={stats.hours} />
+            <Breakdown
+              kind="hours"
+              title="시간대별 주문 · 한국 시간"
+              rows={stats.hours}
+            />
           </div>
         </>
       )}
