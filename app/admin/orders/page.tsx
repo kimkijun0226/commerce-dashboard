@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 import { FULFILLMENT_LABELS } from "@/lib/admin/validation";
@@ -10,9 +10,10 @@ export default async function OrdersPage({
 }) {
   if (!(await checkAdminAccess())) notFound();
   const params = await searchParams;
-  const page = Math.max(1, Math.floor(Number(params.page) || 1));
-  const status = params.fulfillment ?? "";
-  const q = (params.q ?? "").trim().slice(0, 100);
+  const rawPage = Number(params.page);
+  const page = Number.isFinite(rawPage) ? Math.min(10000, Math.max(1, Math.floor(rawPage))) : 1;
+  const status = typeof params.fulfillment === "string" ? params.fulfillment : "";
+  const q = (typeof params.q === "string" ? params.q : "").trim().slice(0, 100);
   const supabase = await createClient();
   let query = supabase
     .from("orders")
@@ -27,10 +28,11 @@ export default async function OrdersPage({
       /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q)
         ? query.eq("id", q)
         : query.ilike("shipping_name", `%${q.replace(/[\\%_]/g, "\\$&")}%`);
-  const { data, count, error } = await query
+  const { data, count, error, status: responseStatus } = await query
     .order("created_at", { ascending: false })
     .order("id", { ascending: false })
     .range((page - 1) * 20, page * 20 - 1);
+  if (responseStatus === 416 && page > 1) redirect(`/admin/orders?${new URLSearchParams({q,fulfillment:status})}`);
   if (error) throw new Error(error.message);
   const pages = Math.max(1, Math.ceil((count ?? 0) / 20));
   const href = (p: number) =>

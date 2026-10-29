@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
 import { buildCatalogSearchFilter } from "@/lib/catalog/filters";
@@ -14,8 +14,9 @@ export default async function AdminProductsPage({
 }) {
   if (!(await checkAdminAccess())) notFound();
   const params = await searchParams;
-  const page = Math.max(1, Math.floor(Number(params.page) || 1));
-  const q = (params.q ?? "").trim().slice(0, 200);
+  const rawPage = Number(params.page);
+  const page = Number.isFinite(rawPage) ? Math.min(10000, Math.max(1, Math.floor(rawPage))) : 1;
+  const q = (typeof params.q === "string" ? params.q : "").trim().slice(0, 200);
   const department =
     params.department &&
     ["fashion", "beauty", "home"].includes(params.department)
@@ -30,10 +31,11 @@ export default async function AdminProductsPage({
     );
   if (q) query = query.or(buildCatalogSearchFilter(q));
   if (department) query = query.eq("department", parseStoreKey(department));
-  const { data, count, error } = await query
+  const { data, count, error, status: responseStatus } = await query
     .order("created_at", { ascending: false })
     .order("id", { ascending: false })
     .range((page - 1) * 20, page * 20 - 1);
+  if (responseStatus === 416 && page > 1) redirect(`/admin/products?${new URLSearchParams({q,department})}`);
   if (error) throw new Error(`상품 조회 실패: ${error.message}`);
   const pages = Math.max(1, Math.ceil((count ?? 0) / 20));
   const href = (p: number) =>
