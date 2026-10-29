@@ -1,3 +1,5 @@
+import { formatSelectedOptions } from "@/commons/utils/productOptions";
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
 import Image from "next/image";
 import Link from "next/link";
 import { commerceColors } from "@/commons/constants/color";
@@ -217,11 +219,7 @@ export function OrderDetailView({
                                 fill
                                 className="object-cover"
                                 sizes="56px"
-                                unoptimized={
-                                  img.startsWith("http://") ||
-                                  img.startsWith("https://") ||
-                                  img.startsWith("data:")
-                                }
+                                unoptimized={shouldBypassImageOptimization(img)}
                               />
                             ) : null}
                           </div>
@@ -233,6 +231,7 @@ export function OrderDetailView({
                             >
                               {it.productName ?? "상품"}
                             </Link>
+                            {formatSelectedOptions(it.selectedOptions) && <p className="mt-1 text-xs">{formatSelectedOptions(it.selectedOptions)}</p>}
                           </div>
                         </div>
                       </td>

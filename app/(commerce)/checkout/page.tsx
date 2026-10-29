@@ -12,6 +12,7 @@ import { CheckoutCartSyncer } from "@/components/commerce/checkout/CheckoutCartS
 
 type CartRow = {
   product_id: string;
+  selected_options: Record<string, string>;
   quantity: number;
   products: {
     id: string;
@@ -26,8 +27,8 @@ type CartRow = {
 type AddressRow = {
   id: string;
   label: string | null;
-  recipient_name: string;
-  recipient_phone: string;
+  recipient_name: string | null;
+  recipient_phone: string | null;
   address_line1: string;
   address_line2: string | null;
   memo: string | null;
@@ -48,7 +49,7 @@ export default async function CheckoutPage({
   const sp = await Promise.resolve(searchParams ?? {});
   const selectedAddressIdParam = typeof sp.addressId === "string" ? sp.addressId : undefined;
   const supabase = await createClient();
-  const sb = supabase as unknown as { from: (table: string) => any };
+  const sb = supabase;
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -81,8 +82,8 @@ export default async function CheckoutPage({
     (r) => ({
       id: r.id,
       label: r.label,
-      recipientName: r.recipient_name,
-      recipientPhone: r.recipient_phone,
+      recipientName: r.recipient_name ?? "",
+      recipientPhone: r.recipient_phone ?? "",
       addressLine1: r.address_line1,
       addressLine2: r.address_line2,
       memo: r.memo,
@@ -102,6 +103,7 @@ export default async function CheckoutPage({
     .select(
       `
       product_id,
+      selected_options,
       quantity,
       products (
         id,
@@ -125,6 +127,7 @@ export default async function CheckoutPage({
     .filter((r) => r.products && r.products.status !== "hidden")
     .map((r) => ({
       productId: r.product_id,
+      selectedOptions: r.selected_options ?? {},
       name: r.products!.name,
       imageUrl: r.products!.image_url,
       quantity: Math.max(1, Math.floor(Number(r.quantity) || 1)),

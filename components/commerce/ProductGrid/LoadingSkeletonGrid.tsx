@@ -10,13 +10,13 @@ export function ProductCardSkeleton({ className }: ProductCardSkeletonProps) {
   return (
     <article
       className={cn(
-        "relative flex w-full max-w-[262px] flex-col",
+        "relative flex w-full flex-col",
         "bg-(--commerce-background-default)",
         className,
       )}
       aria-hidden
     >
-      <div className="relative aspect-262/349 w-full overflow-hidden rounded-lg bg-(--commerce-background-light)">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-(--commerce-background-light)">
         <div className="absolute top-4 right-4 z-10 size-8 rounded-full bg-(--commerce-background-elevated)" />
       </div>
       <div className="flex flex-col gap-2 pt-4">
@@ -40,7 +40,7 @@ export function LoadingSkeletonGrid({
   className,
   columnsClassName = "grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
   gapClassName = "gap-6 md:gap-8",
-  count = 8,
+  count = 18,
   ariaLabel = "상품 목록 로딩 중",
 }: LoadingSkeletonGridProps) {
   const items = Array.from({ length: count });

@@ -11,7 +11,7 @@ import type {
   InputHTMLAttributes,
 } from "react";
 import { forwardRef, useId } from "react";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 
 export type SearchInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -20,6 +20,7 @@ export type SearchInputProps = Omit<
   /** 버튼 라벨 (Figma 기본: Search). 없으면 버튼을 숨김 */
   actionLabel?: string;
   onAction?: (value: string) => void;
+  onClear?: () => void;
   actionProps?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick">;
 };
 
@@ -30,6 +31,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       placeholder = "Search for products...",
       actionLabel = "Search",
       onAction,
+      onClear,
       actionProps,
       value,
       defaultValue,
@@ -77,6 +79,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           onChange={onChange}
           className={cn(
             "min-w-0 flex-1 bg-transparent outline-none disabled:cursor-not-allowed disabled:opacity-60",
+            onClear && "[&::-webkit-search-cancel-button]:hidden",
           )}
           style={{
             ...typo,
@@ -85,6 +88,17 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           placeholder={placeholder}
           {...rest}
         />
+        {onClear && value ? (
+          <button
+            type="button"
+            aria-label="검색어 지우기"
+            disabled={disabled}
+            onClick={onClear}
+            className="flex size-8 shrink-0 items-center justify-center rounded-full text-(--commerce-text-secondary) hover:bg-(--commerce-background-light) focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            <FiX className="size-4" aria-hidden />
+          </button>
+        ) : null}
         {actionLabel ? (
           <Button
             type="submit"

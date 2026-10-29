@@ -1,3 +1,4 @@
+import { getCartItemKey } from "@/commons/utils/productOptions";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -5,6 +6,7 @@ export type ProductStatus = "visible" | "hidden" | "sold_out";
 
 export interface CartItem {
   id: string;
+  selectedOptions?: Record<string, string>;
   name: string;
   price: number;
   quantity: number;
@@ -17,6 +19,7 @@ export type CartProduct = Omit<CartItem, "quantity">;
 
 type CartApiItem = {
   id: string;
+  selectedOptions?: Record<string, string>;
   name: string;
   price: number;
   quantity: number;
@@ -82,6 +85,7 @@ function normalizeStatus(status: CartApiItem["status"]): ProductStatus {
 function fromApiItem(item: CartApiItem): CartItem {
   return {
     id: item.id,
+    selectedOptions: item.selectedOptions ?? {},
     name: item.name,
     price: Number(item.price),
     salePrice: item.salePrice == null ? null : Number(item.salePrice),
@@ -96,7 +100,7 @@ function setItemsState(items: CartItem[]) {
 }
 
 function removeById(items: CartItem[], productId: string): CartItem[] {
-  return items.filter((it) => it.id !== productId);
+  return items.filter((it) => getCartItemKey(it) !== productId);
 }
 
 function upsertItem(
@@ -107,7 +111,7 @@ function upsertItem(
   const nextQty = clampQuantity(addQty);
   if (nextQty <= 0) return items;
 
-  const idx = items.findIndex((it) => it.id === product.id);
+  const idx = items.findIndex((it) => getCartItemKey(it) === getCartItemKey(product));
   if (idx === -1) return [...items, { ...product, quantity: nextQty }];
 
   const next = items.slice();
@@ -123,7 +127,7 @@ function updateQuantity(
   const nextQty = clampQuantity(quantity);
   if (nextQty <= 0) return removeById(items, productId);
 
-  const idx = items.findIndex((it) => it.id === productId);
+  const idx = items.findIndex((it) => getCartItemKey(it) === productId);
   if (idx === -1) return items;
 
   const next = items.slice();
@@ -177,10 +181,10 @@ export const useCartStore = create<CartState>()(
             return;
           }
 
-          const serverIds = new Set(serverItems.map((item) => item.id));
+          const serverIds = new Set(serverItems.map(getCartItemKey));
           const itemsToMerge =
             cartOwner === "guest"
-              ? localItems.filter((item) => !serverIds.has(item.id))
+              ? localItems.filter((item) => !serverIds.has(getCartItemKey(item)))
               : [];
           let nextItems = serverItems;
 
@@ -188,7 +192,7 @@ export const useCartStore = create<CartState>()(
           for (const item of itemsToMerge) {
             const merged = await requestCart("/api/cart", {
               method: "POST",
-              body: JSON.stringify({ productId: item.id, quantity: item.quantity }),
+              body: JSON.stringify({ productId: item.id, quantity: item.quantity, selectedOptions: item.selectedOptions }),
             });
             if (merged) nextItems = merged;
           }
@@ -212,7 +216,7 @@ export const useCartStore = create<CartState>()(
         try {
           const serverItems = await requestCart("/api/cart", {
             method: "POST",
-            body: JSON.stringify({ productId: product.id, quantity }),
+            body: JSON.stringify({ productId: product.id, quantity, selectedOptions: product.selectedOptions }),
           });
           if (serverItems) set(setItemsState(serverItems));
           else set({ cartOwner: "guest" });
@@ -226,13 +230,15 @@ export const useCartStore = create<CartState>()(
 
       updateItemQuantity: async (productId, quantity) => {
         const prevItems = get().items;
+        const item = prevItems.find((it) => getCartItemKey(it) === productId);
+        if (!item) return;
         const nextItems = updateQuantity(prevItems, productId, quantity);
         set(setItemsState(nextItems));
 
         try {
           const serverItems = await requestCart("/api/cart", {
             method: "PATCH",
-            body: JSON.stringify({ productId, quantity }),
+            body: JSON.stringify({ productId: item.id, quantity, selectedOptions: item.selectedOptions }),
           });
           if (serverItems) set(setItemsState(serverItems));
           else set({ cartOwner: "guest" });
@@ -244,12 +250,14 @@ export const useCartStore = create<CartState>()(
 
       removeItem: async (productId) => {
         const prevItems = get().items;
+        const item = prevItems.find((it) => getCartItemKey(it) === productId);
+        if (!item) return;
         const nextItems = removeById(prevItems, productId);
         set(setItemsState(nextItems));
 
         try {
           const serverItems = await requestCart(
-            `/api/cart?productId=${encodeURIComponent(productId)}`,
+            `/api/cart?productId=${encodeURIComponent(item.id)}&selectedOptions=${encodeURIComponent(JSON.stringify(item.selectedOptions ?? {}))}`,
             { method: "DELETE" },
           );
           if (serverItems) set(setItemsState(serverItems));

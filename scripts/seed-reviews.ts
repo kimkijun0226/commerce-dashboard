@@ -326,8 +326,8 @@ async function updateProductRatingSummary(
           ai.summary.split("\n")[0]?.slice(0, 80) ||
           prev?.highlight ||
           "",
-        ai,
-      } as Json;
+        ai: { ...ai },
+      };
     } catch (e) {
       console.warn(
         `[reviews] AI 요약 생성 실패 (${productId}):`,

@@ -1,12 +1,11 @@
 "use client";
 
 import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
-import { HomeHeroSection } from "@/components/commerce/home/HomeHeroSection";
 import type { Product } from "@/components/commerce/types";
 import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
-import { useEnrichedCatalogProducts } from "@/features/products/hooks/useEnrichedCatalogProducts";
 import { useInfiniteProducts } from "@/features/products/api/useInfiniteProducts";
-import { useProductSearch } from "@/features/search/api/useProductSearch";
+import { useDebouncedValue } from "@/commons/hooks/useDebouncedValue";
+import type { CatalogCategory } from "@/lib/catalog/products";
 import { useSearchStore } from "@/features/search/store/searchStore";
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { getLikedProductIds } from "@/app/(commerce)/likes/actions";
@@ -17,15 +16,21 @@ import { toast } from "sonner";
 
 export type HomePageProps = {
   initialItems?: Product[];
+  initialTotal?: number;
+  categories: CatalogCategory[];
 };
 
-export function HomePage({ initialItems }: HomePageProps) {
+export function HomePage({ initialItems, initialTotal, categories }: HomePageProps) {
   const isAuthed = useSessionStore((s) => s.isAuthenticated);
   const likesSyncNonce = useSessionStore((s) => s.likesSyncNonce);
   const addItem = useCartStore((s) => s.addItem);
   const keyword = useSearchStore((s) => s.keyword);
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const closeSearch = useSearchStore((s) => s.close);
+  const setKeyword = useSearchStore((s) => s.setKeyword);
+  const [category, setCategory] = useState("");
+  const debouncedKeyword = useDebouncedValue(keyword.trim(), 350);
+  const isSearchPending = keyword.trim() !== debouncedKeyword;
 
   const {
     data,
@@ -34,21 +39,13 @@ export function HomePage({ initialItems }: HomePageProps) {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteProducts({ initialItems });
+  } = useInfiniteProducts({ initialItems, initialTotal, q: debouncedKeyword, category });
 
-  const {
-    data: searched,
-    isLoading: isSearchLoading,
-    isError: isSearchError,
-  } = useProductSearch(keyword);
-
-  const productsBase = useMemo(() => {
-    const showSearch = keyword.trim().length > 0;
-    const list = showSearch
-      ? (searched ?? [])
-      : (data?.pages.flatMap((p) => p.items) ?? []);
-    return list;
-  }, [data, keyword, searched]);
+  const productsBase = useMemo(() => data?.pages.flatMap((p) => p.items) ?? [], [data]);
+  const resetFilters = () => {
+    setCategory("");
+    setKeyword("");
+  };
 
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
   const [pendingLikes, startLikes] = useTransition();
@@ -104,10 +101,9 @@ export function HomePage({ initialItems }: HomePageProps) {
     }));
   }, [likedMap, pendingLikes, productsBase]);
 
-  const { enrichedProducts } = useEnrichedCatalogProducts(productsWithLikes);
 
   const handleAddToCart = useCallback(
-    async (product: Product) => {
+    async (product: Product, selectedOptions?: Record<string, string>) => {
       const ok = await addItem(
         {
           id: product.id,
@@ -116,11 +112,13 @@ export function HomePage({ initialItems }: HomePageProps) {
           salePrice: product.salePrice ?? null,
           imageUrl: product.imageUrl,
           status: "visible",
+          selectedOptions,
         },
         1,
       );
       if (ok) toast.success("장바구니에 담았습니다.");
       else toast.error("장바구니에 담지 못했습니다.");
+      return ok;
     },
     [addItem],
   );
@@ -132,30 +130,33 @@ export function HomePage({ initialItems }: HomePageProps) {
       }
     },
     enabled:
-      keyword.trim().length === 0 &&
+      !isSearchPending &&
       hasNextPage === true &&
       isFetchingNextPage === false,
   });
 
-  const showSearch = keyword.trim().length > 0;
-
   return (
-    <div className="mx-auto max-w-[1440px] px-4 py-10 sm:px-[160px]">
+    <div className="mx-auto max-w-[1800px] px-4 py-6 sm:px-6 lg:px-8">
       <HomeCatalogSection
-        title="All"
+        categories={categories}
+        selectedCategory={category}
+        onCategoryChange={setCategory}
+        onResetFilters={resetFilters}
+        total={data?.pages[0]?.total ?? 0}
+        allTotal={initialTotal ?? 0}
         keyword={keyword}
         isSearchOpen={isSearchOpen}
-        onCloseSearch={closeSearch}
-        showFetchError={isError || isSearchError}
-        isProductLoading={showSearch ? isSearchLoading : isLoading}
-        products={enrichedProducts as Product[]}
+        onSearchFocusHandled={closeSearch}
+        onCloseSearch={() => { setKeyword(""); closeSearch(); }}
+        showFetchError={isError}
+        isProductLoading={isLoading || isSearchPending}
+        products={productsWithLikes as Product[]}
         loadMoreRef={loadMoreRef}
-        showLoadMoreSentinel={!showSearch && hasNextPage === true}
+        showLoadMoreSentinel={!isSearchPending && hasNextPage === true}
         isFetchingNextPage={isFetchingNextPage}
         onAddToCart={handleAddToCart}
       />
 
-      <HomeHeroSection />
     </div>
   );
 }

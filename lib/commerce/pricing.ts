@@ -2,6 +2,7 @@ export type Money = number;
 
 export type LineItem = {
   productId: string;
+  selectedOptions?: Record<string, string>;
   name: string;
   imageUrl: string | null;
   quantity: number;

@@ -251,6 +251,9 @@ async function fetchInitialReviews(productId: string): Promise<Review[]> {
       `
       id,
       user_id,
+      author_name,
+      source_url,
+      is_generated,
       rating,
       content,
       created_at,

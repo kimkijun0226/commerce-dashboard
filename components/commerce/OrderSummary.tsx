@@ -1,5 +1,8 @@
 "use client";
 
+import { getCartItemKey, formatSelectedOptions } from "@/commons/utils/productOptions";
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
+
 import Image from "next/image";
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
@@ -9,6 +12,7 @@ import { QuantitySelector } from "@/components/commerce/QuantitySelector/Quantit
 
 export type OrderSummaryItem = {
   productId: string;
+  selectedOptions?: Record<string, string>;
   name: string;
   imageUrl: string | null;
   quantity: number;
@@ -67,7 +71,7 @@ export function OrderSummary({
           const unit = getUnitPrice(it);
           const line = unit * it.quantity;
           return (
-            <div key={it.productId} className="flex items-center gap-4">
+            <div key={getCartItemKey({ id: it.productId, selectedOptions: it.selectedOptions })} className="flex items-center gap-4">
               <div className="relative size-16 shrink-0 overflow-hidden rounded-md bg-(--commerce-background-light)">
                 {it.imageUrl ? (
                   <Image
@@ -76,9 +80,7 @@ export function OrderSummary({
                     fill
                     sizes="64px"
                     className="object-cover"
-                    unoptimized={
-                      it.imageUrl.startsWith("http://") || it.imageUrl.startsWith("https://")
-                    }
+                    unoptimized={shouldBypassImageOptimization(it.imageUrl)}
                   />
                 ) : null}
               </div>
@@ -93,6 +95,7 @@ export function OrderSummary({
                 >
                   {it.name}
                 </p>
+                {formatSelectedOptions(it.selectedOptions) && <p className="mt-1 text-xs text-(--commerce-text-secondary)">{formatSelectedOptions(it.selectedOptions)}</p>}
                 {editable && onQuantityChange ? (
                   <div className="mt-2 flex items-center justify-between gap-3">
                     <span
@@ -107,7 +110,7 @@ export function OrderSummary({
                       variant="cart"
                       value={it.quantity}
                       disabled={quantityUpdating}
-                      onChange={(next) => onQuantityChange(it.productId, next)}
+                      onChange={(next) => onQuantityChange(getCartItemKey({ id: it.productId, selectedOptions: it.selectedOptions }), next)}
                     />
                   </div>
                 ) : (

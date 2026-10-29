@@ -1,5 +1,6 @@
 "use client";
 
+import { getCartItemKey } from "@/commons/utils/productOptions";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { clearSessionPendingOrderId, setSessionPendingOrderId } from "@/commons/utils/order";
@@ -539,12 +540,14 @@ export function CheckoutForm({
           quantityUpdating={cartUpdating}
           onQuantityChange={async (productId, nextQty) => {
             if (cartUpdating || pending) return;
+            const item = items.find((it) => getCartItemKey({ id: it.productId, selectedOptions: it.selectedOptions }) === productId);
+            if (!item) return;
             setCartUpdating(true);
             try {
               const res = await fetch("/api/cart", {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ productId, quantity: nextQty }),
+                body: JSON.stringify({ productId: item.productId, quantity: nextQty, selectedOptions: item.selectedOptions }),
               });
               if (!res.ok) {
                 const data = (await res.json().catch(() => null)) as { error?: string } | null;
@@ -593,7 +596,7 @@ function ShippingMemoDropdown({
   const [open, setOpen] = useState(false);
   const [custom, setCustom] = useState("");
 
-  const isCustom = value.trim().length > 0 && !MEMO_PRESETS.slice(0, -1).includes(value as any);
+  const isCustom = value.trim().length > 0 && !MEMO_PRESETS.slice(0, -1).some((preset) => preset === value);
   const displayValue = value.trim() ? value.trim() : "";
 
   useEffect(() => {

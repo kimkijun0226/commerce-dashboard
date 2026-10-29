@@ -1,5 +1,7 @@
 "use client";
 
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ReviewListItem } from "@/app/(commerce)/products/[productId]/_components/ReviewListItem";
@@ -53,11 +55,7 @@ export function MyReviewListItem({ row, currentUserId }: MyReviewListItemProps) 
                 fill
                 className="object-cover"
                 sizes="32px"
-                unoptimized={
-                  product.imageUrl.startsWith("http://") ||
-                  product.imageUrl.startsWith("https://") ||
-                  product.imageUrl.startsWith("data:")
-                }
+                unoptimized={shouldBypassImageOptimization(product.imageUrl)}
               />
             ) : null}
           </div>

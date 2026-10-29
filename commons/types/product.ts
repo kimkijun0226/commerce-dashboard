@@ -1,3 +1,4 @@
+import type { ProductOption } from "@/commons/utils/productOptions";
 import type { ProductReviewSummary } from "@/commons/types/product-review-summary";
 import type { Json } from "@/types/supabase";
 
@@ -9,6 +10,7 @@ export interface ProductCategory {
 export interface ProductDetail {
   id: string;
   name: string;
+  options?: ProductOption[];
   description: string | null;
   price: number;
   salePrice?: number;

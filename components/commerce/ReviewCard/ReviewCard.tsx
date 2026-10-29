@@ -1,5 +1,7 @@
 "use client";
 
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
+
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import { cn, typographyToStyle } from "@/components/ui";
@@ -43,10 +45,7 @@ export function ReviewCard({
               src={avatarUrl}
               alt=""
               fill
-              unoptimized={
-                avatarUrl.startsWith("http://") ||
-                avatarUrl.startsWith("https://")
-              }
+              unoptimized={shouldBypassImageOptimization(avatarUrl)}
               className="object-cover"
               sizes="72px"
               onError={() => setAvatarFailed(true)}

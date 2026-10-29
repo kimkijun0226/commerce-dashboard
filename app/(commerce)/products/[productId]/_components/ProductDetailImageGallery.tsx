@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/components/ui";
+import Image from "next/image";
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
 
 export type ProductDetailImageGalleryProps = {
   imageUrls: string[];
@@ -21,7 +23,7 @@ export function ProductDetailImageGallery({
         className={cn("text-base leading-7 text-[#6c7275]", className)}
         style={{ fontFamily: "var(--commerce-font-body)" }}
       >
-        No detail images yet. Set `detail_image_urls` in Supabase.
+        상세 이미지가 없습니다.
       </p>
     );
   }
@@ -36,13 +38,16 @@ export function ProductDetailImageGallery({
       {urls.map((src, i) => (
         <figure
           key={`${src}-${i}`}
-          className="m-0 w-full max-w-lg overflow-hidden rounded-xl border border-[#e8ecef] bg-[#f3f5f7] shadow-sm"
+          className="relative m-0 aspect-square w-full max-w-lg overflow-hidden rounded-xl border border-[#e8ecef] bg-[#f3f5f7] shadow-sm"
         >
-          <img
+          <Image
             src={src}
             alt={`${imageAltBase} — detail image ${i + 1}`}
-            className="mx-auto block h-auto max-h-[min(92vh,1040px)] w-full object-contain object-center"
-            loading={i === 0 ? "eager" : "lazy"}
+            fill
+            sizes="(max-width: 640px) 100vw, 512px"
+            unoptimized={shouldBypassImageOptimization(src)}
+            className="object-contain object-center"
+            loading="lazy"
             decoding="async"
             referrerPolicy="no-referrer-when-downgrade"
           />

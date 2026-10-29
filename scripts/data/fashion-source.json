@@ -1,0 +1,9 @@
+{
+  "title": "Is K-Fashion Visually Distinct? — Brand Selection & Analysis",
+  "author": "Habin Kim",
+  "source": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+  "revision": "71fc9e14d088fb6f56ad69053ba6dd388bf7444a",
+  "metadataLicense": "CC-BY-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "changes": "Filtered to 180 Korean-brand adult garments, deduplicated model codes, removed promotional text. Product descriptions and Korean review copy are newly composed. Original images remain on their source hosts; image rights are not granted by the metadata license."
+}

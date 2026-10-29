@@ -9,6 +9,7 @@ import type {
 export type OrderDetailItem = {
   id: string;
   productId: string;
+  selectedOptions?: Record<string, string>;
   quantity: number;
   unitPrice: number;
   unitSalePrice: number | null;
@@ -97,6 +98,7 @@ function mapItem(row: OrderItemsRow): OrderDetailItem {
   return {
     id: row.id,
     productId: row.product_id,
+    selectedOptions: (row.selected_options ?? {}) as Record<string, string>,
     quantity: Math.max(1, Number(row.quantity) || 1),
     unitPrice: Number(row.unit_price),
     unitSalePrice: row.unit_sale_price == null ? null : Number(row.unit_sale_price),

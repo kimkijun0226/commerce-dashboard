@@ -58,10 +58,55 @@ export interface Database {
         };
         Relationships: [];
       };
+      user_addresses: {
+        Row: {
+          id: string;
+          user_id: string;
+          label: string | null;
+          recipient_name: string | null;
+          recipient_phone: string | null;
+          address_line1: string;
+          address_line2: string | null;
+          memo: string | null;
+          is_default: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          label?: string | null;
+          recipient_name?: string | null;
+          recipient_phone?: string | null;
+          address_line1: string;
+          address_line2?: string | null;
+          memo?: string | null;
+          is_default?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          label?: string | null;
+          recipient_name?: string | null;
+          recipient_phone?: string | null;
+          address_line1?: string;
+          address_line2?: string | null;
+          memo?: string | null;
+          is_default?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       products: {
         Row: {
           id: string;
           name: string;
+          search_keywords: string[];
+          search_text: string;
+          options: Json;
           description: string | null;
           price: number;
           sale_price: number | null;
@@ -79,6 +124,8 @@ export interface Database {
         Insert: {
           id?: string;
           name: string;
+          search_keywords?: string[];
+          options?: Json;
           description?: string | null;
           price: number;
           sale_price?: number | null;
@@ -96,6 +143,8 @@ export interface Database {
         Update: {
           id?: string;
           name?: string;
+          search_keywords?: string[];
+          options?: Json;
           description?: string | null;
           price?: number;
           sale_price?: number | null;
@@ -206,6 +255,7 @@ export interface Database {
           id: string;
           order_id: string;
           product_id: string;
+          selected_options: Json;
           quantity: number;
           unit_price: number;
           unit_sale_price: number | null;
@@ -217,6 +267,7 @@ export interface Database {
           id?: string;
           order_id: string;
           product_id: string;
+          selected_options?: Json;
           quantity?: number;
           unit_price: number;
           unit_sale_price?: number | null;
@@ -228,6 +279,7 @@ export interface Database {
           id?: string;
           order_id?: string;
           product_id?: string;
+          selected_options?: Json;
           quantity?: number;
           unit_price?: number;
           unit_sale_price?: number | null;
@@ -303,28 +355,37 @@ export interface Database {
       reviews: {
         Row: {
           id: string;
-          user_id: string;
+          user_id: string | null;
           product_id: string;
-          order_id: string;
+          order_id: string | null;
           rating: number;
+          is_generated: boolean;
+          source_url: string | null;
+          author_name: string | null;
           content: string | null;
           created_at: string;
         };
         Insert: {
           id?: string;
-          user_id: string;
+          user_id: string | null;
           product_id: string;
-          order_id: string;
+          order_id: string | null;
           rating: number;
+          is_generated?: boolean;
+          source_url?: string | null;
+          author_name?: string | null;
           content?: string | null;
           created_at?: string;
         };
         Update: {
           id?: string;
-          user_id?: string;
+          user_id?: string | null;
           product_id?: string;
-          order_id?: string;
+          order_id?: string | null;
           rating?: number;
+          is_generated?: boolean;
+          source_url?: string | null;
+          author_name?: string | null;
           content?: string | null;
           created_at?: string;
         };
@@ -335,6 +396,7 @@ export interface Database {
           id: string;
           user_id: string;
           product_id: string;
+          selected_options: Json;
           quantity: number;
           created_at: string;
           updated_at: string;
@@ -343,6 +405,7 @@ export interface Database {
           id?: string;
           user_id: string;
           product_id: string;
+          selected_options?: Json;
           quantity?: number;
           created_at?: string;
           updated_at?: string;
@@ -351,6 +414,7 @@ export interface Database {
           id?: string;
           user_id?: string;
           product_id?: string;
+          selected_options?: Json;
           quantity?: number;
           created_at?: string;
           updated_at?: string;
@@ -417,6 +481,14 @@ export interface Database {
     };
     Views: Record<string, never>;
     Functions: {
+      get_catalog_category_products: {
+        Args: { p_category: string };
+        Returns: Database["public"]["Tables"]["products"]["Row"][];
+      };
+      get_catalog_categories: {
+        Args: Record<string, never>;
+        Returns: { name: string; product_count: number }[];
+      };
       update_product_review_summary_for_reviewer: {
         Args: {
           p_product_id: string;

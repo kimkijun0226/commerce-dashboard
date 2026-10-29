@@ -196,3 +196,5 @@
   --commerce-border-default: #6c7275;
   --commerce-border-strong: #e8ecef;
 }
+
+body:has(dialog[open]) { overflow: hidden; }

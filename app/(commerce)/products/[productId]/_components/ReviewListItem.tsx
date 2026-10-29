@@ -1,5 +1,7 @@
 "use client";
 
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
+
 // 개별 리뷰 카드와 수정/삭제 액션, 계정 페이지용 압축 레이아웃을 함께 처리합니다.
 import { reviewDisplayInitials } from "@/app/(commerce)/products/[productId]/_components/reviewDisplayName";
 import { deleteReview } from "@/app/(commerce)/products/[productId]/review-actions";
@@ -33,6 +35,8 @@ export type ReviewListItemProps = {
 
 // 표시 이름이 없을 때도 카드가 비지 않도록 email/해시 기반 대체 이름을 만듭니다.
 function displayNameForReview(review: Review): string {
+  const importedName = review.author_name?.trim();
+  if (importedName) return importedName;
   const dn = review.users?.display_name?.trim();
   if (dn) return dn;
   const email = review.users?.email?.trim();
@@ -212,6 +216,14 @@ export function ReviewListItem({
         style={{ fontFamily: "var(--commerce-font-body)" }}
       >
         {review.content}
+        {review.is_generated ? (
+          <span className="mt-2 block text-xs text-[#6c7275]">구성된 리뷰</span>
+        ) : null}
+        {review.source_url?.startsWith("https://github.com/") ? (
+          <a href={review.source_url} target="_blank" rel="noreferrer" className="mt-2 block text-xs text-[#6c7275] underline">
+            외부 리뷰 · 출처 보기
+          </a>
+        ) : null}
       </p>
     ) : (
       <p
@@ -251,11 +263,7 @@ export function ReviewListItem({
               fill
               className="object-cover"
               sizes={compact ? "36px" : "44px"}
-              unoptimized={
-                profileUrl.startsWith("http://") ||
-                profileUrl.startsWith("https://") ||
-                profileUrl.startsWith("data:")
-              }
+              unoptimized={shouldBypassImageOptimization(profileUrl)}
             />
           ) : (
             initials

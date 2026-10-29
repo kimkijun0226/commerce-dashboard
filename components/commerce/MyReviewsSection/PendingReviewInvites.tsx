@@ -1,3 +1,4 @@
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
 import Image from "next/image";
 import Link from "next/link";
 import type { PendingReviewSlotModel } from "@/app/(commerce)/account/reviews/pending-queries";
@@ -52,11 +53,7 @@ export function PendingReviewInvites({ slots, variant = "full" }: PendingReviewI
                     fill
                     className="object-cover"
                     sizes="40px"
-                    unoptimized={
-                      s.productImageUrl.startsWith("http://") ||
-                      s.productImageUrl.startsWith("https://") ||
-                      s.productImageUrl.startsWith("data:")
-                    }
+                    unoptimized={shouldBypassImageOptimization(s.productImageUrl)}
                   />
                 ) : null}
               </div>

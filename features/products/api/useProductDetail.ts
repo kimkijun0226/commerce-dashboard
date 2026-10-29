@@ -1,3 +1,5 @@
+import { parseProductOptions, type ProductOption } from "@/commons/utils/productOptions";
+import { getProductDisplayName } from "@/commons/utils/productDisplay";
 import type { ProductDetail } from "@/commons/types/product";
 import {
   type ProductReviewSummary,
@@ -30,6 +32,7 @@ async function sleep(ms: number) {
 export type ProductDetailData = {
   id: string;
   name: string;
+  options: ProductOption[];
   description: string | null;
   price: number;
   salePrice: number | null;
@@ -50,8 +53,9 @@ export type ProductDetailData = {
 function mapRow(row: ProductsRow): ProductDetailData {
   return {
     id: row.id,
-    name: row.name,
-    description: row.description,
+    name: getProductDisplayName(row.name),
+    options: parseProductOptions(row.options),
+    description: row.description?.startsWith(`${row.name}\n\n`) ? row.description.slice(row.name.length).trim() : row.description,
     price: row.price,
     salePrice: row.sale_price,
     imageUrl: row.image_url ?? "",
@@ -72,6 +76,7 @@ export function toCommonsProductDetail(p: ProductDetailData): ProductDetail {
   return {
     id: p.id,
     name: p.name,
+    options: p.options,
     description: p.description,
     price: p.price,
     salePrice: p.salePrice ?? undefined,

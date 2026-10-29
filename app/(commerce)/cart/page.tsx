@@ -1,5 +1,6 @@
 "use client";
 
+import { getCartItemKey, formatSelectedOptions } from "@/commons/utils/productOptions";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CartItemRow, CartSummary } from "@/components/commerce";
@@ -7,7 +8,7 @@ import { useCartStore } from "@/commons/store/cart-store";
 import { useSessionStore } from "@/commons/store/session-store";
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
-import { cn, typographyToStyle } from "@/components/ui";
+import { typographyToStyle } from "@/components/ui";
 import { CheckoutProgress } from "@/components/commerce/CheckoutProgress";
 import { toast } from "sonner";
 
@@ -88,16 +89,17 @@ export default function CartPage() {
                 const unitPrice = item.salePrice ?? item.price;
                 return (
                   <CartItemRow
-                    key={item.id}
+                    key={getCartItemKey(item)}
                     name={item.name}
+                    variantLabel={formatSelectedOptions(item.selectedOptions)}
                     imageUrl={item.imageUrl ?? undefined}
                     quantity={item.quantity}
                     unitPrice={unitPrice}
                     lineTotal={unitPrice * item.quantity}
                     onQuantityChange={(next) =>
-                      void updateItemQuantity(item.id, next)
+                      void updateItemQuantity(getCartItemKey(item), next)
                     }
-                    onRemove={() => void removeItem(item.id)}
+                    onRemove={() => void removeItem(getCartItemKey(item))}
                     disabled={isSyncing}
                   />
                 );

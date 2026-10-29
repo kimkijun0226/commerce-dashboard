@@ -1,8 +1,11 @@
+import type { ProductOption } from "@/commons/utils/productOptions";
 import type { ProductReviewSummary } from "@/commons/types/product-review-summary";
 
 export interface Product {
   id: string;
   name: string;
+  brand?: string;
+  options?: ProductOption[];
   price: number;
   salePrice?: number;
   imageUrl: string;

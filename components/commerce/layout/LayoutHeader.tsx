@@ -7,7 +7,7 @@ import Link, { type LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { ButtonHTMLAttributes } from "react";
 import { useState } from "react";
-import { FiMenu, FiSearch, FiShoppingBag, FiUser } from "react-icons/fi";
+import { FiMenu, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
   className?: string;
@@ -33,7 +33,7 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
         className,
       )}
     >
-      <div className="mx-auto flex h-[60px] max-w-[1440px] items-center px-4 sm:px-[160px]">
+      <div className="mx-auto flex h-[60px] max-w-[1800px] items-center px-4 sm:px-6 lg:px-8">
         <button
           type="button"
           className="mr-3 inline-flex items-center justify-center rounded-md p-2 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info) sm:hidden"
@@ -46,13 +46,13 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
 
         <Link
           href="/"
-          className="min-w-0 text-[24px] font-medium leading-6 tracking-normal text-black"
+          className="min-w-0 truncate text-[18px] sm:text-[24px] font-medium leading-6 tracking-normal text-black"
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
           Commerce Dashboard
         </Link>
 
-        <div className="ml-auto flex items-center gap-4">
+        <div className="ml-auto flex shrink-0 items-center gap-1 pl-2 sm:gap-3">
           <IconBtn
             aria-label={isSearchOpen ? "검색 닫기" : "검색 열기"}
             aria-expanded={isSearchOpen}
@@ -80,8 +80,9 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
             <FiUser className="size-6" aria-hidden />
           </IconBtn>
 
+          <span data-cart-target className="relative inline-flex">
           <IconBtn href="/cart" aria-label="장바구니" className="relative">
-            <FiShoppingBag className="size-6" aria-hidden />
+            <FiShoppingCart className="size-6" aria-hidden />
             {displayCartCount > 0 ? (
               <span
                 className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
@@ -95,6 +96,7 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
               </span>
             ) : null}
           </IconBtn>
+          </span>
         </div>
       </div>
 

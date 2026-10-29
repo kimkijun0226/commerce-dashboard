@@ -1,0 +1,2535 @@
+[
+  {
+    "id": "55209097628",
+    "name": "탑텐 코튼 립 스퀘어넥 5부티 MSF2TS2020",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 9800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5520909/55209097628.20260521091326.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5520909/55209097628.20260521091326.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 코튼 립 스퀘어넥 5부티 MSF2TS2020"
+  },
+  {
+    "id": "58214449705",
+    "name": "탑텐 COOL Air 코튼 크루넥 T 반팔 MSG2TS2017",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 14330,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5821444/58214449705.20251223110450.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5821444/58214449705.20251223110450.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 COOL Air 코튼 크루넥 T 반팔 MSG2TS2017"
+  },
+  {
+    "id": "55209086705",
+    "name": "탑텐 쿨에어 코튼 스트라이프 반팔티 MSF2TS2902",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5520908/55209086705.20250609101204.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5520908/55209086705.20250609101204.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨에어 코튼 스트라이프 반팔티 MSF2TS2902"
+  },
+  {
+    "id": "55110987549",
+    "name": "탑텐 그래픽 코튼 반팔티 탑 MSF2TS2102",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 11050,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5511098/55110987549.20250612110442.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5511098/55110987549.20250612110442.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 그래픽 코튼 반팔티 탑 MSF2TS2102"
+  },
+  {
+    "id": "54118679599",
+    "name": "탑텐 쿨에어 코튼 그래픽 반팔 티 MSF2TS2012",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 8930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5411867/54118679599.20250414164016.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5411867/54118679599.20250414164016.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨에어 코튼 그래픽 반팔 티 MSF2TS2012"
+  },
+  {
+    "id": "58728099707",
+    "name": "탑텐 소프트 코튼 립 미니 T 반팔 MSG2TS2905",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 16520,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5872809/58728099707.20260130222801.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5872809/58728099707.20260130222801.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 소프트 코튼 립 미니 T 반팔 MSG2TS2905"
+  },
+  {
+    "id": "54894007896",
+    "name": "탑텐 쿨에어 코튼 크루넥 반팔티 MSF2TS2017",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5489400/54894007896.20250521160907.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5489400/54894007896.20250521160907.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨에어 코튼 크루넥 반팔티 MSF2TS2017"
+  },
+  {
+    "id": "52616125512",
+    "name": "탑텐 오가닉 코튼 그래픽 반팔티 NEWYORK_MSF2TS2101",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 7900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5261612/52616125512.20250805002320.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5261612/52616125512.20250805002320.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 오가닉 코튼 그래픽 반팔티 NEWYORK_MSF2TS2101"
+  },
+  {
+    "id": "52895149377",
+    "name": "탑텐 코튼 콜라보 반팔티 MSF2TS2000",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 8930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5289514/52895149377.20250423142153.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5289514/52895149377.20250423142153.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 코튼 콜라보 반팔티 MSF2TS2000"
+  },
+  {
+    "id": "58739305391",
+    "name": "탑텐 짱셔요 COOL Air 코튼 크루넥 T 반팔 MSG2TS2000",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5873930/58739305391.20260131160327.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5873930/58739305391.20260131160327.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 짱셔요 COOL Air 코튼 크루넥 T 반팔 MSG2TS2000"
+  },
+  {
+    "id": "59507899333",
+    "name": "스파오 코튼스판 세미 크롭 슬림 반팔티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 13460,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5950789/59507899333.20260402211430.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5950789/59507899333.20260402211430.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 [코튼스판] 세미 크롭 슬림 반팔티"
+  },
+  {
+    "id": "59389776102",
+    "name": "스파오 코튼스판 캡소매 절개 반팔티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 25900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5938977/59389776102.20260325192419.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5938977/59389776102.20260325192419.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 코튼스판 캡소매 절개 반팔티"
+  },
+  {
+    "id": "59288592429",
+    "name": "스파오 여성 라운드넥 레귤러핏 반팔티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5928859/59288592429.20260317172652.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5928859/59288592429.20260317172652.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 여성 라운드넥 레귤러핏 반팔티"
+  },
+  {
+    "id": "58191478249",
+    "name": "스파오 코튼스판 골지 긴팔티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 8500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5819147/58191478249.20251218200501.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5819147/58191478249.20251218200501.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 코튼스판 골지 긴팔티"
+  },
+  {
+    "id": "59193238547",
+    "name": "스파오 소로나 라운드넥 반팔티 SPRWG25C06",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 16150,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5919323/59193238547.20260309180351.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5919323/59193238547.20260309180351.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 소로나 라운드넥 반팔티 SPRWG25C06"
+  },
+  {
+    "id": "90597987180",
+    "name": "코튼스판 스파오 세미 크롭 슬림 반팔티 SPRWG25G01",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9059798/90597987180.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9059798/90597987180.1.jpg",
+      "https://shopping-phinf.pstatic.net/main_9072149/90721493505.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[슈퍼적립][코튼스판] 스파오 세미 크롭 슬림 반팔티 SPRWG25G01"
+  },
+  {
+    "id": "56631140854",
+    "name": "스파오 코튼스판 골지 라운드넥 긴팔티 SPLWF49G02",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 7210,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5663114/56631140854.20250920041335.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5663114/56631140854.20250920041335.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 코튼스판 골지 라운드넥 긴팔티 SPLWF49G02"
+  },
+  {
+    "id": "60232441036",
+    "name": "스파오 코튼스판 세미 크롭 슬림 반팔티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023244/60232441036.20260529203132.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023244/60232441036.20260529203132.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 코튼스판 세미 크롭 슬림 반팔티"
+  },
+  {
+    "id": "90986515044",
+    "name": "코튼스판 스파오 캡소매 절개 반팔티 SPRWG37G01",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 25900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9098651/90986515044.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9098651/90986515044.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[N배송][코튼스판] 스파오 캡소매 절개 반팔티 SPRWG37G01"
+  },
+  {
+    "id": "58282227949",
+    "name": "스파오 프렌치테리 여성 라운드넥 스웨트셔츠",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5828222/58282227949.20251226180744.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5828222/58282227949.20251226180744.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 프렌치테리 여성 라운드넥 스웨트셔츠"
+  },
+  {
+    "id": "59571616907",
+    "name": "에잇세컨즈 베이직 라운드넥 반소매 티셔츠 355142LY1",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 5900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5957161/59571616907.20260407112757.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5957161/59571616907.20260407112757.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 베이직 라운드넥 반소매 티셔츠 355142LY1"
+  },
+  {
+    "id": "59378864578",
+    "name": "에잇세컨즈 베이직 티셔츠 나시",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 5900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5937886/59378864578.20260418150359.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5937886/59378864578.20260418150359.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 베이직 티셔츠 나시"
+  },
+  {
+    "id": "59809776687",
+    "name": "에잇세컨즈 스트라이프 오버핏 칼라 반소매 티셔츠 356442C",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 29390,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5980977/59809776687.20260515152356.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5980977/59809776687.20260515152356.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 스트라이프 오버핏 칼라 반소매 티셔츠 356442C"
+  },
+  {
+    "id": "59706278945",
+    "name": "에잇세컨즈 가먼트다잉 오버핏 넘버링 반소매 티셔츠 애쉬 356442CMY4",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 24430,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5970627/59706278945.20260417194223.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5970627/59706278945.20260417194223.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 가먼트다잉 오버핏 넘버링 반소매 티셔츠 애쉬 356442CMY4"
+  },
+  {
+    "id": "59896256342",
+    "name": "에잇세컨즈 프루티 오버핏 반소매 티셔츠",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 14920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5989625/59896256342.20260503143907.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5989625/59896256342.20260503143907.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 프루티 오버핏 반소매 티셔츠"
+  },
+  {
+    "id": "59776957520",
+    "name": "에잇세컨즈 그런지 오버핏 다잉 그래픽 티셔츠 베이지",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 13930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5977695/59776957520.20260509052351.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5977695/59776957520.20260509052351.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 그런지 오버핏 다잉 그래픽 티셔츠 베이지"
+  },
+  {
+    "id": "90811902997",
+    "name": "여성 에잇세컨즈 베이직 티셔츠 나시 균일가 10종 택1 (10종 택1)",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 5900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9081190/90811902997.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9081190/90811902997.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "여성 에잇세컨즈 베이직 티셔츠 나시 균일가 10종 택1 (10종 택1)"
+  },
+  {
+    "id": "58618083026",
+    "name": "에잇세컨즈 베이직 라운드넥 반소매 티셔츠 356142cm13",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 11170,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5861808/58618083026.20260124094153.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5861808/58618083026.20260124094153.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 베이직 라운드넥 반소매 티셔츠 356142cm13"
+  },
+  {
+    "id": "88927783361",
+    "name": "에잇세컨즈 여성 베이직 라운드넥 반소매 티셔츠 화이트 (355142LY11)",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 5900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8892778/88927783361.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8892778/88927783361.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[에잇세컨즈] 여성 베이직 라운드넥 반소매 티셔츠 화이트 (355142LY11)"
+  },
+  {
+    "id": "52594408644",
+    "name": "에잇세컨즈 베이직 라운드넥 반소매 티셔츠 - 화이트 흰색 355142LY11",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "gender": "여성",
+    "price": 14900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5259440/52594408644.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5259440/52594408644.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[에잇세컨즈] 베이직 라운드넥 반소매 티셔츠 - 화이트 흰색 355142LY11"
+  },
+  {
+    "id": "59885539866",
+    "name": "탑텐 시어 레이스 오버핏 셔츠 MSG3WC2200",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 35220,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5988553/59885539866.20260503120224.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5988553/59885539866.20260503120224.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 시어 레이스 오버핏 셔츠 MSG3WC2200"
+  },
+  {
+    "id": "59533437250",
+    "name": "탑텐 시어 오버핏 셔츠 MSG3WC2201",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 39900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5953343/59533437250.20260404141702.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5953343/59533437250.20260404141702.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 시어 오버핏 셔츠 MSG3WC2201"
+  },
+  {
+    "id": "57829336233",
+    "name": "탑텐 오버핏 셔츠 MSG2WC2502",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 27100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5782933/57829336233.20251121103557.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5782933/57829336233.20251121103557.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 오버핏 셔츠 MSG2WC2502"
+  },
+  {
+    "id": "51426991309",
+    "name": "탑텐 옥스포드 오버핏 셔츠 MSF5WC3911",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5142699/51426991309.20250327173130.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5142699/51426991309.20250327173130.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 옥스포드 오버핏 셔츠 MSF5WC3911"
+  },
+  {
+    "id": "57555734838",
+    "name": "탑텐 포플린 오버핏 셔츠 MSF2WC2502",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5755573/57555734838.20251104100432.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5755573/57555734838.20251104100432.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 포플린 오버핏 셔츠 MSF2WC2502"
+  },
+  {
+    "id": "59350232163",
+    "name": "탑텐 나일론 오버핏 셔츠 반팔 MSG2WC2004",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 29070,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5935023/59350232163.20260322044822.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5935023/59350232163.20260322044822.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 나일론 오버핏 셔츠 반팔 MSG2WC2004"
+  },
+  {
+    "id": "57883707617",
+    "name": "탑텐 옥스포드 루즈핏 셔츠 MSG2WC2911",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5788370/57883707617.20251124041253.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5788370/57883707617.20251124041253.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 옥스포드 루즈핏 셔츠 MSG2WC2911"
+  },
+  {
+    "id": "59177570322",
+    "name": "탑텐 데님 오버핏 크롭 셔츠 반팔 MSG2WC2303",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 26770,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5917757/59177570322.20260307233348.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5917757/59177570322.20260307233348.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 데님 오버핏 크롭 셔츠 반팔 MSG2WC2303"
+  },
+  {
+    "id": "60232158636",
+    "name": "탑텐 여성 시어서커 오버핏 셔츠 MSG3WC2300",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 37100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023215/60232158636.20260529195122.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023215/60232158636.20260529195122.jpg",
+      "https://shopping-phinf.pstatic.net/main_6033578/60335789217.20260607004037.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 시어서커 오버핏 셔츠 MSG3WC2300"
+  },
+  {
+    "id": "57140999647",
+    "name": "탑텐 옥스포드 루즈핏 셔츠 MSF5WC2901",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 8670,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5714099/57140999647.20251009185554.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5714099/57140999647.20251009185554.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 옥스포드 루즈핏 셔츠 MSF5WC2901"
+  },
+  {
+    "id": "59307007430",
+    "name": "스파오 오버핏 체크 셔츠 SPYCG37C01",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 23780,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5930700/59307007430.20260318163906.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5930700/59307007430.20260318163906.jpg",
+      "https://shopping-phinf.pstatic.net/main_8912626/89126268466.3.jpg",
+      "https://shopping-phinf.pstatic.net/main_8937916/89379167345.2.jpg",
+      "https://shopping-phinf.pstatic.net/main_9078851/90788517681.5.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 체크 셔츠 SPYCG37C01"
+  },
+  {
+    "id": "59289252667",
+    "name": "스파오 오버핏 반팔 데님 셔츠 SPYJG24C01",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 25140,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5928925/59289252667.20260317183706.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5928925/59289252667.20260317183706.jpg",
+      "https://shopping-phinf.pstatic.net/main_9083618/90836183208.2.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 반팔 데님 셔츠 SPYJG24C01"
+  },
+  {
+    "id": "59475007560",
+    "name": "스파오 오버핏 반팔 셔츠 SPYWG25C05",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 33750,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5947500/59475007560.20260331200742.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5947500/59475007560.20260331200742.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 반팔 셔츠 SPYWG25C05"
+  },
+  {
+    "id": "58740769574",
+    "name": "스파오 오버핏 옥스포드 셔츠 SPYWG23C51",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5874076/58740769574.20260131193204.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5874076/58740769574.20260131193204.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 옥스포드 셔츠 SPYWG23C51"
+  },
+  {
+    "id": "59639374585",
+    "name": "스파오 오버핏 반팔 옥스포드 셔츠 SPYWG25CY2",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 31920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5963937/59639374585.20260412202146.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5963937/59639374585.20260412202146.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 반팔 옥스포드 셔츠 SPYWG25CY2"
+  },
+  {
+    "id": "58630153414",
+    "name": "스파오 오버핏 데님 셔츠 SPYJG23C01",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 25900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5863015/58630153414.20260123180217.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5863015/58630153414.20260123180217.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 데님 셔츠 SPYJG23C01"
+  },
+  {
+    "id": "60074363264",
+    "name": "스파오 고밀도코튼 오버핏 셔츠 바이오워싱",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 9040,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6007436/60074363264.20260517165357.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6007436/60074363264.20260517165357.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 고밀도코튼 오버핏 셔츠 바이오워싱"
+  },
+  {
+    "id": "58739384260",
+    "name": "스파오 파인코튼 릴랙스핏 셔츠 SPYWG23C01",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 18400,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5873938/58739384260.20260131163550.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5873938/58739384260.20260131163550.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 파인코튼 릴랙스핏 셔츠 SPYWG23C01"
+  },
+  {
+    "id": "60453229489",
+    "name": "스파오 오버핏 시스루 긴팔 셔츠 SPYWG26C12",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 39900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6045322/60453229489.20260615161550.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6045322/60453229489.20260615161550.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 시스루 긴팔 셔츠 SPYWG26C12"
+  },
+  {
+    "id": "60054999638",
+    "name": "스파오 SPAO 리넨블렌드 오버핏 반팔 셔츠 SPYWG25M04",
+    "brand": "스파오",
+    "category": "셔츠",
+    "gender": "남성",
+    "price": 35910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6005499/60054999638.20260515191139.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6005499/60054999638.20260515191139.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 SPAO 리넨블렌드 오버핏 반팔 셔츠 SPYWG25M04"
+  },
+  {
+    "id": "60003768253",
+    "name": "에잇세컨즈 레이온 혼방 오버핏 시어 셔츠 그린",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 33000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6000376/60003768253.20260511235141.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6000376/60003768253.20260511235141.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이온 혼방 오버핏 시어 셔츠 그린"
+  },
+  {
+    "id": "59517628684",
+    "name": "에잇세컨즈 코튼 빅칼라 셔츠 356364WM6",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 29090,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5951762/59517628684.20260403124134.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5951762/59517628684.20260403124134.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 빅칼라 셔츠 356364WM6"
+  },
+  {
+    "id": "59706687966",
+    "name": "에잇세컨즈 레이어드 반팔 오버핏 셔츠 356465wc12",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 41780,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5970668/59706687966.20260418072446.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5970668/59706687966.20260418072446.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이어드 반팔 오버핏 셔츠 356465wc12"
+  },
+  {
+    "id": "59688770786",
+    "name": "에잇세컨즈 코튼 크롭 셔츠 324264LY5",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 23940,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5968877/59688770786.20260416141901.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5968877/59688770786.20260416141901.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 크롭 셔츠 324264LY5"
+  },
+  {
+    "id": "58587591109",
+    "name": "에잇세컨즈 레이스업 오버핏 셔츠 356264wm61",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 41080,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5858759/58587591109.20260121004529.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5858759/58587591109.20260121004529.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이스업 오버핏 셔츠 356264wm61"
+  },
+  {
+    "id": "60421720735",
+    "name": "에잇세컨즈 셔츠 옥스포드 남방 레이스 라운드넥 블라우스 6234085 356464SM11",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 43190,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6042172/60421720735.20260612181230.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6042172/60421720735.20260612181230.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 셔츠 옥스포드 남방 레이스 라운드넥 블라우스 6234085 356464SM11"
+  },
+  {
+    "id": "60424559277",
+    "name": "에잇세컨즈 셔츠 옥스포드 남방 고방 체크 크롭 블라우스 36 4229295 114765AY36",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 26680,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6042455/60424559277.20260613002005.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6042455/60424559277.20260613002005.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 셔츠 옥스포드 남방 고방 체크 크롭 블라우스 36 4229295 114765AY36"
+  },
+  {
+    "id": "59306861592",
+    "name": "에잇세컨즈 넥 리본 오버핏 셔츠 356364wc3y",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 41160,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5930686/59306861592.20260318161239.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5930686/59306861592.20260318161239.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 넥 리본 오버핏 셔츠 356364wc3y"
+  },
+  {
+    "id": "60442000419",
+    "name": "에잇세컨즈 셔츠 옥스포드 남방 레이스 슬리브리스 블라우스 5152762 325465LY25",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 28500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6044200/60442000419.20260614155641.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6044200/60442000419.20260614155641.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 셔츠 옥스포드 남방 레이스 슬리브리스 블라우스 5152762 325465LY25"
+  },
+  {
+    "id": "60131382162",
+    "name": "에잇세컨즈 60수 코튼 포플린 오버핏 반소매 셔츠 스카이 블루",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "gender": "여성",
+    "price": 13900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6013138/60131382162.20260521230537.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6013138/60131382162.20260521230537.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 60수 코튼 포플린 오버핏 반소매 셔츠 스카이 블루"
+  },
+  {
+    "id": "53416155715",
+    "name": "탑텐 리넨라이크 와이드 밴딩 팬츠 MSF2PP2602",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 12900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5341615/53416155715.20250801114340.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5341615/53416155715.20250801114340.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 리넨라이크 와이드 밴딩 팬츠 MSF2PP2602"
+  },
+  {
+    "id": "56911515303",
+    "name": "탑텐 수퍼 스트레치 와이드 팬츠 MBG5PT2259",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 12900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5691151/56911515303.20250924234242.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5691151/56911515303.20250924234242.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수퍼 스트레치 와이드 팬츠 MBG5PT2259"
+  },
+  {
+    "id": "58894640603",
+    "name": "탑텐 COOL 와이드 이지 팬츠 MSG2PP2205",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5889464/58894640603.20260212023931.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5889464/58894640603.20260212023931.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 COOL 와이드 이지 팬츠 MSG2PP2205"
+  },
+  {
+    "id": "55449365393",
+    "name": "탑텐 수퍼 스트레치 스트레이트 팬츠 MBG5PT2258",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 10430,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5544936/55449365393.20250726001400.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5544936/55449365393.20250726001400.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수퍼 스트레치 스트레이트 팬츠 MBG5PT2258"
+  },
+  {
+    "id": "53860717900",
+    "name": "탑텐 트윌 와이드 밴딩 팬츠 MSF2PP2205",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 17900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5386071/53860717900.20250411165842.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5386071/53860717900.20250411165842.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 트윌 와이드 밴딩 팬츠 MSF2PP2205"
+  },
+  {
+    "id": "59707033339",
+    "name": "탑텐 COOL 리넨블렌드 와이드 팬츠 MSG2PP2602",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 29900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5970703/59707033339.20260417212914.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5970703/59707033339.20260417212914.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 COOL 리넨블렌드 와이드 팬츠 MSG2PP2602"
+  },
+  {
+    "id": "54578740797",
+    "name": "탑텐 수퍼 스트레치 스트레이트 팬츠 MBF5PT2218",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 10430,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5457874/54578740797.20250815150324.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5457874/54578740797.20250815150324.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수퍼 스트레치 스트레이트 팬츠 MBF5PT2218"
+  },
+  {
+    "id": "47976154769",
+    "name": "탑텐 BALANCE 수퍼 스트레치 스트레이트 팬츠 MBF5PT2258",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 10430,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4797615/47976154769.20240531121130.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4797615/47976154769.20240531121130.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 BALANCE 수퍼 스트레치 스트레이트 팬츠 MBF5PT2258"
+  },
+  {
+    "id": "59053816065",
+    "name": "탑텐 수퍼 스트레치 스트레이트 팬츠 mbg5pt2218",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 13510,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5905381/59053816065.20260226014406.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5905381/59053816065.20260226014406.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수퍼 스트레치 스트레이트 팬츠 mbg5pt2218"
+  },
+  {
+    "id": "57114514753",
+    "name": "탑텐 프리미엄 수퍼 스트레치 와이드 팬츠 MBF5PT2217",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 16910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5711451/57114514753.20251007234159.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5711451/57114514753.20251007234159.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 프리미엄 수퍼 스트레치 와이드 팬츠 MBF5PT2217"
+  },
+  {
+    "id": "59537759658",
+    "name": "스파오 COOL 와이드 코튼 팬츠",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 44910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5953775/59537759658.20260404235241.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5953775/59537759658.20260404235241.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 COOL 와이드 코튼 팬츠"
+  },
+  {
+    "id": "59537699019",
+    "name": "스파오 COOL 여성 벌룬 와이드 코튼 팬츠",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 49900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5953769/59537699019.20260404224425.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5953769/59537699019.20260404224425.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 COOL 여성 벌룬 와이드 코튼 팬츠"
+  },
+  {
+    "id": "59402120040",
+    "name": "스파오 에어비스코스 골지 롱 와이드 팬츠",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 27400,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5940212/59402120040.20260326172258.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5940212/59402120040.20260326172258.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 에어비스코스 골지 롱 와이드 팬츠"
+  },
+  {
+    "id": "59080396542",
+    "name": "스파오 벌룬 와이드 팬츠 나일론",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 25130,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5908039/59080396542.20260227191300.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5908039/59080396542.20260227191300.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 벌룬 와이드 팬츠 나일론"
+  },
+  {
+    "id": "59537755972",
+    "name": "스파오 여성 와이드 밴딩 팬츠",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 39900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5953775/59537755972.20260404234835.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5953775/59537755972.20260404234835.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 여성 와이드 밴딩 팬츠"
+  },
+  {
+    "id": "60232159703",
+    "name": "SPAO 여성 와이드 밴딩 팬츠 레이온 SPTCG25G04",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 29900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023215/60232159703.20260612040109.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023215/60232159703.20260612040109.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "SPAO 여성 와이드 밴딩 팬츠 레이온 SPTCG25G04"
+  },
+  {
+    "id": "58442458101",
+    "name": "스파오 프렌치테리 여성 와이드 스웨트팬츠",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 13230,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5844245/58442458101.20260109170803.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5844245/58442458101.20260109170803.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 프렌치테리 여성 와이드 스웨트팬츠"
+  },
+  {
+    "id": "57907927214",
+    "name": "스파오 트윌 코튼 와이드 팬츠 SPTCF49G01",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 13520,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5790792/57907927214.20251125192038.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5790792/57907927214.20251125192038.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 트윌 코튼 와이드 팬츠 SPTCF49G01"
+  },
+  {
+    "id": "59776814333",
+    "name": "스파오 투턱 와이드 슬랙스 나일론 SPTAG37W11",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 31920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5977681/59776814333.20260423233345.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5977681/59776814333.20260423233345.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 투턱 와이드 슬랙스 나일론 SPTAG37W11"
+  },
+  {
+    "id": "56113660575",
+    "name": "스파오 2 웨이 카고 와이드 나일론 팬츠 SPTCF23G03",
+    "brand": "스파오",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 32390,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5611366/56113660575.20250805095253.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5611366/56113660575.20250805095253.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 2 웨이 카고 와이드 나일론 팬츠 SPTCF23G03"
+  },
+  {
+    "id": "60124737596",
+    "name": "에잇세컨즈 올데이 크리즈 와이드 팬츠 356421CM8",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 49900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6012473/60124737596.20260521095613.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6012473/60124737596.20260521095613.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 올데이 크리즈 와이드 팬츠 356421CM8"
+  },
+  {
+    "id": "60054582819",
+    "name": "에잇세컨즈 레이온 와이드 밴딩 팬츠",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 29450,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6005458/60054582819.20260515182952.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6005458/60054582819.20260515182952.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이온 와이드 밴딩 팬츠"
+  },
+  {
+    "id": "60054444701",
+    "name": "에잇세컨즈 레이온 와이드 밴딩 팬츠 356521CM15",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 29920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6005444/60054444701.20260515182803.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6005444/60054444701.20260515182803.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이온 와이드 밴딩 팬츠 356521CM15"
+  },
+  {
+    "id": "59818823131",
+    "name": "에잇세컨즈 리넨라이크 세미와이드 팬츠 356421wm90",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 36000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5981882/59818823131.20260427234304.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5981882/59818823131.20260427234304.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 리넨라이크 세미와이드 팬츠 356421wm90"
+  },
+  {
+    "id": "59730782368",
+    "name": "에잇세컨즈 매일슬랙스 와이드 356421wm45",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 29920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5973078/59730782368.20260420070240.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5973078/59730782368.20260420070240.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 매일슬랙스 와이드 356421wm45"
+  },
+  {
+    "id": "59899325391",
+    "name": "에잇세컨즈 주름지 와이드 밴딩 팬츠 356521wm15",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 37420,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5989932/59899325391.20260504011746.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5989932/59899325391.20260504011746.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 주름지 와이드 밴딩 팬츠 356521wm15"
+  },
+  {
+    "id": "59789655799",
+    "name": "에잇세컨즈 코튼 스판 커브드 팬츠 356421wm7",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 38630,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5978965/59789655799.20260425182048.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5978965/59789655799.20260425182048.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 스판 커브드 팬츠 356421wm7"
+  },
+  {
+    "id": "59801546780",
+    "name": "에잇세컨즈 크레이프 밴딩 와이드핏 슬랙스 456421MM55",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 40520,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5980154/59801546780.20260426002156.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5980154/59801546780.20260426002156.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 크레이프 밴딩 와이드핏 슬랙스 456421MM55"
+  },
+  {
+    "id": "59378843948",
+    "name": "에잇세컨즈 와이드핏 밴딩 슬랙스 456321MMHA",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 29450,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5937884/59378843948.20260415164101.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5937884/59378843948.20260415164101.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 와이드핏 밴딩 슬랙스 456321MMHA"
+  },
+  {
+    "id": "59662289190",
+    "name": "에잇세컨즈 코튼 밴딩 이지 팬츠",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "gender": "여성",
+    "price": 33670,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5966228/59662289190.20260415064912.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5966228/59662289190.20260415064912.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 밴딩 이지 팬츠"
+  },
+  {
+    "id": "53432052123",
+    "name": "탑텐 수피마 코튼 스퀘어넥 스웨터 MSF2ER2703",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 12900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5343205/53432052123.20250414164459.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5343205/53432052123.20250414164459.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수피마 코튼 스퀘어넥 스웨터 MSF2ER2703"
+  },
+  {
+    "id": "54074570787",
+    "name": "탑텐 수피마 코튼 버튼 카라 스웨터 MSF2ET2701",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5407457/54074570787.20250411164542.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5407457/54074570787.20250411164542.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수피마 코튼 버튼 카라 스웨터 MSF2ET2701"
+  },
+  {
+    "id": "53449085697",
+    "name": "탑텐 수피마 코튼 플레인 스웨터 MSF2ER2702",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 10870,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5344908/53449085697.20250414101302.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5344908/53449085697.20250414101302.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수피마 코튼 플레인 스웨터 MSF2ER2702"
+  },
+  {
+    "id": "53415655878",
+    "name": "탑텐 수피마 코튼 케이블 스웨터 MSF2ER2701",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5341565/53415655878.20250804234651.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5341565/53415655878.20250804234651.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수피마 코튼 케이블 스웨터 MSF2ER2701"
+  },
+  {
+    "id": "53267463103",
+    "name": "탑텐 Y넥 베이직 가디건 MSF2EC2501",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 11010,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5326746/53267463103.20250411165201.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5326746/53267463103.20250411165201.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 Y넥 베이직 가디건 MSF2EC2501"
+  },
+  {
+    "id": "46288971561",
+    "name": "탑텐 수피마 코튼 케이블 반팔 스웨터 MSE2ER2901",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 36700,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4628897/46288971561.20250322050837.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4628897/46288971561.20250322050837.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수피마 코튼 케이블 반팔 스웨터 MSE2ER2901"
+  },
+  {
+    "id": "53352939127",
+    "name": "탑텐 쿨에어코튼 더블니트 반팔 스웨트셔츠 MSF2TR2901",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 12300,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5335293/53352939127.20250305111049.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5335293/53352939127.20250305111049.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨에어코튼 더블니트 반팔 스웨트셔츠 MSF2TR2901"
+  },
+  {
+    "id": "46599306653",
+    "name": "탑텐 수피마 코튼 모달 반팔 스웨터 MSE2ER2903",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 13300,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4659930/46599306653.20250204052628.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4659930/46599306653.20250204052628.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 수피마 코튼 모달 반팔 스웨터 MSE2ER2903"
+  },
+  {
+    "id": "90614913691",
+    "name": "탑텐 여성 수피마 코튼 스퀘어넥 스웨터_MSF2ER2703",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 12900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9061491/90614913691.3.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9061491/90614913691.3.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[N배송] 탑텐 여성 수피마 코튼 스퀘어넥 스웨터_MSF2ER2703"
+  },
+  {
+    "id": "90985419689",
+    "name": "탑텐 여성 수피마 코튼 케이블 스웨터_MSF2ER2701",
+    "brand": "탑텐",
+    "category": "니트",
+    "gender": "여성",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9098541/90985419689.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9098541/90985419689.1.jpg",
+      "https://shopping-phinf.pstatic.net/main_8909842/89098424583.7.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[N배송] 탑텐 여성 수피마 코튼 케이블 스웨터_MSF2ER2701"
+  },
+  {
+    "id": "56471544132",
+    "name": "스파오 메리노울 반팔니트 SPKWF49WS6",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 10120,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5647154/56471544132.20251017194453.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5647154/56471544132.20251017194453.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 메리노울 반팔니트 SPKWF49WS6"
+  },
+  {
+    "id": "56281218413",
+    "name": "스파오 케이블 라운드넥 스웨터 SPKWF4TG02",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 9040,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5628121/56281218413.20250815065851.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5628121/56281218413.20250815065851.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 케이블 라운드넥 스웨터 SPKWF4TG02"
+  },
+  {
+    "id": "49701120487",
+    "name": "스파오 소프트얀 라운드넥 스웨터 SPKWE49W02",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 10630,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4970112/49701120487.20250305094818.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4970112/49701120487.20250305094818.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 소프트얀 라운드넥 스웨터 SPKWE49W02"
+  },
+  {
+    "id": "58137473315",
+    "name": "스파오 소프트얀 여성 라운드넥 니트 SPKWG23W01",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 11730,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5813747/58137473315.20251214192319.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5813747/58137473315.20251214192319.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 소프트얀 여성 라운드넥 니트 SPKWG23W01"
+  },
+  {
+    "id": "57883612658",
+    "name": "재고상품 스파오 여90 니트티 가을겨울 01993",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 16900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5788361/57883612658.20251124132751.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5788361/57883612658.20251124132751.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "재고상품 스파오 여90 니트티 가을겨울 01993"
+  },
+  {
+    "id": "59684368772",
+    "name": "스파오 메리노울100 라운드넥 반팔니트 SPKWG23W20",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 27800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5968436/59684368772.20260416080304.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5968436/59684368772.20260416080304.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 메리노울100 라운드넥 반팔니트 SPKWG23W20"
+  },
+  {
+    "id": "56662274905",
+    "name": "스파오 헤어리 라운드넥 스웨터 SPKWF4TG01",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5666227/56662274905.20251017193244.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5666227/56662274905.20251017193244.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 헤어리 라운드넥 스웨터 SPKWF4TG01"
+  },
+  {
+    "id": "52896687787",
+    "name": "스파오 메리노울 라운드넥 릴렉스핏 5부 니트 SPKWF23W04",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 13500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5289668/52896687787.20250508120321.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5289668/52896687787.20250508120321.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 메리노울 라운드넥 릴렉스핏 5부 니트 SPKWF23W04"
+  },
+  {
+    "id": "56184097645",
+    "name": "스파오 유니 라운드넥 스웨터 SPKWB4TC01",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 11100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5618409/56184097645.20251017195421.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5618409/56184097645.20251017195421.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 유니 라운드넥 스웨터 SPKWB4TC01"
+  },
+  {
+    "id": "56599224841",
+    "name": "스파오 라운드넥 캐시미어 니트 SPKWF4TW01",
+    "brand": "스파오",
+    "category": "니트",
+    "gender": "여성",
+    "price": 55040,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5659922/56599224841.20250905064106.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5659922/56599224841.20250905064106.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 라운드넥 캐시미어 니트 SPKWF4TW01"
+  },
+  {
+    "id": "59983480007",
+    "name": "에잇세컨즈 슬럽 라운드넥 반소매 니트 456451CM61",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 29090,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5998348/59983480007.20260510032612.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5998348/59983480007.20260510032612.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 슬럽 라운드넥 반소매 니트 456451CM61"
+  },
+  {
+    "id": "59378858542",
+    "name": "에잇세컨즈 라운드넥 끈여밈 긴팔 풀오버 356351WCC1",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 37420,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5937885/59378858542.20260326071135.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5937885/59378858542.20260326071135.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 라운드넥 끈여밈 긴팔 풀오버 356351WCC1"
+  },
+  {
+    "id": "55850582042",
+    "name": "에잇세컨즈 리넨 블렌드 라운드넥 반소매 풀오버 325451LY50",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5585058/55850582042.20250718201645.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5585058/55850582042.20250718201645.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 리넨 블렌드 라운드넥 반소매 풀오버 325451LY50"
+  },
+  {
+    "id": "60335778879",
+    "name": "에잇세컨즈 반팔 여름니트 라운드넥 풀오버 라이트 4518309 164X51FY5Y",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 14900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6033577/60335778879.20260613104713.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6033577/60335778879.20260613104713.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 반팔 여름니트 라운드넥 풀오버 라이트 4518309 164X51FY5Y"
+  },
+  {
+    "id": "49701250450",
+    "name": "에잇세컨즈 반팔 여름니트 베이직 라운드넥 긴소매 풀오버 카키 4302340 324851LY4H",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 6900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4970125/49701250450.20250104061500.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4970125/49701250450.20250104061500.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 반팔 여름니트 베이직 라운드넥 긴소매 풀오버 카키 4302340 324851LY4H"
+  },
+  {
+    "id": "55631072062",
+    "name": "에잇세컨즈 밀라노 라운드 반소매 니트 425451LY25",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 11900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5563107/55631072062.20250719030515.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5563107/55631072062.20250719030515.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 밀라노 라운드 반소매 니트 425451LY25"
+  },
+  {
+    "id": "60345560673",
+    "name": "에잇세컨즈 반팔 여름니트 라운드넥 풀오버 스카이 4518304 164X51FY5Q",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 14900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6034556/60345560673.20260609013800.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6034556/60345560673.20260609013800.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 반팔 여름니트 라운드넥 풀오버 스카이 4518304 164X51FY5Q"
+  },
+  {
+    "id": "49209474249",
+    "name": "에잇세컨즈 스트라이프 베이직 반소매 풀오버 324751LY70",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 8320,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4920947/49209474249.20240719042654.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4920947/49209474249.20240719042654.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 스트라이프 베이직 반소매 풀오버 324751LY70"
+  },
+  {
+    "id": "59389460650",
+    "name": "에잇세컨즈 레터링 반팔 풀오버 356351wma",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 21800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5938946/59389460650.20260325184224.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5938946/59389460650.20260325184224.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레터링 반팔 풀오버 356351wma"
+  },
+  {
+    "id": "60074705637",
+    "name": "에잇세컨즈 스퀘어넥 반소매 골지풀오버 356551wm3",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "gender": "여성",
+    "price": 33640,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6007470/60074705637.20260517181018.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6007470/60074705637.20260517181018.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 스퀘어넥 반소매 골지풀오버 356551wm3"
+  },
+  {
+    "id": "53939476674",
+    "name": "탑텐 쿨터치 라운드넥 숏슬리브 자켓 재킷 MSF2KG2501",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 21980,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5393947/53939476674.20250426101158.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5393947/53939476674.20250426101158.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨터치 라운드넥 숏슬리브 자켓 재킷 MSF2KG2501"
+  },
+  {
+    "id": "59177769016",
+    "name": "탑텐 라운드넥 7부 재킷 MSF2KG2504",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 16930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5917776/59177769016.20260308012758.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5917776/59177769016.20260308012758.jpg",
+      "https://shopping-phinf.pstatic.net/main_5984775/59847753480.20260430002947.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 라운드넥 7부 재킷 MSF2KG2504"
+  },
+  {
+    "id": "59177661118",
+    "name": "탑텐 데님 라운드넥 재킷5부 MSG2KG2504",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 27900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5917766/59177661118.20260308005320.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5917766/59177661118.20260308005320.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 데님 라운드넥 재킷5부 MSG2KG2504"
+  },
+  {
+    "id": "60251465014",
+    "name": "탑텐 여성 데님 라운드넥 재킷5부",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 29900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6025146/60251465014.20260531164230.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6025146/60251465014.20260531164230.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 데님 라운드넥 재킷5부"
+  },
+  {
+    "id": "59030257694",
+    "name": "여성 라운드넥 7부 재킷",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5903025/59030257694.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5903025/59030257694.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "여성 라운드넥 7부 재킷"
+  },
+  {
+    "id": "52909612769",
+    "name": "탑텐 오버핏 테일러드 재킷 MSF2KG2502",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 31160,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5290961/52909612769.20250210112359.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5290961/52909612769.20250210112359.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 오버핏 테일러드 재킷 MSF2KG2502"
+  },
+  {
+    "id": "58630151274",
+    "name": "탑텐 여성 라운드넥 재킷 MSG1KG2501",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 56400,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5863015/58630151274.20260123175555.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5863015/58630151274.20260123175555.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 라운드넥 재킷 MSG1KG2501"
+  },
+  {
+    "id": "59980879672",
+    "name": "탑텐 여성 베이직 싱글 자켓 BEP MSC5KG2502 EKX454 BCB042 90",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 27600,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5998087/59980879672.20260509195523.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5998087/59980879672.20260509195523.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 베이직 싱글 자켓 BEP MSC5KG2502 EKX454 BCB042 90"
+  },
+  {
+    "id": "90738665466",
+    "name": "탑텐 여성 라운드넥 7부 재킷_MSF2KG2504",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9073866/90738665466.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9073866/90738665466.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 라운드넥 7부 재킷_MSF2KG2504"
+  },
+  {
+    "id": "89213317886",
+    "name": "탑텐 여성 쿨터치 숏 슬리브 라운드넥 재킷_MSF2KG2501",
+    "brand": "탑텐",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 25900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8921331/89213317886.3.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8921331/89213317886.3.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 쿨터치 숏 슬리브 라운드넥 재킷_MSF2KG2501"
+  },
+  {
+    "id": "58878311195",
+    "name": "스파오 여성 오버핏 재킷 SPJKGA9W02",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 62740,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5887831/58878311195.20260210192452.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5887831/58878311195.20260210192452.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 여성 오버핏 재킷 SPJKGA9W02"
+  },
+  {
+    "id": "56584457869",
+    "name": "스파오 라운드넥 재킷 SPJKF4TW05",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 29100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5658445/56584457869.20250904063656.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5658445/56584457869.20250904063656.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 라운드넥 재킷 SPJKF4TW05"
+  },
+  {
+    "id": "56630643963",
+    "name": "스파오 부클 라운드넥 재킷 SPJKF4TW15",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 31900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5663064/56630643963.20250907193617.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5663064/56630643963.20250907193617.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 부클 라운드넥 재킷 SPJKF4TW15"
+  },
+  {
+    "id": "56629807529",
+    "name": "스파오 오버핏 재킷 SPJKF49W02",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 48850,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5662980/56629807529.20251024003045.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5662980/56629807529.20251024003045.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 오버핏 재킷 SPJKF49W02"
+  },
+  {
+    "id": "59346136114",
+    "name": "스파오 퍼 라운드넥 재킷 SPJLE4VW21",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 41380,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5934613/59346136114.20260322010900.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5934613/59346136114.20260322010900.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 퍼 라운드넥 재킷 SPJLE4VW21"
+  },
+  {
+    "id": "52830922863",
+    "name": "스파오 포우먼 (쿨비즈) 스탠다드핏 싱글 자켓_SPJKB24W01",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 23010,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5283092/52830922863.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5283092/52830922863.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 포우먼 (쿨비즈) 스탠다드핏 싱글 자켓_SPJKB24W01"
+  },
+  {
+    "id": "59389772325",
+    "name": "스파오 벨티드 반팔 재킷 SPJKG25W01",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 45440,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5938977/59389772325.20260325192039.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5938977/59389772325.20260325192039.jpg",
+      "https://shopping-phinf.pstatic.net/main_9085754/90857546772.1.jpg",
+      "https://shopping-phinf.pstatic.net/main_9101100/91011005339.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 벨티드 반팔 재킷 SPJKG25W01"
+  },
+  {
+    "id": "56584458117",
+    "name": "스파오 2-WAY 재킷 SPJPF4TG21",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 17110,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5658445/56584458117.20251017183710.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5658445/56584458117.20251017183710.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 2-WAY 재킷 SPJPF4TG21"
+  },
+  {
+    "id": "59288005371",
+    "name": "스파오 스트랩 트위드 반팔 재킷 SPJKG24W02",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 71910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5928800/59288005371.20260317163723.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5928800/59288005371.20260317163723.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 스트랩 트위드 반팔 재킷 SPJKG24W02"
+  },
+  {
+    "id": "54118708716",
+    "name": "스파오 쿨 스티치 반팔 재킷 SPJKF25W09",
+    "brand": "스파오",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 68500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5411870/54118708716.20250413095630.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5411870/54118708716.20250413095630.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 쿨 스티치 반팔 재킷 SPJKF25W09"
+  },
+  {
+    "id": "59982477695",
+    "name": "에잇세컨즈 레이스 라운드넥 반소매 숏 재킷 356511wc20",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 59910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5998247/59982477695.20260510024812.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5998247/59982477695.20260510024812.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이스 라운드넥 반소매 숏 재킷 356511wc20"
+  },
+  {
+    "id": "60442165418",
+    "name": "에잇세컨즈 레이스 라운드넥 레귤러 숏 재킷 S 흰색 8SECONDS",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 65400,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6044216/60442165418.20260614164227.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6044216/60442165418.20260614164227.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이스 라운드넥 레귤러 숏 재킷 S 흰색 8SECONDS"
+  },
+  {
+    "id": "59707103698",
+    "name": "에잇세컨즈 브이넥 긴소매 오버핏 재킷 356411wc34",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 74920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5970710/59707103698.20260417215154.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5970710/59707103698.20260417215154.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 브이넥 긴소매 오버핏 재킷 356411wc34"
+  },
+  {
+    "id": "59195932432",
+    "name": "에잇세컨즈 라운드넥 미디 재킷 356311wc15",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 64930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5919593/59195932432.20260309233333.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5919593/59195932432.20260309233333.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 라운드넥 미디 재킷 356311wc15"
+  },
+  {
+    "id": "59289708790",
+    "name": "에잇세컨즈 라운드넥 스트랩 장식 재킷 356311WM24",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 66720,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5928970/59289708790.20260317185309.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5928970/59289708790.20260317185309.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 라운드넥 스트랩 장식 재킷 356311WM24"
+  },
+  {
+    "id": "59577587920",
+    "name": "에잇세컨즈 코튼 테일러드 재킷",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 88620,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5957758/59577587920.20260408015008.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5957758/59577587920.20260408015008.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 테일러드 재킷"
+  },
+  {
+    "id": "59801564420",
+    "name": "에잇세컨즈 레이스 라운드넥 레귤러 숏 재킷 356411WC51",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 59160,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5980156/59801564420.20260426004524.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5980156/59801564420.20260426004524.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 레이스 라운드넥 레귤러 숏 재킷 356411WC51"
+  },
+  {
+    "id": "59289966056",
+    "name": "에잇세컨즈 코튼 테일러드 재킷 356311wm5d",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 74920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5928996/59289966056.20260317193730.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5928996/59289966056.20260317193730.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 테일러드 재킷 356311wm5d"
+  },
+  {
+    "id": "58801105134",
+    "name": "에잇세컨즈 라운드넥 투 포켓 재킷 356111WM2A",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 29920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5880110/58801105134.20260212154631.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5880110/58801105134.20260212154631.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 라운드넥 투 포켓 재킷 356111WM2A"
+  },
+  {
+    "id": "59248240569",
+    "name": "에잇세컨즈 코튼 테일러드 재킷 356311wm53",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "gender": "여성",
+    "price": 74920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5924824/59248240569.20260313233934.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5924824/59248240569.20260313233934.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 코튼 테일러드 재킷 356311wm53"
+  },
+  {
+    "id": "58616924665",
+    "name": "스파오 울 블렌드 스트랩 체크 패턴 롱 코트",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 13800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5861692/58616924665.20260122195721.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5861692/58616924665.20260122195721.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 울 블렌드 스트랩 체크 패턴 롱 코트"
+  },
+  {
+    "id": "90513681736",
+    "name": "스파오 브라운 투버튼 울 맥코트 L",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 10000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9051368/90513681736.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9051368/90513681736.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 브라운 투버튼 울 맥코트 L"
+  },
+  {
+    "id": "90338602719",
+    "name": "스파오 울블렌드 싱글 코트 (SPJWF4VM01 리오더) SPJWG11M01",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "남성",
+    "price": 129000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9033860/90338602719.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9033860/90338602719.jpg",
+      "https://shopping-phinf.pstatic.net/main_9034852/90348522845.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 울블렌드 싱글 코트 (SPJWF4VM01 리오더) SPJWG11M01"
+  },
+  {
+    "id": "60425115743",
+    "name": "스파오 겨울 기타 코트 M SPJW74TG02-00",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "남성",
+    "price": 36000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6042511/60425115743.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6042511/60425115743.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[스파오] 겨울 기타 코트 M SPJW74TG02-00"
+  },
+  {
+    "id": "58728144389",
+    "name": "스파오 스웨이드 하프 코트 SPJLG12W15",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 32220,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5872814/58728144389.20260130233514.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5872814/58728144389.20260130233514.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 스웨이드 하프 코트 SPJLG12W15"
+  },
+  {
+    "id": "50654543943",
+    "name": "스파오 울블렌드 더플 코트 SPJWE4VC04",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "남성",
+    "price": 199000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5065454/50654543943.20241217051730.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5065454/50654543943.20241217051730.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 울블렌드 더플 코트 SPJWE4VC04"
+  },
+  {
+    "id": "58203591997",
+    "name": "스파오 발마칸 코트 SPJWF4VMY2",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "남성",
+    "price": 54900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5820359/58203591997.20251219213235.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5820359/58203591997.20251219213235.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 발마칸 코트 SPJWF4VMY2"
+  },
+  {
+    "id": "58356005199",
+    "name": "스파오 페이크 퍼 더플 하프 코트 SPJLG11W96",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 49900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5835600/58356005199.20260101220603.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5835600/58356005199.20260101220603.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 페이크 퍼 더플 하프 코트 SPJLG11W96"
+  },
+  {
+    "id": "57269788865",
+    "name": "스파오 덤블 후드 더플 코트 SPFZF4TG11",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 69900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5726978/57269788865.20251017232249.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5726978/57269788865.20251017232249.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 덤블 후드 더플 코트 SPFZF4TG11"
+  },
+  {
+    "id": "53020945584",
+    "name": "스파오 더블 벨티드 롱코트 SPJWB11W02T",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 18060,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5302094/53020945584.20250214224959.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5302094/53020945584.20250214224959.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 더블 벨티드 롱코트 SPJWB11W02T"
+  },
+  {
+    "id": "59688287253",
+    "name": "스파오 (신세틱레더) 여성 스웨이드 하프 코트_SPJLG12W15",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 41860,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5968828/59688287253.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5968828/59688287253.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 (신세틱레더) 여성 스웨이드 하프 코트_SPJLG12W15"
+  },
+  {
+    "id": "56662258379",
+    "name": "스파오 벨티드 발마칸 코트 SPJWF4VW01",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 45510,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5666225/56662258379.20250910065213.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5666225/56662258379.20250910065213.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 벨티드 발마칸 코트 SPJWF4VW01"
+  },
+  {
+    "id": "57704161729",
+    "name": "스파오 하프코트 SPJWF4VW02",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 69900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5770416/57704161729.20251110091643.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5770416/57704161729.20251110091643.jpg",
+      "https://shopping-phinf.pstatic.net/main_9000887/90008871476.1.jpg",
+      "https://shopping-phinf.pstatic.net/main_9020532/90205324003.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 하프코트 SPJWF4VW02"
+  },
+  {
+    "id": "50257480713",
+    "name": "스파오 숏 더플코트 SPJWE4TG03",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "여성",
+    "price": 132900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5025748/50257480713.20250305053709.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5025748/50257480713.20250305053709.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 숏 더플코트 SPJWE4TG03"
+  },
+  {
+    "id": "57716432835",
+    "name": "스파오 울블렌드 더플 코트 SPJWF4VCY5",
+    "brand": "스파오",
+    "category": "코트",
+    "gender": "남성",
+    "price": 49900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5771643/57716432835.20251111161212.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5771643/57716432835.20251111161212.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 울블렌드 더플 코트 SPJWF4VCY5"
+  },
+  {
+    "id": "90188232958",
+    "name": "에잇세컨즈 더블코트 울 블랜디드 반 더블 코트 애쉬 583372",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 58940,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9018823/90188232958.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9018823/90188232958.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "국내매장판 에잇세컨즈 더블코트 울 블랜디드 반 더블 코트 애쉬 583372"
+  },
+  {
+    "id": "57727750083",
+    "name": "에잇세컨즈 울 블랜디드 피코트 215y30by3r",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 48900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5772775/57727750083.20251113193936.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5772775/57727750083.20251113193936.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 울 블랜디드 피코트 215y30by3r"
+  },
+  {
+    "id": "58332577893",
+    "name": "에잇세컨즈 테일러드 싱글 코트 325y30ly43",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 107900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5833257/58332577893.20251231091834.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5833257/58332577893.20251231091834.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 테일러드 싱글 코트 325y30ly43"
+  },
+  {
+    "id": "57218109365",
+    "name": "에잇세컨즈 싱글 레더 하프코트 325X3ZLY",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 59900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5721810/57218109365.20251014181941.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5721810/57218109365.20251014181941.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 싱글 레더 하프코트 325X3ZLY"
+  },
+  {
+    "id": "59885815807",
+    "name": "에잇세컨즈 숏 트렌치 코트 8SECONDS 35633TCM1A",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 61880,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5988581/59885815807.20260529043236.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5988581/59885815807.20260529043236.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 숏 트렌치 코트 8SECONDS 35633TCM1A"
+  },
+  {
+    "id": "59194766396",
+    "name": "에잇세컨즈 숏 트렌치 코트 35633TCM1",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 58430,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5919476/59194766396.20260309201211.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5919476/59194766396.20260309201211.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 숏 트렌치 코트 35633TCM1"
+  },
+  {
+    "id": "90279192329",
+    "name": "에잇세컨즈 더블코트 울 블랜디드 숏 발마칸 코트 네이비 583917",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 147350,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9027919/90279192329.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9027919/90279192329.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "국내매장판 에잇세컨즈 더블코트 울 블랜디드 숏 발마칸 코트 네이비 583917"
+  },
+  {
+    "id": "58584659431",
+    "name": "에잇세컨즈 브러시 코튼 맥 코트 45613TMCEA",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 44930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5858465/58584659431.20260124002716.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5858465/58584659431.20260124002716.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 브러시 코튼 맥 코트 45613TMCEA"
+  },
+  {
+    "id": "52983145897",
+    "name": "에잇세컨즈 토글 버튼 울 더플 코트 - 그레이 (323Y30LY63)",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 94910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5298314/52983145897.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5298314/52983145897.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 토글 버튼 울 더플 코트 - 그레이 (323Y30LY63)"
+  },
+  {
+    "id": "60345582504",
+    "name": "에잇세컨즈 볼륨 실루엣 롱 트렌치 코트 8SECONDS",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 101960,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6034558/60345582504.20260608183626.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6034558/60345582504.20260608183626.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 볼륨 실루엣 롱 트렌치 코트 8SECONDS"
+  },
+  {
+    "id": "58983942114",
+    "name": "에잇세컨즈 하프 트렌치 코트 35623TCM1",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 65890,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5898394/58983942114.20260220175928.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5898394/58983942114.20260220175928.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 하프 트렌치 코트 35623TCM1"
+  },
+  {
+    "id": "59847678133",
+    "name": "에잇세컨즈 칼라넥 싱글 트렌치 코트 35643twc10",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 74920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5984767/59847678133.20260429233438.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5984767/59847678133.20260429233438.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 칼라넥 싱글 트렌치 코트 35643twc10"
+  },
+  {
+    "id": "60422475977",
+    "name": "에잇세컨즈 8seconds 숏 트렌치 코트 애쉬",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 61460,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6042247/60422475977.20260613142320.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6042247/60422475977.20260613142320.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 8seconds 숏 트렌치 코트 애쉬"
+  },
+  {
+    "id": "59177610481",
+    "name": "에잇세컨즈 롱 트렌치 맥코트 35623twc1a",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 104920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5917761/59177610481.20260309002118.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5917761/59177610481.20260309002118.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 롱 트렌치 맥코트 35623twc1a"
+  },
+  {
+    "id": "59896212362",
+    "name": "에잇세컨즈 8seconds 하프 트렌치 코트",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "gender": "여성",
+    "price": 86260,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5989621/59896212362.20260503141548.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5989621/59896212362.20260503141548.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 8seconds 하프 트렌치 코트"
+  }
+]

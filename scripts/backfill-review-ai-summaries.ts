@@ -49,8 +49,8 @@ function mergeReviewSummaryJson(
   return {
     count: reviewCount,
     highlight,
-    ai,
-  } as Json;
+    ai: { ...ai },
+  };
 }
 
 function sleep(ms: number): Promise<void> {

@@ -1,5 +1,7 @@
 "use client";
 
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
+
 import Image from "next/image";
 import Link from "next/link";
 import { getProductDetailUrl } from "@/commons/constants/url";
@@ -55,10 +57,7 @@ export function LikeListTable({ items }: { items: LikeListItem[] }) {
                       alt=""
                       fill
                       className="object-cover"
-                      unoptimized={
-                        it.product.imageUrl.startsWith("http://") ||
-                        it.product.imageUrl.startsWith("https://")
-                      }
+                      unoptimized={shouldBypassImageOptimization(it.product.imageUrl)}
                       sizes="80px"
                     />
                   ) : null}
@@ -102,10 +101,7 @@ export function LikeListTable({ items }: { items: LikeListItem[] }) {
                     alt=""
                     fill
                     className="object-cover"
-                    unoptimized={
-                      it.product.imageUrl.startsWith("http://") ||
-                      it.product.imageUrl.startsWith("https://")
-                    }
+                    unoptimized={shouldBypassImageOptimization(it.product.imageUrl)}
                     sizes="80px"
                   />
                 ) : null}

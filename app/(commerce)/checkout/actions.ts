@@ -1,5 +1,6 @@
 "use server";
 
+import { parseProductOptions, validateSelectedOptions } from "@/commons/utils/productOptions";
 import { randomUUID } from "crypto";
 import { revalidatePath } from "next/cache";
 import { buildCheckoutOrderName } from "@/commons/utils/order";
@@ -32,9 +33,11 @@ export type CheckoutSubmitPayload = {
 
 type CartRow = {
   product_id: string;
+  selected_options: Record<string, string>;
   quantity: number;
   products: {
     id: string;
+    options: unknown;
     name: string;
     price: number;
     sale_price: number | null;
@@ -56,7 +59,7 @@ function moneyEq(a: number, b: number) {
 }
 
 async function upsertRecentAddress(args: {
-  sb: { from: (table: string) => any };
+  sb: Awaited<ReturnType<typeof createClient>>;
   userId: string;
   shippingName: string;
   shippingPhone: string;
@@ -67,16 +70,17 @@ async function upsertRecentAddress(args: {
   const { sb, userId, shippingName, shippingPhone, addressLine1, addressLine2, memo } = args;
 
   // 동일한 배송지가 있으면 updated_at만 갱신(=최신으로 올리기), 없으면 "최근 배송지"로 저장
-  const { data: existing } = await sb
+  let existingAddressQuery = sb
     .from("user_addresses")
     .select("id,label")
     .eq("user_id", userId)
     .eq("recipient_name", shippingName)
     .eq("recipient_phone", shippingPhone)
-    .eq("address_line1", addressLine1)
-    .eq("address_line2", addressLine2)
-    .limit(1)
-    .maybeSingle();
+    .eq("address_line1", addressLine1);
+  existingAddressQuery = addressLine2 == null
+    ? existingAddressQuery.is("address_line2", null)
+    : existingAddressQuery.eq("address_line2", addressLine2);
+  const { data: existing } = await existingAddressQuery.limit(1).maybeSingle();
 
   if (existing?.id) {
     await sb
@@ -120,7 +124,7 @@ export async function findOrCreateOrder(payload: CheckoutSubmitPayload): Promise
   validate(payload);
 
   const supabase = await createClient();
-  const sb = supabase as unknown as { from: (table: string) => any };
+  const sb = supabase;
   const {
     data: { user },
     error: userError,
@@ -133,6 +137,7 @@ export async function findOrCreateOrder(payload: CheckoutSubmitPayload): Promise
     .select(
       `
       product_id,
+      selected_options,
       quantity,
       products (
         id,
@@ -140,7 +145,8 @@ export async function findOrCreateOrder(payload: CheckoutSubmitPayload): Promise
         price,
         sale_price,
         image_url,
-        status
+        status,
+        options
       )
     `,
     )
@@ -154,6 +160,7 @@ export async function findOrCreateOrder(payload: CheckoutSubmitPayload): Promise
 
   const items: LineItem[] = raw.map(({ row, p }) => ({
     productId: row.product_id,
+    selectedOptions: validateSelectedOptions(parseProductOptions(p!.options), row.selected_options),
     name: p!.name,
     imageUrl: p!.image_url,
     quantity: Math.max(1, Math.floor(Number(row.quantity) || 1)),
@@ -177,8 +184,8 @@ export async function findOrCreateOrder(payload: CheckoutSubmitPayload): Promise
   }
 
   // 배송지 확정 (저장된 배송지는 서버에서 다시 조회해서 스냅샷)
-  let shippingName = payload.form.shippingName.trim();
-  let shippingPhone = payload.form.shippingPhone.trim();
+  const shippingName = payload.form.shippingName.trim();
+  const shippingPhone = payload.form.shippingPhone.trim();
   let addressLine1 = payload.form.addressLine1.trim();
   let addressLine2 = payload.form.addressLine2?.trim() || null;
   let memo = payload.form.memo?.trim() || null;
@@ -302,6 +309,7 @@ export async function findOrCreateOrder(payload: CheckoutSubmitPayload): Promise
       return {
         order_id: order.id,
         product_id: it.productId,
+        selected_options: it.selectedOptions ?? {},
         quantity: it.quantity,
         unit_price: it.unitPrice,
         unit_sale_price: it.unitSalePrice,

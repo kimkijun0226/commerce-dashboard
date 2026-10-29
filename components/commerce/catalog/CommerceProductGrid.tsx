@@ -10,7 +10,7 @@ export type CommerceProductGridProps = {
   columnsClassName?: string;
   gapClassName?: string;
   className?: string;
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (product: Product, selectedOptions?: Record<string, string>) => boolean | void | Promise<boolean | void>;
   onWishlistToggle?: (productId: string) => void;
 };
 
@@ -33,7 +33,7 @@ export function CommerceProductGrid({
       renderItem={(p) => (
         <ProductCard
           product={p}
-          onAddToCart={() => onAddToCart(p)}
+          onAddToCart={(selectedOptions) => onAddToCart(p, selectedOptions)}
           onWishlistToggle={
             onWishlistToggle ? () => onWishlistToggle(p.id) : undefined
           }

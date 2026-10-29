@@ -1,5 +1,8 @@
 "use client";
 
+import { getProductDisplayName, formatWon } from "@/commons/utils/productDisplay";
+import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
+
 import { commerceColors } from "@/commons/constants/color";
 import { commerceTypography } from "@/commons/constants/typography";
 import { cn, typographyToStyle } from "@/components/ui";
@@ -22,7 +25,7 @@ export type CartItemRowProps = {
 };
 
 function formatMoney(n: number, currency = "₩") {
-  return `${currency}${n.toLocaleString("ko-KR")}`;
+  return currency === "₩" ? formatWon(n) : `${currency}${n.toLocaleString("ko-KR")}`;
 }
 
 export function CartItemRow({
@@ -56,10 +59,7 @@ export function CartItemRow({
               src={imageUrl}
               alt={name}
               fill
-              unoptimized={
-                imageUrl.startsWith("http://") ||
-                imageUrl.startsWith("https://")
-              }
+              unoptimized={shouldBypassImageOptimization(imageUrl)}
               className="object-cover"
               sizes="80px"
             />
@@ -74,7 +74,7 @@ export function CartItemRow({
               color: commerceColors.text.primary,
             }}
           >
-            {name}
+            {getProductDisplayName(name)}
           </p>
           {variantLabel ? (
             <p

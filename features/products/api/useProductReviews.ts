@@ -3,7 +3,10 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 /** PDP 리뷰 목록 + 작성자(users embed) */
 export type Review = {
   id: string;
-  user_id: string;
+  user_id: string | null;
+  author_name?: string | null;
+  source_url?: string | null;
+  is_generated?: boolean;
   rating: number;
   content: string | null;
   created_at: string;
@@ -64,6 +67,9 @@ export async function fetchProductReviewsPage(
       `
       id,
       user_id,
+      author_name,
+      source_url,
+      is_generated,
       rating,
       content,
       created_at,
@@ -86,7 +92,10 @@ export async function fetchProductReviewsPage(
   return rows.map((row) => {
     const { users: u, ...rest } = row as {
       id: string;
-      user_id: string;
+      user_id: string | null;
+      author_name?: string | null;
+      source_url?: string | null;
+      is_generated?: boolean;
       rating: number;
       content: string | null;
       created_at: string;

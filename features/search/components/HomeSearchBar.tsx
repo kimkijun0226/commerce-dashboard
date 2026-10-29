@@ -24,10 +24,14 @@ export function HomeSearchBar({
     <SearchInput
       id={inputId}
       className={className}
-      placeholder="Search products..."
+      placeholder="상품명이나 브랜드를 검색해 보세요"
       actionLabel=""
       value={keyword}
       onChange={(e) => setKeyword(e.target.value)}
+      onClear={() => {
+        setKeyword("");
+        document.getElementById(inputId)?.focus();
+      }}
       onKeyDown={(e) => {
         if (e.key === "Escape") {
           if (onEscape) onEscape();
