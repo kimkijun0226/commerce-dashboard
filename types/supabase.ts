@@ -506,6 +506,9 @@ export interface Database {
       get_admin_payment_preview: { Args: Record<PropertyKey, never>; Returns: Json };
       get_admin_combined_dashboard: { Args: Record<PropertyKey, never>; Returns: Json };
       get_admin_sales: { Args: {p_days?: number; p_department?: string; p_page?: number; p_status?: string; p_date?: string}; Returns: Json };
+      get_admin_orders: {Args: {p_page?: number;p_q?: string;p_fulfillment?: string;p_payment?: string};Returns: Json};
+      get_admin_portfolio_order: {Args: {p_id: string};Returns: Json};
+      save_portfolio_fulfillment: {Args: {p_id:string;p_updated_at:string;p_status:string;p_carrier:string;p_tracking:string};Returns:boolean};
       get_admin_dashboard: { Args: Record<PropertyKey, never>; Returns: Json };
       get_catalog_category_products: {
         Args: { p_category: string; p_department?: string };

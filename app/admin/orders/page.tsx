@@ -11,37 +11,47 @@ export default async function OrdersPage({
   if (!(await checkAdminAccess())) notFound();
   const params = await searchParams;
   const rawPage = Number(params.page);
-  const page = Number.isFinite(rawPage) ? Math.min(10000, Math.max(1, Math.floor(rawPage))) : 1;
-  const status = typeof params.fulfillment === "string" ? params.fulfillment : "";
+  const page = Number.isFinite(rawPage)
+    ? Math.min(10000, Math.max(1, Math.floor(rawPage)))
+    : 1;
+  const status =
+    typeof params.fulfillment === "string" ? params.fulfillment : "";
   const q = (typeof params.q === "string" ? params.q : "").trim().slice(0, 100);
   const supabase = await createClient();
-  let query = supabase
-    .from("orders")
-    .select(
-      "id,created_at,shipping_name,total_amount,status,payment_status,fulfillment_status,shipping_carrier,tracking_number",
-      { count: "exact" },
-    );
-  if (Object.hasOwn(FULFILLMENT_LABELS, status))
-    query = query.eq("fulfillment_status", status);
-  if (q)
-    query =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q)
-        ? query.eq("id", q)
-        : query.ilike("shipping_name", `%${q.replace(/[\\%_]/g, "\\$&")}%`);
-  const { data, count, error, status: responseStatus } = await query
-    .order("created_at", { ascending: false })
-    .order("id", { ascending: false })
-    .range((page - 1) * 20, page * 20 - 1);
-  if (responseStatus === 416 && page > 1) redirect(`/admin/orders?${new URLSearchParams({q,fulfillment:status})}`);
+  const payment = params.payment === "paid" ? "paid" : "";
+  const { data: result, error } = await supabase.rpc("get_admin_orders", {
+    p_page: page,
+    p_q: q,
+    p_fulfillment: Object.hasOwn(FULFILLMENT_LABELS, status) ? status : "",
+    p_payment: payment,
+  });
   if (error) throw new Error(error.message);
+  const { rows: data, total: count } = result as unknown as {
+    total: number;
+    rows: {
+      id: string;
+      created_at: string;
+      shipping_name: string | null;
+      total_amount: number;
+      status: string;
+      payment_status: string;
+      fulfillment_status: string;
+      shipping_carrier: string | null;
+      tracking_number: string | null;
+    }[];
+  };
+  if (page > 1 && !data.length)
+    redirect(
+      `/admin/orders?${new URLSearchParams({ q, fulfillment: status, payment })}`,
+    );
   const pages = Math.max(1, Math.ceil((count ?? 0) / 20));
   const href = (p: number) =>
-    `/admin/orders?${new URLSearchParams({ page: String(p), q, fulfillment: status })}`;
+    `/admin/orders?${new URLSearchParams({ page: String(p), q, fulfillment: status, payment })}`;
   return (
     <div className="space-y-5">
       <h1 className="text-2xl font-semibold">주문 · 배송 관리</h1>
       <p className="text-sm text-gray-500">
-        실제 주문 {(count ?? 0).toLocaleString()}건 · 주문을 선택하면 상품,
+        전체 주문 {(count ?? 0).toLocaleString()}건 · 주문을 선택하면 상품,
         배송지, 송장 정보를 확인할 수 있습니다.
       </p>
       <form className="flex flex-wrap gap-2 border border-gray-200 bg-white p-4">
@@ -49,7 +59,7 @@ export default async function OrdersPage({
           name="q"
           defaultValue={q}
           aria-label="주문 검색"
-          placeholder="수령인 또는 전체 주문번호"
+          placeholder="수령인 또는 주문번호"
           className="min-w-0 flex-1 border px-3 py-2 text-sm"
         />
         <select
@@ -65,6 +75,15 @@ export default async function OrdersPage({
             </option>
           ))}
         </select>
+        <select
+          name="payment"
+          defaultValue={payment}
+          aria-label="결제 상태 필터"
+          className="border px-3 py-2 text-sm"
+        >
+          <option value="">전체 결제 상태</option>
+          <option value="paid">결제 완료만</option>
+        </select>
         <button className="bg-black px-4 py-2 text-sm text-white">조회</button>
       </form>
       <div className="overflow-x-auto border border-gray-200 bg-white">
@@ -77,6 +96,7 @@ export default async function OrdersPage({
               <th>결제</th>
               <th>배송</th>
               <th>송장</th>
+              <th className="pr-4">관리</th>
             </tr>
           </thead>
           <tbody>
@@ -87,7 +107,9 @@ export default async function OrdersPage({
                     href={`/admin/orders/${order.id}`}
                     className="font-medium underline"
                   >
-                    {order.id.slice(0, 8).toUpperCase()}
+                    {order.id.startsWith("SIM-")
+                      ? order.id
+                      : order.id.slice(0, 8).toUpperCase()}
                   </Link>
                   <p className="mt-1 text-xs text-gray-400">
                     {new Date(order.created_at).toLocaleString("ko-KR", {
@@ -114,6 +136,14 @@ export default async function OrdersPage({
                   {order.shipping_carrier}
                   <br />
                   {order.tracking_number ?? "—"}
+                </td>
+                <td className="pr-4">
+                  <Link
+                    className="whitespace-nowrap border px-3 py-2 text-xs"
+                    href={`/admin/orders/${order.id}`}
+                  >
+                    배송 관리
+                  </Link>
                 </td>
               </tr>
             ))}

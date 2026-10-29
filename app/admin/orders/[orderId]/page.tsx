@@ -11,6 +11,84 @@ export default async function OrderPage({
 }) {
   if (!(await checkAdminAccess())) notFound();
   const { orderId } = await params;
+  if (/^SIM-\d{8}-\d{4}$/.test(orderId)) {
+    const supabase = await createClient();
+    const { data, error } = await supabase.rpc("get_admin_portfolio_order", {
+      p_id: orderId,
+    });
+    if (error) throw new Error(error.message);
+    if (!data) notFound();
+    const sale = data as {
+      id: string;
+      product_name: string;
+      quantity: number;
+      gross_amount: number;
+      discount_amount: number;
+      status: string;
+      fulfillment: string;
+      shipping_carrier: string | null;
+      tracking_number: string | null;
+      updated_at: string;
+      region: string;
+    };
+    const order = {
+      id: sale.id,
+      updated_at: sale.updated_at,
+      fulfillment_status: sale.fulfillment,
+      shipping_carrier: sale.shipping_carrier,
+      tracking_number: sale.tracking_number,
+    };
+    return (
+      <div className="space-y-5">
+        <Link href="/admin/orders" className="text-sm text-gray-500">
+          ← 주문 목록
+        </Link>
+        <h1 className="text-2xl font-semibold">주문 상세</h1>
+        <p className="text-xs text-gray-500">{sale.id}</p>
+        <div className="grid gap-5 xl:grid-cols-[2fr_1fr]">
+          <div className="space-y-5">
+            <section className="border bg-white p-5">
+              <h2 className="font-semibold">주문 상품</h2>
+              <div className="flex justify-between gap-4 border-b py-4 text-sm">
+                <span>
+                  {getProductDisplayName(sale.product_name)} · {sale.quantity}개
+                </span>
+                <strong className="shrink-0">
+                  {sale.gross_amount.toLocaleString()}원
+                </strong>
+              </div>
+              <p className="mt-4 text-sm text-gray-500">
+                할인 {sale.discount_amount.toLocaleString()}원
+              </p>
+              <div className="mt-4 flex justify-between font-semibold">
+                <span>결제 금액</span>
+                <span>
+                  {(sale.gross_amount - sale.discount_amount).toLocaleString()}
+                  원
+                </span>
+              </div>
+              <p className="mt-3 text-xs text-gray-500">
+                {sale.status === "paid"
+                  ? "결제 완료"
+                  : sale.status === "canceled"
+                    ? "취소"
+                    : sale.status === "refunded"
+                      ? "환불"
+                      : "결제 대기"}
+              </p>
+            </section>
+            <section className="space-y-2 border bg-white p-5 text-sm">
+              <h2 className="font-semibold">배송지</h2>
+              <p>구매자 {sale.id.slice(-4)}</p>
+              <p>{sale.region}</p>
+              <p className="text-gray-500">상세 배송지·연락처 미등록</p>
+            </section>
+          </div>
+          <FulfillmentEditor key={sale.updated_at} order={order} />
+        </div>
+      </div>
+    );
+  }
   if (
     !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
       orderId,

@@ -161,15 +161,27 @@ export default async function AdminPage({
       {view === "overview" && (
         <>
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-            {cards.map(([title, value, label]) => (
-              <AdminMetricCard
-                key={title}
-                title={title}
-                value={value}
-                trend={{ direction: "flat", label }}
-                className="!rounded-[3px]"
-              />
-            ))}
+            {cards.map(([title, value, label]) => {
+              const card = (
+                <AdminMetricCard
+                  title={title}
+                  value={value}
+                  trend={{ direction: "flat", label }}
+                  className="!rounded-[3px]"
+                />
+              );
+              return title === "배송 준비" ? (
+                <Link
+                  key={title}
+                  className="block"
+                  href="/admin/orders?fulfillment=preparing&payment=paid"
+                >
+                  {card}
+                </Link>
+              ) : (
+                <div key={title}>{card}</div>
+              );
+            })}
           </div>
           <section className="border bg-white p-5">
             <div className="flex justify-between">

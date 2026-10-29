@@ -11,6 +11,39 @@ export async function saveFulfillment(
     return { error: "관리자 권한이 필요합니다." };
   try {
     const id = String(form.get("orderId") ?? "");
+    const portfolio = /^SIM-\d{8}-\d{4}$/.test(id);
+    if (portfolio) {
+      const supabase = await createClient();
+      const { data, error } = await supabase.rpc("get_admin_portfolio_order", {
+        p_id: id,
+      });
+      const order = data as {
+        status: string;
+        fulfillment: string;
+        updated_at: string;
+      } | null;
+      if (error || !order) throw new Error("주문을 찾을 수 없습니다.");
+      if (String(form.get("updatedAt")) !== order.updated_at)
+        throw new Error(
+          "다른 곳에서 주문이 변경되었습니다. 새로고침해 주세요.",
+        );
+      const values = readFulfillmentForm(
+        form,
+        order.status === "paid",
+        order.fulfillment,
+      );
+      const saved = await supabase.rpc("save_portfolio_fulfillment", {
+        p_id: id,
+        p_updated_at: order.updated_at,
+        p_status: values.fulfillment_status,
+        p_carrier: values.shipping_carrier ?? "",
+        p_tracking: values.tracking_number ?? "",
+      });
+      if (saved.error || !saved.data)
+        throw new Error("배송 저장 실패. 주문 상태를 새로고침해 주세요.");
+      revalidatePath("/admin", "layout");
+      return { saved: true };
+    }
     if (
       !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         id,

@@ -44,11 +44,16 @@ export default async function AdminPage() {
           trend={{ direction: "flat", label: "취소·환불 주문 제외" }}
           className="!rounded-[3px]"
         />
-        <AdminMetricCard
-          title="배송 준비 필요"
-          value={`${stats.pendingShipment.toLocaleString()}건`}
-          className="!rounded-[3px]"
-        />
+        <Link
+          href="/admin/orders?fulfillment=preparing&payment=paid"
+          className="block"
+        >
+          <AdminMetricCard
+            title="배송 준비 필요"
+            value={`${stats.pendingShipment.toLocaleString()}건`}
+            className="!rounded-[3px]"
+          />
+        </Link>
       </div>
       <div className="grid gap-5 lg:grid-cols-[2fr_1fr]">
         <section className="border border-gray-200 bg-white p-5">

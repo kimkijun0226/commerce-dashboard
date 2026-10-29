@@ -30,11 +30,15 @@ export function FulfillmentEditor({
           defaultValue={order.fulfillment_status}
           className={field}
         >
-          {Object.entries(FULFILLMENT_LABELS).map(([key, label]) => (
-            <option key={key} value={key}>
-              {label}
-            </option>
-          ))}
+          {Object.entries(FULFILLMENT_LABELS)
+            .filter(
+              ([key]) => !order.id.startsWith("SIM-") || key !== "unfulfilled",
+            )
+            .map(([key, label]) => (
+              <option key={key} value={key}>
+                {label}
+              </option>
+            ))}
         </select>
       </label>
       <label className="block text-sm">
