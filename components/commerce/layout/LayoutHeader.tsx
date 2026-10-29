@@ -9,7 +9,8 @@ import { useSearchStore } from "@/features/search/store/searchStore";
 import Link, { type LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import type { ButtonHTMLAttributes } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import { FiMenu, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
@@ -28,6 +29,10 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
   const isSearchOpen = useSearchStore((s) => s.isOpen);
   const openSearch = useSearchStore((s) => s.open);
   const closeSearch = useSearchStore((s) => s.close);
+
+  useEffect(() => {
+    if (isSearchOpen) document.getElementById("header-search-input")?.focus();
+  }, [isSearchOpen]);
 
   return (
     <header
@@ -59,7 +64,13 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
           <span className="hidden min-[400px]:inline border-l border-(--commerce-border-subtle) pl-2 text-xs font-medium text-(--commerce-primary-main) sm:pl-3 sm:text-sm">{store.name}</span>
         </Link>
 
-        <div className="ml-auto flex shrink-0 items-center gap-1 pl-1 sm:gap-3">
+        <div className={cn("mx-auto w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}
+          onFocusCapture={() => { if (pathname !== store.path) router.push(store.path); }}>
+          <HomeSearchBar inputId="header-search-input" placeholder={store.search} onEscape={closeSearch}
+            className="!rounded-[3px] !border-transparent !bg-(--commerce-background-light) !py-2.5 text-sm" />
+        </div>
+
+        <div className="ml-auto flex shrink-0 items-center gap-1 pl-1 sm:ml-0 sm:gap-3">
           <IconBtn
             aria-label={isSearchOpen ? "검색 닫기" : "검색 열기"}
             aria-expanded={isSearchOpen}
@@ -74,7 +85,7 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
               openSearch();
             }}
             className={cn(
-              "transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
+              "sm:hidden transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
               isSearchOpen
                 ? "text-(--commerce-semantic-info)"
                 : "text-(--commerce-text-primary)",
@@ -83,8 +94,7 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
             <FiSearch className="size-5 sm:size-6" aria-hidden />
           </IconBtn>
 
-          {isAuthenticated ? <IconBtn href="/account" aria-label="마이페이지"><FiUser className="size-5 sm:size-6" aria-hidden /></IconBtn>
-            : <Link href={`/login?next=${encodeURIComponent(pathname)}`} className="mx-1 inline-flex min-h-9 items-center rounded-full bg-(--commerce-primary-main) px-3 text-xs font-semibold text-white transition-opacity hover:opacity-80 sm:px-4 sm:text-sm">로그인</Link>}
+          {isAuthenticated ? <IconBtn href="/account" aria-label="마이페이지"><FiUser className="size-5 sm:size-6" aria-hidden /></IconBtn> : null}
 
           <span data-cart-target className="relative inline-flex">
           <IconBtn href="/cart" aria-label="장바구니" className="relative">
@@ -103,6 +113,7 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
             ) : null}
           </IconBtn>
           </span>
+          {!isAuthenticated ? <Link href={`/login?next=${encodeURIComponent(pathname)}`} className="ml-1 inline-flex min-h-9 items-center rounded-[3px] bg-(--commerce-primary-main) px-3 text-xs font-semibold text-white transition-opacity hover:opacity-80 sm:px-4 sm:text-sm">로그인</Link> : null}
         </div>
       </div>
 

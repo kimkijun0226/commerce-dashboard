@@ -28,8 +28,6 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
   const likesSyncNonce = useSessionStore((s) => s.likesSyncNonce);
   const addItem = useCartStore((s) => s.addItem);
   const keyword = useSearchStore((s) => s.keyword);
-  const isSearchOpen = useSearchStore((s) => s.isOpen);
-  const closeSearch = useSearchStore((s) => s.close);
   const setKeyword = useSearchStore((s) => s.setKeyword);
   const prefetchCatalog = usePrefetchCatalog(department);
   const [category, setCategory] = useState("");
@@ -157,7 +155,6 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
     <div className="mx-auto max-w-[1800px] px-4 py-6 sm:px-6 lg:px-8">
       <StorefrontNav active={department} />
       <HomeCatalogSection
-        campaignProducts={initialItems ?? []}
         department={department}
         categories={categories}
         selectedCategory={category}
@@ -167,9 +164,6 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
         total={data?.pages[0]?.total ?? 0}
         allTotal={initialTotal ?? 0}
         keyword={keyword}
-        isSearchOpen={isSearchOpen}
-        onSearchFocusHandled={closeSearch}
-        onCloseSearch={() => { setKeyword(""); closeSearch(); }}
         showFetchError={isError}
         isProductLoading={isLoading || isSearchPending}
         products={productsWithLikes as Product[]}

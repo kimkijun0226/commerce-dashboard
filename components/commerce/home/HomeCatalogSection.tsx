@@ -1,19 +1,16 @@
 "use client";
 
 import { StorefrontCampaign } from "./StorefrontCampaign";
-import { STOREFRONTS, type StoreKey } from "@/lib/catalog/storefront";
+import { type StoreKey } from "@/lib/catalog/storefront";
 import { CatalogFetchError } from "@/components/commerce/catalog/CatalogFetchError";
 import { CommerceProductGrid } from "@/components/commerce/catalog/CommerceProductGrid";
 import type { Product } from "@/components/commerce/types";
 import { LoadingSpinner, cn } from "@/components/ui";
-import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import type { CatalogCategory } from "@/lib/catalog/products";
 import type { RefObject } from "react";
-import { useEffect } from "react";
 import { FiRotateCcw, FiSearch } from "react-icons/fi";
 
 export type HomeCatalogSectionProps = {
-  campaignProducts: Product[];
   categories: CatalogCategory[];
   department: StoreKey;
   selectedCategory: string;
@@ -23,9 +20,6 @@ export type HomeCatalogSectionProps = {
   total: number;
   allTotal: number;
   keyword: string;
-  isSearchOpen: boolean;
-  onSearchFocusHandled: () => void;
-  onCloseSearch: () => void;
   showFetchError: boolean;
   isProductLoading: boolean;
   products: Product[];
@@ -37,23 +31,11 @@ export type HomeCatalogSectionProps = {
 };
 
 export function HomeCatalogSection({
-  campaignProducts, department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
-  total, allTotal, keyword, isSearchOpen, onSearchFocusHandled, onCloseSearch, showFetchError,
+  department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
+  total, allTotal, keyword, showFetchError,
   isProductLoading, products, loadMoreRef, showLoadMoreSentinel,
   isFetchingNextPage, onAddToCart, onWishlistToggle,
 }: HomeCatalogSectionProps) {
-  useEffect(() => {
-    if (!isSearchOpen) return;
-    const id = window.requestAnimationFrame(() => {
-      const el = document.getElementById("home-search-input") as HTMLInputElement | null;
-      el?.scrollIntoView({ behavior: "smooth", block: "center" });
-      el?.focus();
-      onSearchFocusHandled();
-    });
-    return () => window.cancelAnimationFrame(id);
-  }, [isSearchOpen, onSearchFocusHandled]);
-
-  const store = STOREFRONTS[department];
   const hasFilters = Boolean(keyword.trim() || selectedCategory);
   const choices = [{ name: "All", value: "", count: allTotal }, ...categories.map((category) => ({
     name: category.name, value: category.name, count: category.productCount,
@@ -61,18 +43,9 @@ export function HomeCatalogSection({
 
   return (
     <section aria-label="상품 목록">
-      <header className="mb-6 rounded-[3px] border border-(--commerce-border-subtle) p-4 sm:p-7" style={{ background: "var(--store-hero)" }}>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-[10px] font-semibold tracking-[0.2em] text-[#949ca3]">{store.eyebrow}</p>
-            <h1 className="mt-1.5 text-2xl font-bold tracking-[-0.8px] text-[#141718] sm:text-[28px]">{store.title}</h1>
-            <p className="mt-2 max-w-lg text-xs leading-6 text-(--commerce-text-secondary) sm:text-sm">{store.description}</p>
-          </div>
-          <div id="home-search-region" className="w-full sm:max-w-[420px]">
-            <HomeSearchBar placeholder={store.search} className="rounded-[3px] !border-transparent !bg-[#f4f5f6] !px-4 !py-3 focus-within:ring-2 focus-within:ring-[#141718]/15" onEscape={onCloseSearch} />
-          </div>
-        </div>
-        <div role="group" aria-label="상품 카테고리" className="mt-5 flex flex-wrap items-center gap-2 pb-1">
+      <StorefrontCampaign department={department} />
+      <div className="mb-6 border-b border-(--commerce-border-subtle) pb-4">
+        <div role="group" aria-label="상품 카테고리" className="flex flex-wrap items-center gap-2">
           {choices.map((choice) => {
             const active = choice.value === selectedCategory;
             return (
@@ -86,11 +59,9 @@ export function HomeCatalogSection({
             );
           })}
         </div>
-      </header>
+      </div>
 
-      <StorefrontCampaign department={department} products={campaignProducts} />
-
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+      <div id="catalog-products" className="mb-6 flex scroll-mt-24 flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-baseline gap-2">
           <h2 className="text-lg font-semibold text-(--commerce-text-primary)">{selectedCategory || "전체 상품"}</h2>
           <p role="status" aria-live="polite" className="text-sm text-(--commerce-text-secondary)">

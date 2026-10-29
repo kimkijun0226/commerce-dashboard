@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FiArrowRight, FiChevronLeft, FiChevronRight, FiPause, FiPlay } from "react-icons/fi";
-import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
-import { STOREFRONTS, storeProductUrl, type StoreKey } from "@/lib/catalog/storefront";
-import type { Product } from "@/components/commerce/types";
+import { canPrefetchImages } from "@/commons/utils/productImage";
+import { getImageProps } from "next/image";
+import { STOREFRONTS, type StoreKey } from "@/lib/catalog/storefront";
 
 const EDITS: Record<StoreKey, readonly [string, string][]> = {
   fashion: [
@@ -47,7 +47,7 @@ const EDITS: Record<StoreKey, readonly [string, string][]> = {
   ],
 };
 
-export function StorefrontCampaign({ department, products }: { department: StoreKey; products: Product[] }) {
+export function StorefrontCampaign({ department }: { department: StoreKey }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [interacting, setInteracting] = useState(false);
@@ -55,39 +55,48 @@ export function StorefrontCampaign({ department, products }: { department: Store
   const move = (step: number) => setIndex((current) => (current + step + edits.length) % edits.length);
 
   useEffect(() => {
-    if (paused || interacting || products.length === 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (paused || interacting || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
       if (!document.hidden) setIndex((current) => (current + 1) % edits.length);
     }, 5500);
     return () => window.clearInterval(timer);
-  }, [paused, interacting, products.length, edits.length]);
+  }, [paused, interacting, edits.length]);
 
-  if (!products.length) return null;
-  const product = products[index % products.length];
+  useEffect(() => {
+    if (!canPrefetchImages()) return;
+    const { props } = getImageProps({ src: `/campaigns/editorial/${department}-${((index + 1) % edits.length) + 1}.webp`, alt: "", fill: true, quality: 75, sizes: "(max-width: 1799px) 100vw, 1736px" });
+    const image = new window.Image();
+    image.fetchPriority = "low";
+    image.sizes = props.sizes ?? "";
+    image.srcset = props.srcSet ?? "";
+    image.src = props.src;
+  }, [department, index, edits.length]);
+
   const [title, description] = edits[index];
   return (
-    <aside aria-label={`${STOREFRONTS[department].name} 오브온 광고`} aria-roledescription="캐러셀"
+    <header aria-label={`${STOREFRONTS[department].name} 오브온 광고`} aria-roledescription="캐러셀"
       onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
       onFocusCapture={() => setInteracting(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}
-      className="relative mb-8 overflow-hidden rounded-[3px] border border-(--commerce-border-subtle)" style={{ background: "var(--store-hero)" }}>
-      <Link href={storeProductUrl(product.id, department)} className="group grid min-h-[240px] grid-cols-[1.1fr_1fr] items-center sm:min-h-[280px] sm:grid-cols-[1.3fr_1fr]">
-        <div className="relative z-10 py-7 pl-5 pr-2 pb-16 sm:pl-10 lg:pl-14">
-          <p className="text-[9px] tracking-[0.22em] text-(--commerce-primary-main) sm:text-xs">OVEON · {STOREFRONTS[department].name} EDIT</p>
-          <h2 className="mt-3 max-w-xl text-xl font-medium leading-snug tracking-[-0.05em] text-(--commerce-text-primary) sm:text-3xl lg:text-4xl">{title}</h2>
-          <p className="mt-3 hidden text-sm text-(--commerce-text-secondary) sm:block">{description}</p>
-          <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-medium sm:text-sm">상품 만나보기 <FiArrowRight aria-hidden className="transition-transform duration-150 group-hover:translate-x-1" /></span>
-        </div>
-        <div className="relative h-full min-h-[240px] overflow-hidden bg-white/35 sm:min-h-[280px]">
-          <Image key={product.imageUrl} src={product.imageUrl} alt={product.name} fill sizes="(max-width: 639px) 46vw, (max-width: 1799px) 42vw, 740px" quality={60}
-            unoptimized={shouldBypassImageOptimization(product.imageUrl)} className="object-contain p-4 sm:p-6" />
-        </div>
-      </Link>
-      <div className="absolute bottom-3 left-5 z-20 flex items-center gap-1 bg-white/90 px-1 py-1 sm:left-10 lg:left-14">
-        <button type="button" aria-label="이전 광고" onClick={() => move(-1)} className="grid size-8 place-items-center hover:bg-black/5"><FiChevronLeft aria-hidden /></button>
-        <span className="min-w-12 text-center text-[11px] tabular-nums" aria-live={paused || interacting ? "polite" : "off"}>{index + 1} / {edits.length}</span>
-        <button type="button" aria-label="다음 광고" onClick={() => move(1)} className="grid size-8 place-items-center hover:bg-black/5"><FiChevronRight aria-hidden /></button>
-        <button type="button" aria-label={paused ? "광고 자동 재생" : "광고 자동 재생 정지"} onClick={() => setPaused(!paused)} className="grid size-8 place-items-center border-l border-black/10 hover:bg-black/5">{paused ? <FiPlay aria-hidden /> : <FiPause aria-hidden />}</button>
+      className="relative mb-5 isolate h-[400px] overflow-hidden rounded-[3px] bg-[#282925] text-white sm:h-[420px] lg:h-[480px]">
+      <Image key={`${department}-${index}`} src={`/campaigns/editorial/${department}-${index + 1}.webp`} alt={`${STOREFRONTS[department].name} 오브온 브랜드 캠페인 화보`} fill
+        sizes="(max-width: 1799px) 100vw, 1736px" quality={75} preload={index === 0} loading={index === 0 ? undefined : "eager"}
+        className={department === "fashion" ? "object-cover object-[65%_center] sm:object-top" : "object-cover object-[65%_center] sm:object-center"} />
+      <div aria-hidden className="absolute inset-0 bg-linear-to-t from-black/75 via-black/10 to-black/5 sm:bg-linear-to-r sm:from-black/65 sm:via-black/15 sm:to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 px-6 pb-20 pt-8 sm:inset-y-0 sm:flex sm:max-w-[75%] sm:flex-col sm:justify-center sm:px-10 sm:pb-10 lg:px-14">
+        <p className="text-[10px] font-medium tracking-[0.24em] text-white/85 sm:text-xs">{STOREFRONTS[department].eyebrow} / CAMPAIGN {String(index + 1).padStart(2, "0")}</p>
+        <h1 className="mt-4 max-w-[660px] text-[30px] font-bold leading-[1.17] tracking-[-0.055em] text-balance sm:text-[42px] lg:text-[56px]">{title}</h1>
+        <p className="mt-3 max-w-md text-xs leading-6 text-white/80 sm:mt-5 sm:text-sm">{description}</p>
+        <Link href="#catalog-products" className="mt-5 inline-flex w-fit items-center gap-3 border-b border-white/70 pb-1.5 text-xs font-medium sm:mt-7 sm:text-sm">컬렉션 둘러보기 <FiArrowRight aria-hidden /></Link>
       </div>
-    </aside>
+      <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between sm:left-10 sm:right-8 lg:left-14">
+        <span className="text-[9px] tracking-[0.18em] text-white/65">OVEON<span className="hidden sm:inline"> — 취향이 켜지는 순간</span></span>
+        <div className="flex items-center gap-0.5 bg-black/30 px-1 py-0.5 backdrop-blur-sm">
+          <button type="button" aria-label="이전 광고" onClick={() => move(-1)} className="grid size-8 place-items-center hover:bg-white/15"><FiChevronLeft aria-hidden /></button>
+          <span className="min-w-10 text-center text-[10px] tabular-nums" aria-live={paused || interacting ? "polite" : "off"}>{String(index + 1).padStart(2, "0")} / {edits.length}</span>
+          <button type="button" aria-label="다음 광고" onClick={() => move(1)} className="grid size-8 place-items-center hover:bg-white/15"><FiChevronRight aria-hidden /></button>
+          <button type="button" aria-label={paused ? "광고 자동 재생" : "광고 자동 재생 정지"} onClick={() => setPaused(!paused)} className="grid size-8 place-items-center border-l border-white/20 hover:bg-white/15">{paused ? <FiPlay aria-hidden /> : <FiPause aria-hidden />}</button>
+        </div>
+      </div>
+    </header>
   );
 }
