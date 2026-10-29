@@ -2,7 +2,7 @@
 // 실제 리뷰 카드와 비슷한 줄 수와 간격을 맞춰 초기 깜빡임을 줄입니다.
 export function ReviewListSkeleton() {
   return (
-    <div className="flex flex-col gap-10 animate-pulse" aria-hidden>
+    <div className="flex flex-col gap-10 motion-safe:animate-pulse" aria-hidden>
       {Array.from({ length: 3 }).map((_, idx) => (
         <div
           key={`review-skeleton-${idx}`}

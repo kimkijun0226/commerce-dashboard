@@ -3,7 +3,7 @@
 export function ReviewSummarySkeleton() {
   return (
     <section
-      className="rounded-lg border border-(--commerce-border-subtle) bg-(--commerce-background-light)/80 p-6 shadow-sm animate-pulse"
+      className="rounded-lg border border-(--commerce-border-subtle) bg-(--commerce-background-light)/80 p-6 shadow-sm motion-safe:animate-pulse"
       aria-label="AI 리뷰 요약 로딩"
       aria-hidden
     >
