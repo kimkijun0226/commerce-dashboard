@@ -504,6 +504,8 @@ export interface Database {
     Functions: {
       get_sales_simulation: { Args: {p_days?: number; p_department?: string; p_page?: number; p_status?: string; p_date?: string}; Returns: Json };
       get_admin_payment_preview: { Args: Record<PropertyKey, never>; Returns: Json };
+      get_admin_combined_dashboard: { Args: Record<PropertyKey, never>; Returns: Json };
+      get_admin_sales: { Args: {p_days?: number; p_department?: string; p_page?: number; p_status?: string; p_date?: string}; Returns: Json };
       get_admin_dashboard: { Args: Record<PropertyKey, never>; Returns: Json };
       get_catalog_category_products: {
         Args: { p_category: string; p_department?: string };

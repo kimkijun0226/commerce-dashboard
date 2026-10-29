@@ -47,7 +47,7 @@ export default async function AdminPage({
   const filters = salesFilters(await searchParams);
   const { days, department, view, page, status, date } = filters;
   const supabase = await createClient();
-  const { data, error } = await supabase.rpc("get_sales_simulation", {
+  const { data, error } = await supabase.rpc("get_admin_sales", {
     p_days: days,
     p_department: department,
     p_page: page,
@@ -98,11 +98,11 @@ export default async function AdminPage({
         </Link>
       </div>
       <div className="border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-        <strong>시뮬레이션 판매 데이터</strong>
+        <strong>통합 판매 데이터</strong>
         <p className="mt-1 text-xs leading-5">
-          분석 화면 확인용 가상 판매입니다. 실제 고객 주문·결제·재고와 분리되어
-          있습니다. 모든 날짜는 한국 시간 기준이며, 순매출은 할인 후 결제
-          완료액으로 취소·환불·결제 대기를 제외합니다.
+          기존 포트폴리오 판매 데이터와 실제 주문을 함께 집계합니다. 한국 시간
+          기준이며 순매출은 배송비를 제외한 할인 후 결제 완료액입니다.
+          취소·환불·결제 대기 주문은 매출에서 제외합니다.
         </p>
       </div>
       <form
@@ -284,7 +284,7 @@ export default async function AdminPage({
               value={`${number(s.pendingShipment)}건`}
               trend={{
                 direction: "flat",
-                label: "가상 배송 상태 · 실제 발송 작업과 분리",
+                label: "기존 데이터와 실제 주문의 출고 대기 합계",
               }}
               className="!rounded-[3px]"
             />

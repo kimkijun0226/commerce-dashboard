@@ -1,4 +1,6 @@
 export const salesLabels: Record<string, string> = {
+  mixed: "복합 매장",
+  unknown: "미분류",
   fashion: "의류",
   beauty: "뷰티",
   home: "홈",

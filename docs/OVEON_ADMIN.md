@@ -28,7 +28,7 @@ migration `0028_store_admin.sql`에 설정 테이블/RLS, 이미지 버킷/RLS, 
 
 ## 판매 분석 대시보드
 
-`/admin`은 **시뮬레이션 전용** 분석 화면입니다. `/admin/live`는 주문·결제 대시보드이며 실제 주문·배송 관리는 `/admin/orders`에서 처리합니다.
+`/admin`은 **기존 포트폴리오 데이터 + 실제 주문 통합** 분석 화면입니다. `/admin/live`는 주문·결제 대시보드이며 실제 주문·배송 관리는 `/admin/orders`에서 처리합니다.
 
 - 매출 요약: 순매출, 직전 동기간 비교, 주문·판매 수량, 객단가, 할인·환불액, 취소율, 출고 대기.
 - 상품별 판매: 순매출 TOP 50, 판매 수량·주문 수 및 상품 관리 연결.
@@ -59,4 +59,16 @@ node --import tsx scripts/verify-sales-simulation.ts
 
 `0033_simulation_payments.sql`은 기존 시뮬레이션 판매와 연결된 관리자 전용 `sales_simulation_payments` 및 `get_admin_payment_preview()`를 추가합니다. `node --import tsx scripts/seed-simulation-payments.ts`로 결제 완료 판매의 할인 후 금액·결제일·결제 수단을 저장합니다. 판매 ID를 고유 키로 사용해 재실행 시 중복 생성하지 않습니다. 실제 `orders`·`payments`·PG 승인·고객 계정·재고는 변경하지 않습니다. 판매 시드를 다시 실행해 가격·상태를 바꾼 경우 결제 시드도 다시 실행합니다.
 
-`/admin/live` 기본 화면과 `?source=simulation`은 시뮬레이션 결제, `?source=actual`은 실제 고객 결제만 집계합니다. 두 데이터는 합산하지 않으며, 가상 데이터임을 화면에 표시합니다. 실제 주문이 0건이면 빈 이유와 시뮬레이션 매출 링크를 보여줍니다. `scripts/verify-sales-simulation.ts`는 결제 합계·한국 시간 최근 7일 합계와 비관리자 접근 차단도 확인합니다.
+`/admin/live`는 기존 결제 데이터와 실제 결제를 하나로 합산합니다. 이전 `source` URL 파라미터는 더 이상 집계를 나누지 않습니다. `scripts/verify-sales-simulation.ts`는 기존 데이터의 결제 합계·한국 시간 최근 7일 합계와 비관리자 접근 차단을 확인합니다.
+
+## 통합 집계
+
+`0034_unified_sales_reporting.sql`의 `admin_sales_lines`는 기존 판매와 실제 원화 주문의 상품 항목을 UNION ALL로 조회합니다. 실결제·배송의 원본은 `orders`·`payments`에 유지되며 가상 주문을 고객 계정에 삽입하지 않습니다. 실제 결제 승인 후 다음 조회부터 `/admin`과 `/admin/live`에 자동으로 더해집니다. 실제 취소·환불도 원본 주문 상태를 따라 제외됩니다.
+
+`get_admin_sales()`는 기간·매장·상품·판매 내역의 통합 분석, `get_admin_combined_dashboard()`는 누적 결제액과 최근 7일 결제일 기준 매출을 제공합니다. 상품 순매출 분석은 배송비 제외, 결제 매출 대시보드는 배송비 포함입니다. 여러 상품이 있는 주문도 주문 수는 한 번만 세며, 주문 할인은 상품 금액 비율로 원 단위 배분하고 합계를 보존합니다. 매장별 주문 수는 같은 주문이 여러 매장에 걸치면 중복될 수 있습니다. 실제 주문의 유입 경로는 별도 추적값이 없어 '직접 결제', 결제 수단이 없으면 '결제 수단 미확인'으로 표시합니다.
+
+```sh
+node --import tsx scripts/verify-unified-sales.ts
+```
+
+통합 검증은 트랜잭션 내부의 주문으로 결제 대기 → 결제 완료 → 취소 → 환불을 확인하고 전부 롤백합니다. 실제 PG 요청이나 커밋된 테스트 주문은 생성하지 않습니다. 비관리자의 뷰·RPC 접근 차단도 검증합니다.
