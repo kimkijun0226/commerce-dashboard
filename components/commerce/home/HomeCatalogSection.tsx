@@ -1,5 +1,6 @@
 "use client";
 
+import type { CampaignBanner, CampaignFilter } from "@/lib/catalog/campaigns";
 import { StorefrontCampaign } from "./StorefrontCampaign";
 import { type StoreKey } from "@/lib/catalog/storefront";
 import { CatalogFetchError } from "@/components/commerce/catalog/CatalogFetchError";
@@ -11,9 +12,11 @@ import type { RefObject } from "react";
 import { FiRotateCcw, FiSearch } from "react-icons/fi";
 
 export type HomeCatalogSectionProps = {
+  campaigns?: CampaignBanner[];
   categories: CatalogCategory[];
   department: StoreKey;
   selectedCategory: string;
+  onCampaignSelect: (filter: CampaignFilter) => void;
   onCategoryChange: (category: string) => void;
   onCategoryIntent: (category: string) => void;
   onResetFilters: () => void;
@@ -31,7 +34,7 @@ export type HomeCatalogSectionProps = {
 };
 
 export function HomeCatalogSection({
-  department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
+  campaigns, onCampaignSelect, department, categories, selectedCategory, onCategoryChange, onCategoryIntent, onResetFilters,
   total, allTotal, keyword, showFetchError,
   isProductLoading, products, loadMoreRef, showLoadMoreSentinel,
   isFetchingNextPage, onAddToCart, onWishlistToggle,
@@ -43,7 +46,7 @@ export function HomeCatalogSection({
 
   return (
     <section aria-label="상품 목록">
-      <StorefrontCampaign department={department} />
+      <StorefrontCampaign campaigns={campaigns} department={department} onSelect={onCampaignSelect} />
       <div className="mb-6 border-b border-(--commerce-border-subtle) pb-4">
         <div role="group" aria-label="상품 카테고리" className="flex flex-wrap items-center gap-2">
           {choices.map((choice) => {

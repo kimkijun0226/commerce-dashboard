@@ -133,6 +133,7 @@ export function getRouteAccess(pathname: string): RouteAccess | undefined {
   if (path in ROUTE_CONFIG_MAP) {
     return ROUTE_CONFIG_MAP[path as keyof typeof ROUTE_CONFIG_MAP];
   }
+  if (path.startsWith("/admin/")) return "admin";
   if (isProductDetailPath(path)) return "public";
   if (isAdminOrderDetailPath(path)) return "admin";
   if (isAccountOrderDetailPath(path)) return "authenticated";

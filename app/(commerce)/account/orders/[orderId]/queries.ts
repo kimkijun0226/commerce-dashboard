@@ -31,6 +31,9 @@ export type OrderDetailPayment = {
 };
 
 export type OrderDetailOrder = {
+  fulfillmentStatus?: string;
+  shippingCarrier?: string | null;
+  trackingNumber?: string | null;
   id: string;
   status: OrderStatus;
   paymentStatus: PaymentStatusOrder;
@@ -68,6 +71,7 @@ type PaymentsRow = Database["public"]["Tables"]["payments"]["Row"];
 
 function mapOrder(row: OrdersRow): OrderDetailOrder {
   return {
+    fulfillmentStatus: row.fulfillment_status, shippingCarrier: row.shipping_carrier, trackingNumber: row.tracking_number,
     id: row.id,
     status: row.status,
     paymentStatus: row.payment_status,

@@ -4,6 +4,7 @@ export function shouldBypassImageOptimization(src: string): boolean {
   try {
     const url = new URL(src);
     return url.protocol !== "https:" || ![
+      "www.charmer.kr",
       "images.unsplash.com",
       "www.cosrx.com",
       "cdn.shopify.com",

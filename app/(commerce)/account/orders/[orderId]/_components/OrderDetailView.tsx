@@ -1,3 +1,4 @@
+import { FULFILLMENT_LABELS } from "@/lib/admin/validation";
 import { formatSelectedOptions } from "@/commons/utils/productOptions";
 import { shouldBypassImageOptimization } from "@/commons/utils/imageOptimization";
 import Image from "next/image";
@@ -272,7 +273,8 @@ export function OrderDetailView({
       </section>
 
       <section className={cardClassName()} aria-labelledby="shipping-heading">
-        {sectionTitle("Shipping Information", "shipping-heading")}
+        {sectionTitle("배송 정보", "shipping-heading")}
+        <div className="mb-4 space-y-2 text-sm"><p>배송 상태: {FULFILLMENT_LABELS[order.fulfillmentStatus ?? "unfulfilled"] ?? "미처리"}</p>{order.trackingNumber ? <p>{order.shippingCarrier} · 송장번호 {order.trackingNumber}</p> : null}</div>
         <div className="flex flex-col gap-3">
           {shipLines.length > 0
             ? shipLines.map((line, i) => (

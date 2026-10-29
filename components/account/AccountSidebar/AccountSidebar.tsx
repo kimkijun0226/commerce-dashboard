@@ -72,7 +72,7 @@ export function AccountSidebar({
     ...(role === "admin"
       ? [
           {
-            label: "Dashboard",
+            label: "관리자",
             href: "/admin",
             match: (p: string) => p.startsWith("/admin"),
           },

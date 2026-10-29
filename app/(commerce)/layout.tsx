@@ -1,3 +1,4 @@
+import { getStoreLogos } from "@/lib/catalog/settings";
 import { StorefrontTheme } from "@/components/commerce/layout/StorefrontTheme";
 import { LayoutHeader } from "@/components/commerce/layout/LayoutHeader";
 import { LayoutFooter } from "@/components/commerce/layout/LayoutFooter";
@@ -6,15 +7,16 @@ import { Toaster as HotToaster } from "react-hot-toast";
 import { Toaster } from "sonner";
 
 // 커머스 공통 레이아웃과 전역 토스트 컨테이너를 함께 제공합니다.
-export default function CommerceLayout({
+export default async function CommerceLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const logos = await getStoreLogos();
   return (
     <StorefrontTheme>
       <CartInitializer />
-      <LayoutHeader />
+      <LayoutHeader logos={logos} />
       <main className="flex-1 pt-[60px]">{children}</main>
       <LayoutFooter />
       {/* 기존 sonner와 별도로, 새 Retry/Diff UI에서 쓰는 react-hot-toast도 함께 노출합니다. */}

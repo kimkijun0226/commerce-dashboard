@@ -10,6 +10,7 @@ export type HomeSearchBarProps = {
   inputId?: string;
   /** 지정 시 ESC에서 호출. 미지정 시 검색어·패널 상태까지 `clear()` */
   onEscape?: () => void;
+  onSubmitSearch?: () => void;
 };
 
 export function HomeSearchBar({
@@ -17,6 +18,7 @@ export function HomeSearchBar({
   placeholder = "상품명이나 브랜드를 검색해 보세요",
   inputId = "home-search-input",
   onEscape,
+  onSubmitSearch,
 }: HomeSearchBarProps) {
   const keyword = useSearchStore((s) => s.keyword);
   const setKeyword = useSearchStore((s) => s.setKeyword);
@@ -27,7 +29,9 @@ export function HomeSearchBar({
       id={inputId}
       className={className}
       placeholder={placeholder}
+      onAction={() => onSubmitSearch?.()}
       actionLabel=""
+      maxLength={200}
       value={keyword}
       onChange={(e) => setKeyword(e.target.value)}
       onClear={() => {

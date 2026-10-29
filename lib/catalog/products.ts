@@ -53,8 +53,8 @@ export async function getCatalogProducts(params: CatalogProductsParams = {}) {
     1,
     Math.min(200, Math.floor(Number(params.pageSize ?? CATALOG_PAGE_SIZE) || 0)),
   );
-  const q = String(params.q ?? "").trim();
-  const category = String(params.category ?? "").trim();
+  const q = String(params.q ?? "").trim().slice(0, 200);
+  const category = String(params.category ?? "").trim().slice(0, 100);
 
   return getCachedCatalogProducts(page, pageSize, q, category, parseStoreKey(params.department));
 }

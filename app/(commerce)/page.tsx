@@ -1,2 +1,2 @@
-import { StorefrontPage } from "@/components/commerce/home/StorefrontPage";
-export default function Page() { return <StorefrontPage department="fashion" />; }
+import { StorefrontPage, type StorefrontSearchParams } from "@/components/commerce/home/StorefrontPage";
+export default function Page({ searchParams }: { searchParams: StorefrontSearchParams }) { return <StorefrontPage department="fashion" searchParams={searchParams} />; }

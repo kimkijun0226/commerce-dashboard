@@ -45,6 +45,8 @@ export function usePrefetchCatalog(department: StoreKey = "fashion") {
 }
 
 export function useInfiniteProducts(options?: {
+  initialQuery?: string;
+  initialCategory?: string;
   initialItems?: Product[];
   initialTotal?: number;
   q?: string;
@@ -55,7 +57,7 @@ export function useInfiniteProducts(options?: {
   const category = options?.category ?? "";
   return useInfiniteQuery({
     ...catalogQueryOptions(q, category, options?.department ?? "fashion"),
-    initialData: options?.initialItems && !q && !category
+    initialData: options?.initialItems && q === (options.initialQuery ?? "") && category === (options.initialCategory ?? "")
       ? {
         pageParams: [0],
         pages: [{

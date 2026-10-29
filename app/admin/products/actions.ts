@@ -1,29 +1,72 @@
 "use server";
-
-import { parseOptionEditor } from "@/commons/utils/productOptions";
 import { revalidatePath, updateTag } from "next/cache";
 import { checkAdminAccess } from "@/lib/auth/admin";
 import { createClient } from "@/lib/supabase/server";
-
-export async function saveProductKeywords(formData: FormData) {
-  if (!(await checkAdminAccess())) throw new Error("관리자 권한이 필요합니다.");
-  const id = String(formData.get("productId") ?? "");
-  const raw = String(formData.get("keywords") ?? "");
-  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) {
-    throw new Error("올바른 상품 ID가 필요합니다.");
+import { readProductForm } from "@/lib/admin/validation";
+import { redirect } from "next/navigation";
+export type ProductSaveState = { error?: string };
+export async function saveProduct(
+  _state: ProductSaveState,
+  form: FormData,
+): Promise<ProductSaveState> {
+  if (!(await checkAdminAccess()))
+    return { error: "관리자 권한이 필요합니다." };
+  let savedId: string;
+  try {
+    const id = String(form.get("productId") ?? "");
+    if (
+      id &&
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+        id,
+      )
+    )
+      throw new Error("올바른 상품을 선택해 주세요.");
+    const { brand, ...values } = readProductForm(form);
+    const supabase = await createClient();
+    let additional: Record<
+      string,
+      import("@/types/supabase").Json | undefined
+    > = {};
+    if (id) {
+      const { data, error } = await supabase
+        .from("products")
+        .select("additional_info")
+        .eq("id", id)
+        .single();
+      if (error || !data) throw new Error("상품을 찾을 수 없습니다.");
+      if (
+        data.additional_info &&
+        typeof data.additional_info === "object" &&
+        !Array.isArray(data.additional_info)
+      )
+        additional = data.additional_info;
+    }
+    const row = {
+      ...values,
+      additional_info: { ...additional, 브랜드: brand },
+      updated_at: new Date().toISOString(),
+    };
+    const result = id
+      ? await supabase
+          .from("products")
+          .update(row)
+          .eq("id", id)
+          .select("id")
+          .single()
+      : await supabase.from("products").insert(row).select("id").single();
+    if (result.error || !result.data)
+      throw new Error(
+        result.error?.message ?? "저장한 상품을 확인할 수 없습니다.",
+      );
+    savedId = result.data.id;
+    updateTag("catalog");
+    revalidatePath("/admin", "layout");
+    revalidatePath("/", "layout");
+  } catch (error) {
+    return {
+      error:
+        error instanceof Error ? error.message : "상품을 저장하지 못했습니다.",
+    };
   }
-  const keywords = [...new Set(raw.split(/[,\n]/).map((value) => value.trim()).filter(Boolean))];
-  if (raw.length > 10000 || keywords.length > 50 || keywords.some((value) => value.length > 100)) {
-    throw new Error("키워드는 최대 50개, 각 100자까지 입력할 수 있습니다.");
-  }
-  const department = formData.get("department");
-  if (department !== null && !["fashion", "beauty", "home"].includes(String(department))) throw new Error("올바른 매장을 선택해 주세요.");
-  const options = formData.has("options") ? parseOptionEditor(String(formData.get("options") ?? "")) : undefined;
-  const supabase = await createClient();
-  const { data, error } = await supabase.from("products")
-    .update({ ...(department ? { department: department as "fashion" | "beauty" | "home" } : {}), search_keywords: keywords, ...(options ? { options: options.map((option) => ({ ...option })) } : {}) }).eq("id", id).select("id").single();
-  if (error || !data) throw new Error(`검색 키워드 저장 실패: ${error?.message ?? "상품이 없습니다."}`);
-  updateTag("catalog");
-  revalidatePath("/admin/products");
-  revalidatePath("/", "layout");
+  redirect(`/admin/products/${savedId}?saved=1`);
 }

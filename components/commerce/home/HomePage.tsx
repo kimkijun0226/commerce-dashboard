@@ -1,5 +1,6 @@
 "use client";
 
+import { catalogFilterUrl, type CampaignBanner, type CampaignFilter } from "@/lib/catalog/campaigns";
 import type { StoreKey } from "@/lib/catalog/storefront";
 import { StorefrontNav } from "@/components/commerce/layout/StorefrontNav";
 import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
@@ -17,20 +18,40 @@ import { getGuestLikedIds } from "@/components/commerce/likes/guestLikes";
 import { toast } from "sonner";
 
 export type HomePageProps = {
+  campaigns?: CampaignBanner[];
+  initialQuery?: string;
+  initialCategory?: string;
+  allTotal?: number;
   initialItems?: Product[];
   initialTotal?: number;
   categories: CatalogCategory[];
   department?: StoreKey;
 };
 
-export function HomePage({ initialItems, initialTotal, categories, department = "fashion" }: HomePageProps) {
+export function HomePage({ campaigns, initialQuery = "", initialCategory = "", allTotal, initialItems, initialTotal, categories, department = "fashion" }: HomePageProps) {
   const isAuthed = useSessionStore((s) => s.isAuthenticated);
   const likesSyncNonce = useSessionStore((s) => s.likesSyncNonce);
   const addItem = useCartStore((s) => s.addItem);
-  const keyword = useSearchStore((s) => s.keyword);
+  const [keyword, setLocalKeyword] = useState(initialQuery);
   const setKeyword = useSearchStore((s) => s.setKeyword);
   const prefetchCatalog = usePrefetchCatalog(department);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(initialCategory);
+
+  useEffect(() => useSearchStore.subscribe((state, previous) => {
+    if (state.keyword !== previous.keyword) setLocalKeyword(state.keyword);
+  }), []);
+  useEffect(() => { setKeyword(initialQuery); }, [initialQuery, setKeyword]);
+  useEffect(() => {
+    const restore = () => { const params = new URLSearchParams(window.location.search); setCategory(params.get("category") ?? ""); setKeyword(params.get("q") ?? ""); };
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, [setKeyword]);
+  const applyFilters = (filter: CampaignFilter, scroll = false) => {
+    setCategory(filter.category ?? "");
+    setKeyword(filter.q ?? "");
+    window.history.pushState(null, "", catalogFilterUrl(department, filter, scroll));
+    if (scroll) document.getElementById("catalog-products")?.scrollIntoView({ block: "start" });
+  };
   const debouncedKeyword = useDebouncedValue(keyword.trim(), 350);
   const isSearchPending = keyword.trim() !== debouncedKeyword;
 
@@ -41,7 +62,7 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteProducts({ initialItems, initialTotal, q: debouncedKeyword, category, department });
+  } = useInfiniteProducts({ initialItems, initialTotal, initialQuery, initialCategory, q: debouncedKeyword, category, department });
 
   useEffect(() => {
     if (debouncedKeyword) return;
@@ -58,10 +79,12 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
   }, [categories, debouncedKeyword, prefetchCatalog]);
 
   const productsBase = useMemo(() => data?.pages.flatMap((p) => p.items) ?? [], [data]);
-  const resetFilters = () => {
-    setCategory("");
-    setKeyword("");
-  };
+  const resetFilters = () => applyFilters({});
+  useEffect(() => {
+    if (keyword.trim() === debouncedKeyword) {
+      window.history.replaceState(null, "", catalogFilterUrl(department, { category, q: debouncedKeyword }, Boolean(window.location.hash)));
+    }
+  }, [category, debouncedKeyword, department, keyword]);
 
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
   const [pendingLikes, startLikes] = useTransition();
@@ -155,14 +178,16 @@ export function HomePage({ initialItems, initialTotal, categories, department = 
     <div className="mx-auto max-w-[1800px] px-4 py-6 sm:px-6 lg:px-8">
       <StorefrontNav active={department} />
       <HomeCatalogSection
+        campaigns={campaigns}
         department={department}
         categories={categories}
         selectedCategory={category}
-        onCategoryChange={setCategory}
+        onCampaignSelect={(filter) => applyFilters(filter, true)}
+        onCategoryChange={(value) => applyFilters({ category: value, q: keyword })}
         onCategoryIntent={(value) => { void prefetchCatalog(debouncedKeyword, value); }}
         onResetFilters={resetFilters}
         total={data?.pages[0]?.total ?? 0}
-        allTotal={initialTotal ?? 0}
+        allTotal={allTotal ?? initialTotal ?? 0}
         keyword={keyword}
         showFetchError={isError}
         isProductLoading={isLoading || isSearchPending}

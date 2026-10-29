@@ -1,0 +1,3678 @@
+[
+  {
+    "key": "fashion:59319968083",
+    "department": "fashion",
+    "name": "마뗑킴 스몰 로고 티셔츠 3장 세트",
+    "brand": "마뗑킴",
+    "category": "티셔츠",
+    "price": 43200,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5931996/59319968083.20260319152952.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5931996/59319968083.20260319152952.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 스몰 로고 티셔츠 3장 세트",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53175778637",
+    "department": "fashion",
+    "name": "탑텐 쿨에어 SILKY U넥 반팔티 MSF2TS2018",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5317577/53175778637.20250426050256.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5317577/53175778637.20250426050256.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨에어 SILKY U넥 반팔티 MSF2TS2018",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55340543471",
+    "department": "fashion",
+    "name": "앤더슨벨 유니섹스 하트 메세지 티셔츠 ATB1251U",
+    "brand": "앤더슨벨",
+    "category": "티셔츠",
+    "price": 61700,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5534054/55340543471.20250819111357.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5534054/55340543471.20250819111357.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 유니섹스 하트 메세지 티셔츠 ATB1251U",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59588235569",
+    "department": "fashion",
+    "name": "마르디메크르디 TSHIRT FLOWERMARDI",
+    "brand": "마르디메크르디",
+    "category": "티셔츠",
+    "price": 45000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5958823/59588235569.20260408160004.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5958823/59588235569.20260408160004.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마르디메크르디 TSHIRT FLOWERMARDI",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:89359559100",
+    "department": "fashion",
+    "name": "우영미 반팔 티셔츠 백로고 반팔티 자개펄 코랄 플라워",
+    "brand": "우영미",
+    "category": "티셔츠",
+    "price": 273000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8935955/89359559100.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8935955/89359559100.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 반팔 티셔츠 백로고 반팔티 자개펄 코랄 플라워",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60097195776",
+    "department": "fashion",
+    "name": "[준지] 준지 로고 세미오버핏 반팔 티셔츠 흰색 JC6742P901",
+    "brand": "준지",
+    "category": "티셔츠",
+    "price": 180500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6009719/60097195776.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6009719/60097195776.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[준지] 준지 로고 세미오버핏 반팔 티셔츠 흰색 JC6742P901",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60205137898",
+    "department": "fashion",
+    "name": "에잇세컨즈 사이드 스트링 반소매 티셔츠 356442CMV",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "price": 18670,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6020513/60205137898.20260527144126.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6020513/60205137898.20260527144126.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 사이드 스트링 반소매 티셔츠 356442CMV",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:89174243918",
+    "department": "fashion",
+    "name": "마뗑킴 반팔 티셔츠 로고 헤리티지 오버핏 기본 크롭 빅사이즈 남성 여성 여름용",
+    "brand": "마뗑킴",
+    "category": "티셔츠",
+    "price": 37900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8917424/89174243918.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8917424/89174243918.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 반팔 티셔츠 로고 헤리티지 오버핏 기본 크롭 빅사이즈 남성 여성 여름용",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59846641250",
+    "department": "fashion",
+    "name": "스파오 캡소매 헨리넥 니트",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "price": 35900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5984664/59846641250.20260429200454.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5984664/59846641250.20260429200454.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 캡소매 헨리넥 니트",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:89511639628",
+    "department": "fashion",
+    "name": "이토준지 티셔츠 토미에 빈티지 데미지 워싱 두꺼운 반팔 힙합 오버핏 스트릿 패션 1 S",
+    "brand": "준지",
+    "category": "티셔츠",
+    "price": 20500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8951163/89511639628.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8951163/89511639628.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "이토준지 티셔츠 토미에 빈티지 데미지 워싱 두꺼운 반팔 힙합 오버핏 스트릿 패션 1 S",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:89630344355",
+    "department": "fashion",
+    "name": "아더에러 반팔 시그니피컨트 BL 태그 04 티셔츠",
+    "brand": "아더에러",
+    "category": "티셔츠",
+    "price": 139000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8963034/89630344355.2.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8963034/89630344355.2.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 반팔 시그니피컨트 BL 태그 04 티셔츠",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:54973496445",
+    "department": "fashion",
+    "name": "앤더슨벨 선댄스 티셔츠 atb1402u",
+    "brand": "앤더슨벨",
+    "category": "티셔츠",
+    "price": 55720,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5497349/54973496445.20250526234952.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5497349/54973496445.20250526234952.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 선댄스 티셔츠 atb1402u",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59726312682",
+    "department": "fashion",
+    "name": "스파오 드레이프 반팔티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "price": 25900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5972631/59726312682.20260420002837.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5972631/59726312682.20260420002837.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 드레이프 반팔티",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60335824718",
+    "department": "fashion",
+    "name": "탑텐 플리츠 돌먼 T 반팔 MSG3TS2201",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "price": 17910,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6033582/60335824718.20260608020229.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6033582/60335824718.20260608020229.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 플리츠 돌먼 T 반팔 MSG3TS2201",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59885834113",
+    "department": "fashion",
+    "name": "에잇세컨즈 립배색 슬럽 반소매 그래픽 티셔츠",
+    "brand": "에잇세컨즈",
+    "category": "티셔츠",
+    "price": 17430,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5988583/59885834113.20260510033053.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5988583/59885834113.20260510033053.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 립배색 슬럽 반소매 그래픽 티셔츠",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:54193703352",
+    "department": "fashion",
+    "name": "아더에러 시그니피컨트 TRS 태그 롱슬리브 티셔츠 BO42FYTS0201",
+    "brand": "아더에러",
+    "category": "티셔츠",
+    "price": 116640,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5419370/54193703352.20251015093407.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5419370/54193703352.20251015093407.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 시그니피컨트 TRS 태그 롱슬리브 티셔츠 BO42FYTS0201",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53304393073",
+    "department": "fashion",
+    "name": "탑텐 리넨 루즈핏 셔츠 MSF2WC2901",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "price": 12900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5330439/53304393073.20250421233226.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5330439/53304393073.20250421233226.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 리넨 루즈핏 셔츠 MSF2WC2901",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60208565444",
+    "department": "fashion",
+    "name": "우영미 플라워 백로고 티셔츠 W263TS06708B",
+    "brand": "우영미",
+    "category": "티셔츠",
+    "price": 348080,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6020856/60208565444.20260528010554.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6020856/60208565444.20260528010554.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 플라워 백로고 티셔츠 W263TS06708B",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90777584750",
+    "department": "fashion",
+    "name": "[마르디 메크르디] COTTON POPLIN SHIRT_WHITE PINK",
+    "brand": "마르디메크르디",
+    "category": "셔츠",
+    "price": 128000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9077758/90777584750.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9077758/90777584750.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디 메크르디] COTTON POPLIN SHIRT_WHITE PINK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58332604889",
+    "department": "fashion",
+    "name": "탑텐 밸런스 백 여성 반팔티 루즈핏 MBG5TS2252",
+    "brand": "탑텐",
+    "category": "티셔츠",
+    "price": 8000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5833260/58332604889.20260402161004.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5833260/58332604889.20260402161004.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 밸런스 백 여성 반팔티 루즈핏 MBG5TS2252",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59379143501",
+    "department": "fashion",
+    "name": "스파오 BRA-IN 골지 민소매 티",
+    "brand": "스파오",
+    "category": "티셔츠",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5937914/59379143501.20260422021725.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5937914/59379143501.20260422021725.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 BRA-IN 골지 민소매 티",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60233414647",
+    "department": "fashion",
+    "name": "에잇세컨즈 스트라이프 시어 변형 셔츠 356564sm91",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "price": 49900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023341/60233414647.20260529234636.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023341/60233414647.20260529234636.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 스트라이프 시어 변형 셔츠 356564sm91",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53758688368",
+    "department": "fashion",
+    "name": "스파오 데님 오버핏 반팔 셔츠 SPYJF24C01",
+    "brand": "스파오",
+    "category": "셔츠",
+    "price": 13590,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5375868/53758688368.20250715175425.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5375868/53758688368.20250715175425.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 데님 오버핏 반팔 셔츠 SPYJF24C01",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58986356642",
+    "department": "fashion",
+    "name": "탑텐 리넨블렌드 루즈핏 셔츠 긴팔 MSG2WC2901",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "price": 26830,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5898635/58986356642.20260222214328.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5898635/58986356642.20260222214328.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 리넨블렌드 루즈핏 셔츠 긴팔 MSG2WC2901",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:45814219353",
+    "department": "fashion",
+    "name": "26년최신 우영미 백로고 셔츠 블루/네이비/화이트 쇼핑백증정 서울권퀵가능",
+    "brand": "우영미",
+    "category": "셔츠",
+    "price": 475000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4581421/45814219353.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4581421/45814219353.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "26년최신 우영미 백로고 셔츠 블루/네이비/화이트 쇼핑백증정 서울권퀵가능",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90782291392",
+    "department": "fashion",
+    "name": "[마르디 메크르디] COTTON SHIRT CHECK_MINT",
+    "brand": "마르디메크르디",
+    "category": "셔츠",
+    "price": 154000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9078229/90782291392.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9078229/90782291392.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디 메크르디] COTTON SHIRT CHECK_MINT",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55849690154",
+    "department": "fashion",
+    "name": "준지 아가일 체크 셔츠 JC5864P01D",
+    "brand": "준지",
+    "category": "셔츠",
+    "price": 542280,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5584969/55849690154.20250719144236.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5584969/55849690154.20250719144236.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "준지 아가일 체크 셔츠 JC5864P01D",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60233576579",
+    "department": "fashion",
+    "name": "아더에러 셔츠 Duriat shirt",
+    "brand": "아더에러",
+    "category": "셔츠",
+    "price": 593990,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023357/60233576579.20260530004646.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023357/60233576579.20260530004646.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 셔츠 Duriat shirt",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:84350714697",
+    "department": "fashion",
+    "name": "(국내매장판) 마르디메크르디 티셔츠 베이직 플라워 트리플 슬림핏 반팔티 남녀공용",
+    "brand": "마르디메크르디",
+    "category": "티셔츠",
+    "price": 58900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8435071/84350714697.34.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8435071/84350714697.34.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "(국내매장판) 마르디메크르디 티셔츠 베이직 플라워 트리플 슬림핏 반팔티 남녀공용",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60203288376",
+    "department": "fashion",
+    "name": "에잇세컨즈 체크 긴소매 셔츠 356564CM3",
+    "brand": "에잇세컨즈",
+    "category": "셔츠",
+    "price": 33670,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6020328/60203288376.20260527101754.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6020328/60203288376.20260527101754.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 체크 긴소매 셔츠 356564CM3",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:48279954644",
+    "department": "fashion",
+    "name": "탑텐 포플린 크롭 셔츠 MSE3WC2005",
+    "brand": "탑텐",
+    "category": "셔츠",
+    "price": 14200,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4827995/48279954644.20240924142627.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4827995/48279954644.20240924142627.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 포플린 크롭 셔츠 MSE3WC2005",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59726162092",
+    "department": "fashion",
+    "name": "마뗑킴 UNBALANCE COLLAR HALF SHIRT IN",
+    "brand": "마뗑킴",
+    "category": "셔츠",
+    "price": 79000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5972616/59726162092.20260419233120.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5972616/59726162092.20260419233120.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 UNBALANCE COLLAR HALF SHIRT IN",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59388843340",
+    "department": "fashion",
+    "name": "스파오 시티웨어 반팔 셔츠 SPJJG25C21",
+    "brand": "스파오",
+    "category": "셔츠",
+    "price": 30800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5938884/59388843340.20260326215612.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5938884/59388843340.20260326215612.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 시티웨어 반팔 셔츠 SPJJG25C21",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59081385854",
+    "department": "fashion",
+    "name": "탑텐 여성 버뮤다 쇼츠 MSF2PH2501",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "price": 15900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5908138/59081385854.20260529172131.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5908138/59081385854.20260529172131.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 버뮤다 쇼츠 MSF2PH2501",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55328209200",
+    "department": "fashion",
+    "name": "준지 셔츠 JW3264W01",
+    "brand": "준지",
+    "category": "셔츠",
+    "price": 400000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5532820/55328209200.20250616220251.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5532820/55328209200.20250616220251.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "준지 셔츠 JW3264W01",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90358603368",
+    "department": "fashion",
+    "name": "[마르디 메크르디] JOGGER PANTS FLOWER_OATMEAL BLACK",
+    "brand": "마르디메크르디",
+    "category": "팬츠",
+    "price": 135000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9035860/90358603368.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9035860/90358603368.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디 메크르디] JOGGER PANTS FLOWER_OATMEAL BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:57219896603",
+    "department": "fashion",
+    "name": "앤더슨벨 셔츠 남성 Fall Winter 2025 ATB1341MWHITE",
+    "brand": "앤더슨벨",
+    "category": "셔츠",
+    "price": 512100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5721989/57219896603.20251014230830.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5721989/57219896603.20251014230830.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 셔츠 남성 Fall Winter 2025 ATB1341MWHITE",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60279630304",
+    "department": "fashion",
+    "name": "아더에러 셔츠 Product 56",
+    "brand": "아더에러",
+    "category": "셔츠",
+    "price": 659990,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6027963/60279630304.20260602214527.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6027963/60279630304.20260602214527.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 셔츠 Product 56",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59522759771",
+    "department": "fashion",
+    "name": "스파오 롤업 반팔 체크 셔츠 SPYCG25C06",
+    "brand": "스파오",
+    "category": "셔츠",
+    "price": 23720,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5952275/59522759771.20260404004751.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5952275/59522759771.20260404004751.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 롤업 반팔 체크 셔츠 SPYCG25C06",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59289724078",
+    "department": "fashion",
+    "name": "스파오 와이드 카고 팬츠 (나일론)",
+    "brand": "스파오",
+    "category": "팬츠",
+    "price": 23630,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5928972/59289724078.20260411044326.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5928972/59289724078.20260411044326.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 와이드 카고 팬츠 (나일론)",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:54000864824",
+    "department": "fashion",
+    "name": "탑텐 코튼 밴딩 쇼츠 MSF2PH2201",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5400086/54000864824.20250411171353.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5400086/54000864824.20250411171353.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 코튼 밴딩 쇼츠 MSF2PH2201",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59490105818",
+    "department": "fashion",
+    "name": "마뗑킴 SIDE LOGO WIDE TRACK PANTS",
+    "brand": "마뗑킴",
+    "category": "팬츠",
+    "price": 142200,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5949010/59490105818.20260401131223.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5949010/59490105818.20260401131223.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 SIDE LOGO WIDE TRACK PANTS",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60410629389",
+    "department": "fashion",
+    "name": "23FW 앤더슨벨 스트레이트 팬츠 APA677MBLACK",
+    "brand": "앤더슨벨",
+    "category": "팬츠",
+    "price": 721000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6041062/60410629389.20260611223522.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6041062/60410629389.20260611223522.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "23FW 앤더슨벨 스트레이트 팬츠 APA677MBLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59489304596",
+    "department": "fashion",
+    "name": "준지 cargo trousers JC6221P235",
+    "brand": "준지",
+    "category": "팬츠",
+    "price": 940000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5948930/59489304596.20260401121634.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5948930/59489304596.20260401121634.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "준지 cargo trousers JC6221P235",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58573648006",
+    "department": "fashion",
+    "name": "우영미 블루 플라워 백로고 데님 셔츠 W261SH26882L",
+    "brand": "우영미",
+    "category": "셔츠",
+    "price": 535500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5857364/58573648006.20260120113734.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5857364/58573648006.20260120113734.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 블루 플라워 백로고 데님 셔츠 W261SH26882L",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59877174735",
+    "department": "fashion",
+    "name": "우영미 숏팬츠 919G W261PT35",
+    "brand": "우영미",
+    "category": "팬츠",
+    "price": 507000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5987717/59877174735.20260501175210.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5987717/59877174735.20260501175210.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 숏팬츠 919G W261PT35",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55212711419",
+    "department": "fashion",
+    "name": "아더에러 바지 아더에러 멤 트라우저 사이즈 A1 BLAFWTR01GR",
+    "brand": "아더에러",
+    "category": "팬츠",
+    "price": 429000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5521271/55212711419.20250610192523.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5521271/55212711419.20250610192523.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 바지 아더에러 멤 트라우저 사이즈 A1 BLAFWTR01GR",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59981208041",
+    "department": "fashion",
+    "name": "에잇세컨즈 니턱 크롭 팬츠 356521CMP1",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "price": 27930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5998120/59981208041.20260521141636.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5998120/59981208041.20260521141636.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 니턱 크롭 팬츠 356521CMP1",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:91173602487",
+    "department": "fashion",
+    "name": "우영미 블랙 코튼 원턱 밴딩 팬츠 W263PT17741B",
+    "brand": "우영미",
+    "category": "팬츠",
+    "price": 520000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9117360/91173602487.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9117360/91173602487.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 블랙 코튼 원턱 밴딩 팬츠 W263PT17741B",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53844605364",
+    "department": "fashion",
+    "name": "탑텐 쿨에어코튼 더블니트 스웨트쇼츠 MSF2PT2901",
+    "brand": "탑텐",
+    "category": "팬츠",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5384460/53844605364.20250411171113.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5384460/53844605364.20250411171113.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨에어코튼 더블니트 스웨트쇼츠 MSF2PT2901",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90419659901",
+    "department": "fashion",
+    "name": "[마르디 메크르디] JOGGER PANTS FLOWER_OATMEAL BLACK",
+    "brand": "마르디메크르디",
+    "category": "팬츠",
+    "price": 135000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9041965/90419659901.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9041965/90419659901.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디 메크르디] JOGGER PANTS FLOWER_OATMEAL BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59447426422",
+    "department": "fashion",
+    "name": "스파오 라이트 쇼츠 (나일론)",
+    "brand": "스파오",
+    "category": "팬츠",
+    "price": 18640,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5944742/59447426422.20260329203010.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5944742/59447426422.20260329203010.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 라이트 쇼츠 (나일론)",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60357898239",
+    "department": "fashion",
+    "name": "앤더슨벨 폴른 데님 카고 팬츠 apa672m BL A23FWPAM672",
+    "brand": "앤더슨벨",
+    "category": "팬츠",
+    "price": 168000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6035789/60357898239.20260608171853.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6035789/60357898239.20260608171853.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 폴른 데님 카고 팬츠 apa672m BL A23FWPAM672",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60178382342",
+    "department": "fashion",
+    "name": "에잇세컨즈 피그먼트 버뮤다 팬츠 165825APJ",
+    "brand": "에잇세컨즈",
+    "category": "팬츠",
+    "price": 11900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6017838/60178382342.20260525115046.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6017838/60178382342.20260525115046.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 피그먼트 버뮤다 팬츠 165825APJ",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:45252380060",
+    "department": "fashion",
+    "name": "마뗑킴 DOUBLE ZIPPER CHINO PANTS IN",
+    "brand": "마뗑킴",
+    "category": "팬츠",
+    "price": 218000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_4525238/45252380060.20240117010701.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_4525238/45252380060.20240117010701.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 DOUBLE ZIPPER CHINO PANTS IN",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58528641939",
+    "department": "fashion",
+    "name": "아더에러 플리츠 바지 BO01FWSA020",
+    "brand": "아더에러",
+    "category": "팬츠",
+    "price": 369800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5852864/58528641939.20260115231631.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5852864/58528641939.20260115231631.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 플리츠 바지 BO01FWSA020",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:56826850395",
+    "department": "fashion",
+    "name": "마뗑킴 스펠 포인트 스트라이프 가디건",
+    "brand": "마뗑킴",
+    "category": "니트",
+    "price": 144000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5682685/56826850395.20250930171418.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5682685/56826850395.20250930171418.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 스펠 포인트 스트라이프 가디건",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58769530601",
+    "department": "fashion",
+    "name": "스파오 와플 와이드 스웨트팬츠",
+    "brand": "스파오",
+    "category": "팬츠",
+    "price": 18510,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5876953/58769530601.20260202180852.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5876953/58769530601.20260202180852.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 와플 와이드 스웨트팬츠",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:57555796339",
+    "department": "fashion",
+    "name": "탑텐 부클 버튼 카라 스웨터 MSF2ET2101",
+    "brand": "탑텐",
+    "category": "니트",
+    "price": 9900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5755579/57555796339.20251104101716.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5755579/57555796339.20251104101716.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 부클 버튼 카라 스웨터 MSF2ET2101",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53938395426",
+    "department": "fashion",
+    "name": "탑텐 부클 크루넥 스웨터 MSF2ER2101",
+    "brand": "탑텐",
+    "category": "니트",
+    "price": 10870,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5393839/53938395426.20250403113137.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5393839/53938395426.20250403113137.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 부클 크루넥 스웨터 MSF2ER2101",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:91094024703",
+    "department": "fashion",
+    "name": "아더에러 가디건 니트 긴팔 티셔츠 시그니피컨트 블랙",
+    "brand": "아더에러",
+    "category": "니트",
+    "price": 360000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9109402/91094024703.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9109402/91094024703.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 가디건 니트 긴팔 티셔츠 시그니피컨트 블랙",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60232423215",
+    "department": "fashion",
+    "name": "스파오 썸머 브이넥 니트",
+    "brand": "스파오",
+    "category": "니트",
+    "price": 29900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023242/60232423215.20260529202125.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023242/60232423215.20260529202125.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 썸머 브이넥 니트",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:87160082906",
+    "department": "fashion",
+    "name": "국내매장 마뗑킴 스펠 로고 스펠 포인트 니트 가디건 베스트 집업 블랙 아이보리",
+    "brand": "마뗑킴",
+    "category": "니트",
+    "price": 169000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8716008/87160082906.15.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8716008/87160082906.15.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "국내매장 마뗑킴 스펠 로고 스펠 포인트 니트 가디건 베스트 집업 블랙 아이보리",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59959652392",
+    "department": "fashion",
+    "name": "에잇세컨즈 립 잔스트라이프 반소매 풀오버 356451CMCR",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "price": 20930,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5995965/59959652392.20260509011903.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5995965/59959652392.20260509011903.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 립 잔스트라이프 반소매 풀오버 356451CMCR",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60233547387",
+    "department": "fashion",
+    "name": "우영미 니트웨어 726B W251TS34",
+    "brand": "우영미",
+    "category": "니트",
+    "price": 363000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023354/60233547387.20260530003314.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023354/60233547387.20260530003314.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 니트웨어 726B W251TS34",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58242627860",
+    "department": "fashion",
+    "name": "[준지] 니트 칼라 배색 V넥 풀오버 - 카키 카키 JW5251W01H",
+    "brand": "준지",
+    "category": "니트",
+    "price": 354000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5824262/58242627860.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5824262/58242627860.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[준지] 니트 칼라 배색 V넥 풀오버 - 카키 카키 JW5251W01H",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59605006771",
+    "department": "fashion",
+    "name": "앤더슨벨 INTARSIA CREW-NECK SWEATER atb141",
+    "brand": "앤더슨벨",
+    "category": "니트",
+    "price": 141080,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5960500/59605006771.20260409191108.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5960500/59605006771.20260409191108.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 INTARSIA CREW-NECK SWEATER atb141",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:89292214024",
+    "department": "fashion",
+    "name": "아더에러 가디건 긴팔 티셔츠 ADERERROR",
+    "brand": "아더에러",
+    "category": "니트",
+    "price": 185000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_8929221/89292214024.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_8929221/89292214024.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 가디건 긴팔 티셔츠 ADERERROR",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60232159219",
+    "department": "fashion",
+    "name": "스파오 COOL 헨리넥 골지 반팔 니트 SPKWG25G01",
+    "brand": "스파오",
+    "category": "니트",
+    "price": 39900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023215/60232159219.20260529195142.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023215/60232159219.20260529195142.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 COOL 헨리넥 골지 반팔 니트 SPKWG25G01",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58055160842",
+    "department": "fashion",
+    "name": "앤더슨벨 집업 니트 DOM ATB1370M",
+    "brand": "앤더슨벨",
+    "category": "니트",
+    "price": 195080,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5805516/58055160842.20251207234137.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5805516/58055160842.20251207234137.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 집업 니트 DOM ATB1370M",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60442485435",
+    "department": "fashion",
+    "name": "우영미 니트웨어 144909758",
+    "brand": "우영미",
+    "category": "니트",
+    "price": 443589,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6044248/60442485435.20260614173845.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6044248/60442485435.20260614173845.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 니트웨어 144909758",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90796877853",
+    "department": "fashion",
+    "name": "[마르디 메크르디 악티프] BRUSH LOGO KNIT TOP HALF SLEEVE_WHITE BLACK",
+    "brand": "마르디메크르디",
+    "category": "니트",
+    "price": 112100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9079687/90796877853.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9079687/90796877853.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디 메크르디 악티프] BRUSH LOGO KNIT TOP HALF SLEEVE_WHITE BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90796877550",
+    "department": "fashion",
+    "name": "[마르디 메크르디 악티프] BRUSH LOGO SLEEVELESS KNIT TOP_PINK BLACK",
+    "brand": "마르디메크르디",
+    "category": "니트",
+    "price": 93100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9079687/90796877550.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9079687/90796877550.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디 메크르디 악티프] BRUSH LOGO SLEEVELESS KNIT TOP_PINK BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60233043611",
+    "department": "fashion",
+    "name": "에잇세컨즈 칼라넥 플리츠 반소매 풀오버",
+    "brand": "에잇세컨즈",
+    "category": "니트",
+    "price": 33670,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6023304/60233043611.20260529220041.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6023304/60233043611.20260529220041.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 칼라넥 플리츠 반소매 풀오버",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90343901514",
+    "department": "fashion",
+    "name": "마뗑킴 바람막이 마뗑킴 코팅점퍼 matin kim 블루종",
+    "brand": "마뗑킴",
+    "category": "자켓",
+    "price": 134800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9034390/90343901514.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9034390/90343901514.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 바람막이 마뗑킴 코팅점퍼 matin kim 블루종",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:56629794497",
+    "department": "fashion",
+    "name": "스파오 스웨이드 테일러드 재킷 SPJLF49W16",
+    "brand": "스파오",
+    "category": "자켓",
+    "price": 25420,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5662979/56629794497.20250919210233.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5662979/56629794497.20250919210233.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 스웨이드 테일러드 재킷 SPJLF49W16",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:56459431071",
+    "department": "fashion",
+    "name": "우영미 데님 백로고 셔츠 W253SH27",
+    "brand": "우영미",
+    "category": "자켓",
+    "price": 510000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5645943/56459431071.20250827215815.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5645943/56459431071.20250827215815.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 데님 백로고 셔츠 W253SH27",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53690667558",
+    "department": "fashion",
+    "name": "탑텐 트위드 재킷 MSF2KG2505",
+    "brand": "탑텐",
+    "category": "자켓",
+    "price": 18700,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5369066/53690667558.20260520145447.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5369066/53690667558.20260520145447.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 트위드 재킷 MSF2KG2505",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60335796145",
+    "department": "fashion",
+    "name": "스파오 SPAO 크로셰 니트 SPKWG37W93",
+    "brand": "스파오",
+    "category": "니트",
+    "price": 49900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6033579/60335796145.20260608152508.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6033579/60335796145.20260608152508.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 SPAO 크로셰 니트 SPKWG37W93",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53789653364",
+    "department": "fashion",
+    "name": "탑텐 쿨라이트 카라 반팔 가디건 MSF2EC2021",
+    "brand": "탑텐",
+    "category": "니트",
+    "price": 17900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5378965/53789653364.20250410065355.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5378965/53789653364.20250410065355.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 쿨라이트 카라 반팔 가디건 MSF2EC2021",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59435901438",
+    "department": "fashion",
+    "name": "[마르디메크르디] 마르디 메크르디 폴리 자수 로고 트위드 자켓",
+    "brand": "마르디메크르디",
+    "category": "자켓",
+    "price": 159000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5943590/59435901438.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5943590/59435901438.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마르디메크르디] 마르디 메크르디 폴리 자수 로고 트위드 자켓",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59366566088",
+    "department": "fashion",
+    "name": "앤더슨벨 LACE CUT-OUT BLAZER awa763w",
+    "brand": "앤더슨벨",
+    "category": "자켓",
+    "price": 374490,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5936656/59366566088.20260323234502.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5936656/59366566088.20260323234502.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 LACE CUT-OUT BLAZER awa763w",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:56893377168",
+    "department": "fashion",
+    "name": "스파오 헤링본 재킷 SPJKF4TW06",
+    "brand": "스파오",
+    "category": "자켓",
+    "price": 25280,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5689337/56893377168.20250923183941.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5689337/56893377168.20250923183941.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 헤링본 재킷 SPJKF4TW06",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55820406075",
+    "department": "fashion",
+    "name": "25FW 준지 자켓 JC5851P615BLACK",
+    "brand": "준지",
+    "category": "자켓",
+    "price": 604420,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5582040/55820406075.20250717012447.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5582040/55820406075.20250717012447.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "25FW 준지 자켓 JC5851P615BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59662451123",
+    "department": "fashion",
+    "name": "에잇세컨즈 반소매 테일러드 미디 재킷 356411wc15",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "price": 71100,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5966245/59662451123.20260417171348.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5966245/59662451123.20260417171348.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 반소매 테일러드 미디 재킷 356411wc15",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60055456351",
+    "department": "fashion",
+    "name": "에잇세컨즈 변형 네크라인 반소매 숏 재킷 356411wm44",
+    "brand": "에잇세컨즈",
+    "category": "자켓",
+    "price": 59920,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6005545/60055456351.20260516121854.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6005545/60055456351.20260516121854.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 변형 네크라인 반소매 숏 재킷 356411wm44",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:53920562481",
+    "department": "fashion",
+    "name": "탑텐 데님 숏슬리브 재킷 MSF2KG2004",
+    "brand": "탑텐",
+    "category": "자켓",
+    "price": 19900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5392056/53920562481.20250403142945.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5392056/53920562481.20250403142945.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 데님 숏슬리브 재킷 MSF2KG2004",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60453258678",
+    "department": "fashion",
+    "name": "우영미 코튼 남성 자켓 W261JP07931G",
+    "brand": "우영미",
+    "category": "자켓",
+    "price": 1208070,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6045325/60453258678.20260615161850.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6045325/60453258678.20260615161850.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 코튼 남성 자켓 W261JP07931G",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:50464371932",
+    "department": "fashion",
+    "name": "[마뗑킴] DETACHABLE LONG COAT JACKET IN BLACK",
+    "brand": "마뗑킴",
+    "category": "코트",
+    "price": 358000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5046437/50464371932.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5046437/50464371932.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[마뗑킴] DETACHABLE LONG COAT JACKET IN BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55784411807",
+    "department": "fashion",
+    "name": "25FW 준지 자켓 JC5964P015BLACK",
+    "brand": "준지",
+    "category": "자켓",
+    "price": 628000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5578441/55784411807.20250714154948.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5578441/55784411807.20250714154948.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "25FW 준지 자켓 JC5964P015BLACK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:57011290256",
+    "department": "fashion",
+    "name": "앤더슨벨 더블 브레스트 코트 AWA567MWO GREY",
+    "brand": "앤더슨벨",
+    "category": "코트",
+    "price": 1197000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5701129/57011290256.1.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5701129/57011290256.1.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 더블 브레스트 코트 AWA567MWO GREY",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60387771471",
+    "department": "fashion",
+    "name": "준지 후디 코트 JC9239H96R 남성",
+    "brand": "준지",
+    "category": "코트",
+    "price": 1080900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6038777/60387771471.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6038777/60387771471.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "준지 후디 코트 JC9239H96R 남성",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59402752621",
+    "department": "fashion",
+    "name": "아더에러 자켓 BP01SSJK",
+    "brand": "아더에러",
+    "category": "자켓",
+    "price": 677900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5940275/59402752621.20260326185203.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5940275/59402752621.20260326185203.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "아더에러 자켓 BP01SSJK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60026133555",
+    "department": "fashion",
+    "name": "L 아더에러 코트 프로덕트 26 느와르 BO01SSCT0102BK",
+    "brand": "아더에러",
+    "category": "코트",
+    "price": 896600,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6002613/60026133555.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6002613/60026133555.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "L 아더에러 코트 프로덕트 26 느와르 BO01SSCT0102BK",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60317032340",
+    "department": "fashion",
+    "name": "[에잇세컨즈] 핸드메이드 미디 코트 - 그레이 회색(앤틱실버) 325X30LY43",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "price": 83900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6031703/60317032340.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6031703/60317032340.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "[에잇세컨즈] 핸드메이드 미디 코트 - 그레이 회색(앤틱실버) 325X30LY43",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58983720324",
+    "department": "fashion",
+    "name": "탑텐 여성 시어서커 윈드브레이커 MSG2JJ2007",
+    "brand": "탑텐",
+    "category": "자켓",
+    "price": 34290,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5898372/58983720324.20260220173645.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5898372/58983720324.20260220173645.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 여성 시어서커 윈드브레이커 MSG2JJ2007",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:51346678304",
+    "department": "fashion",
+    "name": "탑텐 하이넥 아웃포켓 점퍼 MSD2JP1001",
+    "brand": "탑텐",
+    "category": "코트",
+    "price": 45800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5134667/51346678304.20241111225008.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5134667/51346678304.20241111225008.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "탑텐 하이넥 아웃포켓 점퍼 MSD2JP1001",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60432596290",
+    "department": "fashion",
+    "name": "우영미 남성 코트 W243HC04921C",
+    "brand": "우영미",
+    "category": "코트",
+    "price": 1309740,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6043259/60432596290.20260614012221.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6043259/60432596290.20260614012221.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 남성 코트 W243HC04921C",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:60280516702",
+    "department": "fashion",
+    "name": "L 아더에러 루바스 코트 차콜 BMADFWCT0602CC",
+    "brand": "아더에러",
+    "category": "코트",
+    "price": 1082500,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_6028051/60280516702.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_6028051/60280516702.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "L 아더에러 루바스 코트 차콜 BMADFWCT0602CC",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:90248879766",
+    "department": "fashion",
+    "name": "코트우의 우의 성인 우비 레인코트 핑크 일회용 화이트 탑텐레인 코트",
+    "brand": "탑텐",
+    "category": "코트",
+    "price": 6180,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_9024887/90248879766.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_9024887/90248879766.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "코트우의 우의 성인 우비 레인코트 핑크 일회용 화이트 탑텐레인 코트",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:57727610233",
+    "department": "fashion",
+    "name": "스파오 후드 야상 재킷 SPJJF49C11",
+    "brand": "스파오",
+    "category": "코트",
+    "price": 22900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5772761/57727610233.20251112013019.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5772761/57727610233.20251112013019.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 후드 야상 재킷 SPJJF49C11",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:58118609451",
+    "department": "fashion",
+    "name": "우영미 싱글 코트 Mud 905D W223HC06",
+    "brand": "우영미",
+    "category": "코트",
+    "price": 1904700,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5811860/58118609451.20251212224727.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5811860/58118609451.20251212224727.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "우영미 싱글 코트 Mud 905D W223HC06",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:52342035382",
+    "department": "fashion",
+    "name": "에잇세컨즈 피코트 니트 카라 115130AQ1R",
+    "brand": "에잇세컨즈",
+    "category": "코트",
+    "price": 38900,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5234203/52342035382.20250719151758.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5234203/52342035382.20250719151758.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "에잇세컨즈 피코트 니트 카라 115130AQ1R",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:59388493910",
+    "department": "fashion",
+    "name": "마뗑킴 BACK LOGO POINT NYLON LONG COAT FOR WOMEN IN",
+    "brand": "마뗑킴",
+    "category": "코트",
+    "price": 278000,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5938849/59388493910.20260325172058.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5938849/59388493910.20260325172058.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "마뗑킴 BACK LOGO POINT NYLON LONG COAT FOR WOMEN IN",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:55831856931",
+    "department": "fashion",
+    "name": "스파오 체크 윈드 브레이커 SPJJF49GY3",
+    "brand": "스파오",
+    "category": "자켓",
+    "price": 21800,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5583185/55831856931.20250807235827.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5583185/55831856931.20250807235827.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 체크 윈드 브레이커 SPJJF49GY3",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "fashion:56181078442",
+    "department": "fashion",
+    "name": "앤더슨벨 패치워크 코트 AWA709M",
+    "brand": "앤더슨벨",
+    "category": "코트",
+    "price": 1458230,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5618107/56181078442.20250809081025.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5618107/56181078442.20250809081025.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "앤더슨벨 패치워크 코트 AWA709M",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "charmer:403",
+    "department": "fashion",
+    "name": "크로쉐 자수 롱스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 52700,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202606/522f68a9a87548cbcbfcc54b73015243.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202606/522f68a9a87548cbcbfcc54b73015243.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/타사비교절대불가안감o크로쉐-자수-롱스커트-sk-one-color-premium/403/category/55/display/1/",
+    "originalTitle": "크로쉐 자수 롱스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:382",
+    "department": "fashion",
+    "name": "주름 체크 밴딩 롱스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 41700,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202604/9090267769166c2d5f82551b80878c73.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202604/9090267769166c2d5f82551b80878c73.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/유튜버pick-챠애-주름-체크-밴딩-롱스커트-sk-2color-안감o/382/category/55/display/1/",
+    "originalTitle": "주름 체크 밴딩 롱스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:378",
+    "department": "fashion",
+    "name": "샤폴리 캉캉 미니스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 23500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202604/07b43d69b0882a3256c5c5d0619d3908.jpg",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202604/07b43d69b0882a3256c5c5d0619d3908.jpg"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/속바지o유튜버pick-샤폴리-캉캉-미니스커트-sk-2color/378/category/55/display/1/",
+    "originalTitle": "샤폴리 캉캉 미니스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:361",
+    "department": "fashion",
+    "name": "+고급원단 묵크 랩 언발 플리츠 스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 29500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202603/4ec8ce414967f44a4d795d627a3f915f.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202603/4ec8ce414967f44a4d795d627a3f915f.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/고급원단레이어드-묵크-랩-언발-플리츠-스커트-sk-2color/361/category/55/display/1/",
+    "originalTitle": "+고급원단 묵크 랩 언발 플리츠 스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "fashion:56974743348",
+    "department": "fashion",
+    "name": "스파오 헌팅 재킷 SPJJF49M21",
+    "brand": "스파오",
+    "category": "코트",
+    "price": 63340,
+    "imageUrl": "https://shopping-phinf.pstatic.net/main_5697474/56974743348.20251017051800.jpg",
+    "images": [
+      "https://shopping-phinf.pstatic.net/main_5697474/56974743348.20251017051800.jpg"
+    ],
+    "sourceUrl": "https://huggingface.co/datasets/HabinKim/kfashion-visual-distinctiveness/blob/71fc9e14d088fb6f56ad69053ba6dd388bf7444a/data/brand_product_metadata.csv",
+    "originalTitle": "스파오 헌팅 재킷 SPJJF49M21",
+    "selectedVariant": "원본 상품명과 대표 이미지 기준",
+    "available": true
+  },
+  {
+    "key": "charmer:357",
+    "department": "fashion",
+    "name": "맥시 캉캉 밴딩 롱스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 21500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202603/64c2186acb6bf74ff72763cd34d4fbdc.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202603/64c2186acb6bf74ff72763cd34d4fbdc.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/유튜버pick-챠애-맥시-캉캉-밴딩-롱스커트-sk-2color-안감o/357/category/55/display/1/",
+    "originalTitle": "맥시 캉캉 밴딩 롱스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:329",
+    "department": "fashion",
+    "name": "+초고퀄보장! 웨딩 벨벳 벌룬 미니 스커트 벨트 세트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 30500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202601/99abb96aeee81a3a16fba841d78474d3.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202601/99abb96aeee81a3a16fba841d78474d3.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/초고퀄보장set가격-웨딩-벨벳-벌룬-미니-스커트-벨트-세트-sk-2color/329/category/55/display/1/",
+    "originalTitle": "+초고퀄보장! 웨딩 벨벳 벌룬 미니 스커트 벨트 세트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:308",
+    "department": "fashion",
+    "name": "무릉 스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 34700,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202511/fa4f8790c1eeebcea29e8ec7091acdb3.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202511/fa4f8790c1eeebcea29e8ec7091acdb3.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/단독-무릉-스커트/308/category/55/display/1/",
+    "originalTitle": "무릉 스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:336",
+    "department": "fashion",
+    "name": "+영상! 바스 레이스 3단 롱스커트 - 2color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 20500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202601/7131f4d72566c2dff497e22db3b9287f.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202601/7131f4d72566c2dff497e22db3b9287f.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/영상유튜버pick🖤레이어드-바스-레이스-3단-롱스커트-2color/336/category/55/display/1/",
+    "originalTitle": "+영상! 바스 레이스 3단 롱스커트 - 2color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:353",
+    "department": "fashion",
+    "name": "여머 플리츠 미니스커트 - 2color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 20500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202603/f89477c8f36d327bdb931142908b6ecf.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202603/f89477c8f36d327bdb931142908b6ecf.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/유사품주의소재다름-여머-플리츠-미니스커트-2color/353/category/55/display/1/",
+    "originalTitle": "여머 플리츠 미니스커트 - 2color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:340",
+    "department": "fashion",
+    "name": "+영상 진주 캉캉 코듀로이 밴딩 미니스커트 - 3color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 17500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202601/a2abf19a101932366985fc02e4570504.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202601/a2abf19a101932366985fc02e4570504.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/영상퀄리티달라요-진주-캉캉-코듀로이-밴딩-미니스커트-3color/340/category/55/display/1/",
+    "originalTitle": "+영상 진주 캉캉 코듀로이 밴딩 미니스커트 - 3color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:258",
+    "department": "fashion",
+    "name": "유튜버:레전드치마!!! 챠네 구슬 벨벳 캉캉 미니스커트 - 3color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 19500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202509/72a6631db0a3f298215d869c29e1320c.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202509/72a6631db0a3f298215d869c29e1320c.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/유튜버레전드치마퀄보장🤎-챠네-구슬-벨벳-캉캉-미니스커트-3color/258/category/55/display/1/",
+    "originalTitle": "유튜버:레전드치마!!! 챠네 구슬 벨벳 캉캉 미니스커트 - 3color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:333",
+    "department": "fashion",
+    "name": "레이스 쉬폰 언발 캉캉 밴딩 롱 스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 25500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202601/3ea2d285d2d1bd2b407a1d40bfb3f855.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202601/3ea2d285d2d1bd2b407a1d40bfb3f855.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/유튜버pick속치마o-레이스-쉬폰-언발-캉캉-밴딩-롱-스커트-sk-2color/333/category/55/display/1/",
+    "originalTitle": "레이스 쉬폰 언발 캉캉 밴딩 롱 스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:298",
+    "department": "fashion",
+    "name": "+🤍 듀머 레이스 코듀로이 캉캉 밴딩 미니 스커트 - 3color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 15500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202511/931c3b79920652523148ceea709cd5d8.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202511/931c3b79920652523148ceea709cd5d8.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/유튜버pick🤍속바지o-듀머-레이스-코듀로이-캉캉-밴딩-미니-스커트-3color/298/category/55/display/1/",
+    "originalTitle": "+🤍 듀머 레이스 코듀로이 캉캉 밴딩 미니 스커트 - 3color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:270",
+    "department": "fashion",
+    "name": "🐯아기 호랑이 무드, 레오파드 호피 골덴 캉캉 밴딩 미니스커트 - 2color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 17500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202510/ca25be88f8832333f1973ae04778147a.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202510/ca25be88f8832333f1973ae04778147a.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/타사비교불가퀄up🐯아기-호랑이-무드-레오파드-호피-골덴-캉캉-밴딩-미니스커트-2color/270/category/55/display/1/",
+    "originalTitle": "🐯아기 호랑이 무드, 레오파드 호피 골덴 캉캉 밴딩 미니스커트 - 2color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:244",
+    "department": "fashion",
+    "name": "레느 캉캉 밴딩 미니스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 19900,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202509/39916d57beb46da9d6aebadd82e53cbf.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202509/39916d57beb46da9d6aebadd82e53cbf.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/5년째소장속바지o-레느-캉캉-밴딩-미니스커트/244/category/55/display/1/",
+    "originalTitle": "레느 캉캉 밴딩 미니스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:237",
+    "department": "fashion",
+    "name": "+한정수량🖤 포레스트 언발 레이스 밴딩 롱 스커트 - 3color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 27500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202508/f252219d7bae0dc254ebae8169ea3f7b.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202508/f252219d7bae0dc254ebae8169ea3f7b.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/한정수량🖤레이어드강추-포레스트-언발-레이스-밴딩-롱-스커트-3color/237/category/55/display/1/",
+    "originalTitle": "+한정수량🖤 포레스트 언발 레이스 밴딩 롱 스커트 - 3color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:228",
+    "department": "fashion",
+    "name": "+만족도99%예상! 흑백 도트 롱 스커트 - 2color",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 20000,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202508/04a49db283bcdf86c0e0646f6c08d1f3.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202508/04a49db283bcdf86c0e0646f6c08d1f3.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/만족도99예상시원🖤여리-흑백-도트-롱-스커트-2color/228/category/55/display/1/",
+    "originalTitle": "+만족도99%예상! 흑백 도트 롱 스커트 - 2color",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "charmer:215",
+    "department": "fashion",
+    "name": "쇼위 펀칭 캉캉 미니스커트",
+    "brand": "챠머",
+    "category": "스커트",
+    "price": 20500,
+    "imageUrl": "https://www.charmer.kr/web/product/medium/202507/413c8fa549084a4ea630ffe6fb241d49.webp",
+    "images": [
+      "https://www.charmer.kr/web/product/medium/202507/413c8fa549084a4ea630ffe6fb241d49.webp"
+    ],
+    "sourceUrl": "https://www.charmer.kr/product/made🖤-쇼위-펀칭-캉캉-미니스커트/215/category/55/display/1/",
+    "originalTitle": "쇼위 펀칭 캉캉 미니스커트",
+    "selectedVariant": "대표 이미지 기준 · 옵션은 상품 안내 확인",
+    "available": true
+  },
+  {
+    "key": "beauty:9413788926168",
+    "department": "beauty",
+    "name": "펩타이드 132 헤어 본딩 트리트먼트",
+    "brand": "코스알엑스",
+    "category": "헤어케어",
+    "price": 24500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_00_Treatment.webp?v=1773219354",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_00_Treatment.webp?v=1773219354",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_mini_Kit_04_9fcf15b2-e711-4459-ac5a-c56112b97d9a.jpg?v=1773221461",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_04_Treatment_0f552864-ccf5-40fa-817d-e80960126402.webp?v=1774588896",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_06_08007346-18d7-4ac5-96b2-45b453760ffb.webp?v=1774588896",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_07_Treatment.webp?v=1774588896",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_11_Treatment.webp?v=1773221461",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_14_Treatment_4ee0ae83-df17-4fcc-8b37-cd8c83b64f0f.webp?v=1773221461",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_15_Treatment_5fb3b4ba-4207-4a84-883b-00cd41967bf3.webp?v=1773221461"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-peptide-132-ultra-perfect-hair-bonding-treatment-번들",
+    "originalTitle": "COSRX PEPTIDE-132 Ultra Perfect Hair Bonding Treatment",
+    "selectedVariant": "240mL / Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9413724438744",
+    "department": "beauty",
+    "name": "더 알파 알부틴 2 케어 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 29500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Alpha-Albutin_800x1067_9f78595b-1e4f-4147-a56c-aade2a3286da.jpg?v=1726731345",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Alpha-Albutin_800x1067_9f78595b-1e4f-4147-a56c-aade2a3286da.jpg?v=1726731345",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Alpha-arbutin_2_Serum_01.jpg?v=1726731347",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Alpha-arbutin_2_Serum_02.jpg?v=1726731349",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Alpha-arbutin_2_Serum_03.jpg?v=1726731351",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The-Alpha-arbutin-2-Serum_19.jpg?v=1729842704",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Alpha-arbutin_2_Serum_04.jpg?v=1726731353",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Alpha-arbutin_2_Serum_05__2.jpg?v=1726731355",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Alpha-arbutin_2_Serum_06__3.jpg?v=1726731357"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-alpha-arbutin-2-discoloration-care-serum",
+    "originalTitle": "The Alpha-Arbutin 2 Discoloration Care Serum",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9413709037784",
+    "department": "beauty",
+    "name": "더 레티놀 0.3 크림",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 29000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Retinol03Cream_800x1067_c88d3441-5851-4a65-8438-a93bbfb4f86b.webp?v=1724837060",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Retinol03Cream_800x1067_c88d3441-5851-4a65-8438-a93bbfb4f86b.webp?v=1724837060",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_01.webp?v=1765433392",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_02.webp?v=1765433392",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_03.webp?v=1765433392",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_04__1.webp?v=1765433392",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_05.webp?v=1765433392",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_06.webp?v=1765433392",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/TheRetinol03Cream_07.webp?v=1765433392"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-retinol-0-3-cream-번들",
+    "originalTitle": "The Retinol 0.3 Cream",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9413742002392",
+    "department": "beauty",
+    "name": "펩타이드 132 헤어 본딩 샴푸",
+    "brand": "코스알엑스",
+    "category": "헤어케어",
+    "price": 26000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_00_Shampoo.webp?v=1773219196",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_00_Shampoo.webp?v=1773219196",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_mini_Kit_09.webp?v=1773221391",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_04_Shampoo_21a60ba4-e63c-48ea-b38c-e6e431e79e12.webp?v=1773221391",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_06_08007346-18d7-4ac5-96b2-45b453760ffb.webp?v=1774588896",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_08_Shampoo.webp?v=1774588896",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_13_Shampoo_b7c4f61d-c1ed-4586-9383-53a4b21e1aab.webp?v=1773221391",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_14_Shampoo_58af6794-f376-4cb9-9d61-b7ea88ec08a2.webp?v=1773221391",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_15_Shampoo_97b441cd-d034-487c-ad7e-10cdf0054ff7.webp?v=1773221391"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-peptide-132-ultra-perfect-hair-bonding-shampoo-번들",
+    "originalTitle": "COSRX PEPTIDE-132 Ultra Perfect Hair Bonding Shampoo",
+    "selectedVariant": "400mL / Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9413820612824",
+    "department": "beauty",
+    "name": "펩타이드 132 헤어 본딩 오일 세럼",
+    "brand": "코스알엑스",
+    "category": "헤어케어",
+    "price": 23000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_00_OilSerum.webp?v=1750221847",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_00_OilSerum.webp?v=1750221847",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_04_OilSerum.webp?v=1750844824",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_06_7457d606-fad1-4d14-8493-1c3106e24248.webp?v=1750844824",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_08_OilSerum.webp?v=1750844824",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_09_OilSerum.webp?v=1750844824",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_15_OilSerum_a579010a-e9a3-41d8-b87f-a32c03cfa552.webp?v=1750844824",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_16_OilSerum.webp?v=1750844824",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Peptide_132_17_OilSerum.webp?v=1750844824"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-peptide-132-ultra-perfect-hair-bonding-oil-serum-번들",
+    "originalTitle": "COSRX PEPTIDE-132 Ultra Perfect Hair Bonding Oil Serum",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:6101925331100",
+    "department": "beauty",
+    "name": "BHA 블랙헤드 파워 리퀴드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 21000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/bha-blackhead-power-liquid-cosrx-official-1.jpg?v=1689840681",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/bha-blackhead-power-liquid-cosrx-official-1.jpg?v=1689840681",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_01_1.webp?v=1780904909",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_03_1.webp?v=1780904909",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_05_1.webp?v=1780904954",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_06_1.webp?v=1780904977",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_07_1.webp?v=1780904909",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_08.jpg?v=1783658778",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BHA_Blackhead_Toner_09_1.webp?v=1780904909"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/bha-blackhead-power-liquid",
+    "originalTitle": "BHA Blackhead Power Liquid",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9415801733336",
+    "department": "beauty",
+    "name": "더 나이아신아마이드 15 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 28000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/niacin.png?v=1748420816",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/niacin.png?v=1748420816",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-niacinamide-15-serum-cosrx-official-2.jpg?v=1748420816",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-niacinamide-15-serum-cosrx-official-3.jpg?v=1748420816",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_Niacinamade15_16.jpg?v=1757381343",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-niacinamide-15-serum-cosrx-official-5.jpg?v=1757381343",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-niacinamide-15-serum-cosrx-official-6.jpg?v=1757381343",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-niacinamide-15-serum-cosrx-official-7.png?v=1757381343",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-niacinamide-15-serum-cosrx-official-8.jpg?v=1757381343"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-niacinamide-15-serum-번들",
+    "originalTitle": "The Niacinamide 15 Serum",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9415775682776",
+    "department": "beauty",
+    "name": "어드밴스드 더 비타민 C 23 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 28000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_00.webp?v=1760935746",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_00.webp?v=1760935746",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_01__4.webp?v=1760935746",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/VitaminC__-__1.jpg?v=1780659273",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_02__4.webp?v=1760935746",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_04.webp?v=1760935746",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_05.webp?v=1760935746",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_06.webp?v=1760935746",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Advanced_VitaminC23_08__3.webp?v=1760935747"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-vitamin-c-23-serum",
+    "originalTitle": "Advanced The Vitamin C 23 Serum",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:6136489443484",
+    "department": "beauty",
+    "name": "퓨어 핏 시카 크림 인텐스",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 30500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-1.jpg?v=1724836149",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-1.jpg?v=1724836149",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-2.jpg?v=1724836151",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-3.jpg?v=1724836154",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-4.jpg?v=1724836156",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-5.jpg?v=1724836158",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-6.jpg?v=1724836160",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-7.jpg?v=1724836163",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/pure-fit-cica-cream-intense-cosrx-official-8.jpg?v=1724836165"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/pure-fit-cica-cream-intensive",
+    "originalTitle": "Pure Fit Cica Cream Intense",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9415802880216",
+    "department": "beauty",
+    "name": "더 레티놀 0.5 오일",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 32500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-1.jpg?v=1724836571",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-1.jpg?v=1724836571",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-2.jpg?v=1724836574",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-3.jpg?v=1724836576",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-4.jpg?v=1724836578",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-5.jpg?v=1724836580",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-6.jpg?v=1724836582",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-7.jpg?v=1724836584",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/the-retinol-0-5-oil-cosrx-official-8.jpg?v=1724836587"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-retinol-0-5-oil-번들",
+    "originalTitle": "The Retinol 0.5 Oil",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9413669093592",
+    "department": "beauty",
+    "name": "더 비타민 C 13 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 32500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_00.webp?v=1762850506",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_00.webp?v=1762850506",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_01__2.webp?v=1762850506",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/VitaminC__-__1.jpg?v=1780659273",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_02.webp?v=1762850506",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_03.webp?v=1762850506",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_04.webp?v=1762850506",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_05.webp?v=1762850506",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_VitaminC13_06.webp?v=1762850506"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-vitamin-c-13-serum-번들",
+    "originalTitle": "The Vitamin C 13 Serum",
+    "selectedVariant": "Single",
+    "available": true
+  },
+  {
+    "key": "beauty:9230935359704",
+    "department": "beauty",
+    "name": "5 펩타이드 세라마이드 립 마스크",
+    "brand": "코스알엑스",
+    "category": "립케어",
+    "price": 18000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_00.jpg?v=1788426952",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_00.jpg?v=1788426952",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_01.jpg?v=1788426952",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_02.jpg?v=1788426952",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_03.jpg?v=1788426952",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_04.jpg?v=1788426952",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_05.jpg?v=1788426953",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_06.jpg?v=1788426953",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5Peptide-Lip_Mask_07.jpg?v=1788426952"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/5-peptide-ceramide-barrier-comfort-lip-mask",
+    "originalTitle": "5 Peptide Ceramide Barrier Comfort Lip Mask",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9230936342744",
+    "department": "beauty",
+    "name": "5 펩타이드 B5 센서티브 립밤",
+    "brand": "코스알엑스",
+    "category": "립케어",
+    "price": 16500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/00-2.webp?v=1788410435",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/00-2.webp?v=1788410435",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/01_764f2d11-6c4e-444b-97f2-9b49a7c3def1.webp?v=1788410435",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/02_966febf0-57bb-4dfd-8db2-053e2bd76a1d.webp?v=1788410435",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/03_1.webp?v=1788410938",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/04_2.webp?v=1788410910",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/05_4cc11869-5894-4e5e-af78-489ae2cc16a9.webp?v=1788410435",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/06_f5a96a3b-8bed-4321-b458-1176eee1fc0c.webp?v=1788410435",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/07_7be1b346-70cf-48fd-8f82-388013c586a2.jpg?v=1792976426"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/5-peptide-b5-sensitive-repair-salve-lip-balm",
+    "originalTitle": "5 Peptide B5 Sensitive Repair Salve Lip Balm",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9315385147608",
+    "department": "beauty",
+    "name": "블루 펩타이드 바쿠치올 부스팅 미스트",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 22500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_00.jpg?v=1791419847",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_00.jpg?v=1791419847",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_01_0b306ddd-905f-472c-bd14-01865550cca2.jpg?v=1792381836",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_02_fbb4f301-9c8a-46ed-96cf-646a895cdc17.jpg?v=1792381835",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_03_f17ff60e-2e32-49ce-ad3c-7bea8b6f5bc1.jpg?v=1792381836",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_04_71ae3e99-1575-48e2-bd11-96a190fce95f.jpg?v=1792381836",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_06_52f6d824-d38c-4389-8915-46221482b5c5.jpg?v=1792381836",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_07_05cc31a8-21f2-4561-ab18-ab07832b0365.jpg?v=1792381836",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Mist_08_98542dee-a434-4ba1-9e7f-881527826856.jpg?v=1792381836"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-the-blue-peptide-bakuchiol-hydra-plump-boosting-mist",
+    "originalTitle": "COSRX The Blue Peptide Bakuchiol Hydra Plump Boosting Mist",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9178276004056",
+    "department": "beauty",
+    "name": "레드 라이스 이노시톨 딥 클렌저",
+    "brand": "코스알엑스",
+    "category": "클렌징",
+    "price": 16000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Thumb_RedRice_Inositol_DeepCleanser_800x1067_1.webp?v=1775037121",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Thumb_RedRice_Inositol_DeepCleanser_800x1067_1.webp?v=1775037121",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_02.webp?v=1776305302",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_03.webp?v=1776305302",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_04.webp?v=1776305302",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_06_1.webp?v=1779441106",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_07.webp?v=1776305302",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_08.webp?v=1776305302",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Creanser_09_2.webp?v=1776305302"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-red-rice-inositol-pore-clarifying-deep-cleanser",
+    "originalTitle": "COSRX RED RICE INOSITOL Pore Clarifying Deep Cleanser",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9146696073432",
+    "department": "beauty",
+    "name": "아젤라익 애씨드 10 B5 수딩 크림",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 30500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_00.webp?v=1782456881",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_00.webp?v=1782456881",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_01.webp?v=1782710254",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_02.webp?v=1782710254",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_03.webp?v=1782710255",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_05.webp?v=1782710255",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_06.webp?v=1782710255",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_07.webp?v=1782710254",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_10_Cream_08.webp?v=1782710254"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-azelaic-acid10-b5-redness-soothing-cream",
+    "originalTitle": "COSRX Azelaic Acid 10 B5 Redness Soothing Cream",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:7709569810648",
+    "department": "beauty",
+    "name": "원스텝 모이스처 업 패드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 21000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_0.jpg?v=1710475791",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_0.jpg?v=1710475791",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_1.jpg?v=1710475793",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_2.jpg?v=1724836770",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_3.jpg?v=1710475797",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_4.jpg?v=1710475800",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_5.jpg?v=1710475802",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_6.jpg?v=1710475804",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Moisture_Pad_7.jpg?v=1710475806"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/one-step-moisture-up-pad",
+    "originalTitle": "One Step Moisture Up Pad",
+    "selectedVariant": "Default Title",
+    "available": false
+  },
+  {
+    "key": "beauty:9146696794328",
+    "department": "beauty",
+    "name": "아젤라익 애씨드 20 B5 수딩 크림",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 29000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_00-elementor-io-optimized_053c8df8-aeba-4cb7-afd5-e07570dfad48.webp?v=1782711153",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_00-elementor-io-optimized_053c8df8-aeba-4cb7-afd5-e07570dfad48.webp?v=1782711153",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_01-elementor-io-optimized.webp?v=1782711067",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_02-elementor-io-optimized.webp?v=1782711067",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_03-elementor-io-optimized.webp?v=1782711067",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_05-elementor-io-optimized.webp?v=1782711067",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_06-elementor-io-optimized.webp?v=1782711067",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_07-elementor-io-optimized.webp?v=1782711067",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AzelaicAcid_20_Cream_08-elementor-io-optimized.webp?v=1782711067"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-azelaic-acid-20-ac-blemish-spot-serum",
+    "originalTitle": "COSRX Azelaic Acid 20 B5 Redness Soothing Cream",
+    "selectedVariant": "Default Title",
+    "available": false
+  },
+  {
+    "key": "beauty:9134576763096",
+    "department": "beauty",
+    "name": "블루 펩타이드 바쿠치올 글로우 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 32500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_00.jpg?v=1777444989",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_00.jpg?v=1777444989",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_01_e12a9b68-8aca-4628-ba86-9b46beef3f49.jpg?v=1781770967",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide__-_1_a80f0d8b-adf4-41db-b8cc-3d285079be19.jpg?v=1780659432",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_02__3.webp?v=1777521461",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_03.webp?v=1777521461",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_05.webp?v=1777521461",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_06_881b3d87-cdda-4aa9-bc5d-083fc7a29938.webp?v=1779356242",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Serum_07_f40b94b8-8231-4c1a-93ac-962e1ccb5a46.webp?v=1779356251"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-the-blue-peptide-bakuchiol-plump-glow-serum",
+    "originalTitle": "COSRX The Blue Peptide Bakuchiol Plump Glow Serum",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9281004830936",
+    "department": "beauty",
+    "name": "센텔라 블레미쉬 크림 30ml",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 27500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-1.jpg?v=1724835126",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-1.jpg?v=1724835126",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-2.jpg?v=1724835128",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-3.jpg?v=1724835130",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-4.jpg?v=1724835132",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-5.jpg?v=1724835134",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-6.jpg?v=1724835136",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/centella-blemish-cream-cosrx-official-7.jpg?v=1724835139"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-centella-blemish-cream-30ml",
+    "originalTitle": "COSRX Centella Blemish Cream 30mL",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9166036599000",
+    "department": "beauty",
+    "name": "블루 펩타이드 바쿠치올 바운스 크림",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 29000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_00.webp?v=1779876169",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_00.webp?v=1779876169",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_01__1.webp?v=1779876169",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide__-_1_4a29784c-2bb4-4edb-bae8-8ae8587d4320.jpg?v=1780658817",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_02_1.webp?v=1779876169",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_03_1.webp?v=1779876169",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_05_1.webp?v=1779876169",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_06__1.webp?v=1779876169",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/BluePeptide_Cream_07__1.webp?v=1779876169"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-blue-peptide-bakuchiol-plump-bounce-cream",
+    "originalTitle": "COSRX The Blue Peptide Bakuchiol Plump Bounce Cream",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:8884617576664",
+    "department": "beauty",
+    "name": "스킨 배리어 모이스처라이징 바디 크림",
+    "brand": "코스알엑스",
+    "category": "바디케어",
+    "price": 28500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_00_9ea9d922-f996-448a-b5b0-372c79f1043c.webp?v=1755070414",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_00_9ea9d922-f996-448a-b5b0-372c79f1043c.webp?v=1755070414",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_02__3.webp?v=1755070414",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_04.webp?v=1755070414",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_05__2_1.webp?v=1755677703",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_07__3.webp?v=1755677703",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_08__2.webp?v=1755677703",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_09.webp?v=1755677703",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Cream_12.webp?v=1755677703"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-skin-barrier-moisturizing-body-cream",
+    "originalTitle": "COSRX Skin Barrier Moisturizing Body Cream",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9130276126936",
+    "department": "beauty",
+    "name": "레드 라이스 이노시톨 워시오프 필 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 29500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Thumb_RedRice_Inositol_Serum_800x1067_1cb5f547-d3ec-4d5b-bbd8-4d4c7700dd16.webp?v=1775037226",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Thumb_RedRice_Inositol_Serum_800x1067_1cb5f547-d3ec-4d5b-bbd8-4d4c7700dd16.webp?v=1775037226",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_05.webp?v=1776304808",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_06.webp?v=1776304808",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_07_1.webp?v=1778061000",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_08.webp?v=1776304808",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_09.webp?v=1776304808",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_10.webp?v=1776304808",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/RedRice_Inositol_Serum_11_1.webp?v=1777005964"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-red-rice-inositol-exfoliating-care-pore-peel-serum",
+    "originalTitle": "COSRX RED RICE INOSITOL Exfoliating Care Pore Wash-Off Peel Serum",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9072896049368",
+    "department": "beauty",
+    "name": "더 세라마이드 스킨 배리어 미스트",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 22500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_00_484b9ebd-d4b7-4386-9752-e56852ae7773.webp?v=1755070277",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_00_484b9ebd-d4b7-4386-9752-e56852ae7773.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_01__2.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_03__2.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_04__2.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_05__2.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_06.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_07.webp?v=1755070277",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Skinbarrier_Mist_08__2.webp?v=1755070277"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-the-ceramide-skin-barrier-moisturizing-mist",
+    "originalTitle": "The Ceramide Skin Barrier Moisturizing Mist",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9091419111640",
+    "department": "beauty",
+    "name": "원스텝 펩타이드 콜라겐 글로우 패드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 25500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/1_800x1067_40e9bec3-18f2-4c99-9778-941e17858fa3.webp?v=1774854217",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/1_800x1067_40e9bec3-18f2-4c99-9778-941e17858fa3.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/03_75314a75-75e6-4051-8d7f-700b69ef8e53.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/04_7d9d306d-f4fe-49d9-b100-5463c55aaafa.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/06.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/07.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/08.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/09.webp?v=1774854217",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/10.webp?v=1774854217"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/one-step-original-peptide-collagen-lifting-glow-pad",
+    "originalTitle": "One Step Original Peptide Collagen Lifting Glow Pad",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:9081663095000",
+    "department": "beauty",
+    "name": "원스텝 블레미쉬 포어 클리어 패드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 21000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_00.jpg?v=1774854088",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_00.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_03.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_04.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_05.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_06__2.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_08__2.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_09_e238ecec-489f-4e50-bed9-9f949beb3061.jpg?v=1774854088",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/OneStep_Blemish_Pad_11.jpg?v=1774854088"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/one-step-original-blemish-pore-clear-pad",
+    "originalTitle": "One Step Original Blemish Pore Clear Pad",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:6110947639452",
+    "department": "beauty",
+    "name": "어드밴스드 스네일 뮤신 젤 클렌저",
+    "brand": "코스알엑스",
+    "category": "클렌징",
+    "price": 19000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/advanced-snail-mucin-gel-cleanser-cosrx-official-1.png?v=1724835788",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/advanced-snail-mucin-gel-cleanser-cosrx-official-1.png?v=1724835788",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/01_25d36ef8-9a2e-4e01-bcbd-b2e6892d5c78.webp?v=1778476700",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/02_c61cc26b-48c6-4a29-b4e3-d90e9f8dbdaf.webp?v=1778476700",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/05_4c01dd41-694a-41e8-a188-ef58df4a4951.webp?v=1778476701",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/06_01ffbae8-bc65-4996-ab1a-a560035c7eb8.webp?v=1778476701",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/07_2dc35b15-59c3-4e4f-956a-eaade767712a.webp?v=1778476700",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/04_57ed2cec-7e25-4887-a84c-d814e946cf79.webp?v=1778476701",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/08_5f155054-c22c-409f-872b-9aedfebfdc55.webp?v=1778476701"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/advanced-snail-mucin-gel-cleanser",
+    "originalTitle": "Advanced Snail Mucin Gel Cleanser",
+    "selectedVariant": "5.07 fl.oz / 150ml",
+    "available": true
+  },
+  {
+    "key": "beauty:8959174508760",
+    "department": "beauty",
+    "name": "5 PDRN 콜라겐 바이탈라이징 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 28000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_00_41bfc9ae-bbf5-40a2-a27c-35b27a2f0780.webp?v=1761526605",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_00_41bfc9ae-bbf5-40a2-a27c-35b27a2f0780.webp?v=1761526605",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_01__2_1.webp?v=1761900283",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_02__1.webp?v=1761900283",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_03__1.webp?v=1761900283",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_04__1.webp?v=1761900283",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_05__1.webp?v=1761900283",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_08__2_1.webp?v=1762906527",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Serum_10__1.webp?v=1762906527"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-5-pdrn-collagen-intense-vitalizing-serum",
+    "originalTitle": "COSRX 5 PDRN Collagen Intense Vitalizing Serum",
+    "selectedVariant": "100 mL / 3.38 fl oz",
+    "available": true
+  },
+  {
+    "key": "beauty:8959174344920",
+    "department": "beauty",
+    "name": "5 PDRN B5 수딩 토너",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 22500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_00.webp?v=1761526535",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_00.webp?v=1761526535",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_01__2.webp?v=1761732095",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_02.webp?v=1761732095",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_03.webp?v=1761732095",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_04.webp?v=1761732095",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_05.webp?v=1761732095",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_07__2.webp?v=1762906197",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/5PDRN_Toner_09__2.webp?v=1762906197"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-5-pdrn-b5-vital-soothing-toner",
+    "originalTitle": "COSRX 5 PDRN B5 Vital Soothing Toner",
+    "selectedVariant": "280 mL / 9.46 fl oz",
+    "available": true
+  },
+  {
+    "key": "beauty:9091419308248",
+    "department": "beauty",
+    "name": "원스텝 톤 클래리파잉 모이스처 패드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 24000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_00.webp?v=1774854127",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_00.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_03.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_04.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_05.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_06.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_07.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_09.webp?v=1774854127",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/One-Step_Moisture_Pad_10.webp?v=1774854127"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/one-step-original-tone-clarifying-moisture-pad",
+    "originalTitle": "One Step Original Tone Clarifying Moisture Pad",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:7709570040024",
+    "department": "beauty",
+    "name": "원스텝 그린 카밍 패드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 25500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_0.jpg?v=1694078299",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_0.jpg?v=1694078299",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_1_2.jpg?v=1726731326",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_2.jpg?v=1725350806",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/products/Green_Pad_12.jpg?v=1725350806",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_3.jpg?v=1725350806",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_4.jpg?v=1725350806",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_5.jpg?v=1725350806",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Green_Pad_6.jpg?v=1725350806"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/one-step-green-calming-pad",
+    "originalTitle": "COSRX One Step Green Calming Pad",
+    "selectedVariant": "Default Title",
+    "available": false
+  },
+  {
+    "key": "beauty:6122389274780",
+    "department": "beauty",
+    "name": "밸런시움 세라마이드 소프트 크림 시트 마스크",
+    "brand": "코스알엑스",
+    "category": "크림",
+    "price": 27500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-1.jpg?v=1724835930",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-1.jpg?v=1724835930",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-2.jpg?v=1724835932",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-3.jpg?v=1724835934",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-4.jpg?v=1724835936",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-5.jpg?v=1724835939",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-6.jpg?v=1724835941",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-7.jpg?v=1724835944",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/balancium-comfort-ceramide-soft-cream-sheet-mask-cosrx-official-8.jpg?v=1724835946"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/comfort-ceramide-soft-cream-sheet-mask",
+    "originalTitle": "Balancium Comfort Ceramide Soft Cream Sheet Mask",
+    "selectedVariant": "1 ea",
+    "available": true
+  },
+  {
+    "key": "beauty:8915607093464",
+    "department": "beauty",
+    "name": "PDRN 엑소좀 글레이즈 마스크",
+    "brand": "코스알엑스",
+    "category": "마스크",
+    "price": 21000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/12_2c3d39b6-d732-43ac-aaeb-7ba00d005802.jpg?v=1789115233",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/12_2c3d39b6-d732-43ac-aaeb-7ba00d005802.jpg?v=1789115233",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_01__3.webp?v=1770886507",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_02.webp?v=1770886507",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_03.webp?v=1770886507",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_04.webp?v=1770886507",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_05.webp?v=1770886507",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_06_629c87ce-4346-4c50-87b8-5e65d9f94516.webp?v=1770886507",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/PDRN_Exosome_mask_07.webp?v=1770886507"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-pdrn-exosome-skinplaning-glaze-mask",
+    "originalTitle": "COSRX PDRN EXOSOME Skinplaning Glaze Mask",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:8895937577176",
+    "department": "beauty",
+    "name": "에어리 라이트 인비저블 선스틱",
+    "brand": "코스알엑스",
+    "category": "선케어",
+    "price": 26500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_00.webp?v=1749081344",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_00.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_01__3.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_02__2.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_03.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_04__2.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_05__2.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_06__2.webp?v=1749081344",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_SunStick_08.webp?v=1749081344"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/airy-light-invisible-sun-stick",
+    "originalTitle": "Airy-Light Invisible Sun Stick",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:8895931547864",
+    "department": "beauty",
+    "name": "에어리 라이트 오일 컨트롤 선스틱 SPF50",
+    "brand": "코스알엑스",
+    "category": "선케어",
+    "price": 22000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_00_ffd57aae-2ac6-4ab6-870a-ccd935fc20c3.jpg?v=1778562098",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_00_ffd57aae-2ac6-4ab6-870a-ccd935fc20c3.jpg?v=1778562098",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_01F.webp?v=1749085530",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_02__2.webp?v=1749085530",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_03__3.jpg?v=1774597090",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_04__2.webp?v=1774597090",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_05__2.webp?v=1774597090",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_08__2.webp?v=1774597090",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/Airy-Light_Clear_SunStick_07__3.jpg?v=1774597090"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/cosrx-airy-light-clear-sunscreen-stick",
+    "originalTitle": "COSRX AIRY-LIGHT OIL CONTROL CLEAR SUNSCREEN STICK SPF 50",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:7978918314200",
+    "department": "beauty",
+    "name": "더 AHA 2 BHA 2 케어 세럼",
+    "brand": "코스알엑스",
+    "category": "세럼·앰플",
+    "price": 28000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Treatment_00_0ee6119d-bd30-4aa2-b7f6-3ecf59cc7151.jpg?v=1778462937",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Treatment_00_0ee6119d-bd30-4aa2-b7f6-3ecf59cc7151.jpg?v=1778462937",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Treatment_04_0b5b66c2-5252-4a11-a604-75705472830f.jpg?v=1778061970",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Blemish_03__2.jpg?v=1741592927",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Blemish_05_2.jpg?v=1741592927",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Treatment_06_63af588a-be9d-4c24-be82-41c6e3bd1b51.jpg?v=1778061970",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Treatment_07_c12b7fb6-f951-4463-b662-367ac4e9ab9d.jpg?v=1778061971",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Treatment_09_b0cb800f-c5ac-4df8-94cd-1d216c7dbc44.jpg?v=1778061970",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/AHA2BHA2_Blemish_11_2.jpg?v=1741592927"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-aha-2-bha-2-blemish-treatment-serum",
+    "originalTitle": "The AHA 2 BHA 2 Blemish Treatment Serum",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:7989284929752",
+    "department": "beauty",
+    "name": "더 AHA BHA PHA LHA 35 필",
+    "brand": "코스알엑스",
+    "category": "클렌징",
+    "price": 19000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_0.webp?v=1724836979",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_0.webp?v=1724836979",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_1B.webp?v=1697445072",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_2.webp?v=1697445075",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_3.webp?v=1724836985",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_18.webp?v=1724836987",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_5.webp?v=1724836988",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_6.webp?v=1724836990",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/The_35peel_7.webp?v=1697445085"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/the-aha-bha-pha-lha-35-peel",
+    "originalTitle": "The AHA BHA PHA LHA 35 Peel",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:7549478469848",
+    "department": "beauty",
+    "name": "AC 컬렉션 카밍 리퀴드 마일드",
+    "brand": "코스알엑스",
+    "category": "토너",
+    "price": 24000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/ac-collection-calming-liquid-mild-cosrx-official-1.jpg?v=1724836561",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/ac-collection-calming-liquid-mild-cosrx-official-1.jpg?v=1724836561",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/ac-collection-calming-liquid-mild-cosrx-official-2.jpg?v=1724836563",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/ac-collection-calming-liquid-mild-cosrx-official-3.jpg?v=1724836565",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/ac-collection-calming-liquid-mild-cosrx-official-4.jpg?v=1724836567",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/ac-collection-calming-liquid-mild-cosrx-official-5.jpg?v=1724836569"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/ac-collection-calming-liquid-mild",
+    "originalTitle": "AC Collection Calming Liquid Mild",
+    "selectedVariant": "4.22 fl.oz / 125ml",
+    "available": true
+  },
+  {
+    "key": "home:10621444358480",
+    "department": "home",
+    "name": "오르보 라운지 체어 - Vanir - 블랙/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 820000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274601_1.png?v=1788766246",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274601_1.png?v=1788766246",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274601_2.png?v=1788766246",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274863_2.png?v=1788762880"
+    ],
+    "sourceUrl": "https://fermliving.com/products/orbo-lounge-chair-vanir-black-honey",
+    "originalTitle": "Orbo Lounge Chair - Vanir - Black/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:6736437903516",
+    "department": "beauty",
+    "name": "립 플럼프 AHA BHA 비타민 C",
+    "brand": "코스알엑스",
+    "category": "립케어",
+    "price": 19500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-1.jpg?v=1724836331",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-1.jpg?v=1724836331",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-2.jpg?v=1724836333",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-3.jpg?v=1724836335",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-4.jpg?v=1724836337",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-5.jpg?v=1724836339",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/lip-plump-refresh-aha-bha-vitamin-c-lip-plumper-cosrx-official-6.jpg?v=1724836342"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/lip-plump-refresh-aha-bha-viamin-c-lip-plumper",
+    "originalTitle": "Lip Plump - Refresh AHA BHA Vitamin C Lip Plumper",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "beauty:7954467225816",
+    "department": "beauty",
+    "name": "알로에 54.2 아쿠아 톤업 선스크린 SPF50",
+    "brand": "코스알엑스",
+    "category": "선케어",
+    "price": 23500,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-1.jpg?v=1724836911",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-1.jpg?v=1724836911",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-2.jpg?v=1724836913",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-3.jpg?v=1724836915",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-4.jpg?v=1724836917",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-5.jpg?v=1724836919",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-6.jpg?v=1724836921",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-7.jpg?v=1724836923",
+      "https://cdn.shopify.com/s/files/1/0513/3775/6828/files/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa-cosrx-official-8.jpg?v=1724836925"
+    ],
+    "sourceUrl": "https://www.cosrx.com/products/aloe-54-2-aqua-tone-up-sunscreen-spf-50-pa",
+    "originalTitle": "Aloe 54.2 Aqua Tone-up Sunscreen SPF 50+ PA++++",
+    "selectedVariant": "Default Title",
+    "available": false
+  },
+  {
+    "key": "home:10621446947152",
+    "department": "home",
+    "name": "코 월 캐비닛 - 블랙",
+    "brand": "펌리빙",
+    "category": "수납장",
+    "price": 670000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_1.png?v=1788766590",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_1.png?v=1788766590",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_10.jpg?v=1788766590",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_11.jpg?v=1788766590",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_2.png?v=1788766590",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_3.png?v=1788766590",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274650_4.png?v=1788766590"
+    ],
+    "sourceUrl": "https://fermliving.com/products/koh-wall-cabinet-black",
+    "originalTitle": "Koh Wall Cabinet - Black",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621493412176",
+    "department": "home",
+    "name": "보다 다이닝 체어 암레스트 - 다크 스테인 비치",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 820000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_1.png?v=1788769464",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_1.png?v=1788769464",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_10.jpg?v=1788769464",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_11.jpg?v=1788769463",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_12.jpg?v=1788769464",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_13.jpg?v=1788769463",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_14.jpg?v=1788769464",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_15.jpg?v=1788769464",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274250_2.png?v=1788769464"
+    ],
+    "sourceUrl": "https://fermliving.com/products/boda-dining-chair-with-arms-dark-stained-beech",
+    "originalTitle": "Boda Dining Chair with Arms - Dark Stained Beech",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621444424016",
+    "department": "home",
+    "name": "코나 책장 - 3x2 - 포함 3 캐비닛 인서트 - 내추럴 오크 베니어",
+    "brand": "펌리빙",
+    "category": "수납장",
+    "price": 580000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274620_1-bred.png?v=1788766255",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274620_1-bred.png?v=1788766255",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274620_2-bred.png?v=1788766255"
+    ],
+    "sourceUrl": "https://fermliving.com/products/kona-bookcase-3-x-2-with-3-cabinet-inserts-natural-oak-veneer",
+    "originalTitle": "Kona Bookcase - 3x2 - with 3 Cabinet Inserts - Natural Oak Veneer",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621460808016",
+    "department": "home",
+    "name": "오르보 라운지 체어 - 소프트 알파카 - 내추럴",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 790000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274740_1.png?v=1788768507",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274740_1.png?v=1788768507",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274740_10.jpg?v=1788768507",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274740_11.jpg?v=1788768507",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274740_2.png?v=1788768507",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274740_3.png?v=1788768508"
+    ],
+    "sourceUrl": "https://fermliving.com/products/orbo-lounge-chair-soft-alpaca-natural",
+    "originalTitle": "Orbo Lounge Chair - Soft Alpaca - Natural",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621500883280",
+    "department": "home",
+    "name": "커버처 월 테이블 - 스테인리스 스틸",
+    "brand": "펌리빙",
+    "category": "테이블·데스크",
+    "price": 650000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273868_1.png?v=1788770235",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273868_1.png?v=1788770235",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273868_10.jpg?v=1788770235",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273868_2.png?v=1788770235"
+    ],
+    "sourceUrl": "https://fermliving.com/products/curvature-wall-table-stainless-steel",
+    "originalTitle": "Curvature Wall Table - Stainless Steel",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621444718928",
+    "department": "home",
+    "name": "코나 책장 - 3x2 - 포함 3 캐비닛 인서트 - 다크 스테인 오크",
+    "brand": "펌리빙",
+    "category": "수납장",
+    "price": 610000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274621_1-bred.png?v=1788766285",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274621_1-bred.png?v=1788766285",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274621_2-bred.png?v=1788766285"
+    ],
+    "sourceUrl": "https://fermliving.com/products/kona-bookcase-3-x-2-with-3-cabinet-inserts-dark-stained-oak",
+    "originalTitle": "Kona Bookcase - 3x2 - with 3 Cabinet Inserts - Dark Stained Oak",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621446652240",
+    "department": "home",
+    "name": "코 스탠딩 캐비닛 - 블랙",
+    "brand": "펌리빙",
+    "category": "수납장",
+    "price": 640000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_1.png?v=1788766562",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_1.png?v=1788766562",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_10_ef72b7fb-40f5-4ebc-8db7-dc82f7bf40b3.jpg?v=1789556989",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_11.jpg?v=1788766562",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_2.png?v=1788766561",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_3.png?v=1788766562",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_4.png?v=1788766562",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274651_5.png?v=1788766562"
+    ],
+    "sourceUrl": "https://fermliving.com/products/koh-standing-cabinet-black",
+    "originalTitle": "Koh Standing Cabinet - Black",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621445734736",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - Rich Velvet - Coffee",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 910000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_2.png?v=1788766431",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_2.png?v=1788766431",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_10.jpg?v=1788766430",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_11.jpg?v=1788766431",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_12.jpg?v=1788766431",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_13.jpg?v=1788766431",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_14.jpg?v=1788766430",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_1.png?v=1788766431",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274632_3.png?v=1788766431"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-rich-velvet-coffee",
+    "originalTitle": "Rico Club Chair - Swivel - Rich Velvet - Coffee",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621493346640",
+    "department": "home",
+    "name": "보다 다이닝 체어 암레스트 - 레드 브라운",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 790000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_1.png?v=1788769457",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_1.png?v=1788769457",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_10.jpg?v=1788769456",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_11.jpg?v=1788769457",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_12.jpg?v=1788769456",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_2.png?v=1788769457",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274249_3.png?v=1788769457"
+    ],
+    "sourceUrl": "https://fermliving.com/products/boda-dining-chair-with-arms-red-brown",
+    "originalTitle": "Boda Dining Chair with Arms - Red Brown",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621493576016",
+    "department": "home",
+    "name": "보다 다이닝 체어 암레스트 - 블랙",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 850000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274248_1.png?v=1788769475",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274248_1.png?v=1788769475",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274248_10.jpg?v=1788769475",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274248_11.jpg?v=1788769475",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274248_2.png?v=1788769475",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274248_3.png?v=1788769475"
+    ],
+    "sourceUrl": "https://fermliving.com/products/boda-dining-chair-with-arms-black",
+    "originalTitle": "Boda Dining Chair with Arms - Black",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621446029648",
+    "department": "home",
+    "name": "아투라 다이닝 테이블 - 라이트 캐시미어/다크 틴티드 글라스",
+    "brand": "펌리빙",
+    "category": "테이블·데스크",
+    "price": 740000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274680_1-bred.png?v=1788766467",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274680_1-bred.png?v=1788766467",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274680_2-bred.png?v=1788766468",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274684_1-bred.png?v=1788766468",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274684_2-bred.png?v=1788766468"
+    ],
+    "sourceUrl": "https://fermliving.com/products/atura-dining-table-light-cashmere-dark-tinted-glass",
+    "originalTitle": "Atura Dining Table - Light Cashmere/Dark Tinted Glass",
+    "selectedVariant": "200 x 90 cm",
+    "available": true
+  },
+  {
+    "key": "home:10621444325712",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - Vanir - 오프화이트/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 880000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_1.png?v=1788766237",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_1.png?v=1788766237",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_10.jpg?v=1788766237",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_11.jpg?v=1788766237",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_12.jpg?v=1788766237",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_13.jpg?v=1788766237",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_14.jpg?v=1788766237",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_2.png?v=1788766238",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274598_3.png?v=1788766237"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-vanir-off-white-honey",
+    "originalTitle": "Rico Club Chair - Swivel - Vanir - Off-White/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621447962960",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - Vanir - 블랙/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 970000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274597_1.png?v=1788766726",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274597_1.png?v=1788766726",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274597_2.png?v=1788766726",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274863_2.png?v=1788762880"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-vanir-black-honey",
+    "originalTitle": "Rico Club Chair - Swivel - Vanir - Black/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621463265616",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - 부클레 - Off-White",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 820000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274762_1.png?v=1788768577",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274762_1.png?v=1788768577",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274762_2.png?v=1788768578"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-boucle-off-white",
+    "originalTitle": "Rico Club Chair - Swivel - Bouclé - Off-White",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621460709712",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - 포피 벨벳 - 버터/블랙",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 790000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274743_1.png?v=1788768506",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274743_1.png?v=1788768506",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274743_2.png?v=1788768506",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274782_3.png?v=1788766326"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-poppy-velvet-butter-black",
+    "originalTitle": "Rico Club Chair - Swivel - Poppy Velvet - Butter/Black",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621224124752",
+    "department": "home",
+    "name": "부르 라운지 체어 - Vanir - 블랙/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 970000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274592_1.png?v=1788762880",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274592_1.png?v=1788762880",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274592_2.png?v=1788762880",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274863_2.png?v=1788762880"
+    ],
+    "sourceUrl": "https://fermliving.com/products/buur-lounge-chair-vanir-black-honey",
+    "originalTitle": "Buur Lounge Chair - Vanir - Black/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621478830416",
+    "department": "home",
+    "name": "보다 다이닝 체어 암레스트 - 패브릭 시트 - 소프트 부클레 - 다크 스테인 비치/내추럴",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 850000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_1.png?v=1788769028",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_1.png?v=1788769028",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_10.jpg?v=1788769028",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_11.jpg?v=1788769028",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_12.jpg?v=1788769028",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_2.png?v=1788769028",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274253_3.png?v=1788769028"
+    ],
+    "sourceUrl": "https://fermliving.com/products/boda-dining-chair-with-arms-upholstered-seat-soft-boucle-dark-stained-beech-natural",
+    "originalTitle": "Boda Dining Chair with Arms - Upholstered Seat - Soft Bouclé - Dark Stained Beech/Natural",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621480010064",
+    "department": "home",
+    "name": "리코 다이닝 체어 - 회전형 - 시어링 - Sahara",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 880000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_1.png?v=1788769060",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_1.png?v=1788769060",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_10.jpg?v=1788769060",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_11.jpg?v=1788769060",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_12.jpg?v=1788769060",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_2.png?v=1788769060",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274289_3.jpg?v=1788769060"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-dining-chair-swivel-sheepskin-sahara",
+    "originalTitle": "Rico Dining Chair - Swivel - Sheepskin - Sahara",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621447668048",
+    "department": "home",
+    "name": "리코 피콜로 라운지 체어 - 포피 벨벳 - 버터/블랙",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 850000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_1.png?v=1788766678",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_1.png?v=1788766678",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_10.jpg?v=1788766679",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_11.jpg?v=1788766678",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_12.jpg?v=1788766678",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_2.png?v=1788766678",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274465_3.png?v=1788766678"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-piccolo-lounge-chair-poppy-velvet-butter-black",
+    "originalTitle": "Rico Piccolo Lounge Chair - Poppy Velvet - Butter/Black",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621463363920",
+    "department": "home",
+    "name": "부르 라운지 체어 - Vanir - 오프화이트/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 940000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275033_1.png?v=1788768580",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275033_1.png?v=1788768580",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275033_2.png?v=1788768580"
+    ],
+    "sourceUrl": "https://fermliving.com/products/buur-lounge-chair-vanir-off-white-honey",
+    "originalTitle": "Buur Lounge Chair - Vanir - Off-White/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621460283728",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - 소프트 부클레 - 내추럴",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 940000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274745_1.png?v=1788768495",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274745_1.png?v=1788768495",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274745_2.png?v=1788768495"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-soft-boucle-natural",
+    "originalTitle": "Rico Club Chair - Swivel - Soft Bouclé - Natural",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621460218192",
+    "department": "home",
+    "name": "리코 푸프 - Vanir - 오프화이트/허니",
+    "brand": "펌리빙",
+    "category": "스툴·오토만",
+    "price": 320000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275005_1.png?v=1788768495",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275005_1.png?v=1788768495"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-pouf-vanir-off-white-honey",
+    "originalTitle": "Rico Pouf - Vanir - Off-White/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621485187408",
+    "department": "home",
+    "name": "보다 다이닝 체어 암레스트 - 패브릭 시트 - Staple - 내추럴 오크/Off-White",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 910000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_1.png?v=1788769171",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_1.png?v=1788769171",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_10.jpg?v=1788769171",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_11.jpg?v=1788769171",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_12.jpg?v=1788769171",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_2.png?v=1788769171",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274252_3.png?v=1788769171"
+    ],
+    "sourceUrl": "https://fermliving.com/products/boda-dining-chair-with-arms-upholstered-seat-staple-natural-oak-off-white",
+    "originalTitle": "Boda Dining Chair with Arms - Upholstered Seat - Staple - Natural Oak/Off-White",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621460971856",
+    "department": "home",
+    "name": "리코 클럽 체어 - 회전형 - 소프트 부클레 - 오프화이트/샌드",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 790000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275077_1.png?v=1788768510",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275077_1.png?v=1788768510",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275077_2.png?v=1788768510"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-club-chair-swivel-soft-boucle-off-white-sand",
+    "originalTitle": "Rico Club Chair - Swivel - Soft Bouclé - Off-White/Sand",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621458415952",
+    "department": "home",
+    "name": "리코 라운지 체어 - 회전형 - Vanir - 오프화이트/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 790000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275002_1.png?v=1788768440",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104275002_1.png?v=1788768440"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-lounge-chair-swivel-vanir-off-white-honey",
+    "originalTitle": "Rico Lounge Chair - Swivel - Vanir - Off-White/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621499212112",
+    "department": "home",
+    "name": "벌 사이드 테이블 - 다크 스테인 벌",
+    "brand": "펌리빙",
+    "category": "테이블·데스크",
+    "price": 680000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273987_1.png?v=1788770068",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273987_1.png?v=1788770068",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273987_10.jpg?v=1788770068",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273987_11.jpg?v=1788770068",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273987_2.png?v=1788770068"
+    ],
+    "sourceUrl": "https://fermliving.com/products/burl-side-table-dark-stained-burl",
+    "originalTitle": "Burl Side Table - Dark Stained Burl",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621494231376",
+    "department": "home",
+    "name": "리코 라운지 체어 - Vanir - 블랙/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 880000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274337_1.png?v=1788769559",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274337_1.png?v=1788769559",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274337_10.jpg?v=1788769559",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274337_11.jpg?v=1788769559",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274337_2.png?v=1788769559"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-lounge-chair-vanir-black-honey",
+    "originalTitle": "Rico Lounge Chair - Vanir - Black/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621445800272",
+    "department": "home",
+    "name": "리코 라운지 체어 - 회전형 - Vanir - 블랙/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 910000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274554_1.png?v=1788766440",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274554_1.png?v=1788766440",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274554_2.png?v=1788766440"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-lounge-chair-swivel-vanir-black-honey",
+    "originalTitle": "Rico Lounge Chair - Swivel - Vanir - Black/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621502652752",
+    "department": "home",
+    "name": "라거 서랍형 로우 트롤리 - 알루미늄",
+    "brand": "펌리빙",
+    "category": "수납장",
+    "price": 670000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273943_1.png?v=1788770367",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273943_1.png?v=1788770367",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273943_10.jpg?v=1788770367",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273943_11.jpg?v=1788770366",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273943_2.png?v=1788770367",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273943_3.png?v=1788770367"
+    ],
+    "sourceUrl": "https://fermliving.com/products/lager-low-trolley-with-drawer-aluminium",
+    "originalTitle": "Lager Low Trolley with Drawer - Aluminium",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10269377528144",
+    "department": "home",
+    "name": "이솔라 수납 테이블 - 내추럴",
+    "brand": "펌리빙",
+    "category": "테이블·데스크",
+    "price": 770000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1221134_1104265292_10.png?v=1762175065",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1221134_1104265292_10.png?v=1762175065",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/507941_1104265292_2.jpg?v=1762175064",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/776631_1104265292_3.png?v=1762175063",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/692372_1104265292_5.png?v=1762175063",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/720350_1104265292_4.png?v=1762175063"
+    ],
+    "sourceUrl": "https://fermliving.com/products/isola-storage-table-natural",
+    "originalTitle": "Isola Storage Table - Natural",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621458153808",
+    "department": "home",
+    "name": "리코 라운지 체어 - Vanir - 오프화이트/허니",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 820000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274992_1.png?v=1788768430",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274992_1.png?v=1788768430"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-lounge-chair-vanir-off-white-honey",
+    "originalTitle": "Rico Lounge Chair - Vanir - Off-White/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621447373136",
+    "department": "home",
+    "name": "리코 푸프 - Vanir - 블랙/허니",
+    "brand": "펌리빙",
+    "category": "스툴·오토만",
+    "price": 350000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274577_1.png?v=1788766658",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274577_1.png?v=1788766658",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104274863_2.png?v=1788762880"
+    ],
+    "sourceUrl": "https://fermliving.com/products/rico-pouf-vanir-black-honey",
+    "originalTitle": "Rico Pouf - Vanir - Black/Honey",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10268562751824",
+    "department": "home",
+    "name": "포도 스툴 - 카키",
+    "brand": "펌리빙",
+    "category": "스툴·오토만",
+    "price": 440000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/673171_1104268965_1.png?v=1762180694",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/673171_1104268965_1.png?v=1762180694",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/382269_1104268965_10.jpg?v=1762180694",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/338930_1104268965_10.jpg?v=1762180694",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/333944_1104268965_11.jpg?v=1762180694",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/682674_1104268965_11.jpg?v=1762180694",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/748405_1104268965_2.png?v=1762180694"
+    ],
+    "sourceUrl": "https://fermliving.com/products/podo-stool-khaki",
+    "originalTitle": "Podo Stool - Khaki",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10621503045968",
+    "department": "home",
+    "name": "이솔라 커피 테이블 - Dark Stained",
+    "brand": "펌리빙",
+    "category": "테이블·데스크",
+    "price": 710000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273798_1-bred.png?v=1788770395",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273798_1-bred.png?v=1788770395",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273798_10.jpg?v=1788770394",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104273798_11.jpg?v=1788770393"
+    ],
+    "sourceUrl": "https://fermliving.com/products/isola-coffee-table-dark-stained",
+    "originalTitle": "Isola Coffee Table - Dark Stained",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10268607873360",
+    "department": "home",
+    "name": "루트 스툴 - 블랙 Stained",
+    "brand": "펌리빙",
+    "category": "스툴·오토만",
+    "price": 290000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1123640_Packshot_10.png?v=1762180471",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1123640_Packshot_10.png?v=1762180471",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/480773_1104267440_2.jpg?v=1762180470"
+    ],
+    "sourceUrl": "https://fermliving.com/products/root-stool-black-stained",
+    "originalTitle": "Root Stool - Black Stained",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10268558590288",
+    "department": "home",
+    "name": "포도 스툴 - 레드 브라운",
+    "brand": "펌리빙",
+    "category": "스툴·오토만",
+    "price": 320000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/660505_1104268964_1.png?v=1762180633",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/660505_1104268964_1.png?v=1762180633",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/338930_1104268964_10.jpg?v=1762180633",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/333944_1104268964_11.jpg?v=1762180633",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/703592_1104268964_10.jpg?v=1762180633",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/540844_1104268964_12.jpg?v=1762180633",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/682674_1104268964_11.jpg?v=1762180633",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/712269_1104268964_2.png?v=1762180633"
+    ],
+    "sourceUrl": "https://fermliving.com/products/podo-stool-red-brown",
+    "originalTitle": "Podo Stool - Red Brown",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10268558786896",
+    "department": "home",
+    "name": "Forene Cylinder 푸프 - Tan/Chocolate",
+    "brand": "펌리빙",
+    "category": "스툴·오토만",
+    "price": 350000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104268932_1.png?v=1790839595",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1104268932_1.png?v=1790839595",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/942328_1104268932_10.jpg?v=1762179624",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/700554_1104268932_2.png?v=1762179623"
+    ],
+    "sourceUrl": "https://fermliving.com/products/forene-cylinder-pouf-tan-chocolate",
+    "originalTitle": "Forene Cylinder Pouf - Tan/Chocolate",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10268743696720",
+    "department": "home",
+    "name": "Desert 라운지 체어 - 블랙 - Soil",
+    "brand": "펌리빙",
+    "category": "의자·라운지체어",
+    "price": 880000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1103572862_1.png?v=1789999991",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1103572862_1.png?v=1789999991",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/2492952_1103572862_6.jpg?v=1762175014",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1634734_1103572862_3.png?v=1762175014",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/741803_1103572862_4.png?v=1762175014",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/1726270_1103572862_5.png?v=1762175014"
+    ],
+    "sourceUrl": "https://fermliving.com/products/desert-lounge-chair-blacksoil",
+    "originalTitle": "Desert Lounge Chair - Black - Soil",
+    "selectedVariant": "Default Title",
+    "available": true
+  },
+  {
+    "key": "home:10268863398224",
+    "department": "home",
+    "name": "Sector 데스크 - 내추럴 오크/Brass",
+    "brand": "펌리빙",
+    "category": "테이블·데스크",
+    "price": 710000,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/375965_1104263246_1.png?v=1762170478",
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/375965_1104263246_1.png?v=1762170478",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/2190623_1104263246_2.jpg?v=1762170479",
+      "https://cdn.shopify.com/s/files/1/0150/3336/8640/files/665880_1104263246_2.png?v=1762170479"
+    ],
+    "sourceUrl": "https://fermliving.com/products/sector-desk-oakbrass",
+    "originalTitle": "Sector Desk - Natural Oak/Brass",
+    "selectedVariant": "Default Title",
+    "available": true
+  }
+]

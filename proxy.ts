@@ -23,7 +23,7 @@ export async function proxy(req: NextRequest) {
   }
 
   // 기본 응답
-  let res = NextResponse.next({
+  const res = NextResponse.next({
     request: { headers: req.headers },
   });
 
@@ -55,7 +55,7 @@ export async function proxy(req: NextRequest) {
   // 접근 정책 결정
   const access = getRouteAccess(pathname);
   const isGuestOnly = pathname === AUTH_URLS.LOGIN || pathname === AUTH_URLS.SIGNUP;
-  const isMemberOnly = access === "authenticated";
+  const isMemberOnly = access === "authenticated" || access === "admin";
   const isSuperAdminOnly = access === "admin";
 
   // guest-only: 로그인 상태면 홈으로

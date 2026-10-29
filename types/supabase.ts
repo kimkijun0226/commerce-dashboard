@@ -100,6 +100,12 @@ export interface Database {
         };
         Relationships: [];
       };
+      store_settings: {
+        Row: { department: string; logo_url: string | null; banners: Json; updated_at: string };
+        Insert: { department: string; logo_url?: string | null; banners?: Json; updated_at?: string };
+        Update: { logo_url?: string | null; banners?: Json; updated_at?: string };
+        Relationships: [];
+      };
       products: {
         Row: {
           department: "fashion" | "beauty" | "home";
@@ -166,6 +172,10 @@ export interface Database {
       };
       orders: {
         Row: {
+          fulfillment_status: string;
+          shipping_carrier: string | null;
+          tracking_number: string | null;
+          shipped_at: string | null;
           id: string;
           user_id: string;
           status: OrderStatus;
@@ -192,6 +202,10 @@ export interface Database {
           paid_at: string | null;
         };
         Insert: {
+          fulfillment_status?: string;
+          shipping_carrier?: string | null;
+          tracking_number?: string | null;
+          shipped_at?: string | null;
           id?: string;
           user_id: string;
           status?: OrderStatus;
@@ -218,6 +232,10 @@ export interface Database {
           paid_at?: string | null;
         };
         Update: {
+          fulfillment_status?: string;
+          shipping_carrier?: string | null;
+          tracking_number?: string | null;
+          shipped_at?: string | null;
           id?: string;
           user_id?: string;
           status?: OrderStatus;
@@ -484,6 +502,7 @@ export interface Database {
     };
     Views: Record<string, never>;
     Functions: {
+      get_admin_dashboard: { Args: Record<PropertyKey, never>; Returns: Json };
       get_catalog_category_products: {
         Args: { p_category: string; p_department?: string };
         Returns: Database["public"]["Tables"]["products"]["Row"][];

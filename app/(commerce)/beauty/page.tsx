@@ -1,3 +1,3 @@
-import { StorefrontPage } from "@/components/commerce/home/StorefrontPage";
+import { StorefrontPage, type StorefrontSearchParams } from "@/components/commerce/home/StorefrontPage";
 export const metadata = { title: "오브온 · 뷰티" };
-export default function Page() { return <StorefrontPage department="beauty" />; }
+export default function Page({ searchParams }: { searchParams: StorefrontSearchParams }) { return <StorefrontPage department="beauty" searchParams={searchParams} />; }

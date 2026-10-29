@@ -1,5 +1,6 @@
 "use client";
 
+import { catalogFilterUrl } from "@/lib/catalog/campaigns";
 import { STOREFRONTS, storeFromPath } from "@/lib/catalog/storefront";
 import { useSessionStore } from "@/commons/store/session-store";
 import Image from "next/image";
@@ -14,11 +15,12 @@ import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import { FiMenu, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
+  logos?: Record<string,string>;
   className?: string;
   cartCount?: number;
 };
 
-export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
+export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -60,13 +62,16 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
           className="flex min-w-0 items-center gap-2 sm:gap-3"
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
-          <Image src="/brand/oveon-logo.svg" alt="OVEON" width={112} height={25} className="h-auto w-20 sm:w-28" />
+          <Image src={logos?.[store.key] ?? "/brand/oveon-logo.svg"} unoptimized alt="OVEON" width={112} height={25} className="h-6 w-20 object-contain sm:h-7 sm:w-28" />
           <span className="hidden min-[400px]:inline border-l border-(--commerce-border-subtle) pl-2 text-xs font-medium text-(--commerce-primary-main) sm:pl-3 sm:text-sm">{store.name}</span>
         </Link>
 
-        <div className={cn("mx-auto w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}
-          onFocusCapture={() => { if (pathname !== store.path) router.push(store.path); }}>
-          <HomeSearchBar inputId="header-search-input" placeholder={store.search} onEscape={closeSearch}
+        <div className={cn("mx-auto w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}>
+          <HomeSearchBar inputId="header-search-input" placeholder={store.search} onEscape={closeSearch} onSubmitSearch={() => {
+              if (pathname !== store.path) router.push(catalogFilterUrl(store.key, { q: useSearchStore.getState().keyword }));
+              else document.getElementById("catalog-products")?.scrollIntoView({ block: "start" });
+              closeSearch();
+            }}
             className="!rounded-[3px] !border-transparent !bg-(--commerce-background-light) !py-2.5 text-sm" />
         </div>
 
@@ -78,9 +83,6 @@ export function LayoutHeader({ className, cartCount }: LayoutHeaderProps) {
               if (isSearchOpen) {
                 closeSearch();
                 return;
-              }
-              if (pathname !== store.path) {
-                router.push(store.path);
               }
               openSearch();
             }}
