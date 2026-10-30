@@ -251,21 +251,16 @@ body:has(dialog[open]) { overflow: hidden; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: clamp(228px, 22vw, 282px);
-  padding: 3px;
-  border: 1px solid #e8e3db;
-  border-radius: 3px;
-  background: #fff;
+  padding: 0;
 }
 .storefront-nav-indicator {
   position: absolute;
-  z-index: -1;
-  top: 3px;
-  bottom: 3px;
-  left: 3px;
-  width: calc((100% - 6px) / 3);
-  border: 1px solid #ddd3c4;
-  border-radius: 2px;
-  background: #eee8de;
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  width: calc(100% / 3);
+  height: 1px;
+  background: #796449;
   transform: translateX(calc(var(--store-index, 0) * 100%));
   transition: transform 560ms cubic-bezier(.22, 1, .36, 1);
 }
@@ -273,9 +268,9 @@ body:has(dialog[open]) { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 28px;
+  min-height: 34px;
   padding: 0 6px;
-  color: #746956;
+  color: #989189;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .09em;
@@ -283,7 +278,7 @@ body:has(dialog[open]) { overflow: hidden; }
 }
 .storefront-nav-link:hover { color: #211e19; }
 .storefront-nav-link:focus-visible { outline: 2px solid #a38b67; outline-offset: 2px; }
-.storefront-nav-link[aria-current="page"] { color: #30271c; }
+.storefront-nav-link[aria-current="page"] { color: #30271c; font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   .storefront-nav-indicator, .storefront-nav-link { transition: none; }
 }
