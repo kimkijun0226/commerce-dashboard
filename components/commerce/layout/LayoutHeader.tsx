@@ -2,7 +2,8 @@
 
 import { StorefrontNav, STORE_LABELS } from "./StorefrontNav";
 import { catalogFilterUrl } from "@/lib/catalog/campaigns";
-import { STOREFRONTS, storeFromPath } from "@/lib/catalog/storefront";
+import { STOREFRONTS, isStorefrontMain } from "@/lib/catalog/storefront";
+import { useActiveStore } from "@/commons/store/storefront-store";
 import { useSessionStore } from "@/commons/store/session-store";
 import Image from "next/image";
 import { cn } from "@/components/ui";
@@ -29,7 +30,8 @@ export function LayoutHeader({
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const store = STOREFRONTS[storeFromPath(pathname)];
+  const store = STOREFRONTS[useActiveStore()];
+  const showStoreNav = isStorefrontMain(pathname);
   const isAuthenticated = useSessionStore((s) => s.isAuthenticated);
   const totalQuantity = useCartStore((s) => s.totalQuantity);
   const displayCartCount = cartCount ?? totalQuantity;
@@ -71,15 +73,17 @@ export function LayoutHeader({
             src={logos?.[store.key] ?? "/brand/revie-logo.svg"}
             unoptimized
             alt="RÊVIE"
-            width={112}
-            height={25}
-            className="h-6 w-20 object-contain sm:h-6 sm:w-24"
+            width={152}
+            height={36}
+            className="h-8 w-28 object-contain sm:h-9 sm:w-[152px]"
           />
         </Link>
 
-        <div className="ml-5 hidden shrink-0 sm:block lg:ml-8">
-          <StorefrontNav active={store.key} />
-        </div>
+        {showStoreNav && (
+          <div className="ml-5 hidden shrink-0 sm:block lg:ml-8">
+            <StorefrontNav active={store.key} />
+          </div>
+        )}
 
         <div
           className={cn(
@@ -172,17 +176,18 @@ export function LayoutHeader({
         >
           <div className="mx-auto max-w-[1440px] px-4 py-3">
             <div className="flex flex-col gap-2 text-[14px] font-medium leading-6">
-              {Object.values(STOREFRONTS).map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.path}
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded px-2 py-2 text-(--commerce-text-primary)"
-                  aria-current={store.key === item.key ? "page" : undefined}
-                >
-                  {STORE_LABELS[item.key]}
-                </Link>
-              ))}
+              {showStoreNav &&
+                Object.values(STOREFRONTS).map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.path}
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded px-2 py-2 text-(--commerce-text-primary)"
+                    aria-current={store.key === item.key ? "page" : undefined}
+                  >
+                    {STORE_LABELS[item.key]}
+                  </Link>
+                ))}
               <Link
                 href={isAuthenticated ? "/account" : "/login"}
                 onClick={() => setMobileOpen(false)}

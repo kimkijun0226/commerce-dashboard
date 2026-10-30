@@ -16,3 +16,11 @@ export function storeFromPath(path: string): StoreKey {
 export function storeProductUrl(id: string, store: StoreKey = "fashion") {
   return `${store === "fashion" ? "" : store === "home" ? "/home" : STOREFRONTS[store].path}/products/${encodeURIComponent(id)}`;
 }
+
+export function isStorefrontMain(path: string): boolean {
+  return ["/", "/home", "/fashion", "/beauty"].includes(path);
+}
+export function explicitStoreFromPath(path: string): StoreKey | null {
+  if (isStorefrontMain(path) || path === "/products" || path.startsWith("/products/") || path.startsWith("/home/") || path.startsWith("/beauty/")) return storeFromPath(path);
+  return null;
+}
