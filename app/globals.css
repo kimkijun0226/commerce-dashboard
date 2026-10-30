@@ -275,7 +275,7 @@ body:has(dialog[open]) { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
+  min-height: 34px;
   padding: 0 8px;
   color: #746956;
   font-size: 13px;
@@ -289,3 +289,21 @@ body:has(dialog[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .storefront-nav-indicator, .storefront-nav-link { transition: none; }
 }
+
+.commerce-header .header-search {
+  height: 34px;
+  gap: 8px;
+  padding: 0 10px;
+  border-radius: 3px;
+  border-color: #e7e4df !important;
+  background: #f8f7f5 !important;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.commerce-header .header-search:focus-within {
+  border-color: #a38b67 !important;
+  box-shadow: 0 0 0 2px #a38b6714;
+}
+.commerce-header .header-search > svg { width: 16px; height: 16px; }
+.commerce-header .header-search input { height: 30px; font-size: 12px !important; line-height: 20px !important; }
+.commerce-header .header-search input::placeholder { color: #98928a; }
+.commerce-header .header-search button { width: 24px; height: 24px; }

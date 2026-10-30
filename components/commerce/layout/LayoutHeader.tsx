@@ -16,17 +16,21 @@ import { HomeSearchBar } from "@/features/search/components/HomeSearchBar";
 import { FiMenu, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 
 export type LayoutHeaderProps = {
-  logos?: Record<string,string>;
+  logos?: Record<string, string>;
   className?: string;
   cartCount?: number;
 };
 
-export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps) {
+export function LayoutHeader({
+  logos,
+  className,
+  cartCount,
+}: LayoutHeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const store = STOREFRONTS[storeFromPath(pathname)];
-  const isAuthenticated = useSessionStore(s => s.isAuthenticated);
+  const isAuthenticated = useSessionStore((s) => s.isAuthenticated);
   const totalQuantity = useCartStore((s) => s.totalQuantity);
   const displayCartCount = cartCount ?? totalQuantity;
   const isSearchOpen = useSearchStore((s) => s.isOpen);
@@ -40,9 +44,9 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50",
-        "border-b bg-(--commerce-background-default)",
-        "border-(--commerce-border-subtle)",
+        "commerce-header fixed inset-x-0 top-0 z-50",
+        "border-b bg-white",
+        "border-[#eae7e2]",
         className,
       )}
     >
@@ -54,31 +58,59 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >
-          <FiMenu className="size-5 sm:size-6" aria-hidden />
+          <FiMenu className="size-5" aria-hidden />
         </button>
 
         <Link
           href={store.path}
           aria-label={`레비 · ${store.name} 홈`}
-          className="flex min-w-0 items-center gap-2 sm:gap-3"
+          className="flex shrink-0 items-center"
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
-          <Image src={logos?.[store.key] ?? "/brand/revie-logo.svg"} unoptimized alt="RÊVIE" width={112} height={25} className="h-6 w-20 object-contain sm:h-7 sm:w-28" />
-
+          <Image
+            src={logos?.[store.key] ?? "/brand/revie-logo.svg"}
+            unoptimized
+            alt="RÊVIE"
+            width={112}
+            height={25}
+            className="h-6 w-20 object-contain sm:h-6 sm:w-24"
+          />
         </Link>
 
-        <div className="ml-4 hidden shrink-0 sm:block lg:ml-8"><StorefrontNav active={store.key} /></div>
-
-        <div className={cn("mx-auto min-w-0 w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}>
-          <HomeSearchBar inputId="header-search-input" placeholder={store.search} onEscape={closeSearch} onSubmitSearch={() => {
-              if (pathname !== store.path) router.push(catalogFilterUrl(store.key, { q: useSearchStore.getState().keyword }));
-              else document.getElementById("catalog-products")?.scrollIntoView({ block: "start" });
-              closeSearch();
-            }}
-            className="!rounded-[3px] !border-transparent !bg-(--commerce-background-light) !py-2.5 text-sm" />
+        <div className="ml-5 hidden shrink-0 sm:block lg:ml-8">
+          <StorefrontNav active={store.key} />
         </div>
 
-        <div className="ml-auto flex shrink-0 items-center gap-1 pl-1 sm:ml-0 sm:gap-3">
+        <div
+          className={cn(
+            "mx-auto min-w-0 w-full lg:ml-auto lg:mr-6 lg:w-[28%] lg:max-w-[320px]",
+            isSearchOpen
+              ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm lg:static lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none"
+              : "hidden lg:block",
+          )}
+        >
+          <HomeSearchBar
+            inputId="header-search-input"
+            placeholder={store.search}
+            onEscape={closeSearch}
+            onSubmitSearch={() => {
+              if (pathname !== store.path)
+                router.push(
+                  catalogFilterUrl(store.key, {
+                    q: useSearchStore.getState().keyword,
+                  }),
+                );
+              else
+                document
+                  .getElementById("catalog-products")
+                  ?.scrollIntoView({ block: "start" });
+              closeSearch();
+            }}
+            className="header-search"
+          />
+        </div>
+
+        <div className="ml-auto flex shrink-0 items-center gap-1 pl-3 lg:ml-0 lg:gap-2">
           <IconBtn
             aria-label={isSearchOpen ? "검색 닫기" : "검색 열기"}
             aria-expanded={isSearchOpen}
@@ -90,35 +122,46 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
               openSearch();
             }}
             className={cn(
-              "sm:hidden transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
+              "lg:hidden transition-colors hover:bg-(--commerce-background-light) active:bg-(--commerce-background-elevated)",
               isSearchOpen
                 ? "text-(--commerce-semantic-info)"
                 : "text-(--commerce-text-primary)",
             )}
           >
-            <FiSearch className="size-5 sm:size-6" aria-hidden />
+            <FiSearch className="size-5" aria-hidden />
           </IconBtn>
 
-          {isAuthenticated ? <IconBtn href="/account" aria-label="마이페이지"><FiUser className="size-5 sm:size-6" aria-hidden /></IconBtn> : null}
+          {isAuthenticated ? (
+            <IconBtn href="/account" aria-label="마이페이지">
+              <FiUser className="size-5" aria-hidden />
+            </IconBtn>
+          ) : null}
 
           <span data-cart-target className="relative inline-flex">
-          <IconBtn href="/cart" aria-label="장바구니" className="relative">
-            <FiShoppingCart className="size-5 sm:size-6" aria-hidden />
-            {displayCartCount > 0 ? (
-              <span
-                className="absolute -right-1 -top-1 inline-flex size-5 items-center justify-center rounded-full text-[12px] font-bold leading-5"
-                style={{
-                  backgroundColor: "var(--commerce-primary-main)",
-                  color: "var(--commerce-text-inverse)",
-                  fontFamily: "Inter",
-                }}
-              >
-                {Math.min(displayCartCount, 99)}
-              </span>
-            ) : null}
-          </IconBtn>
+            <IconBtn href="/cart" aria-label="장바구니" className="relative">
+              <FiShoppingCart className="size-5" aria-hidden />
+              {displayCartCount > 0 ? (
+                <span
+                  className="absolute right-0.5 top-0.5 inline-flex h-3.5 min-w-3.5 items-center justify-center rounded-full px-0.5 text-[9px] font-semibold leading-none ring-2 ring-white"
+                  style={{
+                    backgroundColor: "var(--commerce-primary-main)",
+                    color: "var(--commerce-text-inverse)",
+                    fontFamily: "Inter",
+                  }}
+                >
+                  {Math.min(displayCartCount, 99)}
+                </span>
+              ) : null}
+            </IconBtn>
           </span>
-          {!isAuthenticated ? <Link href={`/login?next=${encodeURIComponent(pathname)}`} className="ml-1 inline-flex min-h-9 items-center rounded-[3px] bg-(--commerce-primary-main) px-3 text-xs font-semibold text-white transition-opacity hover:opacity-80 sm:px-4 sm:text-sm">로그인</Link> : null}
+          {!isAuthenticated ? (
+            <Link
+              href={`/login?next=${encodeURIComponent(pathname)}`}
+              className="ml-2 inline-flex h-8 items-center justify-center rounded-[3px] border border-[#ded8cf] px-3 text-xs font-medium text-[#40382e] transition-colors hover:border-[#8d7960] hover:bg-[#f8f6f2] focus-visible:outline-2 focus-visible:outline-offset-2"
+            >
+              로그인
+            </Link>
+          ) : null}
         </div>
       </div>
 
@@ -129,8 +172,24 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
         >
           <div className="mx-auto max-w-[1440px] px-4 py-3">
             <div className="flex flex-col gap-2 text-[14px] font-medium leading-6">
-              {Object.values(STOREFRONTS).map(item => <Link key={item.key} href={item.path} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)" aria-current={store.key === item.key ? "page" : undefined}>{STORE_LABELS[item.key]}</Link>)}
-              <Link href={isAuthenticated ? "/account" : "/login"} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">{isAuthenticated ? "마이페이지" : "로그인 / 회원가입"}</Link>
+              {Object.values(STOREFRONTS).map((item) => (
+                <Link
+                  key={item.key}
+                  href={item.path}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded px-2 py-2 text-(--commerce-text-primary)"
+                  aria-current={store.key === item.key ? "page" : undefined}
+                >
+                  {STORE_LABELS[item.key]}
+                </Link>
+              ))}
+              <Link
+                href={isAuthenticated ? "/account" : "/login"}
+                onClick={() => setMobileOpen(false)}
+                className="rounded px-2 py-2 text-(--commerce-text-primary)"
+              >
+                {isAuthenticated ? "마이페이지" : "로그인 / 회원가입"}
+              </Link>
             </div>
           </div>
         </nav>
@@ -144,9 +203,15 @@ function IconBtn({
   className,
   children,
   ...rest
-}: (ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined }) | (Omit<LinkProps, "href"> & { href: string } & { className?: string; children?: React.ReactNode; ["aria-label"]?: string })) {
+}:
+  | (ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined })
+  | (Omit<LinkProps, "href"> & { href: string } & {
+      className?: string;
+      children?: React.ReactNode;
+      ["aria-label"]?: string;
+    })) {
   const base = cn(
-    "inline-flex items-center justify-center rounded-md p-1.5 sm:p-2",
+    "inline-flex size-9 shrink-0 items-center justify-center rounded-[3px] transition-colors hover:bg-[#f5f3ef]",
     "text-(--commerce-text-primary)",
     "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
     className,
