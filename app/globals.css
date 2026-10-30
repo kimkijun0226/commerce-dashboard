@@ -199,51 +199,21 @@
 
 body:has(dialog[open]) { overflow: hidden; }
 
-[data-store="fashion"] {
-  --commerce-primary-main: #594639;
-  --commerce-primary-dark: #45372d;
-  --commerce-primary-light: #8c7562;
-  --commerce-background-default: #fdfbf8;
-  --commerce-background-paper: #fffdfa;
-  --commerce-background-light: #f4eee7;
-  --commerce-text-primary: #302b26;
-  --commerce-border-subtle: #e6ddd3;
-  --store-accent-soft: #f4eee7;
-  --store-hero: linear-gradient(120deg, #f4f2ed, #fafaf8);
-}
-[data-store="beauty"] {
-  --commerce-primary-main: #89565e;
-  --commerce-primary-dark: #70434a;
-  --commerce-primary-light: #a16d76;
-  --commerce-background-default: #fffaf9;
-  --commerce-background-light: #f7eeed;
-  --commerce-background-elevated: #eddfdd;
-  --commerce-text-primary: #453236;
-  --commerce-text-secondary: #8c7275;
-  --commerce-border-subtle: #efdfdf;
-  --store-accent-soft: #f6e8e7;
-  --store-hero: linear-gradient(120deg, #f3dfdf, #fff8f4);
-}
-[data-store="home"] {
-  --commerce-primary-main: #56634c;
-  --commerce-primary-dark: #3f4d37;
-  --commerce-primary-light: #6e7c63;
-  --commerce-background-default: #fbfaf6;
-  --commerce-background-light: #f0efe6;
-  --commerce-background-elevated: #e4e5d8;
-  --commerce-text-primary: #373d31;
-  --commerce-text-secondary: #7b806e;
-  --commerce-border-subtle: #e4e5d9;
-  --store-accent-soft: #ebeddf;
-  --store-hero: linear-gradient(120deg, #e4e8d8, #f8f3e9);
-}
-
-/* 매장 페이지의 기본 배경을 흰색으로 통일합니다. */
+/* 매장 전체를 중립적인 흰색 배경과 무채색 UI로 통일합니다. */
 [data-store] {
+  --commerce-primary-main: #23272e;
+  --commerce-primary-dark: #141718;
+  --commerce-primary-light: #454b52;
   --commerce-background-default: #ffffff;
   --commerce-background-paper: #ffffff;
+  --commerce-background-light: #f5f5f5;
+  --commerce-background-elevated: #ebebeb;
+  --commerce-text-primary: #23272e;
+  --commerce-text-secondary: #737373;
+  --commerce-border-subtle: #e5e5e5;
+  --store-accent-soft: #f5f5f5;
+  --store-hero: #ffffff;
 }
-
 
 .storefront-nav {
   position: relative;
@@ -260,7 +230,7 @@ body:has(dialog[open]) { overflow: hidden; }
   left: 0;
   width: calc(100% / 3);
   height: 1px;
-  background: #796449;
+  background: #525252;
   transform: translateX(calc(var(--store-index, 0) * 100%));
   transition: transform 560ms cubic-bezier(.22, 1, .36, 1);
 }
@@ -270,15 +240,15 @@ body:has(dialog[open]) { overflow: hidden; }
   justify-content: center;
   min-height: 34px;
   padding: 0 6px;
-  color: #989189;
+  color: #8a8a8a;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .09em;
   transition: color 350ms ease;
 }
-.storefront-nav-link:hover { color: #211e19; }
-.storefront-nav-link:focus-visible { outline: 2px solid #a38b67; outline-offset: 2px; }
-.storefront-nav-link[aria-current="page"] { color: #30271c; font-weight: 700; }
+.storefront-nav-link:hover { color: #171717; }
+.storefront-nav-link:focus-visible { outline: 2px solid #737373; outline-offset: 2px; }
+.storefront-nav-link[aria-current="page"] { color: #23272e; font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   .storefront-nav-indicator, .storefront-nav-link { transition: none; }
 }
@@ -288,15 +258,15 @@ body:has(dialog[open]) { overflow: hidden; }
   gap: 8px;
   padding: 0 10px;
   border-radius: 3px;
-  border-color: #e7e4df !important;
-  background: #f8f7f5 !important;
+  border-color: #e5e5e5 !important;
+  background: #ffffff !important;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 .commerce-header .header-search:focus-within {
-  border-color: #a38b67 !important;
-  box-shadow: 0 0 0 2px #a38b6714;
+  border-color: #737373 !important;
+  box-shadow: 0 0 0 2px #73737314;
 }
 .commerce-header .header-search > svg { width: 16px; height: 16px; }
 .commerce-header .header-search input { height: 30px; font-size: 12px !important; line-height: 20px !important; }
-.commerce-header .header-search input::placeholder { color: #98928a; }
+.commerce-header .header-search input::placeholder { color: #8a8a8a; }
 .commerce-header .header-search button { width: 24px; height: 24px; }

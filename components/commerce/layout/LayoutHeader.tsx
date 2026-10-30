@@ -48,7 +48,7 @@ export function LayoutHeader({
       className={cn(
         "commerce-header fixed inset-x-0 top-0 z-50",
         "border-b bg-white",
-        "border-[#eae7e2]",
+        "border-[#e5e5e5]",
         className,
       )}
     >
@@ -161,7 +161,7 @@ export function LayoutHeader({
           {!isAuthenticated ? (
             <Link
               href={`/login?next=${encodeURIComponent(pathname)}`}
-              className="ml-2 inline-flex h-8 items-center justify-center rounded-[3px] border border-[#ded8cf] px-3 text-xs font-medium text-[#40382e] transition-colors hover:border-[#8d7960] hover:bg-[#f8f6f2] focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="ml-2 inline-flex h-8 items-center justify-center rounded-[3px] border border-[#dedede] px-3 text-xs font-medium text-[#404040] transition-colors hover:border-[#737373] hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               로그인
             </Link>
@@ -216,7 +216,7 @@ function IconBtn({
       ["aria-label"]?: string;
     })) {
   const base = cn(
-    "inline-flex size-9 shrink-0 items-center justify-center rounded-[3px] transition-colors hover:bg-[#f5f3ef]",
+    "inline-flex size-9 shrink-0 items-center justify-center rounded-[3px] transition-colors hover:bg-[#f5f5f5]",
     "text-(--commerce-text-primary)",
     "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--commerce-semantic-info)",
     className,
