@@ -1,6 +1,6 @@
 "use client";
 
-import { StorefrontNav } from "./StorefrontNav";
+import { StorefrontNav, STORE_LABELS } from "./StorefrontNav";
 import { catalogFilterUrl } from "@/lib/catalog/campaigns";
 import { STOREFRONTS, storeFromPath } from "@/lib/catalog/storefront";
 import { useSessionStore } from "@/commons/store/session-store";
@@ -69,7 +69,7 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
 
         <div className="ml-4 hidden shrink-0 sm:block lg:ml-8"><StorefrontNav active={store.key} /></div>
 
-        <div className={cn("mx-auto w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}>
+        <div className={cn("mx-auto min-w-0 w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}>
           <HomeSearchBar inputId="header-search-input" placeholder={store.search} onEscape={closeSearch} onSubmitSearch={() => {
               if (pathname !== store.path) router.push(catalogFilterUrl(store.key, { q: useSearchStore.getState().keyword }));
               else document.getElementById("catalog-products")?.scrollIntoView({ block: "start" });
@@ -129,7 +129,7 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
         >
           <div className="mx-auto max-w-[1440px] px-4 py-3">
             <div className="flex flex-col gap-2 text-[14px] font-medium leading-6">
-              {Object.values(STOREFRONTS).map(item => <Link key={item.key} href={item.path} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">레비 · {item.name}</Link>)}
+              {Object.values(STOREFRONTS).map(item => <Link key={item.key} href={item.path} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)" aria-current={store.key === item.key ? "page" : undefined}>{STORE_LABELS[item.key]}</Link>)}
               <Link href={isAuthenticated ? "/account" : "/login"} onClick={() => setMobileOpen(false)} className="rounded px-2 py-2 text-(--commerce-text-primary)">{isAuthenticated ? "마이페이지" : "로그인 / 회원가입"}</Link>
             </div>
           </div>
