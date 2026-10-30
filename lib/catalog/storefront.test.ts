@@ -21,6 +21,10 @@ test("store routes and product links keep fashion, beauty and home separate", ()
 });
 
 test("shared account routes preserve store selection and only storefront mains show navigation", () => {
+  assert.equal(explicitStoreFromPath("/products"), "fashion");
+  assert.equal(explicitStoreFromPath("/fashion"), "fashion");
+  assert.equal(explicitStoreFromPath("/"), "home");
+  assert.notEqual(explicitStoreFromPath("/beauty"), "home");
   assert.equal(explicitStoreFromPath("/account"), null);
   assert.equal(explicitStoreFromPath("/account/orders"), null);
   assert.equal(explicitStoreFromPath("/cart"), null);

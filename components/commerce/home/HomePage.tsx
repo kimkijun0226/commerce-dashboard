@@ -1,7 +1,7 @@
 "use client";
 
-import { catalogFilterUrl, type CampaignBanner, type CampaignFilter } from "@/lib/catalog/campaigns";
-import type { StoreKey } from "@/lib/catalog/storefront";
+import { catalogFilterLocation, type CampaignBanner, type CampaignFilter } from "@/lib/catalog/campaigns";
+import { explicitStoreFromPath, type StoreKey } from "@/lib/catalog/storefront";
 import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
 import type { Product } from "@/components/commerce/types";
 import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
@@ -48,7 +48,7 @@ export function HomePage({ campaigns, initialQuery = "", initialCategory = "", a
   const applyFilters = (filter: CampaignFilter, scroll = false) => {
     setCategory(filter.category ?? "");
     setKeyword(filter.q ?? "");
-    window.history.pushState(null, "", catalogFilterUrl(department, filter, scroll));
+    window.history.pushState(window.history.state, "", catalogFilterLocation(window.location.href, filter, scroll));
     if (scroll) document.getElementById("catalog-products")?.scrollIntoView({ block: "start" });
   };
   const debouncedKeyword = useDebouncedValue(keyword.trim(), 350);
@@ -80,8 +80,8 @@ export function HomePage({ campaigns, initialQuery = "", initialCategory = "", a
   const productsBase = useMemo(() => data?.pages.flatMap((p) => p.items) ?? [], [data]);
   const resetFilters = () => applyFilters({});
   useEffect(() => {
-    if (keyword.trim() === debouncedKeyword) {
-      window.history.replaceState(null, "", catalogFilterUrl(department, { category, q: debouncedKeyword }, Boolean(window.location.hash)));
+    if (explicitStoreFromPath(window.location.pathname) === department && keyword.trim() === debouncedKeyword) {
+      window.history.replaceState(window.history.state, "", catalogFilterLocation(window.location.href, { category, q: debouncedKeyword }));
     }
   }, [category, debouncedKeyword, department, keyword]);
 

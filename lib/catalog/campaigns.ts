@@ -54,6 +54,17 @@ export function catalogFilterUrl(
   return `${STOREFRONTS[store].path}${params.size ? `?${params}` : ""}${anchor ? "#catalog-products" : ""}`;
 }
 
+/** Filtering stays on the mounted page; store navigation belongs to Next.js links. */
+export function catalogFilterLocation(current: string, filter: CampaignFilter, anchor = false): string {
+  const url = new URL(current);
+  url.searchParams.delete("category");
+  url.searchParams.delete("q");
+  if (filter.category) url.searchParams.set("category", filter.category);
+  if (filter.q?.trim()) url.searchParams.set("q", filter.q.trim());
+  if (anchor) url.hash = "catalog-products";
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+
 export const CAMPAIGN_COPY: Record<StoreKey, readonly [string, string][]> = {
   fashion: [
     ["가디건의 계절", "툭 걸치기 좋은 니트와 가디건"],
