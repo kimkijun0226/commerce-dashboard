@@ -2,7 +2,6 @@
 
 import { catalogFilterUrl, type CampaignBanner, type CampaignFilter } from "@/lib/catalog/campaigns";
 import type { StoreKey } from "@/lib/catalog/storefront";
-import { StorefrontNav } from "@/components/commerce/layout/StorefrontNav";
 import { HomeCatalogSection } from "@/components/commerce/home/HomeCatalogSection";
 import type { Product } from "@/components/commerce/types";
 import { useInfiniteScroll } from "@/commons/hooks/useInfiniteScroll";
@@ -176,7 +175,6 @@ export function HomePage({ campaigns, initialQuery = "", initialCategory = "", a
 
   return (
     <div className="mx-auto max-w-[1800px] px-4 py-6 sm:px-6 lg:px-8">
-      <StorefrontNav active={department} />
       <HomeCatalogSection
         campaigns={campaigns}
         department={department}

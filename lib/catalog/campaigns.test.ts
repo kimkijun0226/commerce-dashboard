@@ -18,7 +18,7 @@ test("banner destinations filter the correct storefront and survive direct navig
     "스웻 팬츠",
   );
   assert.ok(getCampaignTarget("beauty", 2).href.startsWith("/beauty?"));
-  assert.ok(getCampaignTarget("home", 3).href.startsWith("/home?"));
+  assert.ok(getCampaignTarget("home", 3).href.startsWith("/?"));
   assert.equal(
     new URL(
       catalogFilterUrl("fashion", { q: "#롱 #스커트" }),

@@ -1,5 +1,6 @@
 "use client";
 
+import { StorefrontNav } from "./StorefrontNav";
 import { catalogFilterUrl } from "@/lib/catalog/campaigns";
 import { STOREFRONTS, storeFromPath } from "@/lib/catalog/storefront";
 import { useSessionStore } from "@/commons/store/session-store";
@@ -63,8 +64,10 @@ export function LayoutHeader({ logos, className, cartCount }: LayoutHeaderProps)
           style={{ fontFamily: "var(--commerce-font-heading)" }}
         >
           <Image src={logos?.[store.key] ?? "/brand/revie-logo.svg"} unoptimized alt="RÊVIE" width={112} height={25} className="h-6 w-20 object-contain sm:h-7 sm:w-28" />
-          <span className="hidden min-[400px]:inline border-l border-(--commerce-border-subtle) pl-2 text-xs font-medium text-(--commerce-primary-main) sm:pl-3 sm:text-sm">{store.name}</span>
+
         </Link>
+
+        <div className="ml-4 hidden shrink-0 sm:block lg:ml-8"><StorefrontNav active={store.key} /></div>
 
         <div className={cn("mx-auto w-full max-w-[480px] sm:ml-auto sm:mr-5 sm:w-[38%]", isSearchOpen ? "absolute inset-x-0 top-[60px] border-b border-(--commerce-border-subtle) bg-(--commerce-background-default) p-3 shadow-sm sm:static sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none" : "hidden sm:block")}>
           <HomeSearchBar inputId="header-search-input" placeholder={store.search} onEscape={closeSearch} onSubmitSearch={() => {

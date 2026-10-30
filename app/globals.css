@@ -237,3 +237,9 @@ body:has(dialog[open]) { overflow: hidden; }
   --store-accent-soft: #ebeddf;
   --store-hero: linear-gradient(120deg, #e4e8d8, #f8f3e9);
 }
+
+/* 매장 페이지의 기본 배경을 흰색으로 통일합니다. */
+[data-store] {
+  --commerce-background-default: #ffffff;
+  --commerce-background-paper: #ffffff;
+}
